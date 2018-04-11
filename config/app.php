@@ -154,11 +154,18 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        newhopecrm\Providers\AppServiceProvider::class,
+        newhopecrm\Providers\AuthServiceProvider::class,
+        // newhopecrm\Providers\BroadcastServiceProvider::class,
+        newhopecrm\Providers\EventServiceProvider::class,
+        newhopecrm\Providers\RouteServiceProvider::class,
+        //Collective\Html\HtmlServiceProvider::class,
+        //NotificationChannels\Twilio\TwilioProvider::class,
+        /*Spatie\Analytics\AnalyticsServiceProvider::class,
+        Spatie\Sitemap\SitemapServiceProvider::class,
+        AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
+        Cornford\Googlmapper\MapperServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,*/
 
     ],
 
@@ -208,6 +215,24 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        'Newsletter' => Spatie\Newsletter\NewsletterFacade::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'Instagram' => Ramsey\Laravel\OAuth2\Instagram\Facades\Instagram::class,
+        'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class,
+        'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
+        'Youtube' => Alaouy\Youtube\Facades\Youtube::class,
+        'Robots' => EllisTheDev\Robots\RobotsFacade::class,
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
+        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'TwitterSEO'   => Artesaos\SEOTools\Facades\TwitterCard::class,
+        // or
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
+        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
 
     ],
 
