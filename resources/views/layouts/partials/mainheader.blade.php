@@ -22,7 +22,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                           <img src="{{ Gravatar::src($user->email) }}" class="img-circle" alt="{{ $user->first_name . ' ' . $user->last_name }}" />
+                                           {{-- <img src="{{ Gravatar::src($user->email) }}" class="img-circle" alt="{{ $user->first_name . ' ' . $user->last_name }}" /> --}}
                                         </div>
                                         <h4>
                                             {{ trans('message.supteam') }}
@@ -91,12 +91,12 @@
                 @else
                     <li class="dropdown user user-menu" id="user_menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                             <img src="{{ Gravatar::src($user->email) }}" class="user-image" alt="{{ $user->first_name . ' ' . $user->last_name }}"/>
+                             {{-- <img src="{{ Gravatar::src($user->email) }}" class="user-image" alt="{{ $user->first_name . ' ' . $user->last_name }}"/> --}}
                             <span class="hidden-xs">{{ $user->first_name . ' ' . $user->last_name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
-                                <img src="{{ Gravatar::src($user->email) }}" class="img-circle" alt="User Image" />
+                                {{-- <img src="{{ Gravatar::src($user->email) }}" class="img-circle" alt="User Image" /> --}}
                                 <p>
                                     {{  $user->first_name . ' ' . $user->last_name }}
                                     <small>{{ trans('message.login') . ' - '  }}</small>

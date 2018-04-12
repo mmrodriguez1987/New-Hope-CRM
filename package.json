@@ -20,13 +20,15 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "admin-lte": "^2.4.2",
+        "admin-lte": "^2.4.3",
+        "bootstrap-sass": "^3.3.7",
         "chart.js": "^2.7.1",
         "chartjs": "^0.3.24",
         "font-awesome": "^4.7.0",
         "icheck": "^1.0.2",
         "ionicons": "^3.0.0",
+        "npm": "^5.8.0",
         "sparkline": "^0.2.0",
-        "toastr": "^2.1.2"
+        "toastr": "^2.1.4"
     }
 }

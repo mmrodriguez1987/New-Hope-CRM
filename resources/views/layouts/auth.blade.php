@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-@include('backend.layouts.partials.htmlheader')
+@include('layouts.partials.htmlheader')
 
 @yield('content')
 

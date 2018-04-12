@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
     @section('htmlheader')
-        @include('backend.layouts.partials.htmlheader')
+        @include('layouts.partials.htmlheader')
     @show
     {{--
         BODY TAG OPTIONS:
@@ -11,21 +11,21 @@
     <body class="skin-blue fixed sidebar-mini sidebar-mini-expand-feature">
         <div id="app" v-cloak>
             <div class="wrapper">
-                @include('backend.layouts.partials.mainheader')
-                @include('backend.layouts.partials.sidebar')
+                @include('layouts.partials.mainheader')
+                @include('layouts.partials.sidebar')
                 <div class="content-wrapper">
-                    @include('backend.layouts.partials.contentheader')
+                    @include('layouts.partials.contentheader')
                     <section class="content">
                         <!-- Your Page Content Here -->
                         @yield('main-content')
                     </section>
                 </div>
-                @include('backend.layouts.partials.controlsidebar')
-                @include('backend.layouts.partials.footer')
+                @include('layouts.partials.controlsidebar')
+                @include('layouts.partials.footer')
             </div>
         </div>
         @section('scripts')
-            @include('backend.layouts.partials.scripts')
+            @include('layouts.partials.scripts')
         @show
     </body>
 </html>

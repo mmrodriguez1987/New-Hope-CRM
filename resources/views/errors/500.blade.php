@@ -1,4 +1,4 @@
-@extends('backend.layouts.errors')
+@extends('layouts.errors')
 
 @section('htmlheader_title')
     {{ trans('message.servererror') }}

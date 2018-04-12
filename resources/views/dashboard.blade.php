@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('contentheader_title')
 Dashboard
@@ -11,10 +11,10 @@ You can chek all information about this Dashboard
 
 
 @section('htmlheader_title')
-Dashboard 
+Dashboard
 @endsection
 
-@section('main-content')  
+@section('main-content')
 <section class="content">
   <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -91,7 +91,7 @@ Dashboard
             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
         </div>
-  
+
         <div class="box-body">
           <div class="row">
             <div class="col-md-8">
@@ -99,11 +99,11 @@ Dashboard
                 <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
               </p>
 
-              <div class="chart">              
+              <div class="chart">
                 <canvas id="salesChart" style="height: 180px; width: 1043px;" width="1043" height="180"></canvas>
-              </div>           
+              </div>
             </div>
-           
+
             <div class="col-md-4">
               <p class="text-center">
                 <strong>Goal Completion</strong>
@@ -115,7 +115,7 @@ Dashboard
                 <div class="progress sm">
                   <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
                 </div>
-              </div>            
+              </div>
               <div class="progress-group">
                 <span class="progress-text">Complete Purchase</span>
                 <span class="progress-number"><b>310</b>/400</span>
@@ -123,7 +123,7 @@ Dashboard
                 <div class="progress sm">
                   <div class="progress-bar progress-bar-red" style="width: 80%"></div>
                 </div>
-              </div>            
+              </div>
               <div class="progress-group">
                 <span class="progress-text">Visit Premium Page</span>
                 <span class="progress-number"><b>480</b>/800</span>
@@ -131,7 +131,7 @@ Dashboard
                 <div class="progress sm">
                   <div class="progress-bar progress-bar-green" style="width: 80%"></div>
                 </div>
-              </div>           
+              </div>
               <div class="progress-group">
                 <span class="progress-text">Send Inquiries</span>
                 <span class="progress-number"><b>250</b>/500</span>
@@ -139,7 +139,7 @@ Dashboard
                 <div class="progress sm">
                   <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
                 </div>
-              </div>    
+              </div>
             </div>
           </div>
         </div>
@@ -151,15 +151,15 @@ Dashboard
                 <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
                 <h5 class="description-header">$35,210.43</h5>
                 <span class="description-text">TOTAL REVENUE</span>
-              </div>          
+              </div>
             </div>
-        
+
             <div class="col-sm-3 col-xs-6">
               <div class="description-block border-right">
               <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
               <h5 class="description-header">$10,390.90</h5>
               <span class="description-text">TOTAL COST</span>
-              </div>        
+              </div>
             </div>
             <div class="col-sm-3 col-xs-6">
               <div class="description-block border-right">
@@ -168,13 +168,13 @@ Dashboard
                 <span class="description-text">TOTAL PROFIT</span>
               </div>
             </div>
-           
+
             <div class="col-sm-3 col-xs-6">
               <div class="description-block">
                 <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
                 <h5 class="description-header">1200</h5>
                 <span class="description-text">GOAL COMPLETIONS</span>
-              </div>         
+              </div>
             </div>
           </div>
         </div>
@@ -183,19 +183,19 @@ Dashboard
   </div>
   <div class="row">
     <div class="col-md-8">
-      <div class="box box-success">        
+      <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">Visitors Report</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
-        </div>       
+        </div>
         <div class="box-body no-padding">
           <div class="row">
             <div class="col-md-9 col-sm-8">
               <div class="pad">
-        
+
 
               </div>
             </div>
@@ -207,28 +207,28 @@ Dashboard
                   </div>
                   <h5 class="description-header">8390</h5>
                   <span class="description-text">Visits</span>
-                </div>             
+                </div>
                 <div class="description-block margin-bottom">
                   <div class="sparkbar pad" data-color="#fff">
                     <canvas style="display: inline-block; width: 34px; height: 30px; vertical-align: top;" width="34" height="30"></canvas>
                   </div>
                   <h5 class="description-header">30%</h5>
                   <span class="description-text">Referrals</span>
-                </div>             
+                </div>
                 <div class="description-block">
                   <div class="sparkbar pad" data-color="#fff">
                     <canvas style="display: inline-block; width: 34px; height: 30px; vertical-align: top;" width="34" height="30"></canvas>
                   </div>
                   <h5 class="description-header">70%</h5>
                   <span class="description-text">Organic</span>
-                </div>           
+                </div>
               </div>
-            </div>        
-          </div>       
+            </div>
+          </div>
         </div>
       </div>
     </div>
-      <div class="col-md-4">     
+      <div class="col-md-4">
         <div class="info-box bg-yellow">
           <span class="info-box-icon">
             <i class="ion ion-ios-pricetag-outline"></i>
@@ -240,8 +240,8 @@ Dashboard
               <div class="progress-bar" style="width: 50%"></div>
             </div>
             <span class="progress-description">50% Increase in 30 Days</span>
-          </div>          
-        </div>      
+          </div>
+        </div>
         <div class="info-box bg-green">
           <span class="info-box-icon">
             <i class="ion ion-ios-heart-outline"></i>
@@ -250,12 +250,12 @@ Dashboard
             <span class="info-box-text">Mentions</span>
             <span class="info-box-number">92,050</span>
             <div class="progress">
-              <div class="progress-bar" style="width: 20%">              
+              <div class="progress-bar" style="width: 20%">
               </div>
             </div>
             <span class="progress-description">20% Increase in 30 Days</span>
-          </div>       
-        </div>      
+          </div>
+        </div>
         <div class="info-box bg-red">
           <span class="info-box-icon">
             <i class="ion ion-ios-cloud-download-outline"></i>
@@ -269,7 +269,7 @@ Dashboard
           </div>
           <span class="progress-description">70% Increase in 30 Days</span>
           </div>
-        </div>    
+        </div>
         <div class="info-box bg-aqua">
           <span class="info-box-icon">
             <i class="ion-ios-chatbubble-outline"></i>
@@ -281,7 +281,7 @@ Dashboard
               <div class="progress-bar" style="width: 40%"></div>
             </div>
             <span class="progress-description">40% Increase in 30 Days</span>
-          </div>     
+          </div>
         </div>
       </div>
     </div>
