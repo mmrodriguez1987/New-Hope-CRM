@@ -10,7 +10,7 @@ return array(
 
 		// the fallback image, can be a string or a url
 		// for more info, visit: http://en.gravatar.com/site/implement/images/#default-image
-		'fallback' => 'mm',
+		'fallback' => 'retro',
 
 		// would you like to return a https://... image
 		'secure' => false,
@@ -26,7 +26,7 @@ return array(
 		'maximumRating' => 'g',
 
 		// If for some reason you wanted to force the default image to always load, you can do that setting this to true
-		'forceDefault' => false,
+		'forceDefault' => true,
 
 		// If you require a file-type extension (some places do) then you may also add an (optional) .jpg extension to that URL
 		'forceExtension' => 'jpg',

@@ -1,8 +1,8 @@
 <!-- Main Header -->
 <header class="main-header">
-    <a href="{{ url('/administrator') }}" class="logo">
-        <span class="logo-mini">N<b>T</b>E</span>
-        <span class="logo-lg"><b>Nissi </b>Technology <b>Enterprises Inc</b></span>
+    <a href="{{ route('home') }}" class="logo">
+        <span class="logo-mini"><b>NHIC</b></span>
+        <span class="logo-lg"><b>New</b> Hope <b>In Christ</b></span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -86,20 +86,21 @@
                         </li>
                     </ul>
                 </li>
-                @if (Auth::guest())
-                    <li><a href="{{ route('logout') }}">{{ trans('message.login') }}</a></li>
+
+                @guest
+                    <li><a href="{{ route('login') }}">{{ trans('message.login') }}</a></li>
                 @else
                     <li class="dropdown user user-menu" id="user_menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                              {{-- <img src="{{ Gravatar::src($user->email) }}" class="user-image" alt="{{ $user->first_name . ' ' . $user->last_name }}"/> --}}
-                            <span class="hidden-xs">{{ $user->first_name . ' ' . $user->last_name }}</span>
+                            <span class="hidden-xs">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
                                 {{-- <img src="{{ Gravatar::src($user->email) }}" class="img-circle" alt="User Image" /> --}}
                                 <p>
-                                    {{  $user->first_name . ' ' . $user->last_name }}
-                                    <small>{{ trans('message.login') . ' - '  }}</small>
+                                    {{  Auth::user()->name }}
+                                    <small>{{ trans('message.login') }}</small>
                                 </p>
                             </li>
                             <li class="user-body">
@@ -115,16 +116,14 @@
                             </li>
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="{{ url('/administrator/settings') }}" class="btn btn-default btn-flat">{{ trans('message.profile') }}</a>
+                                    <a href="#" class="btn btn-default btn-flat">{{ trans('message.profile') }}</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{ url('/administrator/logout') }}" class="btn btn-default btn-flat" id="logout"
-                                       onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                                    <a href="{{ route('logout') }}" class="btn btn-default btn-flat" id="logout"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ trans('message.signout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ url('/administrator/logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                         <input type="submit" value="logout" style="display: none;">
                                     </form>
@@ -133,7 +132,7 @@
                             </li>
                         </ul>
                     </li>
-                @endif
+                @endguest
                 <li>
                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                 </li>

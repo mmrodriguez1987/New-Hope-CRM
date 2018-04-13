@@ -164,8 +164,8 @@ return [
         /*Spatie\Analytics\AnalyticsServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
-        Cornford\Googlmapper\MapperServiceProvider::class,
-        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,*/
+        Cornford\Googlmapper\MapperServiceProvider::class,*/
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
 
     ],
 

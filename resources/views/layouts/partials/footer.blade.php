@@ -1,6 +1,6 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        Copyright &copy; {{ date('Y') }} {{ trans('site.companyname') }}
+        Copyright &copy; {{ date('Y') }} New Hope in Christ Ministry
     </div>
-    Powered by <strong><a href="{{ trans('site.author_weburl') }}?utm_source=referalc{{ trans('site.companyname') }}" target="_blank" title="{{ trans('site.author_largename') }}">{{ trans('site.author_largename') }}</a></strong>
+    Powered by <strong><a href="http://michaelrodriguez.tech" target="_blank" title="Nissi Technology Enterprises Inc">Nissi Technology Enterprises Inc</a></strong>
 </footer>

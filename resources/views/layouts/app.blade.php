@@ -8,7 +8,7 @@
             SKINS: skin-blue, skin-black, skin-purple, skin-yellow, skin-red, skin-green
             LAYOUT OPTIONS: fixed, layout-boxed, layout-top-nav , sidebar-collapse , sidebar-mini
      --}}
-    <body class="skin-blue fixed sidebar-mini sidebar-mini-expand-feature">
+    <body class="skin-red fixed sidebar-mini sidebar-mini-expand-feature">
         <div id="app" v-cloak>
             <div class="wrapper">
                 @include('layouts.partials.mainheader')
