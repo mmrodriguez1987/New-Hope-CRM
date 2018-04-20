@@ -3,13 +3,15 @@
     <title> @yield('htmlheader_title', 'Your title here') </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {!! Html::style('css/bootstrap.css') !!}
+    {{-- {!! Html::style('css/bootstrap.css') !!} --}}
+    {!! Html::style('css/app.css') !!}
     {!! Html::style('css/font-awesome.css') !!}
     {!! Html::style('css/ionicons.css') !!}
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     {!! Html::style('plugins/jvectormap/jquery-jvectormap-1.2.2.css') !!}
     {!! Html::style('css/AdminLTE.css') !!}
     {!! Html::style('css/skins/_all-skins.min.css') !!}
+    {!! Html::style('plugins/iCheck/square/blue.css') !!}
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/favicons/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicons/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicons/favicon-16x16.png') }}">
