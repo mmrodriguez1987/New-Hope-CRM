@@ -17,11 +17,9 @@ class CreatePersonaTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('primernombre');
-            $table->string('edad');
             $table->string('estadocivil');
             $table->date('fechanac');
-            $table->char('sexo',1);
+            $table->char('sexo', 1);
             $table->string('direccion1');
             $table->string('direccion2');
             $table->integer('zipcode');
@@ -36,7 +34,7 @@ class CreatePersonaTable extends Migration
             $table->string('tipopersona_id')->reference('id')->on('personatipo');
             $table->integer('user_creac_id')->reference('id')->on('users');
             $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active',1);
+            $table->char('active', 1);
             $table->timestamps();
         });
     }

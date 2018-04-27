@@ -1,7 +1,7 @@
 <!-- Main Header -->
 <header class="main-header">
     <a href="{{ route('home') }}" class="logo">
-        <span class="logo-mini"><b>NHIC</b></span>
+        <span class="logo-mini"><b>NH</b></span>
         <span class="logo-lg"><b>New</b> Hope <b>In Christ</b></span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">

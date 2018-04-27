@@ -14,3 +14,5 @@
 Auth::routes();
 
 Route::get('/', 'DashboardController@index')->name('home');
+
+Route::resource('personas', 'PersonaController');
