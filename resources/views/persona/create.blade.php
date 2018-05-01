@@ -1,32 +1,42 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('contentheader_title')
-Slideshow | Create
+Personas | Create
 @endsection
 
 
 @section('contentheader_description')
-Create a Slide for the main Slideshow
+Registrar a una nueva persona en la membresia
 @endsection
 
 
 @section('htmlheader_title')
-Slideshow 
+Membresia Nueva Persona
 @endsection
 
 @section('main-content')
-	<div class="col-xs-12 col-sm-8">
-		<h2>
-			New Slide
-			<a href="{{ route('administrator.slide.index') }}" class="btn btn-default pull-right">Back</a>
-		</h2>
-		<hr>
-		@include('backend.layouts.errors')
-		{!! Form::open(['route' => 'administrator.slides.store', 'files' => true]) !!}			
-			@include('backend.slideshow.partial.form')			
-		{!! Form::close() !!}
-	</div>
-	<div class="col-xs-12 col-sm-4">
-		@include('backend.slideshow.partial.aside')
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-md-6">
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h2 class="box-title">
+						Nueva Persona
+						<a href="{{ route('personas.index') }}" class="btn btn-default pull-right">Regresar</a>
+					</h2>
+				</div>
+				<hr>
+				@include('layouts.errors')
+				{!! Form::open(['route' => 'personas.store', 'files' => true]) !!}
+				<div class="box-body">
+					@include('persona.partial.form')
+				</div>
+				{!! Form::close() !!}
+
+
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			@include('persona.partial.aside')
+		</div>
 	</div>
 @endsection

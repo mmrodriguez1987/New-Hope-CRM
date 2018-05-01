@@ -49,12 +49,12 @@
                     </i>
                 </a>
                 <ul class="treeview-menu">
+                    <li><a href="{{ route('personas.index') }}"><i class="fa fa-paw"></i>Membresia Iglesia</a></li>
                     <li><a href="{{ route('home') }}"><i class="fa fa-paw"></i>Security</a></li>
                     <li><a href="{{ route('home') }}"><i class="fa fa-paw"></i>Reports</a></li>
                     <li><a href="{{ route('home') }}"><i class="fa fa-paw"></i>Casas de Oracion</a></li>
                     <li><a href="{{ route('home') }}"><i class="fa fa-paw"></i>CEAP</a></li>
                     <li><a href="{{ route('home') }}"><i class="fa fa-paw"></i>New Hope Kids</a></li>
-                    <li><a href="{{ route('home') }}"><i class="fa fa-paw"></i>Membresia Iglesia</a></li>
                     <li><a href="{{ route('home') }}"><i class="fa fa-paw"></i>Corrida de Servicios</a></li>
                     <li><a href="{{ route('home') }}"><i class="fa fa-paw"></i>Corrida de UJIERES</a></li>
                 </ul>

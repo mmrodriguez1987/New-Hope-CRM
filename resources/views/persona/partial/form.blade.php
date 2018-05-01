@@ -1,52 +1,86 @@
 {{ csrf_field() }}
 
 <div class="form-group">
-	{!! Form::label('background_image_file_path', 'Image File') !!}
-	{!! Form::file('background_image_file_path', null, ['class' => 'form-control file']) !!}
-</div>
-
-
-<div class="form-group">
-	{!! Form::label('iconimage_file_path', 'Icon Image File') !!}
-	{!! Form::file('iconimage_file_path', null, ['class' => 'form-control file']) !!}
+	{!! Form::label('nombre', 'Nombre') !!}
+	{!! Form::text('nombre', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('iconimage_position', 'Icon Image Position') !!}
-	{!! Form::text('iconimage_position', null, ['class' => 'form-control']) !!}
+	{!! Form::label('apellido', 'Apellido') !!}
+	{!! Form::text('apellido', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('iconimage_col_size', 'Icon Image Column Size') !!}
-	{!! Form::number('iconimage_col_size', null, ['class' => 'form-control']) !!}
-	{!! Form::select('iconimage_col_size', ['1' => '1 Column','2' => '2 Column','3' => '3 Column','4' => '4 Column','5' => '5 Column','6' => '6 Column','7' => '7 Column','8' => '8 Column','9' => '9 Column','10' => '10 Column','11' => '11 Column','12' => '12 Column'], '6') !!}
+	{!! Form::label('estadocivil', 'Estado Civil') !!}
+	{!! Form::select('estadocivil', ['soltero' => 'Soltero', 'casado' => 'Casado', 'viudo' => 'Viudo','separado' => 'separado','ajuntado' => 'ajuntado','divorciado' => 'divorciado']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('text_h1', 'Main Heading') !!}
-	{!! Form::text('text_h1', null, ['class' => 'form-control']) !!}
+	{!! Form::label('fecha_nac', 'Fecha de Nacimiento') !!}
+	{!! Form::date('fechanac',  \Carbon\Carbon::now() , ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('text_h2', 'Short Description') !!}
-	{!! Form::textarea('text_h2', null, ['class' => 'form-control']) !!}
+	{!! Form::label('sexo', 'Sexo') !!}
+	{!! Form::select('sexo', ['M' => 'Masculino', 'F' => 'Femenino', 'O' => 'Otro']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('read_more_link', 'Read More Button Link') !!}
-	{!! Form::text('read_more_link', null, ['class' => 'form-control']) !!}
+	{!! Form::label('direccion', 'Dirección:') !!}
+	{!! Form::text('direccion', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('text_col_size', 'Text Column Size') !!}
-	{!! Form::select('text_col_size', [	'1' => '1 Column', '2' => '2 Column', '3' => '3 Column','4' => '4 Column', '5' => '5 Column', '6' => '6 Column','7' => '7 Column','8' => '8 Column','9' => '9 Column','10' => '10 Column','11' => '11 Column','12' => '12 Column'], '6') !!}
+	{!! Form::label('direccion2', 'Street:') !!}
+	{!! Form::text('direccion2', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('state', 'State') !!}
-	{!! Form::checkbox('state', null, ['class' => 'form-control', 'value' => 'true']) !!}
+	{!! Form::label('zipcode', 'ZIP Code:') !!}
+	{!! Form::text('zipcode', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
+	{!! Form::label('email', 'E-mail:') !!}
+	{!! Form::email('email', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('cntct_emerg_nombre', 'Contacto Emergencia Nombre: ') !!}
+	{!! Form::text('cntct_emerg_nombre', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('cntct_emerg_numero', 'Contacto Emergencia Numero: ') !!}
+	{!! Form::text('cntct_emerg_numero', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('cntct_emerg_direccion', 'Contacto Emergencia Direccion: ') !!}
+	{!! Form::text('cntct_emerg_direccion', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('empleador_actual', 'Nombre Empleador Actual: ') !!}
+	{!! Form::text('empleador_actual', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('empleador_actual_dir', 'Dirección Empleador Actual: ') !!}
+	{!! Form::text('empleador_actual_dir', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('cargo', 'Cargo:') !!}
+	{!! Form::select('cargo', $cargos, $cargo_selected,  ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('tipopersona', 'Sexo') !!}
+	{!! Form::select('tipopersona', $tipopersonas, $tipopersona_selected,  ['class' => 'form-control']) !!}
+</div>
+
+<div class="box-footer">
 	{!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+	<a href="{{ route('personas.index') }}" class="btn btn-default pull-left">Regresar</a>
 </div>

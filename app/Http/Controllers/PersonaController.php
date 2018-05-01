@@ -5,6 +5,8 @@ namespace newhopecrm\Http\Controllers;
 use Illuminate\Http\Request;
 use newhopecrm\Http\Requests\PersonaStoreRequest;
 use newhopecrm\Persona;
+use newhopecrm\Cargo;
+use newhopecrm\Tipopersona;
 use newhopecrm\Carbon;
 
 class PersonaController extends Controller
@@ -26,7 +28,7 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        $personas = Persona::orderBy('id', 'DESC')->paginate();
+        $personas = Persona::orderBy('nombre', 'DESC')->paginate();
         return view('persona.index', compact('personas'));
     }
 
@@ -37,9 +39,11 @@ class PersonaController extends Controller
      */
     public function create()
     {
-        $cargos = Cargo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $tipopersonas = Tipopersona::orderBy()->pluck('nombre', 'id');
-        return view('personas.create', compact('cargos', 'tipopersonas'));
+        $cargo_selected = 1;
+        $tipopersona_selected = 1;
+        $cargos = Cargo::orderBy('nombre', 'DESC')->pluck('nombre', 'id');
+        $tipopersonas = Tipopersona::orderBy('nombre', 'DESC')->pluck('nombre', 'id');
+        return view('persona.create', compact('cargos', 'tipopersonas'))->with('cargo_selected', $cargo_selected)->with('tipopersona_selected', $tipopersona_selected);
     }
 
     /**
