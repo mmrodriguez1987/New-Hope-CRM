@@ -3,6 +3,7 @@
 namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use newhopecrm\Http\Requests\PersonaStoreRequest;
 use newhopecrm\Persona;
 use newhopecrm\Cargo;
@@ -54,10 +55,32 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        $persona = Persona::create($request->all());
-        $persona->cargo()->attach($request->get('cargo'));
+        $user = Auth::user();
+        $user_id = Auth::id();
+        $persona = new Persona;
+        $persona->nombre = $request->nombre;
+        $persona->apellido = $request->apellido;
+        $persona->estadocivil = $request->estadocivil;
+        $persona->fechanac = $request->fechanac;
+        $persona->sexo = $request->sexo;
+        $persona->direccion1 = $request->direccion1;
+        $persona->direccion2 = $request->direccion2;
+        $persona->ciudad = $request->ciudad;
+        $persona->zipcode = $request->zipcode;
+        $persona->email = $request->email;
+        $persona->cntct_emerg_nombre = $request->cntct_emerg_nombre;
+        $persona->cntct_emerg_numero = $request->cntct_emerg_numero;
+        $persona->cntct_emerg_direccion = $request->cntct_emerg_direccion;
+        $persona->empleador_actual = $request->empleador_actual;
+        $persona->empleador_actual_dir = $request->empleador_actual_dir;
+        $persona->tipopersona_id = $request->tipopersona;
+        $persona->cargo_id = $request->cargo;
+        $persona->user_creac_id = $user_id;
+        $persona->user_modif_id = $user_id;
+        $persona->active = $request->active;
+        $persona->save();
 
-        return redirect()->route('persona.edit', $persona->id)->with('info', 'persona grabada exitosamente');
+        return redirect()->route('personas.edit', $persona->id)->with('info', 'persona grabada exitosamente');
     }
 
     /**
@@ -68,8 +91,10 @@ class PersonaController extends Controller
      */
     public function show($id)
     {
-        //
+        $persona = Persona::find($id);
+        return view('personas.show', compact('personas'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -79,7 +104,11 @@ class PersonaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cargos = Cargo::orderBy('nombre', 'DESC')->pluck('nombre', 'id');
+        $tipopersonas = Tipopersona::orderBy('nombre', 'DESC')->pluck('nombre', 'id');
+        $persona = Persona::find($id);
+
+        return view('persona.edit', compact('persona', 'tipopersonas', 'cargos'));
     }
 
     /**
@@ -91,7 +120,10 @@ class PersonaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $persona = Persona::find($id);
+        $personas->fill($request->all())->save();
+
+        return redirect()->route('personas.edit', $persona->id)->with('Informacion', 'Persona actualizada exitosamente');
     }
 
     /**

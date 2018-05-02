@@ -21,7 +21,6 @@ Membresia Nueva Persona
 				<div class="box-header with-border">
 					<h2 class="box-title">
 						Nueva Persona
-						<a href="{{ route('personas.index') }}" class="btn btn-default pull-right">Regresar</a>
 					</h2>
 				</div>
 				<hr>
@@ -31,8 +30,6 @@ Membresia Nueva Persona
 					@include('persona.partial.form')
 				</div>
 				{!! Form::close() !!}
-
-
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-4">

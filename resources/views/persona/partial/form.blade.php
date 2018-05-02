@@ -12,7 +12,9 @@
 
 <div class="form-group">
 	{!! Form::label('estadocivil', 'Estado Civil') !!}
-	{!! Form::select('estadocivil', ['soltero' => 'Soltero', 'casado' => 'Casado', 'viudo' => 'Viudo','separado' => 'separado','ajuntado' => 'ajuntado','divorciado' => 'divorciado']) !!}
+	{!! Form::select('estadocivil',
+		 ['soltero' => 'Soltero', 'casado' => 'Casado', 'viudo' => 'Viudo','separado' => 'separado','ajuntado' => 'ajuntado','divorciado' => 'divorciado'], null,
+		 ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -22,17 +24,25 @@
 
 <div class="form-group">
 	{!! Form::label('sexo', 'Sexo') !!}
-	{!! Form::select('sexo', ['M' => 'Masculino', 'F' => 'Femenino', 'O' => 'Otro']) !!}
+	{!! Form::select('sexo',
+		 ['M' => 'Masculino', 'F' => 'Femenino', 'O' => 'Otro'], null ,
+		 ['class' => 'form-control']
+		 ) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('direccion', 'Dirección:') !!}
-	{!! Form::text('direccion', null, ['class' => 'form-control']) !!}
+	{!! Form::label('direccion1', 'Dirección:') !!}
+	{!! Form::text('direccion1', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
 	{!! Form::label('direccion2', 'Street:') !!}
 	{!! Form::text('direccion2', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('ciudad', 'Ciudad:') !!}
+	{!! Form::text('ciudad', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -71,13 +81,17 @@
 </div>
 
 <div class="form-group">
-	{!! Form::label('cargo', 'Cargo:') !!}
+	{!! Form::label('cargo', 'Cargo Ministerial:') !!}
 	{!! Form::select('cargo', $cargos, $cargo_selected,  ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('tipopersona', 'Sexo') !!}
+	{!! Form::label('tipopersona', 'Tipo de Persona: ') !!}
 	{!! Form::select('tipopersona', $tipopersonas, $tipopersona_selected,  ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+	{!! Form::label('active', 'Activo: ') !!}
+	{!! Form::checkbox('active',  true,  ['class' => 'form-control']) !!}
 </div>
 
 <div class="box-footer">
