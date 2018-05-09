@@ -4,7 +4,7 @@ namespace newhopecrm;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tipopago extends Model
+class Paymenttype extends Model
 {
     //
 }
