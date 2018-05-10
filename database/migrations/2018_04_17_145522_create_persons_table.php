@@ -24,6 +24,7 @@ class CreatePersonsTable extends Migration
             $table->string('street');
             $table->integer('zipcode');
             $table->string('city');
+            $table->char('state', 2);
             $table->string('email');
             $table->string('cnt_emerg_name');
             $table->string('cnt_emerg_phone');

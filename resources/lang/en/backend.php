@@ -1,11 +1,12 @@
 <?php
 return [
-  'general' => [],
-  'person' => [
-    'title' => 'Persons',
+  'general' => [
     'add' => 'Add',
     'search' => 'Search',
     'actions' => 'actions',
+  ],
+  'person' => [
+    'title' => 'Persons',
     'lbl_firstname' => 'First Name',
     'lbl_lastname' => 'Last Name',
     'lbl_email' => 'Email',
@@ -28,6 +29,8 @@ return [
     'delete_message' => 'Person deleted successfully',
     'update_message' => 'Person updated successfully',
     'store_message' => 'Person registered successfully',
+    'add' => 'Add Person',
+    'Edit' => 'Edit Person'
   ],
   'user' => [],
   'paymenttype' => [],

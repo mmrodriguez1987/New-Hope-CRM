@@ -12,4 +12,14 @@ class Position extends Model
       'user_modif_id',
       'active'
     ];
+
+    //Scopes
+    public function scopeSearch($query, $target)
+    {
+        if ($target != '') {
+            return $query->
+                where('name', 'like', "%$target%")
+                ->orWhere('id', $target);
+        }
+    }
 }

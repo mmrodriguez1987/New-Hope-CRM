@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import User from '../components/person/Index.vue'
+import Person from '../components/person/Index.vue'
 
 Vue.use(Router)
 

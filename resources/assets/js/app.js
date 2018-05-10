@@ -22,6 +22,7 @@ Vue.component('personEdit', require('./components/person/Edit.vue'));
 
 //3rd components
 Vue.use(BootstrapVue);
+Vue.component('datepicker', DatePicker)
 Vue.use(Toasted, {
   duration: 3000,
   iconPack: 'fontawesome',

@@ -14,6 +14,7 @@ class Person extends Model
       'sex',
       'address',
       'street',
+      'state',
       'zipcode',
       'city',
       'email',

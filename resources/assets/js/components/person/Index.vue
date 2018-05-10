@@ -7,22 +7,41 @@
     <div class="form-inline pull-right">
       <button type="button" class="btn btn-success mb-2" @click="create">
         <i class="fa fa-plus"></i>
-        {{trans('backend.person.add')}}
+        {{trans('backend.general.add')}}
       </button>
     </div>
     <form class="form-inline pull-left">
       <div class="form-group mx-sm-6 mb-2">
-        <label class="sr-only">{{trans('backend.person.search')}}</label>
-        <input type="text" class="form-control" :placeholder="trans('backend.person.search')" v-model="target" @keyup.enter="goPage">
+        <label class="sr-only">{{trans('backend.general.search')}}</label>
+        <input type="text" class="form-control" :placeholder="trans('backend.general.search')" v-model="target" @keyup.enter="goPage">
       </div>
       <button type="button" class="btn btn-primary mb-2" @click.prevent="goPage"><i class="fa fa-search"></i></button>
     </form>
     <div class="clearfix"></div>
     <hr>
     <b-table striped hover :items="persons" :fields="fields" :no-local-sorting="true" @sort-changed="sortingChanged">
-      <!-- <template slot="role" slot-scope="row">
-            {{trans('own.role.' + row.item.role)}}
-      </template> -->
+      <template slot="name" slot-scope="data">
+            {{data.value.firstname}} {{data.value.lastname}}
+      </template>
+      <template slot="email" slot-scope="data">
+            {{data.value.email}}
+      </template>
+      <template slot="maritalstatus" slot-scope="data">
+            {{data.value.maritalstatus}}
+      </template>
+      <template slot="sex" slot-scope="data">
+            {{data.value.sex}}
+      </template>
+      <template slot="fulladdress" slot-scope="data">
+            {{data.item.address}} {{data.item.street}}, {{data.item.city}}, {{data.item.state}} {{data.item.zipcode}}
+      </template>
+      <template slot="persontype" slot-scope="row">
+            {{personTypeName(row.item)}}
+      </template>
+      <template slot="position" slot-scope="row">
+            {{positionName(row.item)}}
+      </template>
+
       <template slot="actions" slot-scope="row">
         <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
           <i class="fa fa-pencil"></i>
@@ -111,7 +130,7 @@ export default {
         },
         {
           key: 'actions',
-          label: trans('own.user.actions')
+          label: trans('backend.general.actions')
         },
       ],
       currentPage: null,
@@ -187,6 +206,10 @@ export default {
       var id = item.position_id
       let name = this.positions.find(position => position.id == id)
       return name;
+    },
+    personTypeName(item) {
+      var id = item.persontype_id
+      let name = this.persontypes.find(persontype => persontype.id = id)
     }
   },
   computed: {
@@ -202,6 +225,12 @@ export default {
     perPage() {
       return this.$store.state.person.perPage
     },
+    positions() {
+      return this.$store.state.position.list
+    }.
+    persontypes() {
+      return this.$store.state.persontype.list
+    }
   }
 }
 </script>
