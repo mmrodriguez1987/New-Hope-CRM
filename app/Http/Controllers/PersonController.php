@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use newhopecrm\Http\Requests\PersonStoreRequest;
 use newhopecrm\Person;
-use newhopecrm\Carbon;
 
 class PersonController extends Controller
 {
     public function index()
     {
-        return Persons::with(['position.name','persontype.name'])
-        ->search(request()->search)->orderby('id', 'DESC')->paginate();
+        //return Persons::with(['position.name as position','persontype.name as persontype'])
+        //->search(request()->search)->orderby('id', 'DESC')->paginate();
+        return Person::search(request()->search)
+            ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
+            ->paginate();
     }
 
 
@@ -61,5 +63,10 @@ class PersonController extends Controller
     {
         $person = Person::destroy($id);
         return ['message' => trans('backend.person.delete_message')];
+    }
+
+    public function list()
+    {
+        return Person::all();
     }
 }

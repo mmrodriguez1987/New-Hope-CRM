@@ -19,7 +19,7 @@
     </form>
     <div class="clearfix"></div>
     <hr>
-    <b-table striped hover :items="persons" :fields="fields">
+    <b-table striped hover :items="persons" :fields="fields" :no-local-sorting="true" @sort-changed="sortingChanged">
       <!-- <template slot="role" slot-scope="row">
             {{trans('own.role.' + row.item.role)}}
       </template> -->
@@ -100,8 +100,13 @@ export default {
           sortable: true
         },
         {
-          key: 'maritalstatus',
-          label: trans('backend.person.lbl_maritalstatus'),
+          key: 'persontype',
+          label: trans('backend.person.lbl_persontype'),
+          sortable: true
+        },
+        {
+          key: 'position',
+          label: trans('backend.person.lbl_position'),
           sortable: true
         },
         {
@@ -113,58 +118,89 @@ export default {
       target: '',
       draft: {},
       currentIndex: null,
-      showEdit: false
+      showEdit: false,
+      sortBy: 'id',
+      sortDesc: true,
     }
   },
-  mounted() {
-    this.goPage(1);
-  },
   methods: {
-    edit(user, index) {
-      this.draft = clone(user)
+    edit(person, index) {
+      this.draft = clone(person)
       this.currentIndex = index
       this.showEdit = true
     },
     create() {
       this.draft = {
         id: null,
-        name: '',
+        firstname: '',
+        lastname: '',
+        maritalstatus: '',
+        birthday: null,
+        sex: '',
+        address: '',
+        street: '',
+        zipcode: null,
+        city: '',
         email: '',
-        role: null,
+        cnt_emerg_name: '',
+        cnt_emerg_phone: '',
+        cnt_emerg_address: '',
+        crt_employer_name: '',
+        crt_employer_address: '',
+        position_id: null,
+        persontype_id: null,
+        user_creac_id: null,
+        user_modif_id: null,
+        active: '',
       }
       this.showEdit = true
     },
     goPage() {
-      this.getUsers(this.currentPage)
+      this.getPersons(this.currentPage)
     },
-    getUsers(page) {
+    getPersons(page) {
       let params = {
-        page: page,
-        target: this.target
+        page: this.currentPage,
+        target: this.target,
+        orderBy: this.sortBy,
+        desc: this.sortDesc
       }
-      this.$store.dispatch('getUsers', params)
+      this.$store.dispatch('getPersons', params)
     },
     close() {
       this.showEdit = false
     },
     remove(item, index) {
       if (confirm(trans('backend.person.delete_confirm') + item.name + '?')) {
-        this.$store.dispatch('removeUser', item.id)
+        this.$store.dispatch('removePerson', item.id)
       }
     },
+    sortingChanged(ctx) {
+      if (ctx.sortBy) {
+        this.sortBy = ctx.sortBy
+        this.sortDesc = ctx.sortDesc
+        this.currentPage = null
+        this.getPersons()
+      }
+    },
+    positionName(item) {
+      var id = item.position_id
+      let name = this.positions.find(position => position.id == id)
+      return name;
+    }
   },
   computed: {
-    users() {
-      return this.$store.state.user.users
+    persons() {
+      return this.$store.state.person.persons
     },
     current_page() {
-      return this.$store.state.user.currentPage
+      return this.$store.state.person.currentPage
     },
     totalRows() {
-      return this.$store.state.user.totalRows
+      return this.$store.state.person.totalRows
     },
     perPage() {
-      return this.$store.state.user.perPage
+      return this.$store.state.person.perPage
     },
   }
 }

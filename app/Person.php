@@ -29,15 +29,15 @@ class Person extends Model
       'active'
     ];
 
-    public function position()
-    {
-        return $this->belongsTo(Position::class);
-    }
-
-    public function persontype()
-    {
-        return $this->belongsTo(Persontype::class);
-    }
+    // public function position()
+    // {
+    //     return $this->belongsTo(Position::class);
+    // }
+    //
+    // public function persontype()
+    // {
+    //     return $this->belongsTo(Persontype::class);
+    // }
 
     public function scopeSearch($query, $target)
     {
