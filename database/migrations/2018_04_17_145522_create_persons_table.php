@@ -35,7 +35,7 @@ class CreatePersonsTable extends Migration
             $table->string('persontype_id')->reference('id')->on('persontypes');
             $table->integer('user_creac_id')->reference('id')->on('users');
             $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active', 1);
+            $table->boolean('active', true);
             $table->timestamps();
         });
     }
