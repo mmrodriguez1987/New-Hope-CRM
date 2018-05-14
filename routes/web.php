@@ -15,8 +15,6 @@ Auth::routes();
 
 Route::get('/', 'DashboardController@index')->name('home');
 
-Route::resource('personas', 'PersonaController');
-
 Route::group(['prefix' => 'api/v1'], function () {
     Route::get('person', ['as' => 'api.person.index', 'uses' => 'UserController@index']);
     Route::post('person', ['as' => 'api.person.store', 'uses' => 'UserController@store']);

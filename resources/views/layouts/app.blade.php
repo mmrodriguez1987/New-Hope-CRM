@@ -3,10 +3,8 @@
     @section('htmlheader')
         @include('layouts.partials.htmlheader')
     @show
-    {{--
-        BODY TAG OPTIONS:
-            SKINS: skin-blue, skin-black, skin-purple, skin-yellow, skin-red, skin-green
-            LAYOUT OPTIONS: fixed, layout-boxed, layout-top-nav , sidebar-collapse , sidebar-mini
+    {{--  SKINS: skin-blue, skin-black, skin-purple, skin-yellow, skin-red, skin-green
+    LAYOUT OPTIONS: fixed, layout-boxed, layout-top-nav , sidebar-collapse , sidebar-mini
      --}}
     <body class="skin-red fixed sidebar-mini sidebar-mini-expand-feature">
         <div id="app" v-cloak>

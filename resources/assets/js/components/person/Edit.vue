@@ -4,12 +4,12 @@
     <b-container fluid>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_firstname')}}</label></b-col>
+        <b-col><label :class="validFirstName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_firstname')}}</label></b-col>
         <b-col><input type="text" v-model="draft.firstname" class="form-control"></b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_lastname')}}</label></b-col>
+        <b-col><label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_lastname')}}</label></b-col>
         <b-col><input type="text" v-model="draft.lastname" class="form-control"></b-col>
       </b-row>
       <b-row class="mb-1">
@@ -56,8 +56,8 @@
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validCity ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_zipcode')}}</label></b-col>
-        <b-col><input type="text" v-model="draft.zipcode" class="form-control"></b-col>
+        <b-col><label :class="validZIPCode ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_zipcode')}}</label></b-col>
+        <b-col><input type="number" v-model="draft.zipcode" class="form-control"></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
@@ -99,7 +99,7 @@
           <label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_position')}}</label>
         </b-col>
         <b-col>
-          <b-form-select v-model="draft.position_id" :options="positions" class="mb-1" />
+          <b-form-select v-model="draft.position_id" :options="get_positions" class="mb-1" />
         </b-col>
       </b-row>
       <b-row>
@@ -108,7 +108,7 @@
           <label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_persontype')}}</label>
         </b-col>
         <b-col>
-          <b-form-select v-model="draft.persontype_id" :options="persontypes" class="mb-1" />
+          <b-form-select v-model="draft.persontype_id" :options="get_persontypes" class="mb-1" />
         </b-col>
       </b-row>
 
@@ -133,7 +133,7 @@
 
 <script>
 export default {
-  props: ['show', 'draft'],
+  props: ['show', 'draft', 'positions', 'persontypes'],
   data() {
     return {
       maritalstatus: [{
@@ -155,6 +155,7 @@ export default {
         value: 'cohabitant',
         text: trans('backend.ms.cohabitant')
       }, ],
+      //Estados de USA
       states: [{
         value: null,
         text: trans('backend.general.select')
@@ -340,8 +341,9 @@ export default {
   },
   computed: {
     validForm() {
-      return this.validName && this.validEmail && this.validPassword && this.validRole &&
-        this.validAddress && this.validPhone && this.validProfession
+      return this.validFirstName && this.validLastName && this.validBirthday && this.validEmail &&
+        this.validAddress && this.validPhone && this.validMaritalStaus && this.validStreet && this.validCity &&
+        this.validSex && this.validZIPCode && this.validState && this.validPhone && this.validPosition && this.validPersonType
     },
     validFirstName() {
       return this.draft.name ? this.draft.name.length > 3 : false
@@ -350,25 +352,70 @@ export default {
       return this.draft.name ? this.draft.name.length > 3 : false
     },
     validBirthday() {
-      var today = Date.now()
-      return this.draft.password ? this.draft.password.length > 5 : this.draft.id
+      var today = moment.now
+      var birthday = moment(this.draft.birthday)
+      return this.draft.birthday ? today.diff(birthday, 'day') > 0 : false
+    },
+    validMaritalStaus() {
+      return this.draft.maritalstatus != null
     },
     validEmail() {
-      var re = /\S+@\S+\.\S+/;
-      return re.test(this.draft.email);
-    },
-    validRole() {
-      return this.draft.role != null
+      var re = /\S+@\S+\.\S+/
+      return re.test(this.draft.email)
     },
     validAddress() {
       return this.draft.address != null
     },
+    validStreet() {
+      return this.draft.street != null
+    },
+    validCity() {
+      return this.draft.city != null
+    },
+    validSex() {
+      return this.draft.sex != null
+    },
+    validZIPCode() {
+      return this.draft.zipcode ? this.draft.zipcode > 30000 : false
+    },
+    validState() {
+      return this.draft.state != null
+    },
     validPhone() {
       return this.draft.phone != null
     },
-    validProfession() {
-      return this.draft.profession != null
+    validPosition() {
+      return this.draft.position_id != null
     },
+    validPersonType() {
+      return this.draft.persontype_id != null
+    },
+    get_positions() {
+      var result = [{
+        value: null,
+        text: trans('backend.person.select_position')
+      }]
+      for (var i = 0; i < this.positions.length; i++) {
+        result.push({
+          value: this.positions[i].id,
+          text: this.positions[i].name
+        }, )
+      }
+      return result
+    },
+    get_persontypes() {
+      var result = [{
+        value: null,
+        text: trans('backend.person.select_persontype')
+      }]
+      for (var i = 0; i < this.persontypes.length; i++) {
+        result.push({
+          value: this.persontypes[i].id,
+          text: this.persontypes[i].name
+        }, )
+      }
+      return result
+    }
   }
 }
 </script>

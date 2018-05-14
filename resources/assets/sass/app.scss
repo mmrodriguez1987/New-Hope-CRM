@@ -1,3 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Lato);
-$font-family-sans-serif: 'Lato', sans-serif;
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600"); // Variables
+@import "variables"; // Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap"; //Custom
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+@import "node_modules/ionicons/dist/scss/ionicons.scss";
+@import "node_modules/icheck/skins/square/blue";
+@import "node_modules/toastr/build/toastr.min";
+@import "node_modules/admin-lte/dist/css/AdminLTE.min";
+@import "node_modules/admin-lte/dist/css/skins/_all-skins.min";
+@import "custom";

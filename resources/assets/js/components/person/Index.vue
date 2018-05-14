@@ -51,7 +51,7 @@
         </button>
       </template>
     </b-table>
-    <user-edit :show="showEdit" :draft="draft" @close="close"></user-edit>
+    <person-edit :show="showEdit" :draft="draft" @close="close"></person-edit>
   </div>
   <div class="box-footer text-center">
     <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="goPage" />
@@ -227,7 +227,7 @@ export default {
     },
     positions() {
       return this.$store.state.position.list
-    }.
+    },
     persontypes() {
       return this.$store.state.persontype.list
     }

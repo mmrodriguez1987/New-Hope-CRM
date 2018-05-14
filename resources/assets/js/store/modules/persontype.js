@@ -7,7 +7,7 @@ let state = {
 }
 
 let getters = {
-  /
+  //
 }
 
 let actions = {

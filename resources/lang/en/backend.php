@@ -6,7 +6,7 @@ return [
     'widower' => 'Widower',
     'divorced' => 'Divorced',
     'cohabitant' => 'Cohabitant',
-  ]
+  ],
   'general' => [
     'add' => 'Add',
     'search' => 'Search',
@@ -69,7 +69,7 @@ return [
     'WI' => 'WI - Wisconsin',
     'WY' => 'WY - Wyoming',
 
-  ]
+  ],
   'person' => [
     'title' => 'Persons',
     'lbl_firstname' => 'First Name',
@@ -96,7 +96,9 @@ return [
     'update_message' => 'Person updated successfully',
     'store_message' => 'Person registered successfully',
     'add' => 'Add Person',
-    'Edit' => 'Edit Person'
+    'Edit' => 'Edit Person',
+    'select_position' => 'Select Position',
+    'select_persontype' => 'Select Person Type',
   ],
   'user' => [],
   'paymenttype' => [],

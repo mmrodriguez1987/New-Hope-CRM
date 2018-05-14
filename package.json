@@ -33,10 +33,14 @@
     "npm": "^6.0.1",
     "sparkline": "^0.2.0",
     "toastr": "^2.1.4",
+    "vue-animate": "0.0.4",
     "vue-datepicker": "^1.3.0",
     "vue-router": "^3.0.1",
+    "vue-select": "^2.4.0",
     "vue-toasted": "^1.1.24",
     "vue-wysiwyg": "^1.7.0",
-    "vuex": "^3.0.1"
+    "vuejs-datepicker": "^1.2.0",
+    "vuex": "^3.0.1",
+    "vuex-loading": "^0.2.6"
   }
 }
