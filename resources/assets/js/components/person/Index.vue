@@ -20,20 +20,26 @@
     <div class="clearfix"></div>
     <hr>
     <b-table striped hover :items="persons" :fields="fields" :no-local-sorting="true" @sort-changed="sortingChanged">
-      <template slot="name" slot-scope="data">
+      <template slot="id" slot-scope="data">
+            {{data.value.id}}
+      </template>
+      <template slot="fullname" slot-scope="data">
             {{data.value.firstname}} {{data.value.lastname}}
       </template>
       <template slot="email" slot-scope="data">
             {{data.value.email}}
       </template>
-      <template slot="maritalstatus" slot-scope="data">
-            {{data.value.maritalstatus}}
+      <template slot="birthday" slot-scope="data">
+            {{data.value.birthday}}
       </template>
       <template slot="sex" slot-scope="data">
             {{data.value.sex}}
       </template>
+      <template slot="maritalstatus" slot-scope="data">
+            {{data.value.maritalstatus}}
+      </template>
       <template slot="fulladdress" slot-scope="data">
-            {{data.item.address}} {{data.item.street}}, {{data.item.city}}, {{data.item.state}} {{data.item.zipcode}}
+            {{data.item.address}}, {{data.item.street}}, {{data.item.city}}, {{data.item.state}} {{data.item.zipcode}}
       </template>
       <template slot="persontype" slot-scope="row">
             {{personTypeName(row.item)}}
@@ -64,75 +70,45 @@ export default {
   data() {
     return {
       fields: [{
-          key: 'id',
-          label: 'Id',
-          sortable: true
-        },
-        {
-          key: 'firstname',
-          label: trans('backend.person.lbl_firstname'),
-          sortable: true
-        },
-        {
-          key: 'lastname',
-          label: trans('backend.person.lbl_lastname'),
-          sortable: true
-        },
-        {
-          key: 'email',
-          label: trans('backend.person.lbl_email'),
-          sortable: true
-        },
-        {
-          key: 'birthdate',
-          label: trans('backend.person.lbl_birthday'),
-          sortable: true
-        },
-        {
-          key: 'sex',
-          label: trans('backend.person.lbl_sex'),
-          sortable: true
-        },
-        {
-          key: 'adress',
-          label: trans('backend.person.lbl_address'),
-          sortable: true
-        },
-        {
-          key: 'street',
-          label: trans('backend.person.lbl_street'),
-          sortable: true
-        },
-        {
-          key: 'zipcode',
-          label: trans('backend.person.lbl_zipcode'),
-          sortable: true
-        },
-        {
-          key: 'city',
-          label: trans('backend.person.lbl_city'),
-          sortable: true
-        },
-        {
-          key: 'maritalstatus',
-          label: trans('backend.person.lbl_maritalstatus'),
-          sortable: true
-        },
-        {
-          key: 'persontype',
-          label: trans('backend.person.lbl_persontype'),
-          sortable: true
-        },
-        {
-          key: 'position',
-          label: trans('backend.person.lbl_position'),
-          sortable: true
-        },
-        {
-          key: 'actions',
-          label: trans('backend.general.actions')
-        },
-      ],
+        key: 'id',
+        label: 'Id',
+        sortable: true
+      }, {
+        key: 'fullname',
+        label: trans('backend.person.lbl_fullname'),
+        sortable: true
+      }, {
+        key: 'email',
+        label: trans('backend.person.lbl_email'),
+        sortable: true
+      }, {
+        key: 'birthdate',
+        label: trans('backend.person.lbl_birthday'),
+        sortable: true
+      }, {
+        key: 'sex',
+        label: trans('backend.person.lbl_sex'),
+        sortable: true
+      }, {
+        key: 'maritalstatus',
+        label: trans('backend.person.lbl_maritalstatus'),
+        sortable: true
+      }, {
+        key: 'fulladdress',
+        label: trans('backend.person.lbl_fulladdress'),
+        sortable: true
+      }, {
+        key: 'persontype',
+        label: trans('backend.person.lbl_persontype'),
+        sortable: true
+      }, {
+        key: 'position',
+        label: trans('backend.person.lbl_position'),
+        sortable: true
+      }, {
+        key: 'actions',
+        label: trans('backend.general.actions')
+      }, ],
       currentPage: null,
       target: '',
       draft: {},

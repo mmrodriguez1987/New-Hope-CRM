@@ -16,8 +16,8 @@ Auth::routes();
 Route::get('/', 'DashboardController@index')->name('home');
 
 Route::group(['prefix' => 'api/v1'], function () {
-    Route::get('person', ['as' => 'api.person.index', 'uses' => 'UserController@index']);
-    Route::post('person', ['as' => 'api.person.store', 'uses' => 'UserController@store']);
-    Route::put('person/{id}', ['as' => 'api.person.update', 'uses' => 'UserController@update']);
-    Route::delete('person/{id}', ['as' => 'api.person.delete', 'uses' => 'UserController@delete']);
+    Route::get('person', ['as' => 'api.person.index', 'uses' => 'PersonController@index']);
+    Route::post('person', ['as' => 'api.person.store', 'uses' => 'PersonController@store']);
+    Route::put('person/{id}', ['as' => 'api.person.update', 'uses' => 'PersonController@update']);
+    Route::delete('person/{id}', ['as' => 'api.person.delete', 'uses' => 'PersonController@delete']);
 });

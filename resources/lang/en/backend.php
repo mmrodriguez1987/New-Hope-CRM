@@ -72,6 +72,8 @@ return [
   ],
   'person' => [
     'title' => 'Persons',
+    'lbl_fullname' => 'Full Name',
+    'lbl_fulladdress' => 'Full Address',
     'lbl_firstname' => 'First Name',
     'lbl_lastname' => 'Last Name',
     'lbl_email' => 'Email',
