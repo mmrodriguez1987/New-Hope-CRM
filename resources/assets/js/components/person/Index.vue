@@ -20,7 +20,7 @@
     <div class="clearfix"></div>
     <hr>
     <b-table striped hover :items="persons" :fields="fields" :no-local-sorting="true" @sort-changed="sortingChanged">
-      <template slot="id" slot-scope="data">
+      <!-- <template slot="id" slot-scope="data">
             {{data.value.id}}
       </template>
       <template slot="fullname" slot-scope="data">
@@ -46,7 +46,7 @@
       </template>
       <template slot="position" slot-scope="row">
             {{positionName(row.item)}}
-      </template>
+      </template>-->
 
       <template slot="actions" slot-scope="row">
         <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">

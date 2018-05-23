@@ -43,7 +43,7 @@ Vue.use(wysiwyg, {
   maxHeight: "400px"
 })
 
-var moment = require('moment')
+var moment = require('moment');
 
 moment: moment
 //Localization

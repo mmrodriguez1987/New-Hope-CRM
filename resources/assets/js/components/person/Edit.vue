@@ -14,9 +14,7 @@
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col>
-          <label :class="validBirthday ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_birthday')}}</label>
-        </b-col>
+        <b-col><label :class="label-valid">{{trans('backend.person.lbl_birthday')}}</label></b-col>
         <b-col>
           <datepicker v-model="draft.birthday" language="en" input-class="form-control" />
         </b-col>
@@ -341,7 +339,7 @@ export default {
   },
   computed: {
     validForm() {
-      return this.validFirstName && this.validLastName && this.validBirthday && this.validEmail &&
+      return this.validFirstName && this.validLastName && this.validEmail &&
         this.validAddress && this.validPhone && this.validMaritalStaus && this.validStreet && this.validCity &&
         this.validSex && this.validZIPCode && this.validState && this.validPhone && this.validPosition && this.validPersonType
     },
@@ -351,11 +349,11 @@ export default {
     validLastName() {
       return this.draft.name ? this.draft.name.length > 3 : false
     },
-    validBirthday() {
-      var today = moment.now
-      var birthday = moment(this.draft.birthday)
-      return this.draft.birthday ? today.diff(birthday, 'day') > 0 : false
-    },
+    //validBirthday() {
+    //var today = moment.now
+    //var birthday = moment(this.draft.birthday)
+    //return this.draft.birthday ? today.diff(birthday, 'day') > 0 : false
+    //},
     validMaritalStaus() {
       return this.draft.maritalstatus != null
     },
