@@ -1,67 +1,67 @@
 <template>
 <div>
-  <b-modal v-model="show" :title="draft.id ? trans('backend.person.edit') : trans('backend.person.add')" @hide="close">
+  <b-modal v-model="show" :title="draft.id ? trans('bck.person.edit') : trans('bck.person.add')" @hide="close">
     <b-container fluid>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validFirstName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_firstname')}}</label></b-col>
+        <b-col><label :class="validFirstName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_firstname')}}</label></b-col>
         <b-col><input type="text" v-model="draft.firstname" class="form-control"></b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_lastname')}}</label></b-col>
+        <b-col><label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_lastname')}}</label></b-col>
         <b-col><input type="text" v-model="draft.lastname" class="form-control"></b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_birthday')}}</label></b-col>
+        <b-col><label :class="validBirthday ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_birthday')}}</label></b-col>
         <b-col>
           <datepicker v-model="draft.birthday" language="en" input-class="form-control" />
         </b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validMaritalStaus ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_maritalstatus')}}</label></b-col>
+        <b-col><label :class="validMaritalStaus ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_maritalstatus')}}</label></b-col>
         <b-col>
           <b-form-select v-model="draft.maritalstatus" :options="maritalstatus" class="mb-3" />
         </b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validEmail ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_email')}}</label></b-col>
+        <b-col><label :class="validEmail ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_email')}}</label></b-col>
         <b-col><input type="text" v-model="draft.email" class="form-control"></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validSex ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_sex')}}</label></b-col>
+        <b-col><label :class="validSex ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_sex')}}</label></b-col>
         <b-col>
           <b-form-select v-model="draft.sex" :options="sex" class="mb-3" />
         </b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validAddress ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_address')}}</label></b-col>
+        <b-col><label :class="validAddress ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_address')}}</label></b-col>
         <b-col><input type="text" v-model="draft.address" class="form-control"></b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validStreet ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_street')}}</label></b-col>
+        <b-col><label :class="validStreet ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_street')}}</label></b-col>
         <b-col><input type="text" v-model="draft.street" class="form-control"></b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_city')}}</label></b-col>
+        <b-col><label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_city')}}</label></b-col>
         <b-col><input type="text" v-model="draft.city" class="form-control"></b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validZIPCode ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_zipcode')}}</label></b-col>
+        <b-col><label :class="validZIPCode ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_zipcode')}}</label></b-col>
         <b-col><input type="number" v-model="draft.zipcode" class="form-control"></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col>
-          <label :class="validState ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_state')}}</label>
+          <label :class="validState ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_state')}}</label>
         </b-col>
         <b-col>
           <b-form-select v-model="draft.state" :options="states" class="mb-3" />
@@ -69,33 +69,33 @@
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validCntcEmrgName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_cnt_emerg_name')}}</label></b-col>
+        <b-col><label :class="validCntcEmrgName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_name')}}</label></b-col>
         <b-col><input type="text" v-model="draft.cnt_emerg_name" class="form-control"></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validCntcEmrgPhone ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_cnt_emerg_phone')}}</label></b-col>
+        <b-col><label :class="validCntcEmrgName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_phone')}}</label></b-col>
         <b-col><input type="text" v-model="draft.cnt_emerg_phone" class="form-control"></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validCntcEmrgAddress ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_cnt_emerg_address')}}</label></b-col>
+        <b-col><label :class="validCntcEmrgAddress ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_address')}}</label></b-col>
         <b-col><input type="text" v-model="draft.cnt_emerg_address" class="form-control"></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validCrtEmpName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_crt_employer_name')}}</label></b-col>
+        <b-col><label :class="validCrtEmpName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_crt_employer_name')}}</label></b-col>
         <b-col><input type="text" v-model="draft.crt_employer_name" class="form-control"></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validCrtEmpAddress ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_crt_employer_address')}}</label></b-col>
+        <b-col><label :class="validCrtEmpAddress ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_crt_employer_address')}}</label></b-col>
         <b-col><input type="text" v-model="draft.crt_employer_address" class="form-control"></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col>
-          <label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_position')}}</label>
+          <label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_position')}}</label>
         </b-col>
         <b-col>
           <b-form-select v-model="draft.position_id" :options="get_positions" class="mb-1" />
@@ -104,7 +104,7 @@
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col>
-          <label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_persontype')}}</label>
+          <label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label>
         </b-col>
         <b-col>
           <b-form-select v-model="draft.persontype_id" :options="get_persontypes" class="mb-1" />
@@ -114,7 +114,7 @@
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col>
-          <label class="label-valid">{{trans('backend.general.active')}}</label>
+          <label class="label-valid">{{trans('bck.general.active')}}</label>
         </b-col>
         <b-col>
           <b-form-checkbox v-model="draft.active" value="true" unchecked-value="false" class="mb-1" />
@@ -123,8 +123,8 @@
 
     </b-container>
     <div slot="modal-footer">
-      <b-btn variant="success" @click="save" :disabled="!validForm"> {{trans('backend.general.save')}}</b-btn>
-      <b-btn variant="danger" @click="close"> {{trans('backend.general.close')}}</b-btn>
+      <b-btn variant="success" @click="save" :disabled="!validForm"> {{trans('bck.general.save')}}</b-btn>
+      <b-btn variant="danger" @click="close"> {{trans('bck.general.close')}}</b-btn>
     </div>
   </b-modal>
 </div>
@@ -135,193 +135,74 @@ export default {
   props: ['show', 'draft', 'positions', 'persontypes'],
   data() {
     return {
-      sex: [{
-        value: null,
-        text: trans('backend.general.select')
-      }, {
-        value: 'M',
-        text: trans('backend.general.male')
-      }, {
-        value: 'F',
-        text: trans('backend.general.female')
-      }],
-      maritalstatus: [{
-        value: null,
-        text: trans('backend.general.select')
-      }, {
-        value: 'married',
-        text: trans('backend.ms.married')
-      }, {
-        value: 'single',
-        text: trans('backend.ms.single')
-      }, {
-        value: 'widower',
-        text: trans('backend.ms.widower')
-      }, {
-        value: 'divorced',
-        text: trans('backend.ms.divorced')
-      }, {
-        value: 'cohabitant',
-        text: trans('backend.ms.cohabitant')
+      sex: [
+        { value: null,    text: trans('bck.general.select')},
+        { value: 'M',     text: trans('bck.general.male')},
+        { value: 'F',     text: trans('bck.general.female')}
+      ],
+      maritalstatus: [
+        { value: null,          text: trans('bck.general.select')},
+        { value: 'married',     text: trans('bck.ms.married')},
+        { value: 'single',      text: trans('bck.ms.single')},
+        { value: 'widower',     text: trans('bck.ms.widower')},
+        { value: 'divorced',    text: trans('bck.ms.divorced')},
+        { value: 'cohabitant',  text: trans('bck.ms.cohabitant')
       }, ],
       //Estados de USA
-      states: [{
-        value: null,
-        text: trans('backend.general.select')
-      }, {
-        value: 'FL',
-        text: trans('backend.states.FL')
-      }, {
-        value: 'AL',
-        text: trans('backend.states.AL')
-      }, {
-        value: 'AK',
-        text: trans('backend.states.AK')
-      }, {
-        value: 'AZ',
-        text: trans('backend.states.AZ')
-      }, {
-        value: 'AR',
-        text: trans('backend.states.AR')
-      }, {
-        value: 'CA',
-        text: trans('backend.states.CA')
-      }, {
-        value: 'NC',
-        text: trans('backend.states.NC')
-      }, {
-        value: 'SC',
-        text: trans('backend.states.SC')
-      }, {
-        value: 'CO',
-        text: trans('backend.states.CO')
-      }, {
-        value: 'CT',
-        text: trans('backend.states.CT')
-      }, {
-        value: 'ND',
-        text: trans('backend.states.ND')
-      }, {
-        value: 'SD',
-        text: trans('backend.states.SD')
-      }, {
-        value: 'DE',
-        text: trans('backend.states.DE')
-      }, {
-        value: 'DC',
-        text: trans('backend.states.DC')
-      }, {
-        value: 'GA',
-        text: trans('backend.states.GA')
-      }, {
-        value: 'HI',
-        text: trans('backend.states.HI')
-      }, {
-        value: 'ID',
-        text: trans('backend.states.ID')
-      }, {
-        value: 'IL',
-        text: trans('backend.states.IL')
-      }, {
-        value: 'IN',
-        text: trans('backend.states.IN')
-      }, {
-        value: 'IA',
-        text: trans('backend.states.IA')
-      }, {
-        value: 'KS',
-        text: trans('backend.states.KS')
-      }, {
-        value: 'KY',
-        text: trans('backend.states.KY')
-      }, {
-        value: 'LA',
-        text: trans('backend.states.LA')
-      }, {
-        value: 'ME',
-        text: trans('backend.states.ME')
-      }, {
-        value: 'MD',
-        text: trans('backend.states.MD')
-      }, {
-        value: 'MA',
-        text: trans('backend.states.MA')
-      }, {
-        value: 'MI',
-        text: trans('backend.states.MI')
-      }, {
-        value: 'MN',
-        text: trans('backend.states.MN')
-      }, {
-        value: 'MS',
-        text: trans('backend.states.MS')
-      }, {
-        value: 'MO',
-        text: trans('backend.states.MO')
-      }, {
-        value: 'MT',
-        text: trans('backend.states.MT')
-      }, {
-        value: 'NE',
-        text: trans('backend.states.NE')
-      }, {
-        value: 'NV',
-        text: trans('backend.states.NV')
-      }, {
-        value: 'NJ',
-        text: trans('backend.states.NJ')
-      }, {
-        value: 'NY',
-        text: trans('backend.states.NY')
-      }, {
-        value: 'NH',
-        text: trans('backend.states.NH')
-      }, {
-        value: 'NM',
-        text: trans('backend.states.NM')
-      }, {
-        value: 'OH',
-        text: trans('backend.states.OH')
-      }, {
-        value: 'OK',
-        text: trans('backend.states.OK')
-      }, {
-        value: 'OR',
-        text: trans('backend.states.OR')
-      }, {
-        value: 'PA',
-        text: trans('backend.states.PA')
-      }, {
-        value: 'RI',
-        text: trans('backend.states.RI')
-      }, {
-        value: 'TN',
-        text: trans('backend.states.TN')
-      }, {
-        value: 'TX',
-        text: trans('backend.states.TX')
-      }, {
-        value: 'UT',
-        text: trans('backend.states.UT')
-      }, {
-        value: 'VT',
-        text: trans('backend.states.VT')
-      }, {
-        value: 'VA',
-        text: trans('backend.states.VA')
-      }, {
-        value: 'WV',
-        text: trans('backend.states.WV')
-      }, {
-        value: 'WA',
-        text: trans('backend.states.WA')
-      }, {
-        value: 'WI',
-        text: trans('backend.states.WI')
-      }, {
-        value: 'WY',
-        text: trans('backend.states.WY')
-      }, ],
+      states: [
+        { value: null, text: trans('bck.general.select')},
+        { value: 'FL', text: trans('bck.states.FL')},
+        { value: 'AL', text: trans('bck.states.AL')},
+        { value: 'AK', text: trans('bck.states.AK')},
+        { value: 'AZ', text: trans('bck.states.AZ')},
+        { value: 'AR', text: trans('bck.states.AR')},
+        { value: 'CA', text: trans('bck.states.CA')},
+        { value: 'NC', text: trans('bck.states.NC')},
+        { value: 'SC', text: trans('bck.states.SC')},
+        { value: 'CO', text: trans('bck.states.CO')},
+        { value: 'CT', text: trans('bck.states.CT')},
+        { value: 'ND', text: trans('bck.states.ND')},
+        { value: 'SD', text: trans('bck.states.SD')},
+        { value: 'DE', text: trans('bck.states.DE')},
+        { value: 'DC', text: trans('bck.states.DC')},
+        { value: 'GA', text: trans('bck.states.GA')},
+        { value: 'HI', text: trans('bck.states.HI')},
+        { value: 'ID', text: trans('bck.states.ID')},
+        { value: 'IL', text: trans('bck.states.IL')},
+        { value: 'IN', text: trans('bck.states.IN')},
+        { value: 'IA', text: trans('bck.states.IA')},
+        { value: 'KS', text: trans('bck.states.KS')},
+        { value: 'KY', text: trans('bck.states.KY')},
+        { value: 'LA', text: trans('bck.states.LA')},
+        { value: 'ME', text: trans('bck.states.ME')},
+        { value: 'MD', text: trans('bck.states.MD')},
+        { value: 'MA', text: trans('bck.states.MA')},
+        { value: 'MI', text: trans('bck.states.MI')},
+        { value: 'MN', text: trans('bck.states.MN')},
+        { value: 'MS', text: trans('bck.states.MS')},
+        { value: 'MO', text: trans('bck.states.MO')},
+        { value: 'MT', text: trans('bck.states.MT')},
+        { value: 'NE', text: trans('bck.states.NE')},
+        { value: 'NV', text: trans('bck.states.NV')},
+        { value: 'NJ', text: trans('bck.states.NJ')},
+        { value: 'NY', text: trans('bck.states.NY')},
+        { value: 'NH', text: trans('bck.states.NH')},
+        { value: 'NM', text: trans('bck.states.NM')},
+        { value: 'OH', text: trans('bck.states.OH')},
+        { value: 'OK', text: trans('bck.states.OK')},
+        { value: 'OR', text: trans('bck.states.OR')},
+        { value: 'PA', text: trans('bck.states.PA')},
+        { value: 'RI', text: trans('bck.states.RI')},
+        { value: 'TN', text: trans('bck.states.TN')},
+        { value: 'TX', text: trans('bck.states.TX')},
+        { value: 'UT', text: trans('bck.states.UT')},
+        { value: 'VT', text: trans('bck.states.VT')},
+        { value: 'VA', text: trans('bck.states.VA')},
+        { value: 'WV', text: trans('bck.states.WV')},
+        { value: 'WA', text: trans('bck.states.WA')},
+        { value: 'WI', text: trans('bck.states.WI')},
+        { value: 'WY', text: trans('bck.states.WY')}
+      ],
     }
   },
   methods: {
@@ -355,16 +236,16 @@ export default {
         this.validSex && this.validZIPCode && this.validState && this.validPhone && this.validPosition && this.validPersonType
     },
     validFirstName() {
-      return this.draft.name ? this.draft.name.length > 3 : false
+      return this.draft.firstname ? this.draft.firstname.length > 3 : false
     },
     validLastName() {
-      return this.draft.name ? this.draft.name.length > 3 : false
+      return this.draft.lastname ? this.draft.lastname.length > 3 : false
     },
-    //validBirthday() {
-    //var today = moment.now
-    //var birthday = moment(this.draft.birthday)
-    //return this.draft.birthday ? today.diff(birthday, 'day') > 0 : false
-    //},
+    validBirthday() {
+      var today = moment.now
+      var birthday = moment(this.draft.birthday)
+      return this.draft.birthday ? today.diff(birthday, 'day') > 0 : false
+    },
     validMaritalStaus() {
       return this.draft.maritalstatus != null
     },
@@ -403,28 +284,16 @@ export default {
       return this.draft.persontype_id != null
     },
     get_positions() {
-      var result = [{
-        value: null,
-        text: trans('backend.person.select_position')
-      }]
+      var result = [{ value: null,  text: trans('bck.person.select_position')}]
       for (var i = 0; i < this.positions.length; i++) {
-        result.push({
-          value: this.positions[i].id,
-          text: this.positions[i].name
-        }, )
+        result.push({ value: this.positions[i].id, text: this.positions[i].name })
       }
       return result
     },
     get_persontypes() {
-      var result = [{
-        value: null,
-        text: trans('backend.person.select_persontype')
-      }]
+      var result = [{ value: null, text: trans('bck.person.select_persontype')}]
       for (var i = 0; i < this.persontypes.length; i++) {
-        result.push({
-          value: this.persontypes[i].id,
-          text: this.persontypes[i].name
-        }, )
+        result.push({ value: this.persontypes[i].id, text: this.persontypes[i].name })
       }
       return result
     }
