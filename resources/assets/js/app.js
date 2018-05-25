@@ -28,6 +28,7 @@ window.Vue = require('vue');
 
 Vue.component('personEdit', require('./components/person/Edit.vue'));
 
+
 //3rd components
 Vue.use(BootstrapVue);
 

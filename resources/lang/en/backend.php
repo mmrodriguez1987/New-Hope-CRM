@@ -7,6 +7,10 @@ return [
     'divorced' => 'Divorced',
     'cohabitant' => 'Cohabitant',
   ],
+  'sex' => [
+    'male' => 'Male',
+    'female' => 'Female',
+  ],
   'general' => [
     'add' => 'Add',
     'search' => 'Search',

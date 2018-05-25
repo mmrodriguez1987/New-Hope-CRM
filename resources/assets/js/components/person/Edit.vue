@@ -14,7 +14,7 @@
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="label-valid">{{trans('backend.person.lbl_birthday')}}</label></b-col>
+        <b-col><label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_birthday')}}</label></b-col>
         <b-col>
           <datepicker v-model="draft.birthday" language="en" input-class="form-control" />
         </b-col>
@@ -35,7 +35,8 @@
         <b-col cols="2"> </b-col>
         <b-col><label :class="validSex ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_sex')}}</label></b-col>
         <b-col>
-          <b-form-select v-model="draft.sex" :options="sex" class="mb-3" /></b-col>
+          <b-form-select v-model="draft.sex" :options="sex" class="mb-3" />
+        </b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
@@ -49,7 +50,7 @@
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validCity ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_city')}}</label></b-col>
+        <b-col><label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('backend.person.lbl_city')}}</label></b-col>
         <b-col><input type="text" v-model="draft.city" class="form-control"></b-col>
       </b-row>
       <b-row class="mb-1">
@@ -134,6 +135,16 @@ export default {
   props: ['show', 'draft', 'positions', 'persontypes'],
   data() {
     return {
+      sex: [{
+        value: null,
+        text: trans('backend.general.select')
+      }, {
+        value: 'M',
+        text: trans('backend.general.male')
+      }, {
+        value: 'F',
+        text: trans('backend.general.female')
+      }],
       maritalstatus: [{
         value: null,
         text: trans('backend.general.select')
@@ -366,6 +377,9 @@ export default {
     },
     validStreet() {
       return this.draft.street != null
+    },
+    validCntcEmrgName() {
+      return this.draft.cnt_emerg_name != null
     },
     validCity() {
       return this.draft.city != null

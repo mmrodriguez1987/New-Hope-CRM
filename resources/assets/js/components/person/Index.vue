@@ -69,46 +69,18 @@
 export default {
   data() {
     return {
-      fields: [{
-        key: 'id',
-        label: 'Id',
-        sortable: true
-      }, {
-        key: 'fullname',
-        label: trans('backend.person.lbl_fullname'),
-        sortable: true
-      }, {
-        key: 'email',
-        label: trans('backend.person.lbl_email'),
-        sortable: true
-      }, {
-        key: 'birthdate',
-        label: trans('backend.person.lbl_birthday'),
-        sortable: true
-      }, {
-        key: 'sex',
-        label: trans('backend.person.lbl_sex'),
-        sortable: true
-      }, {
-        key: 'maritalstatus',
-        label: trans('backend.person.lbl_maritalstatus'),
-        sortable: true
-      }, {
-        key: 'fulladdress',
-        label: trans('backend.person.lbl_fulladdress'),
-        sortable: true
-      }, {
-        key: 'persontype',
-        label: trans('backend.person.lbl_persontype'),
-        sortable: true
-      }, {
-        key: 'position',
-        label: trans('backend.person.lbl_position'),
-        sortable: true
-      }, {
-        key: 'actions',
-        label: trans('backend.general.actions')
-      }, ],
+      fields: [
+        { key: 'id',label: 'Id', sortable: true },
+        { key: 'fullname', label: trans('backend.person.lbl_fullname'), sortable: true },
+        { key: 'email', label: trans('backend.person.lbl_email'), sortable: true },
+        { key: 'birthdate', label: trans('backend.person.lbl_birthday'), sortable: true },
+        { key: 'sex', label: trans('backend.person.lbl_sex'), sortable: true },
+        { key: 'maritalstatus', label: trans('backend.person.lbl_maritalstatus'), sortable: true },
+        { key: 'fulladdress', label: trans('backend.person.lbl_fulladdress'), sortable: true },
+        { key: 'persontype', label: trans('backend.person.lbl_persontype'), sortable: true },
+        { key: 'position', label: trans('backend.person.lbl_position'), sortable: true },
+        { key: 'actions', label: trans('backend.general.actions'), sortable: true },
+      ],
       currentPage: null,
       target: '',
       draft: {},
