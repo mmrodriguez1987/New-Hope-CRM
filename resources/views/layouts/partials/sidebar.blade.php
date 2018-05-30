@@ -14,7 +14,7 @@
           </div>
         @endif
         <ul class="sidebar-menu" data-widget="tree">
-          <router-link tag="li" to="/person"><a><i class="fa fa-link"><span></i>{{trans('backend.person.title')}}</span></i></a></router-link>
+          <router-link tag="li" to="/person"><a><i class="fa fa-link"><span></i>{{trans('bck.person.title')}}</span></i></a></router-link>
 
         </ul>
     </section>

@@ -11,8 +11,6 @@ class PersonController extends Controller
 {
     public function index()
     {
-        //return Persons::with(['position.name as position','persontype.name as persontype'])
-        //->search(request()->search)->orderby('id', 'DESC')->paginate();
         return Person::search(request()->search)
             ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
             ->paginate();
@@ -21,31 +19,31 @@ class PersonController extends Controller
 
     public function store(Request $request)
     {
-        $persona = new Persona;
-        $persona->firstname = $request->firstname;
-        $persona->lastname = $request->lastname;
-        $persona->maritalstatus = $request->maritalstatus;
-        $persona->birthday = $request->birthday;
-        $persona->sex = $request->sex;
-        $persona->address = $request->address;
-        $persona->street = $request->street;
-        $persona->city = $request->city;
-        $persona->zipcode = $request->zipcode;
-        $persona->email = $request->email;
-        $persona->cnt_emerg_name = $request->cnt_emerg_name;
-        $persona->cnt_emerg_phone = $request->cnt_emerg_phone;
-        $persona->cnt_emerg_address = $request->cnt_emerg_address;
-        $persona->crt_employer_name = $request->crt_employer_name;
-        $persona->crt_employer_address = $request->crt_employer_address;
-        $persona->persontype_id = $request->persontype;
-        $persona->position_id = $request->position;
-        $persona->user_creac_id = Auth::id();
-        $persona->user_modif_id = Auth::id();
-        $persona->active = $request->active;
-        $persona->save();
+        $person = new Person;
+        $person->firstname = $request->firstname;
+        $person->lastname = $request->lastname;
+        $person->maritalstatus = $request->maritalstatus;
+        $person->birthday = $request->birthday;
+        $person->sex = $request->sex;
+        $person->address = $request->address;
+        $person->street = $request->street;
+        $person->city = $request->city;
+        $person->zipcode = $request->zipcode;
+        $person->email = $request->email;
+        $person->cnt_emerg_name = $request->cnt_emerg_name;
+        $person->cnt_emerg_phone = $request->cnt_emerg_phone;
+        $person->cnt_emerg_address = $request->cnt_emerg_address;
+        $person->crt_employer_name = $request->crt_employer_name;
+        $person->crt_employer_address = $request->crt_employer_address;
+        $person->persontype_id = $request->persontype;
+        $person->position_id = $request->position;
+        $person->user_creac_id = Auth::id();
+        $person->user_modif_id = Auth::id();
+        $person->active = $request->active;
+        $person->save();
 
         return [
-          'message' => trans('backend.person.store_message'),
+          'message' => trans('bck.person.store_message'),
           'id' => $persona->id,
         ];
     }
@@ -55,14 +53,14 @@ class PersonController extends Controller
     {
         $person = Person::find($id);
         $person->fill($request->all());
-        $perosn->save();
-        return ['message' => trans('backend.person.update_message')];
+        $person->save();
+        return ['message' => trans('bck.person.update_message')];
     }
 
     public function delete($id)
     {
         $person = Person::destroy($id);
-        return ['message' => trans('backend.person.delete_message')];
+        return ['message' => trans('bck.person.delete_message')];
     }
 
     public function list()

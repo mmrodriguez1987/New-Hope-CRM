@@ -1,5 +1,5 @@
 let state = {
-  position: [],
+  positions: [],
   perPage: null,
   currentPage: 1,
   lastPage: null,
@@ -11,10 +11,10 @@ let getters = {
 }
 
 let actions = {
-  getPosition(context, params) {
+  getPositions(context, params) {
     axios.get('api/v1/position?page=' + params.page + '&search=' + params.target + '&orderBy=' + params.orderBy + '&desc=' + params.desc)
       .then(response => {
-        context.commit('getPosition', {
+        context.commit('getPositions', {
           data: response.data
         })
       })

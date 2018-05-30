@@ -22,9 +22,7 @@
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
         <b-col><label :class="validMaritalStaus ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_maritalstatus')}}</label></b-col>
-        <b-col>
-          <b-form-select v-model="draft.maritalstatus" :options="maritalstatus" class="mb-3" />
-        </b-col>
+        <b-col><b-form-select v-model="draft.maritalstatus" :options="maritalstatus" class="mb-3" /></b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
@@ -50,7 +48,7 @@
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_city')}}</label></b-col>
+        <b-col><label :class="validCity ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_city')}}</label></b-col>
         <b-col><input type="text" v-model="draft.city" class="form-control"></b-col>
       </b-row>
       <b-row class="mb-1">
@@ -60,12 +58,8 @@
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col>
-          <label :class="validState ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_state')}}</label>
-        </b-col>
-        <b-col>
-          <b-form-select v-model="draft.state" :options="states" class="mb-3" />
-        </b-col>
+        <b-col><label :class="validState ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_state')}}</label></b-col>
+        <b-col><b-form-select v-model="draft.state" :options="states" class="mb-3" /></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
@@ -74,7 +68,7 @@
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validCntcEmrgName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_phone')}}</label></b-col>
+        <b-col><label :class="validCntcEmrgPhone ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_phone')}}</label></b-col>
         <b-col><input type="text" v-model="draft.cnt_emerg_phone" class="form-control"></b-col>
       </b-row>
       <b-row>
@@ -84,43 +78,29 @@
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validCrtEmpName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_crt_employer_name')}}</label></b-col>
+        <b-col><label class="label-valid">{{trans('bck.person.lbl_crt_employer_name')}}</label></b-col>
         <b-col><input type="text" v-model="draft.crt_employer_name" class="form-control"></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col><label :class="validCrtEmpAddress ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_crt_employer_address')}}</label></b-col>
+        <b-col><label class="label-valid">{{trans('bck.person.lbl_crt_employer_address')}}</label></b-col>
         <b-col><input type="text" v-model="draft.crt_employer_address" class="form-control"></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col>
-          <label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_position')}}</label>
-        </b-col>
-        <b-col>
-          <b-form-select v-model="draft.position_id" :options="get_positions" class="mb-1" />
-        </b-col>
+        <b-col><label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_position')}}</label></b-col>
+        <b-col><b-form-select v-model="draft.position_id" :options="get_positions" class="mb-1" /></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col>
-          <label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label>
-        </b-col>
-        <b-col>
-          <b-form-select v-model="draft.persontype_id" :options="get_persontypes" class="mb-1" />
-        </b-col>
+        <b-col><label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label></b-col>
+        <b-col><b-form-select v-model="draft.persontype_id" :options="get_persontypes" class="mb-1" /></b-col>
       </b-row>
-
       <b-row>
         <b-col cols="2"> </b-col>
-        <b-col>
-          <label class="label-valid">{{trans('bck.general.active')}}</label>
-        </b-col>
-        <b-col>
-          <b-form-checkbox v-model="draft.active" value="true" unchecked-value="false" class="mb-1" />
-        </b-col>
+        <b-col><label class="label-valid">{{trans('bck.general.active')}}</label></b-col>
+        <b-col><b-form-checkbox v-model="draft.active" value="true" unchecked-value="false" class="mb-1" /></b-col>
       </b-row>
-
     </b-container>
     <div slot="modal-footer">
       <b-btn variant="success" @click="save" :disabled="!validForm"> {{trans('bck.general.save')}}</b-btn>
@@ -231,8 +211,8 @@ export default {
   },
   computed: {
     validForm() {
-      return this.validFirstName && this.validLastName && this.validEmail &&
-        this.validAddress && this.validPhone && this.validMaritalStaus && this.validStreet && this.validCity &&
+      return this.validFirstName && this.validLastName && this.validEmail && this.validBirthday && this.validCntcEmrgName && this.validCntcEmrgAddress &&
+        this.validAddress && this.validPhone && this.validMaritalStaus && this.validStreet && this.validCity && this.validCntcEmrgPhone &&
         this.validSex && this.validZIPCode && this.validState && this.validPhone && this.validPosition && this.validPersonType
     },
     validFirstName() {
@@ -242,6 +222,7 @@ export default {
       return this.draft.lastname ? this.draft.lastname.length > 3 : false
     },
     validBirthday() {
+      var moment = require('moment')
       var today = moment.now
       var birthday = moment(this.draft.birthday)
       return this.draft.birthday ? today.diff(birthday, 'day') > 0 : false
@@ -252,6 +233,9 @@ export default {
     validEmail() {
       var re = /\S+@\S+\.\S+/
       return re.test(this.draft.email)
+    },
+    validCntcEmrgPhone() {
+      return this.draft.cnt_emerg_phone != null
     },
     validAddress() {
       return this.draft.address != null
@@ -264,6 +248,9 @@ export default {
     },
     validCity() {
       return this.draft.city != null
+    },
+    validCntcEmrgAddress() {
+      return this.draft.cnt_emerg_address !=null
     },
     validSex() {
       return this.draft.sex != null

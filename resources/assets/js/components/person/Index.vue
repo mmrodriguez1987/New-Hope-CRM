@@ -20,12 +20,17 @@
     <div class="clearfix"></div>
     <hr>
     <b-table striped hover :items="persons" :fields="fields" :no-local-sorting="true" @sort-changed="sortingChanged">
+      <template slot="fullname" slot-scope="row">
+            {{row.item.firstname}} {{row.item.lastname}}
+      </template>
+      <template slot="fulladdress" slot-scope="row">
+            {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.zipcode}}
+      </template>
+
       <!-- <template slot="id" slot-scope="data">
             {{data.value.id}}
       </template>
-      <template slot="fullname" slot-scope="data">
-            {{data.value.firstname}} {{data.value.lastname}}
-      </template>
+
       <template slot="email" slot-scope="data">
             {{data.value.email}}
       </template>
@@ -38,16 +43,13 @@
       <template slot="maritalstatus" slot-scope="data">
             {{data.value.maritalstatus}}
       </template>
-      <template slot="fulladdress" slot-scope="data">
-            {{data.item.address}}, {{data.item.street}}, {{data.item.city}}, {{data.item.state}} {{data.item.zipcode}}
-      </template>
       <template slot="persontype" slot-scope="row">
             {{personTypeName(row.item)}}
       </template>
       <template slot="position" slot-scope="row">
             {{positionName(row.item)}}
-      </template>-->
-
+      </template>
+      -->
       <template slot="actions" slot-scope="row">
         <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
           <i class="fa fa-pencil"></i>
@@ -57,7 +59,7 @@
         </button>
       </template>
     </b-table>
-    <person-edit :show="showEdit" :draft="draft" @close="close"></person-edit>
+    <person-edit :show="showEdit" :draft="draft" @close="close" :positions="[{id: 1, name: 'pos1'}, {id: 2, name: 'pos2'}]"></person-edit>
   </div>
   <div class="box-footer text-center">
     <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="goPage" />
@@ -71,15 +73,15 @@ export default {
     return {
       fields: [
         { key: 'id',label: 'Id', sortable: true },
-        { key: 'fullname', label: trans('backend.person.lbl_fullname'), sortable: true },
-        { key: 'email', label: trans('backend.person.lbl_email'), sortable: true },
-        { key: 'birthdate', label: trans('backend.person.lbl_birthday'), sortable: true },
-        { key: 'sex', label: trans('backend.person.lbl_sex'), sortable: true },
-        { key: 'maritalstatus', label: trans('backend.person.lbl_maritalstatus'), sortable: true },
-        { key: 'fulladdress', label: trans('backend.person.lbl_fulladdress'), sortable: true },
-        { key: 'persontype', label: trans('backend.person.lbl_persontype'), sortable: true },
-        { key: 'position', label: trans('backend.person.lbl_position'), sortable: true },
-        { key: 'actions', label: trans('backend.general.actions'), sortable: true },
+        { key: 'fullname', label: trans('bck.person.lbl_fullname'), sortable: true },
+        { key: 'email', label: trans('bck.person.lbl_email'), sortable: true },
+        { key: 'birthdate', label: trans('bck.person.lbl_birthday'), sortable: true },
+        { key: 'sex', label: trans('bck.person.lbl_sex'), sortable: true },
+        { key: 'maritalstatus', label: trans('bck.person.lbl_maritalstatus'), sortable: true },
+        { key: 'fulladdress', label: trans('bck.person.lbl_fulladdress'), sortable: true },
+        { key: 'persontype', label: trans('bck.person.lbl_persontype'), sortable: true },
+        { key: 'position', label: trans('bck.person.lbl_position'), sortable: true },
+        { key: 'actions', label: trans('bck.general.actions'), sortable: true },
       ],
       currentPage: null,
       target: '',

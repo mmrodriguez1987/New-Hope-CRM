@@ -27,6 +27,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('personEdit', require('./components/person/Edit.vue'));
+Vue.component('person', require('./components/person/Index.vue'));
+
 
 
 //3rd components
@@ -46,7 +48,10 @@ Vue.use(wysiwyg, {
 
 var moment = require('moment');
 
-moment: moment
+Vue.filter('dateFormat', function(value) {
+  return moment(value).format('MM-DD-YYYY');
+});
+
 //Localization
 Vue.prototype.trans = string => _.get(window.i18n, string);
 window.trans = string => _.get(window.i18n, string);

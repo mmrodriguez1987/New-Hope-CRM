@@ -72,7 +72,6 @@ return [
     'WA' => 'WA - Washington',
     'WI' => 'WI - Wisconsin',
     'WY' => 'WY - Wyoming',
-
   ],
   'person' => [
     'title' => 'Persons',
@@ -106,6 +105,36 @@ return [
     'select_position' => 'Select Position',
     'select_persontype' => 'Select Person Type',
   ],
-  'user' => [],
-  'paymenttype' => [],
+  'user' => [
+    'delete_confirm' => 'Do you want remove ',
+    'delete_message' => 'User deleted successfully',
+    'update_message' => 'User updated successfully',
+    'store_message' => 'User registered successfully',
+    'add' => 'Add User',
+    'Edit' => 'Edit User',
+  ],
+  'paymenttype' => [
+    'delete_confirm' => 'Do you want remove ',
+    'delete_message' => 'Payment type deleted successfully',
+    'update_message' => 'Payment type updated successfully',
+    'store_message' => 'Payment type registered successfully',
+    'add' => 'Add Payment Type',
+    'Edit' => 'Edit Payment Type',
+  ],
+  'position' => [
+    'delete_confirm' => 'Do you want remove ',
+    'delete_message' => 'Position deleted successfully',
+    'update_message' => 'Position updated successfully',
+    'store_message' => 'Position registered successfully',
+    'add' => 'Add Position',
+    'Edit' => 'Edit Position',
+  ],
+  'persontype' => [
+    'delete_confirm' => 'Do you want remove ',
+    'delete_message' => 'Person Type deleted successfully',
+    'update_message' => 'Person type updated successfully',
+    'store_message' => 'Person type registered successfully',
+    'add' => 'Add Person type',
+    'Edit' => 'Edit Person type',
+  ],
 ];
