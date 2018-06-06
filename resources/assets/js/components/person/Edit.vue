@@ -16,13 +16,14 @@
         <b-col cols="2"> </b-col>
         <b-col><label :class="validBirthday ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_birthday')}}</label></b-col>
         <b-col>
-          <datepicker v-model="draft.birthday" language="en" input-class="form-control" />
+          <datepicker v-model="draft.birthday" input-class="form-control" />
         </b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
         <b-col><label :class="validMaritalStaus ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_maritalstatus')}}</label></b-col>
-        <b-col><b-form-select v-model="draft.maritalstatus" :options="maritalstatus" class="mb-3" /></b-col>
+        <b-col>
+          <b-form-select v-model="draft.maritalstatus" :options="maritalstatus" class="mb-3" /></b-col>
       </b-row>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
@@ -59,7 +60,8 @@
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col><label :class="validState ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_state')}}</label></b-col>
-        <b-col><b-form-select v-model="draft.state" :options="states" class="mb-3" /></b-col>
+        <b-col>
+          <b-form-select v-model="draft.state" :options="states" class="mb-3" /></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
@@ -89,17 +91,20 @@
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col><label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_position')}}</label></b-col>
-        <b-col><b-form-select v-model="draft.position_id" :options="get_positions" class="mb-1" /></b-col>
+        <b-col>
+          <b-form-select v-model="draft.position_id" :options="get_positions" class="mb-1" /></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col><label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label></b-col>
-        <b-col><b-form-select v-model="draft.persontype_id" :options="get_persontypes" class="mb-1" /></b-col>
+        <b-col>
+          <b-form-select v-model="draft.persontype_id" :options="get_persontypes" class="mb-1" /></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col><label class="label-valid">{{trans('bck.general.active')}}</label></b-col>
-        <b-col><b-form-checkbox v-model="draft.active" value="true" unchecked-value="false" class="mb-1" /></b-col>
+        <b-col>
+          <b-form-checkbox v-model="draft.active" value="true" unchecked-value="false" class="mb-1" /></b-col>
       </b-row>
     </b-container>
     <div slot="modal-footer">
@@ -115,73 +120,253 @@ export default {
   props: ['show', 'draft', 'positions', 'persontypes'],
   data() {
     return {
-      sex: [
-        { value: null,    text: trans('bck.general.select')},
-        { value: 'M',     text: trans('bck.general.male')},
-        { value: 'F',     text: trans('bck.general.female')}
+      sex: [{
+          value: null,
+          text: trans('bck.general.select')
+        },
+        {
+          value: 'M',
+          text: trans('bck.general.male')
+        },
+        {
+          value: 'F',
+          text: trans('bck.general.female')
+        }
       ],
-      maritalstatus: [
-        { value: null,          text: trans('bck.general.select')},
-        { value: 'married',     text: trans('bck.ms.married')},
-        { value: 'single',      text: trans('bck.ms.single')},
-        { value: 'widower',     text: trans('bck.ms.widower')},
-        { value: 'divorced',    text: trans('bck.ms.divorced')},
-        { value: 'cohabitant',  text: trans('bck.ms.cohabitant')
-      }, ],
+      maritalstatus: [{
+          value: null,
+          text: trans('bck.general.select')
+        },
+        {
+          value: 'married',
+          text: trans('bck.ms.married')
+        },
+        {
+          value: 'single',
+          text: trans('bck.ms.single')
+        },
+        {
+          value: 'widower',
+          text: trans('bck.ms.widower')
+        },
+        {
+          value: 'divorced',
+          text: trans('bck.ms.divorced')
+        },
+        {
+          value: 'cohabitant',
+          text: trans('bck.ms.cohabitant')
+        },
+      ],
       //Estados de USA
-      states: [
-        { value: null, text: trans('bck.general.select')},
-        { value: 'FL', text: trans('bck.states.FL')},
-        { value: 'AL', text: trans('bck.states.AL')},
-        { value: 'AK', text: trans('bck.states.AK')},
-        { value: 'AZ', text: trans('bck.states.AZ')},
-        { value: 'AR', text: trans('bck.states.AR')},
-        { value: 'CA', text: trans('bck.states.CA')},
-        { value: 'NC', text: trans('bck.states.NC')},
-        { value: 'SC', text: trans('bck.states.SC')},
-        { value: 'CO', text: trans('bck.states.CO')},
-        { value: 'CT', text: trans('bck.states.CT')},
-        { value: 'ND', text: trans('bck.states.ND')},
-        { value: 'SD', text: trans('bck.states.SD')},
-        { value: 'DE', text: trans('bck.states.DE')},
-        { value: 'DC', text: trans('bck.states.DC')},
-        { value: 'GA', text: trans('bck.states.GA')},
-        { value: 'HI', text: trans('bck.states.HI')},
-        { value: 'ID', text: trans('bck.states.ID')},
-        { value: 'IL', text: trans('bck.states.IL')},
-        { value: 'IN', text: trans('bck.states.IN')},
-        { value: 'IA', text: trans('bck.states.IA')},
-        { value: 'KS', text: trans('bck.states.KS')},
-        { value: 'KY', text: trans('bck.states.KY')},
-        { value: 'LA', text: trans('bck.states.LA')},
-        { value: 'ME', text: trans('bck.states.ME')},
-        { value: 'MD', text: trans('bck.states.MD')},
-        { value: 'MA', text: trans('bck.states.MA')},
-        { value: 'MI', text: trans('bck.states.MI')},
-        { value: 'MN', text: trans('bck.states.MN')},
-        { value: 'MS', text: trans('bck.states.MS')},
-        { value: 'MO', text: trans('bck.states.MO')},
-        { value: 'MT', text: trans('bck.states.MT')},
-        { value: 'NE', text: trans('bck.states.NE')},
-        { value: 'NV', text: trans('bck.states.NV')},
-        { value: 'NJ', text: trans('bck.states.NJ')},
-        { value: 'NY', text: trans('bck.states.NY')},
-        { value: 'NH', text: trans('bck.states.NH')},
-        { value: 'NM', text: trans('bck.states.NM')},
-        { value: 'OH', text: trans('bck.states.OH')},
-        { value: 'OK', text: trans('bck.states.OK')},
-        { value: 'OR', text: trans('bck.states.OR')},
-        { value: 'PA', text: trans('bck.states.PA')},
-        { value: 'RI', text: trans('bck.states.RI')},
-        { value: 'TN', text: trans('bck.states.TN')},
-        { value: 'TX', text: trans('bck.states.TX')},
-        { value: 'UT', text: trans('bck.states.UT')},
-        { value: 'VT', text: trans('bck.states.VT')},
-        { value: 'VA', text: trans('bck.states.VA')},
-        { value: 'WV', text: trans('bck.states.WV')},
-        { value: 'WA', text: trans('bck.states.WA')},
-        { value: 'WI', text: trans('bck.states.WI')},
-        { value: 'WY', text: trans('bck.states.WY')}
+      states: [{
+          value: null,
+          text: trans('bck.general.select')
+        },
+        {
+          value: 'FL',
+          text: trans('bck.states.FL')
+        },
+        {
+          value: 'AL',
+          text: trans('bck.states.AL')
+        },
+        {
+          value: 'AK',
+          text: trans('bck.states.AK')
+        },
+        {
+          value: 'AZ',
+          text: trans('bck.states.AZ')
+        },
+        {
+          value: 'AR',
+          text: trans('bck.states.AR')
+        },
+        {
+          value: 'CA',
+          text: trans('bck.states.CA')
+        },
+        {
+          value: 'NC',
+          text: trans('bck.states.NC')
+        },
+        {
+          value: 'SC',
+          text: trans('bck.states.SC')
+        },
+        {
+          value: 'CO',
+          text: trans('bck.states.CO')
+        },
+        {
+          value: 'CT',
+          text: trans('bck.states.CT')
+        },
+        {
+          value: 'ND',
+          text: trans('bck.states.ND')
+        },
+        {
+          value: 'SD',
+          text: trans('bck.states.SD')
+        },
+        {
+          value: 'DE',
+          text: trans('bck.states.DE')
+        },
+        {
+          value: 'DC',
+          text: trans('bck.states.DC')
+        },
+        {
+          value: 'GA',
+          text: trans('bck.states.GA')
+        },
+        {
+          value: 'HI',
+          text: trans('bck.states.HI')
+        },
+        {
+          value: 'ID',
+          text: trans('bck.states.ID')
+        },
+        {
+          value: 'IL',
+          text: trans('bck.states.IL')
+        },
+        {
+          value: 'IN',
+          text: trans('bck.states.IN')
+        },
+        {
+          value: 'IA',
+          text: trans('bck.states.IA')
+        },
+        {
+          value: 'KS',
+          text: trans('bck.states.KS')
+        },
+        {
+          value: 'KY',
+          text: trans('bck.states.KY')
+        },
+        {
+          value: 'LA',
+          text: trans('bck.states.LA')
+        },
+        {
+          value: 'ME',
+          text: trans('bck.states.ME')
+        },
+        {
+          value: 'MD',
+          text: trans('bck.states.MD')
+        },
+        {
+          value: 'MA',
+          text: trans('bck.states.MA')
+        },
+        {
+          value: 'MI',
+          text: trans('bck.states.MI')
+        },
+        {
+          value: 'MN',
+          text: trans('bck.states.MN')
+        },
+        {
+          value: 'MS',
+          text: trans('bck.states.MS')
+        },
+        {
+          value: 'MO',
+          text: trans('bck.states.MO')
+        },
+        {
+          value: 'MT',
+          text: trans('bck.states.MT')
+        },
+        {
+          value: 'NE',
+          text: trans('bck.states.NE')
+        },
+        {
+          value: 'NV',
+          text: trans('bck.states.NV')
+        },
+        {
+          value: 'NJ',
+          text: trans('bck.states.NJ')
+        },
+        {
+          value: 'NY',
+          text: trans('bck.states.NY')
+        },
+        {
+          value: 'NH',
+          text: trans('bck.states.NH')
+        },
+        {
+          value: 'NM',
+          text: trans('bck.states.NM')
+        },
+        {
+          value: 'OH',
+          text: trans('bck.states.OH')
+        },
+        {
+          value: 'OK',
+          text: trans('bck.states.OK')
+        },
+        {
+          value: 'OR',
+          text: trans('bck.states.OR')
+        },
+        {
+          value: 'PA',
+          text: trans('bck.states.PA')
+        },
+        {
+          value: 'RI',
+          text: trans('bck.states.RI')
+        },
+        {
+          value: 'TN',
+          text: trans('bck.states.TN')
+        },
+        {
+          value: 'TX',
+          text: trans('bck.states.TX')
+        },
+        {
+          value: 'UT',
+          text: trans('bck.states.UT')
+        },
+        {
+          value: 'VT',
+          text: trans('bck.states.VT')
+        },
+        {
+          value: 'VA',
+          text: trans('bck.states.VA')
+        },
+        {
+          value: 'WV',
+          text: trans('bck.states.WV')
+        },
+        {
+          value: 'WA',
+          text: trans('bck.states.WA')
+        },
+        {
+          value: 'WI',
+          text: trans('bck.states.WI')
+        },
+        {
+          value: 'WY',
+          text: trans('bck.states.WY')
+        }
       ],
     }
   },
@@ -250,7 +435,7 @@ export default {
       return this.draft.city != null
     },
     validCntcEmrgAddress() {
-      return this.draft.cnt_emerg_address !=null
+      return this.draft.cnt_emerg_address != null
     },
     validSex() {
       return this.draft.sex != null
@@ -271,16 +456,28 @@ export default {
       return this.draft.persontype_id != null
     },
     get_positions() {
-      var result = [{ value: null,  text: trans('bck.person.select_position')}]
+      var result = [{
+        value: null,
+        text: trans('bck.person.select_position')
+      }]
       for (var i = 0; i < this.positions.length; i++) {
-        result.push({ value: this.positions[i].id, text: this.positions[i].name })
+        result.push({
+          value: this.positions[i].id,
+          text: this.positions[i].name
+        })
       }
       return result
     },
     get_persontypes() {
-      var result = [{ value: null, text: trans('bck.person.select_persontype')}]
+      var result = [{
+        value: null,
+        text: trans('bck.person.select_persontype')
+      }]
       for (var i = 0; i < this.persontypes.length; i++) {
-        result.push({ value: this.persontypes[i].id, text: this.persontypes[i].name })
+        result.push({
+          value: this.persontypes[i].id,
+          text: this.persontypes[i].name
+        })
       }
       return result
     }

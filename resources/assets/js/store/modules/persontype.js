@@ -1,9 +1,10 @@
 let state = {
-  persontype: [],
+  persontypes: [],
   perPage: null,
   currentPage: 1,
   lastPage: null,
   totalRows: null,
+  list: [],
 }
 
 let getters = {

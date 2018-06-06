@@ -7,4 +7,5 @@
 {!! Html::script('plugins/jvectormap/jquery-jvectormap-world-mill-en.js') !!}
 {!! Html::script('js/jquery.slimscroll.min.js') !!}
 {!! Html::script('js/Chart.min.js') !!} --}}
+<script src="{{url('js/lan.js')}}"></script>
 {!! Html::script('js/app.js') !!}

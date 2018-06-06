@@ -1,19 +1,19 @@
 <template>
 <div class="box box-solid box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">{{trans('backend.person.title')}}</h3>
+    <h3 class="box-title">{{trans('bck.person.title')}}</h3>
   </div>
   <div class="box-body">
     <div class="form-inline pull-right">
       <button type="button" class="btn btn-success mb-2" @click="create">
         <i class="fa fa-plus"></i>
-        {{trans('backend.general.add')}}
+        {{trans('bck.general.add')}}
       </button>
     </div>
     <form class="form-inline pull-left">
       <div class="form-group mx-sm-6 mb-2">
-        <label class="sr-only">{{trans('backend.general.search')}}</label>
-        <input type="text" class="form-control" :placeholder="trans('backend.general.search')" v-model="target" @keyup.enter="goPage">
+        <label class="sr-only">{{trans('bck.general.search')}}</label>
+        <input type="text" class="form-control" :placeholder="trans('bck.general.search')" v-model="target" @keyup.enter="goPage">
       </div>
       <button type="button" class="btn btn-primary mb-2" @click.prevent="goPage"><i class="fa fa-search"></i></button>
     </form>
@@ -59,7 +59,7 @@
         </button>
       </template>
     </b-table>
-    <person-edit :show="showEdit" :draft="draft" @close="close" :positions="[{id: 1, name: 'pos1'}, {id: 2, name: 'pos2'}]"></person-edit>
+    <person-edit :show="showEdit" :draft="draft" @close="close" :positions="positions" :persontypes="persontypes"></person-edit>
   </div>
   <div class="box-footer text-center">
     <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="goPage" />
@@ -71,17 +71,56 @@
 export default {
   data() {
     return {
-      fields: [
-        { key: 'id',label: 'Id', sortable: true },
-        { key: 'fullname', label: trans('bck.person.lbl_fullname'), sortable: true },
-        { key: 'email', label: trans('bck.person.lbl_email'), sortable: true },
-        { key: 'birthdate', label: trans('bck.person.lbl_birthday'), sortable: true },
-        { key: 'sex', label: trans('bck.person.lbl_sex'), sortable: true },
-        { key: 'maritalstatus', label: trans('bck.person.lbl_maritalstatus'), sortable: true },
-        { key: 'fulladdress', label: trans('bck.person.lbl_fulladdress'), sortable: true },
-        { key: 'persontype', label: trans('bck.person.lbl_persontype'), sortable: true },
-        { key: 'position', label: trans('bck.person.lbl_position'), sortable: true },
-        { key: 'actions', label: trans('bck.general.actions'), sortable: true },
+      fields: [{
+          key: 'id',
+          label: 'Id',
+          sortable: true
+        },
+        {
+          key: 'fullname',
+          label: trans('bck.person.lbl_fullname'),
+          sortable: true
+        },
+        {
+          key: 'email',
+          label: trans('bck.person.lbl_email'),
+          sortable: true
+        },
+        {
+          key: 'birthdate',
+          label: trans('bck.person.lbl_birthday'),
+          sortable: true
+        },
+        {
+          key: 'sex',
+          label: trans('bck.person.lbl_sex'),
+          sortable: true
+        },
+        {
+          key: 'maritalstatus',
+          label: trans('bck.person.lbl_maritalstatus'),
+          sortable: true
+        },
+        {
+          key: 'fulladdress',
+          label: trans('bck.person.lbl_fulladdress'),
+          sortable: true
+        },
+        {
+          key: 'persontype',
+          label: trans('bck.person.lbl_persontype'),
+          sortable: true
+        },
+        {
+          key: 'position',
+          label: trans('bck.person.lbl_position'),
+          sortable: true
+        },
+        {
+          key: 'actions',
+          label: trans('bck.general.actions'),
+          sortable: true
+        },
       ],
       currentPage: null,
       target: '',
