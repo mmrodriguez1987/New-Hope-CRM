@@ -83,7 +83,17 @@ let actions = {
           type: 'error'
         })
       })
-  }
+  }, 
+
+  listPersontypes(context){
+        axios.get('api/v1/persontypeList')
+            .then(response => {
+                context.commit('listPersontypes', {data: response.data})
+            })
+            .catch(error => {
+                Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+            })
+    },
 }
 
 let mutations = {
@@ -112,7 +122,11 @@ let mutations = {
   removePersontype(state, id) {
     let index = state.persontypes.findIndex(persontype => persontype.id == id);
     state.persontypes.splice(index, 1);
-  }
+  },
+
+  listPersontypes(state, data){
+        state.list = data.data;
+    },
 }
 
 export default {

@@ -33,6 +33,11 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::post('persontype', ['as' => 'api.persontype.store', 'uses' => 'PersontypeController@store']);
     Route::put('persontype/{id}', ['as' => 'api.persontype.update', 'uses' => 'PersontypeController@update']);
     Route::delete('persontype/{id}', ['as' => 'api.persontype.delete', 'uses' => 'PersontypeController@delete']);
+
+  
+    //DropDowns
+    Route::get('positionList', ['as' => 'api.position.list', 'uses' => 'PositionController@list']);
+    Route::get('persontypeList', ['as' => 'api.persontype.list', 'uses' => 'PersontypeController@list']);
 });
 
 

@@ -42,14 +42,14 @@
       </template>
       <template slot="maritalstatus" slot-scope="data">
             {{data.value.maritalstatus}}
-      </template>
-      <template slot="persontype" slot-scope="row">
+      </template>-->
+      <template slot="persontype_id" slot-scope="row">
             {{personTypeName(row.item)}}
       </template>
-      <template slot="position" slot-scope="row">
+      <template slot="position_id" slot-scope="row">
             {{positionName(row.item)}}
       </template>
-      -->
+
       <template slot="actions" slot-scope="row">
         <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
           <i class="fa fa-pencil"></i>
@@ -71,56 +71,17 @@
 export default {
   data() {
     return {
-      fields: [{
-          key: 'id',
-          label: 'Id',
-          sortable: true
-        },
-        {
-          key: 'fullname',
-          label: trans('bck.person.lbl_fullname'),
-          sortable: true
-        },
-        {
-          key: 'email',
-          label: trans('bck.person.lbl_email'),
-          sortable: true
-        },
-        {
-          key: 'birthdate',
-          label: trans('bck.person.lbl_birthday'),
-          sortable: true
-        },
-        {
-          key: 'sex',
-          label: trans('bck.person.lbl_sex'),
-          sortable: true
-        },
-        {
-          key: 'maritalstatus',
-          label: trans('bck.person.lbl_maritalstatus'),
-          sortable: true
-        },
-        {
-          key: 'fulladdress',
-          label: trans('bck.person.lbl_fulladdress'),
-          sortable: true
-        },
-        {
-          key: 'persontype',
-          label: trans('bck.person.lbl_persontype'),
-          sortable: true
-        },
-        {
-          key: 'position',
-          label: trans('bck.person.lbl_position'),
-          sortable: true
-        },
-        {
-          key: 'actions',
-          label: trans('bck.general.actions'),
-          sortable: true
-        },
+      fields: [
+        { key: 'id',            label: 'Id',                                  sortable: true },
+        { key: 'fullname',      label: trans('bck.person.lbl_fullname'),      sortable: true },
+        { key: 'email',         label: trans('bck.person.lbl_email'),         sortable: true },
+        { key: 'birthdate',     label: trans('bck.person.lbl_birthday'),      sortable: true },
+        { key: 'sex',           label: trans('bck.person.lbl_sex'),           sortable: true },
+        { key: 'maritalstatus', label: trans('bck.person.lbl_maritalstatus'), sortable: true },
+        { key: 'fulladdress',   label: trans('bck.person.lbl_fulladdress'),   sortable: true },
+        { key: 'persontype',    label: trans('bck.person.lbl_persontype'),    sortable: true },
+        { key: 'position',      label: trans('bck.person.lbl_position'),      sortable: true },
+        { key: 'actions',       label: trans('bck.general.actions'),          sortable: true },
       ],
       currentPage: null,
       target: '',
@@ -140,26 +101,26 @@ export default {
     create() {
       this.draft = {
         id: null,
-        firstname: '',
-        lastname: '',
-        maritalstatus: '',
+        firstname: null,
+        lastname: null,
+        maritalstatus: null,
         birthday: null,
-        sex: '',
-        address: '',
-        street: '',
+        sex: null,
+        address: null,
+        street: null,
         zipcode: null,
-        city: '',
-        email: '',
-        cnt_emerg_name: '',
-        cnt_emerg_phone: '',
-        cnt_emerg_address: '',
-        crt_employer_name: '',
-        crt_employer_address: '',
+        city: null,
+        email: null,
+        cnt_emerg_name: null,
+        cnt_emerg_phone: null,
+        cnt_emerg_address: null,
+        crt_employer_name: null,
+        crt_employer_address: null,
         position_id: null,
         persontype_id: null,
         user_creac_id: null,
         user_modif_id: null,
-        active: '',
+        active: null,
       }
       this.showEdit = true
     },
@@ -179,7 +140,7 @@ export default {
       this.showEdit = false
     },
     remove(item, index) {
-      if (confirm(trans('backend.person.delete_confirm') + item.name + '?')) {
+      if (confirm(trans('bck.person.delete_confirm') + item.name + '?')) {
         this.$store.dispatch('removePerson', item.id)
       }
     },
@@ -193,13 +154,14 @@ export default {
     },
     positionName(item) {
       var id = item.position_id
-      let name = this.positions.find(position => position.id == id)
-      return name;
+      let position = this.positions.find(position => position.id == id)
+      return position.name;
     },
     personTypeName(item) {
       var id = item.persontype_id
-      let name = this.persontypes.find(persontype => persontype.id = id)
-    }
+      let persontype = this.persontypes.find(persontype => persontype.id = id)
+      return persontype.name;
+    },
   },
   computed: {
     persons() {
@@ -219,7 +181,7 @@ export default {
     },
     persontypes() {
       return this.$store.state.persontype.list
-    }
+    },
   }
 }
 </script>

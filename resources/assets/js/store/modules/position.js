@@ -83,41 +83,46 @@ let actions = {
           type: 'error'
         })
       })
-  }
+  },
+
+  listPositions(context) {
+    axios.get('api/v1/positionList')
+      .then(response => {
+        context.commit('listPositions', {
+          data: response.data
+        })
+      })
+      .catch(error => {
+        Vue.toasted.show(error.message, {
+          icon: 'exclamation-triangle',
+          type: 'error'
+        })
+      })
+  },
 }
 
 let mutations = {
-  getPosition(state, {
-    data
-  }) {
+  getPositions(state, {data}) {
     state.currentPage = data.current_page
     state.lastPage = data.last_page
     state.totalRows = data.total
     state.perPage = data.per_page
     state.positions = data.data;
   },
-
   storePosition(state, newPosition) {
     state.positions.unshift(newPosition);
   },
-
-  updatePosition(state, {
-    id,
-    draft
-  }) {
+  updatePosition(state, {id, draft} ) {
     let index = state.positions.findIndex(positions => position.id == id);
     state.positions.splice(index, 1, draft);
   },
-
   removePosition(state, id) {
     let index = state.positions.findIndex(position => position.id == id);
     state.positions.splice(index, 1);
-  }
+  },
+  listPositions(state, data) {
+    state.list = data.data;
+  },
 }
 
-export default {
-  state,
-  getters,
-  actions,
-  mutations
-}
+export default { state, getters, actions, mutations }
