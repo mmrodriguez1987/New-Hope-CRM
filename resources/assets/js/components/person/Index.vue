@@ -43,10 +43,10 @@
       <template slot="maritalstatus" slot-scope="data">
             {{data.value.maritalstatus}}
       </template>-->
-      <template slot="persontype_id" slot-scope="row">
+      <template slot="persontype" slot-scope="row">
             {{personTypeName(row.item)}}
       </template>
-      <template slot="position_id" slot-scope="row">
+      <template slot="position" slot-scope="row">
             {{positionName(row.item)}}
       </template>
 
@@ -62,7 +62,7 @@
     <person-edit :show="showEdit" :draft="draft" @close="close" :positions="positions" :persontypes="persontypes"></person-edit>
   </div>
   <div class="box-footer text-center">
-    <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="goPage" />
+    <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons" />
   </div>
 </div>
 </template>
@@ -91,6 +91,10 @@ export default {
       sortBy: 'id',
       sortDesc: true,
     }
+  },
+  mounted(){
+    this.$store.dispatch('listPersontypes')
+    this.$store.dispatch('listPositions')
   },
   methods: {
     edit(person, index) {

@@ -94,11 +94,12 @@
         <b-col>
           <b-form-select v-model="draft.position_id" :options="get_positions" class="mb-1" /></b-col>
       </b-row>
+      <!-- El Error esta aqui en las Options -->
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col><label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label></b-col>
         <b-col>
-          <b-form-select v-model="draft.persontype_id" :options="get_persontypes" class="mb-1" /></b-col>
+          <b-form-select v-model="draft.persontype_id" :options="persontypes" class="mb-1" /></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
@@ -120,60 +121,25 @@ export default {
   props: ['show', 'draft', 'positions', 'persontypes'],
   data() {
     return {
-      sex: [{
-          value: null,
-          text: trans('bck.general.select')
-        },
-        {
-          value: 'M',
-          text: trans('bck.general.male')
-        },
-        {
-          value: 'F',
-          text: trans('bck.general.female')
-        }
+      sex: [ // ordenar este codigo
+        { value: null, text: trans('bck.general.select')},
+        { value: 'M',  text: trans('bck.general.male')},
+        { value: 'F',  text: trans('bck.general.female')}
       ],
-      maritalstatus: [{
-          value: null,
-          text: trans('bck.general.select')
-        },
-        {
-          value: 'married',
-          text: trans('bck.ms.married')
-        },
-        {
-          value: 'single',
-          text: trans('bck.ms.single')
-        },
-        {
-          value: 'widower',
-          text: trans('bck.ms.widower')
-        },
-        {
-          value: 'divorced',
-          text: trans('bck.ms.divorced')
-        },
-        {
-          value: 'cohabitant',
-          text: trans('bck.ms.cohabitant')
-        },
+      maritalstatus: [
+        { value: null, text: trans('bck.general.select')},
+        { value: 'married', text: trans('bck.ms.married')},
+        { value: 'single', text: trans('bck.ms.single')},
+        { value: 'widower', text: trans('bck.ms.widower')},
+        { value: 'divorced', text: trans('bck.ms.divorced')},
+        { value: 'cohabitant', text: trans('bck.ms.cohabitant')},
       ],
       //Estados de USA
-      states: [{
-          value: null,
-          text: trans('bck.general.select')
-        },
-        {
-          value: 'FL',
-          text: trans('bck.states.FL')
-        },
-        {
-          value: 'AL',
-          text: trans('bck.states.AL')
-        },
-        {
-          value: 'AK',
-          text: trans('bck.states.AK')
+      states: [
+        { value: null, text: trans('bck.general.select')},
+        { value: 'FL', text: trans('bck.states.FL')},
+        { value: 'AL', text: trans('bck.states.AL')},
+        { value: 'AK', text: trans('bck.states.AK')
         },
         {
           value: 'AZ',
