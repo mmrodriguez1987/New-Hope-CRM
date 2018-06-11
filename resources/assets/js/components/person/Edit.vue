@@ -139,200 +139,26 @@ export default {
         { value: null, text: trans('bck.general.select')},
         { value: 'FL', text: trans('bck.states.FL')},
         { value: 'AL', text: trans('bck.states.AL')},
-        { value: 'AK', text: trans('bck.states.AK')
-        },
-        {
-          value: 'AZ',
-          text: trans('bck.states.AZ')
-        },
-        {
-          value: 'AR',
-          text: trans('bck.states.AR')
-        },
-        {
-          value: 'CA',
-          text: trans('bck.states.CA')
-        },
-        {
-          value: 'NC',
-          text: trans('bck.states.NC')
-        },
-        {
-          value: 'SC',
-          text: trans('bck.states.SC')
-        },
-        {
-          value: 'CO',
-          text: trans('bck.states.CO')
-        },
-        {
-          value: 'CT',
-          text: trans('bck.states.CT')
-        },
-        {
-          value: 'ND',
-          text: trans('bck.states.ND')
-        },
-        {
-          value: 'SD',
-          text: trans('bck.states.SD')
-        },
-        {
-          value: 'DE',
-          text: trans('bck.states.DE')
-        },
-        {
-          value: 'DC',
-          text: trans('bck.states.DC')
-        },
-        {
-          value: 'GA',
-          text: trans('bck.states.GA')
-        },
-        {
-          value: 'HI',
-          text: trans('bck.states.HI')
-        },
-        {
-          value: 'ID',
-          text: trans('bck.states.ID')
-        },
-        {
-          value: 'IL',
-          text: trans('bck.states.IL')
-        },
-        {
-          value: 'IN',
-          text: trans('bck.states.IN')
-        },
-        {
-          value: 'IA',
-          text: trans('bck.states.IA')
-        },
-        {
-          value: 'KS',
-          text: trans('bck.states.KS')
-        },
-        {
-          value: 'KY',
-          text: trans('bck.states.KY')
-        },
-        {
-          value: 'LA',
-          text: trans('bck.states.LA')
-        },
-        {
-          value: 'ME',
-          text: trans('bck.states.ME')
-        },
-        {
-          value: 'MD',
-          text: trans('bck.states.MD')
-        },
-        {
-          value: 'MA',
-          text: trans('bck.states.MA')
-        },
-        {
-          value: 'MI',
-          text: trans('bck.states.MI')
-        },
-        {
-          value: 'MN',
-          text: trans('bck.states.MN')
-        },
-        {
-          value: 'MS',
-          text: trans('bck.states.MS')
-        },
-        {
-          value: 'MO',
-          text: trans('bck.states.MO')
-        },
-        {
-          value: 'MT',
-          text: trans('bck.states.MT')
-        },
-        {
-          value: 'NE',
-          text: trans('bck.states.NE')
-        },
-        {
-          value: 'NV',
-          text: trans('bck.states.NV')
-        },
-        {
-          value: 'NJ',
-          text: trans('bck.states.NJ')
-        },
-        {
-          value: 'NY',
-          text: trans('bck.states.NY')
-        },
-        {
-          value: 'NH',
-          text: trans('bck.states.NH')
-        },
-        {
-          value: 'NM',
-          text: trans('bck.states.NM')
-        },
-        {
-          value: 'OH',
-          text: trans('bck.states.OH')
-        },
-        {
-          value: 'OK',
-          text: trans('bck.states.OK')
-        },
-        {
-          value: 'OR',
-          text: trans('bck.states.OR')
-        },
-        {
-          value: 'PA',
-          text: trans('bck.states.PA')
-        },
-        {
-          value: 'RI',
-          text: trans('bck.states.RI')
-        },
-        {
-          value: 'TN',
-          text: trans('bck.states.TN')
-        },
-        {
-          value: 'TX',
-          text: trans('bck.states.TX')
-        },
-        {
-          value: 'UT',
-          text: trans('bck.states.UT')
-        },
-        {
-          value: 'VT',
-          text: trans('bck.states.VT')
-        },
-        {
-          value: 'VA',
-          text: trans('bck.states.VA')
-        },
-        {
-          value: 'WV',
-          text: trans('bck.states.WV')
-        },
-        {
-          value: 'WA',
-          text: trans('bck.states.WA')
-        },
-        {
-          value: 'WI',
-          text: trans('bck.states.WI')
-        },
-        {
-          value: 'WY',
-          text: trans('bck.states.WY')
-        }
+        { value: 'AK', text: trans('bck.states.AK')},
+        { value: 'AZ', text: trans('bck.states.AZ')},
+        { value: 'AR', text: trans('bck.states.AR')},
+        { value: 'CA', text: trans('bck.states.CA')},
+        { value: 'NC', text: trans('bck.states.NC')},
+        { value: 'SC', text: trans('bck.states.SC')},
+        { value: 'CO', text: trans('bck.states.CO')},
+        { value: 'CT', text: trans('bck.states.CT')},
+        { value: 'ND', text: trans('bck.states.ND')},
+        { value: 'SD', text: trans('bck.states.SD')},
+        { value: 'DE', text: trans('bck.states.DE')},
+        { value: 'DC', text: trans('bck.states.DC')},
+        { value: 'GA', text: trans('bck.states.GA')},
+        { value: 'HI', text: trans('bck.states.HI')},
+        { value: 'ID', text: trans('bck.states.ID')},
+        { value: 'IL', text: trans('bck.states.IL')},
+        { value: 'IN', text: trans('bck.states.IN')},
+        { value: 'IA', text: trans('bck.states.IA')},
+        { value: 'KS', text: trans('bck.states.KS')},
+        { value: 'KY', text: trans('bck.states.KY')}
       ],
     }
   },

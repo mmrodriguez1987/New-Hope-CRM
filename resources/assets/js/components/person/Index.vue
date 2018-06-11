@@ -26,30 +26,12 @@
       <template slot="fulladdress" slot-scope="row">
             {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.zipcode}}
       </template>
-
-      <!-- <template slot="id" slot-scope="data">
-            {{data.value.id}}
-      </template>
-
-      <template slot="email" slot-scope="data">
-            {{data.value.email}}
-      </template>
-      <template slot="birthday" slot-scope="data">
-            {{data.value.birthday}}
-      </template>
-      <template slot="sex" slot-scope="data">
-            {{data.value.sex}}
-      </template>
-      <template slot="maritalstatus" slot-scope="data">
-            {{data.value.maritalstatus}}
-      </template>-->
       <template slot="persontype" slot-scope="row">
             {{personTypeName(row.item)}}
       </template>
       <template slot="position" slot-scope="row">
             {{positionName(row.item)}}
       </template>
-
       <template slot="actions" slot-scope="row">
         <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
           <i class="fa fa-pencil"></i>
