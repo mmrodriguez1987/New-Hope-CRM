@@ -51,34 +51,22 @@ let actions = {
           user_modif_id: payload.user_modif_id,
           active: payload.active,
         }
-        Vue.toasted.show(response.data.message, {
-          icon: 'plus',
-          type: 'success'
-        })
+        Vue.toasted.show(response.data.message, {icon: 'plus', type: 'success'})
         context.commit('storePerson', newPerson)
       })
       .catch(error => {
-        Vue.toasted.show(error.message, {
-          icon: 'exclamation-triangle',
-          type: 'error'
-        })
+        Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
       })
   },
 
   updatePerson(context, payload) {
     axios.put('api/v1/person/' + payload.id, payload.draft)
       .then(response => {
-        Vue.toasted.show(response.data.message, {
-          icon: 'pencil',
-          type: 'info'
-        })
+        Vue.toasted.show(response.data.message, { icon: 'pencil', type: 'info' })
         context.commit('updatePerson', payload)
       })
       .catch(error => {
-        Vue.toasted.show(error.message, {
-          icon: 'exclamation-triangle',
-          type: 'error'
-        })
+        Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error'})
       })
   },
 
@@ -86,18 +74,11 @@ let actions = {
     axios.delete('api/v1/person/' + id)
       .then(response => {
         context.commit('removePerson', id)
-        Vue.toasted.show(response.data.message, {
-          icon: 'trash',
-          type: 'error'
-        })
+        Vue.toasted.show(response.data.message, { icon: 'trash', type: 'error'})
       })
       .catch(error => {
-        Vue.toasted.show(error.message, {
-          icon: 'exclamation-triangle',
-          type: 'error'
-        })
+        Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error'})
       })
-
   }
 }
 
@@ -116,10 +97,7 @@ let mutations = {
     state.persons.unshift(newPerson);
   },
 
-  updatePerson(state, {
-    id,
-    draft
-  }) {
+  updatePerson(state, {id, draft}) {
     let index = state.persons.findIndex(person => person.id == id);
     state.persons.splice(index, 1, draft);
   },
@@ -130,9 +108,4 @@ let mutations = {
   }
 }
 
-export default {
-  state,
-  getters,
-  actions,
-  mutations
-}
+export default {state,getters,actions,mutations}

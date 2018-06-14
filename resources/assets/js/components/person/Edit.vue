@@ -92,14 +92,14 @@
         <b-col cols="2"> </b-col>
         <b-col><label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_position')}}</label></b-col>
         <b-col>
-          <b-form-select v-model="draft.position_id" :options="get_positions" class="mb-1" /></b-col>
+          <b-form-select v-model="draft.position_id" :options="options_positions" class="mb-1" /></b-col>
       </b-row>
       <!-- El Error esta aqui en las Options -->
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col><label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label></b-col>
         <b-col>
-          <b-form-select v-model="draft.persontype_id" :options="persontypes" class="mb-1" /></b-col>
+          <b-form-select v-model="draft.persontype_id" :options="options_persontypes" class="mb-1" /></b-col>
       </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
@@ -247,29 +247,18 @@ export default {
     validPersonType() {
       return this.draft.persontype_id != null
     },
-    get_positions() {
-      var result = [{
-        value: null,
-        text: trans('bck.person.select_position')
-      }]
+    options_positions() {
+      var result = [{value: null, text: trans('bck.person.select_position')}]
       for (var i = 0; i < this.positions.length; i++) {
-        result.push({
-          value: this.positions[i].id,
-          text: this.positions[i].name
+        result.push({value: this.positions[i].id,text: this.positions[i].name
         })
       }
       return result
     },
-    get_persontypes() {
-      var result = [{
-        value: null,
-        text: trans('bck.person.select_persontype')
-      }]
+    options_persontypes() {
+      var result = [{value: null,text: trans('bck.person.select_persontype')}]
       for (var i = 0; i < this.persontypes.length; i++) {
-        result.push({
-          value: this.persontypes[i].id,
-          text: this.persontypes[i].name
-        })
+        result.push({value: this.persontypes[i].id,text: this.persontypes[i].name})
       }
       return result
     }

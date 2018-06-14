@@ -87,21 +87,20 @@ export default {
     create() {
       this.draft = {
         id: null,
-        firstname: null,
-        lastname: null,
-        maritalstatus: null,
+        firstname: '',
+        lastname: '',
+        maritalstatus: '',
         birthday: null,
         sex: null,
-        address: null,
-        street: null,
+        address: '',
+        street: '',
         zipcode: null,
-        city: null,
-        email: null,
-        cnt_emerg_name: null,
-        cnt_emerg_phone: null,
-        cnt_emerg_address: null,
-        crt_employer_name: null,
-        crt_employer_address: null,
+        email: '',
+        cnt_emerg_name: '',
+        cnt_emerg_phone: '',
+        cnt_emerg_address: '',
+        crt_employer_name: '',
+        crt_employer_address: '',
         position_id: null,
         persontype_id: null,
         user_creac_id: null,
@@ -114,12 +113,7 @@ export default {
       this.getPersons(this.currentPage)
     },
     getPersons(page) {
-      let params = {
-        page: this.currentPage,
-        target: this.target,
-        orderBy: this.sortBy,
-        desc: this.sortDesc
-      }
+      let params = { page: this.currentPage, target: this.target, orderBy: this.sortBy, desc: this.sortDesc }
       this.$store.dispatch('getPersons', params)
     },
     close() {
@@ -132,7 +126,12 @@ export default {
     },
     sortingChanged(ctx) {
       if (ctx.sortBy) {
-        this.sortBy = ctx.sortBy
+        //this.sortBy = ctx.sortBy  == 'persontype' ? 'persontype_id' : ctx.sortBy
+        if (ctx.sortBy  == 'position') {
+          this.sortBy = 'position_id'
+        } else if (ctx.sortBy  == 'persontype') {
+          this.sortBy = 'persontype_id'
+        }
         this.sortDesc = ctx.sortDesc
         this.currentPage = null
         this.getPersons()
@@ -145,7 +144,7 @@ export default {
     },
     personTypeName(item) {
       var id = item.persontype_id
-      let persontype = this.persontypes.find(persontype => persontype.id = id)
+      let persontype = this.persontypes.find(persontype => persontype.id == id)
       return persontype.name;
     },
   },

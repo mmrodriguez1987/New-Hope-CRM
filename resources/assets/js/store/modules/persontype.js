@@ -8,7 +8,13 @@ let state = {
 }
 
 let getters = {
-  //
+  findPersontype(state){
+    return function(id){
+      console.log(id)
+      let persontype = state.pertsontypes.find(persontype => persontype.id == id)
+      return persontype;
+    }
+  },
 }
 
 let actions = {
@@ -83,7 +89,7 @@ let actions = {
           type: 'error'
         })
       })
-  }, 
+  },
 
   listPersontypes(context){
         axios.get('api/v1/persontypeList')
@@ -97,41 +103,27 @@ let actions = {
 }
 
 let mutations = {
-  getPersontypes(state, {
-    data
-  }) {
+  getPersontypes(state, {data }) {
     state.currentPage = data.current_page
     state.lastPage = data.last_page
     state.totalRows = data.total
     state.perPage = data.per_page
     state.persontypes = data.data;
   },
-
   storePersontype(state, newPersontype) {
     state.persontypes.unshift(newPersontype);
   },
-
-  updatePersontype(state, {
-    id,
-    draft
-  }) {
+  updatePersontype(state, {id, draft}) {
     let index = state.persontypes.findIndex(persontype => persontype.id == id);
     state.persontypes.splice(index, 1, draft);
   },
-
   removePersontype(state, id) {
     let index = state.persontypes.findIndex(persontype => persontype.id == id);
     state.persontypes.splice(index, 1);
   },
-
   listPersontypes(state, data){
         state.list = data.data;
-    },
+  },
 }
 
-export default {
-  state,
-  getters,
-  actions,
-  mutations
-}
+export default { state, getters, actions, mutations}

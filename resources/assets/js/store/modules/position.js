@@ -8,22 +8,23 @@ let state = {
 }
 
 let getters = {
-  //
+  findPosition(state){
+    return function(id){
+      console.log(id)
+      let position = state.positions.find(position => position.id == id)
+      return position;
+    }
+  },
 }
 
 let actions = {
   getPositions(context, params) {
     axios.get('api/v1/position?page=' + params.page + '&search=' + params.target + '&orderBy=' + params.orderBy + '&desc=' + params.desc)
       .then(response => {
-        context.commit('getPositions', {
-          data: response.data
-        })
+        context.commit('getPositions', { data: response.data })
       })
       .catch(error => {
-        Vue.toasted.show(error.message, {
-          icon: 'exclamation-triangle',
-          type: 'error'
-        })
+        Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error' })
       })
   },
 
@@ -37,34 +38,22 @@ let actions = {
           user_modif_id: payload.user_modif_id,
           active: payload.active,
         }
-        Vue.toasted.show(response.data.message, {
-          icon: 'plus',
-          type: 'success'
-        })
+        Vue.toasted.show(response.data.message, {icon: 'plus', type: 'success'})
         context.commit('storePosition', newPosition)
       })
       .catch(error => {
-        Vue.toasted.show(error.message, {
-          icon: 'exclamation-triangle',
-          type: 'error'
-        })
+        Vue.toasted.show(error.message, {icon: 'exclamation-triangle',type: 'error'})
       })
   },
 
   updatePosition(context, payload) {
     axios.put('api/v1/position/' + payload.id, payload.draft)
       .then(response => {
-        Vue.toasted.show(response.data.message, {
-          icon: 'pencil',
-          type: 'info'
-        })
+        Vue.toasted.show(response.data.message, {icon: 'pencil', type: 'info'})
         context.commit('updatePosition', payload)
       })
       .catch(error => {
-        Vue.toasted.show(error.message, {
-          icon: 'exclamation-triangle',
-          type: 'error'
-        })
+        Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
       })
   },
 
@@ -72,31 +61,20 @@ let actions = {
     axios.delete('api/v1/position/' + id)
       .then(response => {
         context.commit('removePosition', id)
-        Vue.toasted.show(response.data.message, {
-          icon: 'trash',
-          type: 'error'
-        })
+        Vue.toasted.show(response.data.message, { icon: 'trash', type: 'error' })
       })
       .catch(error => {
-        Vue.toasted.show(error.message, {
-          icon: 'exclamation-triangle',
-          type: 'error'
-        })
+        Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error'})
       })
   },
 
   listPositions(context) {
     axios.get('api/v1/positionList')
       .then(response => {
-        context.commit('listPositions', {
-          data: response.data
-        })
+        context.commit('listPositions', {data: response.data})
       })
       .catch(error => {
-        Vue.toasted.show(error.message, {
-          icon: 'exclamation-triangle',
-          type: 'error'
-        })
+        Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
       })
   },
 }
