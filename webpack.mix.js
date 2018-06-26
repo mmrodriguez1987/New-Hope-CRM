@@ -12,7 +12,7 @@ mix.js('resources/assets/js/app.js', 'public/js/')
     './node_modules/icheck/skins/square/blue.css',
     './node_modules/toastr/build/toastr.min.css'
   ], 'public/css/nhcrm.css')
-  //.copy('./node_modules/admin-lte/plugins/', 'public/plugins')
+  .copy('./node_modules/admin-lte/plugins/', 'public/plugins')
   .copy([
     './node_modules/icheck/skins/square/blue.png',
     './node_modules/icheck/skins/square/blue@2x.png'

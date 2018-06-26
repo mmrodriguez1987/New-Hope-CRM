@@ -1,15 +1,15 @@
 @extends('layouts.auth')
 
 @section('htmlheader_title')
-    Log in
+    New Hope CRM | Log in
 @endsection
 
 @section('content')
-    <body class="hold-transition login-page">
+    <body class="hold-transition nhcrm-login-page">
     <div id="app" v-cloak>
-        <div class="login-box">
-            <div class="login-logo">
-                <a href="{{ url('/home') }}"><b>New Hope </b>CRM</a>
+        <div class="nhcrm-login-box">
+            <div class="nhcrm-login-logo">
+                <a href="{{ route('home') }}"><b>New Hope </b>CRM</a>
             </div>
 
             @if (count($errors) > 0)
@@ -23,11 +23,11 @@
                 </div>
             @endif
 
-            <div class="login-box-body">
-                <p class="login-box-msg"> {{ trans('message.siginsession') }} </p>
+            <div class="nhcrm-login-box-body">
+                <p class="nhcrm-login-box-msg"> {{ trans('message.siginsession') }} </p>
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
-                    <div class="form-group has-feedback">
+                    <div class="nhcrm-form-group nhcrm-has-feedback">
                         <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ trans('message.email') }}" name="email"/>
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
@@ -49,7 +49,7 @@
                     </div>
                 </form>
                 <a href="{{ route('password.request') }}">{{ trans('message.forgotpassword') }}</a><br>
-                <a href="{{ route('register') }}" class="text-center">{{ trans('message.registermember') }}</a>
+                {{-- <a href="{{ route('register') }}" class="text-center">{{ trans('message.registermember') }}</a> --}}
             </div>
         </div>
     </div>

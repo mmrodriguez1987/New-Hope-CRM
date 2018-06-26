@@ -1,0 +1,54 @@
+/*
+ * Page: Login & Register
+ * ----------------------
+ */
+
+.nhcrm-login-logo, .nhcrm-register-logo {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+.nhcrm-login-logo a, .nhcrm-register-logo a {
+  color: #444;
+}
+
+.nhcrm-login-page, .nhcrm-register-page {
+  background: #d2d6de;
+  background-image: url("../img/nhcrm-background.jpg");
+  background-repeat: no-repeat;
+}
+
+.nhcrm-login-box, .nhcrm-register-box {
+  width: 360px;
+  margin: 7% auto;
+}
+
+@media (max-width: 768px) {
+  .nhcrm-login-box, .nhcrm-register-box {
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+
+.nhcrm-login-box-body, .nhcrm-register-box-body {
+  background: #fff;
+  padding: 20px;
+  border-top: 0;
+  color: #666;
+}
+
+.nhcrm-login-box-body .nhcrm-form-control-feedback, .nhcrm-register-box-body .nhcrm-form-control-feedback {
+  color: #777;
+}
+
+.nhcrm-login-box-msg, .nhcrm-register-box-msg {
+  margin: 0;
+  text-align: center;
+  padding: 0 20px 20px 20px;
+}
+
+.nhcrm-social-auth-links {
+  margin: 10px 0;
+}
