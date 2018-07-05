@@ -29,24 +29,21 @@ window.Vue = require('vue');
 Vue.component('personEdit', require('./components/person/Edit.vue'));
 Vue.component('person', require('./components/person/Index.vue'));
 
-
-
 //3rd components
 Vue.use(BootstrapVue);
 
 Vue.component('datepicker', DatePicker)
-Vue.component('v-select', vSelect)
-Vue.use(VueLoading)
-Vue.use(Toasted, {
-  duration: 3000,
-  iconPack: 'fontawesome',
-  theme: 'outline'
-})
-Vue.use(wysiwyg, {
-  maxHeight: "400px"
-})
 
-var moment = require('moment');
+Vue.component('v-select', vSelect)
+
+Vue.use(VueLoading)
+
+Vue.use(Toasted, { duration: 3000, iconPack: 'fontawesome', theme: 'outline'})
+
+Vue.use(wysiwyg, { maxHeight: "500px"})
+
+//*Moment
+Vue.use(require('vue-moment'))
 
 Vue.filter('dateFormat', function(value) {
   return moment(value).format('MM-DD-YYYY');

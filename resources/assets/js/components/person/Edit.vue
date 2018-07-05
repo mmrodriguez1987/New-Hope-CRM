@@ -93,8 +93,7 @@
         <b-col><label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_position')}}</label></b-col>
         <b-col>
           <b-form-select v-model="draft.position_id" :options="options_positions" class="mb-1" /></b-col>
-      </b-row>
-      <!-- El Error esta aqui en las Options -->
+      </b-row>  
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col><label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label></b-col>
