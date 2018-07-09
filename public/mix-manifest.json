@@ -19,5 +19,6 @@
     "/fonts/glyphicons-halflings-regular.svg": "/fonts/glyphicons-halflings-regular.svg",
     "/fonts/glyphicons-halflings-regular.ttf": "/fonts/glyphicons-halflings-regular.ttf",
     "/fonts/glyphicons-halflings-regular.woff": "/fonts/glyphicons-halflings-regular.woff",
-    "/fonts/glyphicons-halflings-regular.woff2": "/fonts/glyphicons-halflings-regular.woff2"
+    "/fonts/glyphicons-halflings-regular.woff2": "/fonts/glyphicons-halflings-regular.woff2",
+    "/js/adminlte.min.js": "/js/adminlte.min.js"
 }
