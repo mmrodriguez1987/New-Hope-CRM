@@ -15,6 +15,13 @@ class PersonController extends Controller
             ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
             ->paginate();
     }
+    
+    public function getAllPersons()
+    {
+        return Person::search(request()->search)
+          ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
+          ->paginate();
+    }
 
 
     public function store(Request $request)

@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import person from './modules/person'
-import persontype from './modules/persontype'
-import position from './modules/position'
+import Person from './modules/Person.js'
+import PersonType from './modules/PersonType.js'
+import Position from './modules/Position.js'
 
 Vue.use(Vuex)
 
 let store = new Vuex.Store({
   modules: {
-    person,
-    persontype,
-    position,
+    Person,
+    PersonType,
+    Position,
   }
 })
 

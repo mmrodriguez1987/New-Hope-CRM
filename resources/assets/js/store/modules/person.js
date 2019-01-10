@@ -1,6 +1,7 @@
 let state = {
   persons: [],
   perPage: null,
+  loading: false,
   currentPage: 1,
   lastPage: null,
   totalRows: null,
@@ -11,8 +12,37 @@ let getters = {
 }
 
 let actions = {
+
+  getAllPersons({commit, state}) {
+    state.loading = true
+    axios.get('api/getAllPersons')
+    .then(response => {
+      commit('getAllPersons'. {
+        list: response.data
+      })
+      state.loading = false
+    })
+    .catch(console.error => {
+        Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+        state.loading = false
+    })
+  },
+
+  loadPersons(context, params) {
+    context.state.loading = true
+    axios.get('api/getPersons?page=' + params.page + '&search=' + params.target + '&orderBy=' + params.orderBy + '&desc=' + params.desc)
+    .then( =>{
+      context.commit('setPerson', {list: response.data})
+      context.statte.loading = false
+    }).catch(error => {
+          Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+          state.loading = false
+    })
+  },
+
+
   getPersons(context, params) {
-    axios.get('api/v1/person?page=' + params.page + '&search=' + params.target + '&orderBy=' + params.orderBy + '&desc=' + params.desc)
+    axios.get('/api/person?page=' + params.page + '&search=' + params.target + '&orderBy=' + params.orderBy + '&desc=' + params.desc)
       .then(response => {
         context.commit('getPersons', {
           data: response.data
