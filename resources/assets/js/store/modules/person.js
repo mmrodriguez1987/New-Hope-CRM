@@ -17,9 +17,7 @@ let actions = {
     state.loading = true
     axios.get('api/getAllPersons')
     .then(response => {
-      commit('getAllPersons'. {
-        list: response.data
-      })
+      commit('getAllPersons', { list: response.data })
       state.loading = false
     })
     .catch(console.error => {
@@ -31,30 +29,16 @@ let actions = {
   loadPersons(context, params) {
     context.state.loading = true
     axios.get('api/getPersons?page=' + params.page + '&search=' + params.target + '&orderBy=' + params.orderBy + '&desc=' + params.desc)
-    .then( =>{
+    .then(response => {
       context.commit('setPerson', {list: response.data})
       context.statte.loading = false
     }).catch(error => {
-          Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
-          state.loading = false
+      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+      state.loading = false
     })
   },
 
 
-  getPersons(context, params) {
-    axios.get('/api/person?page=' + params.page + '&search=' + params.target + '&orderBy=' + params.orderBy + '&desc=' + params.desc)
-      .then(response => {
-        context.commit('getPersons', {
-          data: response.data
-        })
-      })
-      .catch(error => {
-        Vue.toasted.show(error.message, {
-          icon: 'exclamation-triangle',
-          type: 'error'
-        })
-      })
-  },
 
   storePerson(context, payload) {
     axios.post('api/v1/person', payload)
