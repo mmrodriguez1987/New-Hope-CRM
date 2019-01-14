@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('api/admin')->group(function() {
+  Route::get('getPersons', ['as' => 'get.persons','uses' => 'PersonControler@listPersons']);
+  Route::post('createPersons', ['as' => 'create.persons', 'uses' => 'PersonController@store']);
+  Route::put('perosn/{id}', ['as' => 'update.person', 'uses' => 'PersonController@update']);
+  Route::delete('person/{id}', ['as' => 'delete.person', 'uses' => 'PersonController@destroy']);
+  Route::get('personList',['as' => 'list.person', 'uses' => 'PersonControler@list']);
+
+})
