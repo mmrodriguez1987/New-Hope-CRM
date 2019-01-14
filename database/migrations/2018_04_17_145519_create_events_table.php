@@ -17,8 +17,10 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('description');
             $table->integer('user_creac_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_creac_id');
             $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active', 1);
+            $table->unsignedInteger('user_modif_id');
+            $table->boolean('active', true);
             $table->timestamps();
         });
     }

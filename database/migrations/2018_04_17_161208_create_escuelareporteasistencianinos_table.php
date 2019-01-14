@@ -21,8 +21,10 @@ class CreateEscuelareporteasistencianinosTable extends Migration
             $table->integer('escuela_grp_id')->reference('id')->on('escuelagrupo');
             $table->integer('escuela_rpt_id')->reference('id')->on('escuelareporte');
             $table->integer('user_creac_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_creac_id');
             $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active',1);
+            $table->unsignedInteger('user_modif_id');
+            $table->char('active', 1);
             $table->timestamps();
         });
     }

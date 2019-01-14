@@ -20,8 +20,10 @@ class CreateCeapreporteclasedetalleTable extends Migration
             $table->datetime('hora_entrada');
             $table->integer('ceapreporteclase_id')->reference('id')->on('ceapreporteclase');
             $table->integer('user_creac_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_creac_id');
             $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active',1);
+            $table->unsignedInteger('user_modif_id');
+            $table->char('active', 1);
             $table->timestamps();
         });
     }

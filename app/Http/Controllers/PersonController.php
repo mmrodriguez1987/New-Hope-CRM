@@ -4,18 +4,19 @@ namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use newhopecrm\Http\Requests\PersonStoreRequest;
 use newhopecrm\Person;
 
 class PersonController extends Controller
 {
-    public function index()
+    public function listPersons()
     {
-        return Person::search(request()->search)
-            ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
-            ->paginate();
+        $persons = Person::search(request()->search)
+        ->orderBy('id', 'desc')
+        ->paginate(10);
     }
-    
+
     public function getAllPersons()
     {
         return Person::search(request()->search)

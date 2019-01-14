@@ -21,12 +21,17 @@ class CreateCasaoracionTable extends Migration
             $table->string('ciudad');
             $table->integer('zipcode');
             $table->integer('lider_id')->reference('id')->on('persona');
+            $table->unsignedInteger('lider_id');
             $table->integer('coolab1_id')->reference('id')->on('persona');
+            $table->unsignedInteger('coolab1_id');
             $table->integer('coolab2_id')->reference('id')->on('persona');
+            $table->unsignedInteger('coolab2_id');
             $table->date('fecha_apertura');
             $table->integer('user_creac_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_creac_id');
             $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active',1);
+            $table->unsignedInteger('user_modif_id');
+            $table->char('active', 1);
             $table->timestamps();
         });
     }

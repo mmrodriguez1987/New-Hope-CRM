@@ -17,7 +17,9 @@ class CreatePersontypesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('user_creac_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_creac_id');
             $table->integer('user_modif_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_modif_id');
             $table->boolean('active', true);
             $table->timestamps();
         });

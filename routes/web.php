@@ -15,12 +15,16 @@ Auth::routes();
 
 Route::get('/', 'DashboardController@index')->name('home');
 
-Route::group(['prefix' => 'api/v1'], function () {
+Route::prefix('api/admin')->middleware(['auth'])->group(function () {
+
     //Persons
-    Route::get('person', ['as' => 'api.person.index', 'uses' => 'PersonController@index']);
-    Route::post('person', ['as' => 'api.person.store', 'uses' => 'PersonController@store']);
-    Route::put('person/{id}', ['as' => 'api.person.update', 'uses' => 'PersonController@update']);
-    Route::delete('person/{id}', ['as' => 'api.person.delete', 'uses' => 'PersonController@delete']);
+    Route::get('getPersons', ['as' => 'get.person','uses' => 'PersonController@listPersons']);
+    Route::post('createPerson', ['as' => 'create.person','uses' => 'PersonController@store']);
+    Route::put('person/{id}', ['as' => 'update.person', 'uses' => 'PersonController@update']);
+    Route::delete('person/{id}', ['as' => 'destroy.person','uses' => 'PersonController@destroy']);
+    Route::get('personList', ['as' => 'list.person','uses' => 'PersonController@list']);
+
+
 
     //Postions
     Route::get('position', ['as' => 'api.position.index', 'uses' => 'PositionController@index']);
@@ -34,7 +38,6 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('persontype/{id}', ['as' => 'api.persontype.update', 'uses' => 'PersontypeController@update']);
     Route::delete('persontype/{id}', ['as' => 'api.persontype.delete', 'uses' => 'PersontypeController@delete']);
 
-  
     //DropDowns
     Route::get('positionList', ['as' => 'api.position.list', 'uses' => 'PositionController@list']);
     Route::get('persontypeList', ['as' => 'api.persontype.list', 'uses' => 'PersontypeController@list']);

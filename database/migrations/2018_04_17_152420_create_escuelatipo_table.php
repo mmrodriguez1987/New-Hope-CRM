@@ -17,8 +17,10 @@ class CreateEscuelatipoTable extends Migration
             $table->increments('id');
             $table->string('descripcion');
             $table->integer('user_creac_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_creac_id');
             $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active',1);
+            $table->unsignedInteger('user_modif_id');
+            $table->char('active', 1);
             $table->timestamps();
         });
     }

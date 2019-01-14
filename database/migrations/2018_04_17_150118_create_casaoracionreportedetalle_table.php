@@ -19,8 +19,10 @@ class CreateCasaoracionreportedetalleTable extends Migration
             $table->integer('casaoracionreporte_id')->reference('id')->on('casaoracionreporte');
             $table->mediumtext('nota');
             $table->integer('user_creac_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_creac_id');
             $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active',1);
+            $table->unsignedInteger('user_modif_id');
+            $table->char('active', 1);
             $table->timestamps();
         });
     }

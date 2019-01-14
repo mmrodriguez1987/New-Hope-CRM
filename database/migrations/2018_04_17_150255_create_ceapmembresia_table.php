@@ -19,8 +19,10 @@ class CreateCeapmembresiaTable extends Migration
             $table->mediumtext('nota');
             $table->integer('persona_estudiante_id')->reference('id')->on('persona');
             $table->integer('user_creac_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_creac_id');
             $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active',1);
+            $table->unsignedInteger('user_modif_id');
+            $table->char('active', 1);
             $table->timestamps();
         });
     }

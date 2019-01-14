@@ -32,9 +32,13 @@ class CreatePersonsTable extends Migration
             $table->string('crt_employer_name');
             $table->string('crt_employer_address');
             $table->string('position_id')->reference('id')->on('positions');
+            $table->unsignedInteger('position_id');
             $table->string('persontype_id')->reference('id')->on('persontypes');
+            $table->unsignedInteger('persontype_id');
             $table->integer('user_creac_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_creac_id');
             $table->integer('user_modif_id')->reference('id')->on('users');
+            $table->unsignedInteger('user_modif_id');
             $table->boolean('active', true);
             $table->timestamps();
         });
