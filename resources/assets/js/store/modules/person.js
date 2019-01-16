@@ -70,6 +70,14 @@ let actions = {
       context.state.loading = false
 	   })
 	},
+  listPerson(context){
+    axios.get('/api/admin/personList')
+    .then(response => {
+      context.commit('listPerson', {data: response.data})
+    }).catch(error => {
+      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+    })
+  },
 }
 
 let mutations = {
@@ -93,7 +101,11 @@ let mutations = {
   removePerson(state, id) {
     let index = state.persons.findIndex(person => person.id == id);
     state.persons.splice(index, 1);
-  }
+  },
+
+  listCustomer(state, data){
+    state.list = data.data;
+  },
 }
 
 export default { state, getters, actions, mutations }

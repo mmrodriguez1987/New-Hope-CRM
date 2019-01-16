@@ -1,5 +1,6 @@
 <template>
-<div class="box box-solid box-primary">
+<div class="box box-solid box-primary" :class="Person.loading ? 'loading' : ''">
+  	<spinner v-if="Customer.loading"/>
   <div class="box-header with-border">
     <h3 class="box-title">{{trans('bck.person.title')}}</h3>
   </div>
