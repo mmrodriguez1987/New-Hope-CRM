@@ -15,13 +15,13 @@ class CreateServiciorptdetalleTable extends Migration
     {
         Schema::create('serviciorptdetalle', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('serviciorpt_id')->reference('id')->on('serviciorpt');
-            $table->integer('serviciorequisitos_id')->reference('id')->on('serviciorequisitos');
+            $table->integer('serviciorpt_id')->unsigned()->reference('id')->on('serviciorpt');
+            $table->integer('serviciorequisitos_id')->unsigned()->reference('id')->on('serviciorequisitos');
             $table->boolean('cumplido');
             $table->longtext('observacion');
-            $table->integer('user_creac_id')->reference('id')->on('users');
-            $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active',1);
+            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
+            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
+            $table->char('active', 1);
             $table->timestamps();
         });
     }

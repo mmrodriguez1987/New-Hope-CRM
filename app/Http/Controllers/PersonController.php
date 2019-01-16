@@ -12,9 +12,7 @@ class PersonController extends Controller
 {
     public function listPersons()
     {
-        $persons = Person::search(request()->search)
-        ->orderBy('id', 'desc')
-        ->paginate(10);
+        $persons = Person::search(request()->search)->orderBy('id', 'desc')->paginate(10);
     }
 
     public function getAllPersons()

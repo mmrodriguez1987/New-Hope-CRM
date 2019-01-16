@@ -1,6 +1,6 @@
 <template>
 <div>
-  <b-modal v-model="show" :title="draft.id ? trans('bck.person.edit') : trans('bck.person.add')" @hide="close">
+<b-modal no-close-on-backdrop id="cuPerson" ref="cuPerson" size="lg" :title="draft.id != null ? 'Edit ' + draft.name : 'Add Person' ">
     <b-container fluid>
       <b-row class="mb-1">
         <b-col cols="2"> </b-col>
@@ -93,7 +93,7 @@
         <b-col><label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_position')}}</label></b-col>
         <b-col>
           <b-form-select v-model="draft.position_id" :options="options_positions" class="mb-1" /></b-col>
-      </b-row>  
+      </b-row>
       <b-row>
         <b-col cols="2"> </b-col>
         <b-col><label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label></b-col>

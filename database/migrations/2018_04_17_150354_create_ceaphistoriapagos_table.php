@@ -15,17 +15,15 @@ class CreateCeaphistoriapagosTable extends Migration
     {
         Schema::create('ceaphistoriapagos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('membresia_id')->reference('id')->on('ceapmembresia');
-            $table->integer('tipopago_id')->reference('id')->on('tipopago');
+            $table->integer('membresia_id')->unsigned()->reference('id')->on('ceapmembresia');
+            $table->integer('tipopago_id')->unsigned()->reference('id')->on('tipopago');
             $table->double('monto', 8, 2);
             $table->mediumtext('observacion');
             $table->string('concepto_pago');
             $table->date('fechapago');
-            $table->integer('user_creac_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_creac_id');
-            $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_modif_id');
-            $table->char('active', 1);
+            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
+            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
+            $table->char('active', 1)->default('a');
             $table->timestamps();
         });
     }

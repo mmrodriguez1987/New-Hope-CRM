@@ -16,15 +16,13 @@ class CreateEscuelareporteTable extends Migration
         Schema::create('escuelareporte', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
-            $table->integer('lider_responsable_id')->reference('id')->on('persona');
-            $table->integer('sublider_responsable_id')->reference('id')->on('persona');
+            $table->integer('lider_responsable_id')->unsigned()->reference('id')->on('persona');
+            $table->integer('sublider_responsable_id')->unsigned()->reference('id')->on('persona');
             $table->longtext('nota');
             $table->double('ofrenda', 8, 2);
-            $table->integer('escuela_tipo_id')->reference('id')->on('escuelatipo');
-            $table->integer('user_creac_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_creac_id');
-            $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_modif_id');
+            $table->integer('escuela_tipo_id')->unsigned()->reference('id')->on('escuelatipo');
+            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
+            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
             $table->char('active', 1);
             $table->timestamps();
         });

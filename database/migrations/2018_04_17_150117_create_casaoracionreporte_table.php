@@ -20,12 +20,9 @@ class CreateCasaoracionreporteTable extends Migration
             $table->string('tema_impart_doc_lnk');
             $table->double('ofrenda', 8, 2);
             $table->string('nota');
-            $table->integer('casaoracion_id')->reference('id')->on('casaoracion');
-            $table->unsignedInteger('casaoracion_id');
-            $table->integer('user_creac_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_creac_id');
-            $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_modif_id');
+            $table->integer('casaoracion_id')->unsigned()->reference('id')->on('casaoracion');
+            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
+            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
             $table->char('active', 1);
             $table->timestamps();
         });

@@ -17,9 +17,9 @@ class CreateServiciorequisitosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->integer('user_creac_id')->reference('id')->on('users');
-            $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active',1);
+            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
+            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
+            $table->char('active', 1);
             $table->timestamps();
         });
     }

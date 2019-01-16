@@ -18,13 +18,11 @@ class CreateEscuelareporteasistenciamaestrosTable extends Migration
             $table->string('clase_impt');
             $table->datetime('horaentrada');
             $table->longtext('observacion');
-            $table->integer('persona_maestro_id')->reference('id')->on('persona');
-            $table->integer('escuela_grp_id')->reference('id')->on('escuelagrupo');
-            $table->integer('escuela_rpt_id')->reference('id')->on('escuelareporte');
-            $table->integer('user_creac_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_creac_id');
-            $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_modif_id');
+            $table->integer('persona_maestro_id')->unsigned()->reference('id')->on('persona');
+            $table->integer('escuela_grp_id')->unsigned()->reference('id')->on('escuelagrupo');
+            $table->integer('escuela_rpt_id')->unsigned()->reference('id')->on('escuelareporte');
+            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
+            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
             $table->char('active', 1);
             $table->timestamps();
         });

@@ -15,14 +15,12 @@ class CreateCeapreporteclasedetalleTable extends Migration
     {
         Schema::create('ceapreporteclasedetalle', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ceap_memb_asis_id')->reference('id')->on('ceapmembresia');
+            $table->integer('ceap_memb_asis_id')->unsigned()->reference('id')->on('ceapmembresia');
             $table->longtext('observ');
             $table->datetime('hora_entrada');
-            $table->integer('ceapreporteclase_id')->reference('id')->on('ceapreporteclase');
-            $table->integer('user_creac_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_creac_id');
-            $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_modif_id');
+            $table->integer('ceapreporteclase_id')->unsigned()->reference('id')->on('ceapreporteclase');
+            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
+            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
             $table->char('active', 1);
             $table->timestamps();
         });

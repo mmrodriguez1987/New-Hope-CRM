@@ -24,23 +24,21 @@ Route::prefix('api/admin')->middleware(['auth'])->group(function () {
     Route::delete('person/{id}', ['as' => 'destroy.person','uses' => 'PersonController@destroy']);
     Route::get('personList', ['as' => 'list.person','uses' => 'PersonController@list']);
 
-
-
     //Postions
-    Route::get('position', ['as' => 'api.position.index', 'uses' => 'PositionController@index']);
-    Route::post('position', ['as' => 'api.position.store', 'uses' => 'PositionController@store']);
-    Route::put('position/{id}', ['as' => 'api.position.update', 'uses' => 'PositionController@update']);
-    Route::delete('position/{id}', ['as' => 'api.position.delete', 'uses' => 'PositionController@delete']);
+    Route::get('position', ['as' => 'position.index', 'uses' => 'PositionController@index']);
+    Route::post('position', ['as' => 'position.store', 'uses' => 'PositionController@store']);
+    Route::put('position/{id}', ['as' => 'position.update', 'uses' => 'PositionController@update']);
+    Route::delete('position/{id}', ['as' => 'position.delete', 'uses' => 'PositionController@delete']);
 
     //Person types
-    Route::get('persontype', ['as' => 'api.persontype.index', 'uses' => 'PersontypeController@index']);
-    Route::post('persontype', ['as' => 'api.persontype.store', 'uses' => 'PersontypeController@store']);
-    Route::put('persontype/{id}', ['as' => 'api.persontype.update', 'uses' => 'PersontypeController@update']);
-    Route::delete('persontype/{id}', ['as' => 'api.persontype.delete', 'uses' => 'PersontypeController@delete']);
+    Route::get('persontype', ['as' => 'persontype.index', 'uses' => 'PersontypeController@index']);
+    Route::post('persontype', ['as' => 'persontype.store', 'uses' => 'PersontypeController@store']);
+    Route::put('persontype/{id}', ['as' => 'persontype.update', 'uses' => 'PersontypeController@update']);
+    Route::delete('persontype/{id}', ['as' => 'persontype.delete', 'uses' => 'PersontypeController@delete']);
 
     //DropDowns
-    Route::get('positionList', ['as' => 'api.position.list', 'uses' => 'PositionController@list']);
-    Route::get('persontypeList', ['as' => 'api.persontype.list', 'uses' => 'PersontypeController@list']);
+    Route::get('positionList', ['as' => 'position.list', 'uses' => 'PositionController@list']);
+    Route::get('persontypeList', ['as' => 'persontype.list', 'uses' => 'PersontypeController@list']);
 });
 
 
@@ -48,7 +46,6 @@ Route::prefix('api/admin')->middleware(['auth'])->group(function () {
 Route::get('/js/lan.js', function () {
     $strings = Cache::remember('lan.js', 0, function () {
         $lang = config('app.locale');
-
         $files   = glob(resource_path('lang/' . $lang . '/*.php'));
         $strings = [];
 
@@ -56,7 +53,6 @@ Route::get('/js/lan.js', function () {
             $name           = basename($file, '.php');
             $strings[$name] = require $file;
         }
-
         return $strings;
     });
 

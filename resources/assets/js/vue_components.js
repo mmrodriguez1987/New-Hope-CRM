@@ -1,2 +1,2 @@
-Vue.component('personEdit', require('./components/person/Edit.vue'));
+Vue.component('personEdit', require('./components/person/Cu.vue'));
 Vue.component('person', require('./components/person/Index.vue'));

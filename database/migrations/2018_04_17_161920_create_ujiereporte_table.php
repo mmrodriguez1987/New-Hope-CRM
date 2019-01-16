@@ -17,11 +17,11 @@ class CreateUjiereporteTable extends Migration
             $table->increments('id');
             $table->date('fecha');
             $table->integer('totalasisntecia');
-            $table->integer('persona_capitan_id')->refrence('id')->on('persona');
+            $table->integer('persona_capitan_id')->unsigned()->refrence('id')->on('persona');
             $table->longtext('observacion');
-            $table->integer('user_creac_id')->reference('id')->on('users');
-            $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->char('active',1);
+            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
+            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
+            $table->char('active', 1);
             $table->timestamps();
         });
     }

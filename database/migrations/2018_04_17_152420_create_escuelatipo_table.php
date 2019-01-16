@@ -15,11 +15,9 @@ class CreateEscuelatipoTable extends Migration
     {
         Schema::create('escuelatipo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion');
-            $table->integer('user_creac_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_creac_id');
-            $table->integer('user_modif_id')->reference('id')->on('users');
-            $table->unsignedInteger('user_modif_id');
+            $table->string('description');
+            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
+            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
             $table->char('active', 1);
             $table->timestamps();
         });
