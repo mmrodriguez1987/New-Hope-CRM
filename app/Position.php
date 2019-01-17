@@ -14,6 +14,10 @@ class Position extends Model
       'active'
     ];
 
+    public function persons() {
+      return $this->hasMany(Person::class)
+    }
+
     //Scopes
     public function scopeSearch($query, $target)
     {

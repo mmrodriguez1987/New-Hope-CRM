@@ -16,13 +16,14 @@ class PositionController extends Controller
           ->paginate();
     }
 
-    public function store(Request $request)
+
+    public function positionList()
     {
-        $position = new Position;
-        $position->name = $request->name;
-        $position->user_creac_id = Auth::id();
-        $position->user_modif_id = Auth::id();
-        $position->active = $request->active;
+        return Position::all();
+    }
+    public function store()
+    {
+        $position = Position::create(request()->all());
         $position->save();
 
         return [
@@ -32,10 +33,10 @@ class PositionController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update($id)
     {
         $position = Position::find($id);
-        $position->fill($request->all());
+        $position->fill(request()->all());
         $position->save();
 
         return ['message' => trans('bck.position.update_message')];
@@ -46,10 +47,5 @@ class PositionController extends Controller
     {
         $position = Position::destroy($id);
         return ['message' => trans('bck.position.delete_message')];
-    }
-
-    public function list()
-    {
-        return Position::all();
     }
 }

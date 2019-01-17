@@ -23,7 +23,7 @@ let actions = {
   getPersonTypes(context, params) {
     axios.get('api/admin/persontype?page=' + params.page + '&search=' + params.target + '&orderBy=' + params.orderBy + '&desc=' + params.desc)
       .then(response => {
-        context.commit('getPersontypes', {
+        context.commit('getPersonYypes', {
         data: response.data
       })
     })
@@ -102,14 +102,14 @@ let actions = {
   },
 
   listPersontypes(context){
-        axios.get('api/v1/persontypeList')
-            .then(response => {
-                context.commit('listPersontypes', {data: response.data})
-            })
-            .catch(error => {
-                Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
-            })
-    },
+    axios.get('api/admin/persontypeList')
+    .then(response => {
+      context.commit('listPersontypes', {data: response.data})
+    })
+    .catch(error => {
+      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+    })
+  },
 }
 
 let mutations = {

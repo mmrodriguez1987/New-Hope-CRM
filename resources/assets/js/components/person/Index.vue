@@ -1,14 +1,13 @@
 <template>
 <div class="box box-solid box-primary" :class="Person.loading ? 'loading' : ''">
-  	<spinner v-if="Person.loading"/>
-    <cu-person :draft="draft"/>
+  <spinner v-if="Person.loading"/>
+  <cu-person :draft="draft"/>
 
   <div class="box-header with-border">
     <h3 class="box-title">{{trans('bck.person.title')}}</h3>
   </div>
 
   <div class="box-body">
-
     <div class="form-inline pull-right">
       <button type="button" class="btn btn-success mb-2" v-b-modal.cuPerson @click="create">
         <i class="fa fa-plus"></i>
@@ -19,10 +18,11 @@
     <form class="form-inline pull-left">
       <div class="form-group mx-sm-6 mb-2">
         <label class="sr-only">{{trans('bck.general.search')}}</label>
-        <input v-model="search" class="form-control" :placeholder="trans('bck.general.search')" />
+        <input v-model="target" class="form-control" :placeholder="trans('bck.general.search')" />
       </div>
       <button type="button" class="btn btn-primary mb-2" @click.prevent="goPage"><i class="fa fa-search"></i></button>
     </form>
+
     <div class="clearfix"></div>
 
     <hr>
@@ -48,7 +48,7 @@
         </button>
       </template>
     </b-table>
-    <!-- <person-edit :show="showEdit" :draft="draft" @close="close" :positions="positions" :persontypes="persontypes"></person-edit> -->
+
   </div>
   <div class="box-footer text-center">
     <b-pagination :total-rows="Person.totalRows" :per-page="Person.perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons" />
@@ -57,7 +57,6 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   watch: {
     search() {
@@ -86,10 +85,10 @@ export default {
       sortDesc: true,
     }
   },
-  // mounted(){
-  //   this.$store.dispatch('listPersontypes')
-  //   this.$store.dispatch('listPositions')
-  // },
+  created() {
+    this.getPersons(),
+    this.$store.dispatch()
+  }
   methods: {
     edit(item) {
       this.draft = clone(item)
@@ -157,7 +156,27 @@ export default {
     },
   },
   computed: {
-    ...mapState(['Person']),
+    persons(){
+      return this.$store.state.Person.data
+    },
+    current_page() {
+      return this.$store.state.Person.currentPage
+    },
+    totalRows() {
+      return this.$store.state.Person.totalRows
+    },
+    perPage() {
+      return this.$store.state.Person.perPage
+    },
+    loading() {
+      return this.$store.state.Person.loading
+    }
+    personTypes() {
+      return this.$store.state.PersonType.list
+    },
+    position() {
+      return this.$store.state.Position.list
+    }
   }
 }
 </script>

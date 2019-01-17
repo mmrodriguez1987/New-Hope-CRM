@@ -130,6 +130,7 @@ return [
     'Edit' => 'Edit Position',
   ],
   'persontype' => [
+    'title' => 'Persons Types',
     'delete_confirm' => 'Do you want remove ',
     'delete_message' => 'Person Type deleted successfully',
     'update_message' => 'Person type updated successfully',
@@ -137,4 +138,21 @@ return [
     'add' => 'Add Person type',
     'Edit' => 'Edit Person type',
   ],
+  'common' => [
+        'actions' => 'Actions',
+        'delete_title' => 'Are you sure?',
+        'delete_text' => 'Do you want to remove ',
+        'delete_confirm' => 'Yes, delete it!',
+        'search' => 'Search...',
+        'select' => 'Please select...',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        '0' => 'No',
+        '1' => 'Yes',
+        'back_to' => 'Back to',
+        'invalid_data' => 'Invalid Data',
+        'out_of_stock_title' => 'Items out of stok',
+        'out_of_stock_text' => 'We noticed there’s some items out of stock! Would you like to back order these items? They will ship as soon as they come in! Details Here',
+        'max_size' => 'Maximum size exceeded, 4 MB'
+    ],
 ];
