@@ -42,14 +42,24 @@
 
       <li class="treeview">
         <a href="#">
-            <i class="fa fa-th"></i> <span>Catalogos</span>
+            <i class="fa fa-th"></i> <span>Catalogs</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
         <ul class="treeview-menu">
-          <router-link tag="li" to="/person">
+          <router-link tag="li" to="/admin/Person">
             <a><i class="fa fa-circle-o"><span></i> {{trans('bck.person.title')}}</span></i></a>
+          </router-link>
+        </ul>
+        <ul class="treeview-menu">
+          <router-link tag="li" to="/admin/Position">
+            <a><i class="fa fa-circle-o"><span></i> {{trans('bck.position.title')}}</span></i></a>
+          </router-link>
+        </ul>
+        <ul class="treeview-menu">
+          <router-link tag="li" to="/admin/PersonType">
+            <a><i class="fa fa-circle-o"><span></i> {{trans('bck.persontype.title')}}</span></i></a>
           </router-link>
         </ul>
       </li>

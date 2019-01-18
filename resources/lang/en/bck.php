@@ -19,6 +19,8 @@ return [
     'close' => 'Close',
     'select' => 'Select',
     'active' => 'Active',
+    'create' => 'Create',
+    'status' => 'Status',
   ],
   'states' => [
     'FL' => 'FL - Florida',
@@ -122,12 +124,14 @@ return [
     'Edit' => 'Edit Payment Type',
   ],
   'position' => [
+    'title' => 'Positions',
     'delete_confirm' => 'Do you want remove ',
     'delete_message' => 'Position deleted successfully',
     'update_message' => 'Position updated successfully',
     'store_message' => 'Position registered successfully',
     'add' => 'Add Position',
-    'Edit' => 'Edit Position',
+    'edit' => 'Edit Position',
+    'name' => 'Position Name: ',
   ],
   'persontype' => [
     'title' => 'Persons Types',
@@ -136,7 +140,7 @@ return [
     'update_message' => 'Person type updated successfully',
     'store_message' => 'Person type registered successfully',
     'add' => 'Add Person type',
-    'Edit' => 'Edit Person type',
+    'edit' => 'Edit Person type',
   ],
   'common' => [
         'actions' => 'Actions',
@@ -153,6 +157,6 @@ return [
         'invalid_data' => 'Invalid Data',
         'out_of_stock_title' => 'Items out of stok',
         'out_of_stock_text' => 'We noticed there’s some items out of stock! Would you like to back order these items? They will ship as soon as they come in! Details Here',
-        'max_size' => 'Maximum size exceeded, 4 MB'
+        'max_size' => 'Maximum size exceeded, 4 MB',
     ],
 ];

@@ -88,7 +88,7 @@ export default {
   created() {
     this.getPersons(),
     this.$store.dispatch()
-  }
+  },
   methods: {
     edit(item) {
       this.draft = clone(item)
@@ -170,7 +170,7 @@ export default {
     },
     loading() {
       return this.$store.state.Person.loading
-    }
+    },
     personTypes() {
       return this.$store.state.PersonType.list
     },

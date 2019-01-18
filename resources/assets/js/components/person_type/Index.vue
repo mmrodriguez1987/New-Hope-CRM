@@ -148,14 +148,6 @@
         },
         close(){
           this.showEdit = false
-          // this.draft = {
-          //     id: null,
-          //     flag:true,
-          //     name: '',
-          //     image: '',
-          //     category_id: null,
-          //     status: null,
-          // }
         },
         sortingChanged (ctx) {
                 if (ctx.sortBy) {

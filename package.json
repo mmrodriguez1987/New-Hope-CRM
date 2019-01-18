@@ -30,7 +30,7 @@
     "icheck": "^1.0.2",
     "ionicons": "^3.0.0",
     "moment": "^2.23.0",
-    "npm": "^6.5.0",
+    "npm": "^6.6.0",
     "sparkline": "^0.2.0",
     "toastr": "^2.1.4",
     "vue-animate": "0.0.4",
@@ -42,7 +42,7 @@
     "vue-toasted": "^1.1.26",
     "vue-wysiwyg": "^1.7.2",
     "vuejs-datepicker": "^1.5.4",
-    "vuex": "^3.0.1",
+    "vuex": "^3.1.0",
     "vuex-loading": "^0.2.6"
   }
 }
