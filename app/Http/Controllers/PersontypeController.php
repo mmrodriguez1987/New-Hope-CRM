@@ -16,6 +16,11 @@ class PersontypeController extends Controller
           ->paginate();
     }
 
+    public function personTypelist()
+    {
+        return Persontype::all();
+    }
+
     public function store(Request $request)
     {
         $persontype = new Persontype;

@@ -23,20 +23,21 @@ let getters = {
 let actions = {
   getPersons(context, params) {
     context.state.loading = true
-    axios.get('api/admin/getPersons?Page=' + params.page + '&search=' + params.target)
+    axios.get('api/admin/person?page=' + params.page + '&search=' + params.target + '&odertBy=' + params.orderBy + '&desc=' + params.sortDesc)
       .then(response => {
         context.commit('getPersons', {
           list: reponse.data
         })
         context.state.loading = false
       }).catch(error => {
-        console.log(error.data)
+        Vue.toasted.show('Error in store.module.Person.getPersons: '+ error.message, {icon: 'exclamation-triangle', type: 'error'})
+        console.log('Error in store.module.Person.getPersons: ' + error.data)
         context.state.loading = false
       })
   },
   createPerson({commit,state}, payload) {
     state.loading = true
-    axios.post('/api/admin/createPerson', payload)
+    axios.post('/api/admin/person/', payload)
       .then(response => {
         Vue.toasted.show(response.data.message, {icon: 'plus', type: 'success'})
         commit('createPerson', response.data.data)
@@ -103,7 +104,7 @@ let mutations = {
     state.persons.splice(index, 1);
   },
 
-  listCustomer(state, data){
+  listPerson(state, data){
     state.list = data.data;
   },
 }

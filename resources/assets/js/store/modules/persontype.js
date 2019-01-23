@@ -102,7 +102,7 @@ let actions = {
   },
 
   listPersontypes(context){
-    axios.get('api/admin/persontypeList')
+    axios.get('api/admin/personTypeList')
     .then(response => {
       context.commit('listPersontypes', {data: response.data})
     })

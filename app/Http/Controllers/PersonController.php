@@ -10,7 +10,7 @@ use newhopecrm\Person;
 
 class PersonController extends Controller
 {
-    public function listPersons()
+    public function index()
     {
         $persons = Person::search(request()->search)->orderBy('id', 'desc')->paginate(10);
     }

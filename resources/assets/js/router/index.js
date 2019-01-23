@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Dashboard from '../components/dashboard.vue'
 import AdminPages from '../components/admin_pages.vue'
 import Person from '../components/person/Index.vue'
 import Position from '../components/position/Index.vue'
@@ -8,7 +9,7 @@ import PersonType from '../components/person_type/Index.vue'
 Vue.use(Router)
 
 let router = new Router({
-  mode: 'History',
+  mode: 'history',
   routes: [
     {
       path: '/admin/',
@@ -17,7 +18,7 @@ let router = new Router({
         {
           path: '',
           name: 'dash',
-          component: Person
+          component: Dashboard
         },{
           path: 'Person',
           name: 'person',
@@ -31,7 +32,8 @@ let router = new Router({
           component: Position
         }
       ]
-    },{
+    },
+    {
 			path: '*',
 			component: {
 				template : '<h1>Error 404</h1>'
@@ -40,7 +42,7 @@ let router = new Router({
     {
       path: '/:key',
       component: Person,
-    }
+    },
   ]
 })
 

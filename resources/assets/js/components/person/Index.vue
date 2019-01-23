@@ -86,8 +86,8 @@ export default {
     }
   },
   created() {
-    this.getPersons(),
-    this.$store.dispatch()
+    this.getPersons()
+    
   },
   methods: {
     edit(item) {
@@ -124,7 +124,9 @@ export default {
     getPersons(page) {
       let params = {
         page: this.currentPage,
-        target: this.search
+        target: this.search,
+        orderBy: this.sortBy,
+        desc: this.sortDesc
       }
       this.$store.dispatch('getPersons', params)
     },
