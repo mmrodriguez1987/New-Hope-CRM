@@ -1,63 +1,51 @@
 <template>
-<div class="box box-solid box-primary" :class="Person.loading ? 'loading' : ''">
-  <spinner v-if="Person.loading"/>
-  <cu-person :draft="draft"/>
+<div class="box box-solid box-primary" :class="loading ? 'box-loading' : ''">
+  <spinner v-if="loading" :size="200" />
 
-  <div class="box-header with-border">
-    <h3 class="box-title">{{trans('bck.person.title')}}</h3>
+  <button type="button" class="btn btn-success mb-2" @click="create">
+    <i class="fa fa-plus"></i>
+    {{trans('bck.general.add')}}
+  </button>
+</div>
+
+<form class="form-inline pull-left">
+  <div class="form-group mx-sm-6 mb-2">
+    <label class="sr-only">{{trans('bck.general.search')}}</label>
+    <input v-model="target" class="form-control" :placeholder="trans('bck.general.search')" />
   </div>
+  <button type="button" class="btn btn-primary mb-2" @click.prevent="goPage"><i class="fa fa-search"></i></button>
+</form>
 
-  <div class="box-body">
-    <div class="form-inline pull-right">
-      <button type="button" class="btn btn-success mb-2" @click="create">
-        <i class="fa fa-plus"></i>
-        {{trans('bck.general.add')}}
-      </button>
-    </div>
+<div class="clearfix"></div>
 
-    <form class="form-inline pull-left">
-      <div class="form-group mx-sm-6 mb-2">
-        <label class="sr-only">{{trans('bck.general.search')}}</label>
-        <input v-model="target" class="form-control" :placeholder="trans('bck.general.search')" />
-      </div>
-      <button type="button" class="btn btn-primary mb-2" @click.prevent="goPage"><i class="fa fa-search"></i></button>
-    </form>
-
-    <div class="clearfix"></div>
-
-    <hr>
-    <b-table striped hover
-        :items="persons"
-        :fields="fields"
-        :no-local-sorting="true"
-        @sort-changed="sortingChanged"
-        >
-      <template slot="fullname" slot-scope="row">
-            {{row.item.firstname}} {{row.item.lastname}}
-      </template>
-      <template slot="fulladdress" slot-scope="row">
-            {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.zipcode}}
-      </template>
-      <template slot="persontype" slot-scope="row">
-            {{personTypeName(row.item)}}
-      </template>
-      <template slot="position" slot-scope="row">
-            {{positionName(row.item)}}
-      </template>
-      <template slot="actions" slot-scope="row">
-        <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
-          <i class="fa fa-pencil"></i>
-        </button>
-        <button class="btn btn-danger btn-sm" @click="remove(row.item, row.index)">
-          <i class="fa fa-trash"></i>
-        </button>
-      </template>
-    </b-table>
-    <personEdit :show="showEdit" draft="draft" @close="close"></personEdit>
-  </div>
-  <div class="box-footer text-center">
-    <b-pagination :total-rows="Person.totalRows" :per-page="Person.perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons" />
-  </div>
+<hr>
+<b-table striped hover :items="persons" :fields="fields" :no-local-sorting="true" @sort-changed="sortingChanged">
+  <template slot="fullname" slot-scope="row">
+    {{row.item.firstname}} {{row.item.lastname}}
+  </template>
+  <template slot="fulladdress" slot-scope="row">
+    {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.zipcode}}
+  </template>
+  <template slot="persontype" slot-scope="row">
+    {{personTypeName(row.item)}}
+  </template>
+  <template slot="position" slot-scope="row">
+    {{positionName(row.item)}}
+  </template>
+  <template slot="actions" slot-scope="row">
+    <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
+      <i class="fa fa-pencil"></i>
+    </button>
+    <button class="btn btn-danger btn-sm" @click="remove(row.item, row.index)">
+      <i class="fa fa-trash"></i>
+    </button>
+  </template>
+</b-table>
+<personEdit :show="showEdit" draft="draft" @close="close"></personEdit>
+</div>
+<div class="box-footer text-center">
+  <b-pagination :total-rows="Person.totalRows" :per-page="Person.perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons" />
+</div>
 </div>
 </template>
 
@@ -70,17 +58,56 @@ export default {
   },
   data() {
     return {
-      fields: [
-        { key: 'id',            label: 'Id',                                  sortable: true },
-        { key: 'fullname',      label: trans('bck.person.lbl_fullname'),      sortable: true },
-        { key: 'email',         label: trans('bck.person.lbl_email'),         sortable: true },
-        { key: 'birthdate',     label: trans('bck.person.lbl_birthday'),      sortable: true },
-        { key: 'sex',           label: trans('bck.person.lbl_sex'),           sortable: true },
-        { key: 'maritalstatus', label: trans('bck.person.lbl_maritalstatus'), sortable: true },
-        { key: 'fulladdress',   label: trans('bck.person.lbl_fulladdress'),   sortable: true },
-        { key: 'persontype',    label: trans('bck.person.lbl_persontype'),    sortable: true },
-        { key: 'position',      label: trans('bck.person.lbl_position'),      sortable: true },
-        { key: 'actions',       label: trans('bck.general.actions'),          sortable: true },
+      fields: [{
+          key: 'id',
+          label: 'Id',
+          sortable: true
+        },
+        {
+          key: 'fullname',
+          label: trans('bck.person.lbl_fullname'),
+          sortable: true
+        },
+        {
+          key: 'email',
+          label: trans('bck.person.lbl_email'),
+          sortable: true
+        },
+        {
+          key: 'birthdate',
+          label: trans('bck.person.lbl_birthday'),
+          sortable: true
+        },
+        {
+          key: 'sex',
+          label: trans('bck.person.lbl_sex'),
+          sortable: true
+        },
+        {
+          key: 'maritalstatus',
+          label: trans('bck.person.lbl_maritalstatus'),
+          sortable: true
+        },
+        {
+          key: 'fulladdress',
+          label: trans('bck.person.lbl_fulladdress'),
+          sortable: true
+        },
+        {
+          key: 'persontype',
+          label: trans('bck.person.lbl_persontype'),
+          sortable: true
+        },
+        {
+          key: 'position',
+          label: trans('bck.person.lbl_position'),
+          sortable: true
+        },
+        {
+          key: 'actions',
+          label: trans('bck.general.actions'),
+          sortable: true
+        },
       ],
       currentPage: null,
       draft: {},
@@ -163,7 +190,7 @@ export default {
     },
   },
   computed: {
-    persons(){
+    persons() {
       return this.$store.state.Person.data
     },
     current_page() {
