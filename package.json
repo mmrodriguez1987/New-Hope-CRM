@@ -43,6 +43,7 @@
     "vue-wysiwyg": "^1.7.2",
     "vuejs-datepicker": "^1.5.4",
     "vuex": "^3.1.0",
-    "vuex-loading": "^0.2.6"
+    "vuex-loading": "^0.2.6",
+    "epic-spinners": "^1.0.3"
   }
 }

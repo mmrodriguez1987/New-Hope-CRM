@@ -12,20 +12,17 @@ let router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/admin/',
+      path: '/admin',
       component: AdminPages,
       children: [
         {
           path: '',
-          name: 'dash',
           component: Dashboard
         },{
-          path: 'Person',
-          name: 'person',
+          path: 'persons',
           component: Person
         },{
-          path: 'PersonType',
-          name: 'personType',
+          path: 'PersonTypes',
           component: PersonType
         },{
           path: 'Position',

@@ -11,7 +11,7 @@ import VueLoading from 'vuex-loading'
 //*Bootstrap Vue
 Vue.use(BootstrapVue)
 
-Vue.use(Toasted,  {duration: 3000, iconPack : 'fontawesome', theme: 'outline'})
+Vue.use(Toasted,  {duration: 10000, iconPack : 'fontawesome', theme: 'outline'})
 
 Vue.use(wysiwyg, {  maxHeight: "500px" })
 

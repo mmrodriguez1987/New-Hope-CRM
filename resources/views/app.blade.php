@@ -9,7 +9,7 @@ You can chek all information about this Dashboard
 @endsection
 
 @section('htmlheader_title')
-Dashboard
+New Hope In Christ | CRM
 @endsection
 
 @section('main-content')

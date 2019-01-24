@@ -48,12 +48,12 @@
             </span>
           </a>
         <ul class="treeview-menu">
-          <router-link tag="li" to="/admin/Person">
+          <router-link tag="li" to="/admin/persons">
             <a><i class="fa fa-circle-o"><span></i> {{trans('bck.person.title')}}</span></i></a>
           </router-link>
         </ul>
-        <ul class="treeview-menu">
-          <router-link tag="li" to="/admin/Position">
+        {{-- <ul class="treeview-menu">
+          <router-link tag="li" to="/admin/person">
             <a><i class="fa fa-circle-o"><span></i> {{trans('bck.position.title')}}</span></i></a>
           </router-link>
         </ul>
@@ -61,7 +61,7 @@
           <router-link tag="li" to="/admin/PersonType">
             <a><i class="fa fa-circle-o"><span></i> {{trans('bck.persontype.title')}}</span></i></a>
           </router-link>
-        </ul>
+        </ul> --}}
       </li>
     </ul>
 

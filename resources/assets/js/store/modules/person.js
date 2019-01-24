@@ -23,7 +23,7 @@ let getters = {
 let actions = {
   getPersons(context, params) {
     context.state.loading = true
-    axios.get('/api/admin/person?page=' + params.page + '&search=' + params.target + '&odertBy=' + params.orderBy + '&desc=' + params.sortDesc)
+    axios.get('/admin/person?page=' + params.page + '&search=' + params.target + '&odertBy=' + params.orderBy + '&desc=' + params.sortDesc)
       .then(response => {
         context.commit('getPersons', {
           data: reponse.data
@@ -32,12 +32,14 @@ let actions = {
       }).catch(error => {
         Vue.toasted.show('Error in store.module.Person.getPersons: '+ error.message, {icon: 'exclamation-triangle', type: 'error'})
         console.log('Error in store.module.Person.getPersons: ' + error.data)
+        console.log(response)
+        console.log(error.response)
         context.state.loading = false
       })
   },
   createPerson({commit,state}, payload) {
     state.loading = true
-    axios.post('/api/admin/person/', payload)
+    axios.post('/admin/person/', payload)
       .then(response => {
         Vue.toasted.show(response.data.message, {icon: 'plus', type: 'success'})
         commit('createPerson', response.data.data)
@@ -49,7 +51,7 @@ let actions = {
   },
   updatePerson({commit,state}, payload){
     state.loading = true
-    axios.put('/api/admin/person/' + payload.id, payload)
+    axios.put('/admin/person/' + payload.id, payload)
       .then(response => {
         Vue.toasted.show(response.data.message, {icon: 'pencil', type: 'info'})
         commit('updatePerson', response.data.data)
@@ -61,7 +63,7 @@ let actions = {
   },
   removePerson(context, id){
     context.state.loading = true
-    axios.delete('/api/admin/person/'+id)
+    axios.delete('/admin/person/'+id)
     .then(response => {
       context.commit('removePerson', id)
       Vue.toasted.show(response.data.message, {icon: 'trash-o', type: 'error'})
@@ -72,7 +74,7 @@ let actions = {
 	   })
 	},
   listPerson(context){
-    axios.get('/api/admin/personList')
+    axios.get('/admin/personList')
     .then(response => {
       context.commit('listPerson', {data: response.data})
     }).catch(error => {
