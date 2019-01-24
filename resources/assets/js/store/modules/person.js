@@ -23,10 +23,10 @@ let getters = {
 let actions = {
   getPersons(context, params) {
     context.state.loading = true
-    axios.get('api/admin/person?page=' + params.page + '&search=' + params.target + '&odertBy=' + params.orderBy + '&desc=' + params.sortDesc)
+    axios.get('/api/admin/person?page=' + params.page + '&search=' + params.target + '&odertBy=' + params.orderBy + '&desc=' + params.sortDesc)
       .then(response => {
         context.commit('getPersons', {
-          list: reponse.data
+          data: reponse.data
         })
         context.state.loading = false
       }).catch(error => {

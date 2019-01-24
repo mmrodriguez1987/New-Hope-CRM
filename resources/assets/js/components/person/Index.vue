@@ -9,7 +9,7 @@
 
   <div class="box-body">
     <div class="form-inline pull-right">
-      <button type="button" class="btn btn-success mb-2" v-b-modal.cuPerson @click="create">
+      <button type="button" class="btn btn-success mb-2" @click="create">
         <i class="fa fa-plus"></i>
         {{trans('bck.general.add')}}
       </button>
@@ -26,7 +26,12 @@
     <div class="clearfix"></div>
 
     <hr>
-    <b-table striped hover :items="persons" :fields="fields" :no-local-sorting="true" @sort-changed="sortingChanged">
+    <b-table striped hover
+        :items="persons"
+        :fields="fields"
+        :no-local-sorting="true"
+        @sort-changed="sortingChanged"
+        >
       <template slot="fullname" slot-scope="row">
             {{row.item.firstname}} {{row.item.lastname}}
       </template>
@@ -40,7 +45,7 @@
             {{positionName(row.item)}}
       </template>
       <template slot="actions" slot-scope="row">
-        <button class="btn btn-info btn-sm" v-b-modal-cuPerson @click="edit(row.item, row.index)">
+        <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
           <i class="fa fa-pencil"></i>
         </button>
         <button class="btn btn-danger btn-sm" @click="remove(row.item, row.index)">
@@ -48,7 +53,7 @@
         </button>
       </template>
     </b-table>
-
+    <personEdit :show="showEdit" draft="draft" @close="close"></personEdit>
   </div>
   <div class="box-footer text-center">
     <b-pagination :total-rows="Person.totalRows" :per-page="Person.perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons" />
@@ -87,7 +92,7 @@ export default {
   },
   created() {
     this.getPersons()
-    
+
   },
   methods: {
     edit(item) {
