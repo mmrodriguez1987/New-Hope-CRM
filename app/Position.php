@@ -15,7 +15,7 @@ class Position extends Model
     ];
 
     public function persons() {
-      return $this->hasMany(Person::class)
+      return $this->hasMany(Person::class);
     }
 
     //Scopes

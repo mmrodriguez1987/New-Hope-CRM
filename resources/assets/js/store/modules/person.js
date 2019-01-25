@@ -1,5 +1,4 @@
-let state = {
-  data: [],
+let state = { 
   persons: [],
   perPage: null,
   loading: false,
@@ -23,12 +22,11 @@ let getters = {
 let actions = {
   getPersons(context, params) {
     context.state.loading = true
-    axios.get('/admin/person?page=' + params.page + '&search=' + params.target + '&odertBy=' + params.orderBy + '&desc=' + params.sortDesc)
+    axios.get('/admin/person?page=' + params.page + '&search=' + params.target + '&orderBy=' + params.orderBy + '&desc=' + params.sortDesc)
       .then(response => {
-        context.commit('getPersons', {
-          data: reponse.data
-        })
+        context.commit('getPersons', {data: reponse.data})
         context.state.loading = false
+       
       }).catch(error => {
         Vue.toasted.show('Error in store.module.Person.getPersons: '+ error.message, {icon: 'exclamation-triangle', type: 'error'})
         console.log('Error in store.module.Person.getPersons: ' + error.data)

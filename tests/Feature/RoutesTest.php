@@ -4,9 +4,10 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illluminate\Foundation\Testing\
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class PersonModuleTest extends TestCase
+class RoutesTest extends TestCase
 {
     /**
      * A basic test example.
@@ -15,6 +16,10 @@ class PersonModuleTest extends TestCase
      */
     public function testExample()
     {
-        $this->get('/api/admin/person')->assertStatus(200);
+        
+        $response = $this->action('GET', 'PersonController@index');
+        $response->assertStatus(200);
     }
+
+   
 }

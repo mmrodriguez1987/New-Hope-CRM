@@ -10,7 +10,7 @@ class Persontype extends Model
     protected $fillable = ['name', 'user_creac_id', 'user_modif_id', 'active' ];
 
     public function persons(){
-      retunr $this->hasMany(Persons::class);
+      return $this->hasMany(Persons::class);
     }
     //Scopes
     public function scopeSearch($query, $target)
