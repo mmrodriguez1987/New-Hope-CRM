@@ -1,15 +1,21 @@
 <?php
 
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/', 'DashboardController@index')->name('home');
+Route::get('/', 'DashboardController@index');
+
+Route::get('/person', function(){
+
+    $results = \newhopecrm\Person::all();
+    return $results;
+});
 
 Route::prefix('admin')->group(function () {
     
     
     //Persons
-    Route::get('person', ['as' => 'get.person','uses' => 'PersonController@index']);
+    Route::get('person', 'PersonController@index');
     Route::post('person', ['as' => 'person.store','uses' => 'PersonController@store']);
     Route::put('person/{id}', ['as' => 'person.update', 'uses' => 'PersonController@update']);
     Route::delete('person/{id}', ['as' => 'person.destroy','uses' => 'PersonController@destroy']);

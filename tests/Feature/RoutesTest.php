@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
+use nhcrm\Http\Controllers;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illluminate\Foundation\Testing\
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RoutesTest extends TestCase
@@ -15,10 +15,9 @@ class RoutesTest extends TestCase
      * @return void
      */
     public function testExample()
-    {
-        
-        $response = $this->action('GET', 'PersonController@index');
-        $response->assertStatus(200);
+    {        
+        $this->get('/')
+        ->assertSuccessful();
     }
 
    
