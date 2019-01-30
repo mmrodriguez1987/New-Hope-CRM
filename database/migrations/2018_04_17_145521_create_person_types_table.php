@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersontypesTable extends Migration
+class CreatePersonTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePersontypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('persontypes', function (Blueprint $table) {
+        Schema::create('person_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
-            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
+            $table->string('name');      
             $table->boolean('active', true);
             $table->timestamps();
         });
@@ -30,6 +28,6 @@ class CreatePersontypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('persontypes');
+        Schema::dropIfExists('person_types');
     }
 }

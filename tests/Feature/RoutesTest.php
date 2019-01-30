@@ -16,8 +16,8 @@ class RoutesTest extends TestCase
      */
     public function testExample()
     {        
-        $this->get('/')
-        ->assertSuccessful();
+        $response = $this->get('/login');        
+        $response->assertStatus(200);
     }
 
    

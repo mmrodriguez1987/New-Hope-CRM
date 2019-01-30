@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipopagoTable extends Migration
+class CreateUserProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateTipopagoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipopago', function (Blueprint $table) {
+        Schema::create('user_profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion');
-            $table->boolean('active', true);
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateTipopagoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipopago');
+        Schema::dropIfExists('user_profiles');
     }
 }

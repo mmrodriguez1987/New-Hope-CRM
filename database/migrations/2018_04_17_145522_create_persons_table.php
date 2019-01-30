@@ -15,14 +15,14 @@ class CreatePersonsTable extends Migration
     {
         Schema::create('persons', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('maritalstatus');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('marital_status');
             $table->date('birthdate');
             $table->char('sex', 1);
             $table->string('address');
             $table->string('street');
-            $table->integer('zipcode');
+            $table->integer('postal_code');
             $table->string('city');
             $table->char('state', 2);
             $table->string('email');
@@ -31,10 +31,8 @@ class CreatePersonsTable extends Migration
             $table->string('cnt_emerg_address');
             $table->string('crt_employer_name');
             $table->string('crt_employer_address');
-            $table->integer('position_id')->unsigned()->reference('id')->on('positions');
-            $table->integer('persontype_id')->unsigned()->reference('id')->on('persontypes');
-            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
-            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
+            $table->integer('position_id')->reference('id')->on('positions');
+            $table->integer('person_type_id')->reference('id')->on('person_types');
             $table->boolean('active', true);
             $table->timestamps();
         });
