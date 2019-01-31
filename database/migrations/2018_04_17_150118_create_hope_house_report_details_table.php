@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipopagoTable extends Migration
+class CreateHopeHouseReportDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateTipopagoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipopago', function (Blueprint $table) {
+        Schema::create('hope_house_report_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion');
+            $table->integer('assistant_person_id')->reference('id')->on('persons');
+            $table->integer('hope_house_report_id')->reference('id')->on('hope_house_reports');
+            $table->mediumtext('note');
             $table->boolean('active', true);
             $table->timestamps();
         });
@@ -28,6 +30,6 @@ class CreateTipopagoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipopago');
+        Schema::dropIfExists('hope_house_report_details');
     }
 }

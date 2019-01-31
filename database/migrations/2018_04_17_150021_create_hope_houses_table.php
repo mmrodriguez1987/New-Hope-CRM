@@ -20,10 +20,10 @@ class CreateHopeHousesTable extends Migration
             $table->string('street');
             $table->string('city');
             $table->integer('postal_code');
-            $table->integer('lider_id')->reference('id')->on('persona');
-            $table->integer('coolab1_id')->reference('id')->on('persona');
-            $table->integer('coolab2_id')->reference('id')->on('persona');
-            $table->date('fecha_apertura');
+            $table->integer('leader_id')->reference('id')->on('persons');
+            $table->integer('coolab1_id')->reference('id')->on('persons');
+            $table->integer('coolab2_id')->reference('id')->on('persons');
+            $table->date('opening_date');
             $table->boolean('active', true);
             $table->timestamps();
         });
