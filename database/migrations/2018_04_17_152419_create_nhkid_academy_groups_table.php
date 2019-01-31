@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEscuelagrupoTable extends Migration
+class CreateNhkidAcademyGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateEscuelagrupoTable extends Migration
      */
     public function up()
     {
-        Schema::create('escuelagrupo', function (Blueprint $table) {
+        Schema::create('nhkid_academy_groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
-            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateEscuelagrupoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('escuelagrupo');
+        Schema::dropIfExists('nhkid_academy_groups');
     }
 }

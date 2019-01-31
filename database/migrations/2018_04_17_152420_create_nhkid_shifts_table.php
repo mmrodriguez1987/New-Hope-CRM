@@ -13,12 +13,10 @@ class CreateEscuelatipoTable extends Migration
      */
     public function up()
     {
-        Schema::create('escuelatipo', function (Blueprint $table) {
+        Schema::create('nhkid_shifts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
-            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
-            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
-            $table->char('active', 1);
+            $table->string('name');            
+            $table->boolean('active', true);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateEscuelatipoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('escuelatipo');
+        Schema::dropIfExists('nhkid_shifts');
     }
 }

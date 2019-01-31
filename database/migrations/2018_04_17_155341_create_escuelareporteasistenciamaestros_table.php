@@ -13,17 +13,15 @@ class CreateEscuelareporteasistenciamaestrosTable extends Migration
      */
     public function up()
     {
-        Schema::create('escuelareporteasistenciamaestros', function (Blueprint $table) {
+        Schema::create('nokid_assistance_teachers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('clase_impt');
-            $table->datetime('horaentrada');
-            $table->longtext('observacion');
-            $table->integer('persona_maestro_id')->unsigned()->reference('id')->on('persona');
-            $table->integer('escuela_grp_id')->unsigned()->reference('id')->on('escuelagrupo');
-            $table->integer('escuela_rpt_id')->unsigned()->reference('id')->on('escuelareporte');
-            $table->integer('user_creac_id')->unsigned()->reference('id')->on('users');
-            $table->integer('user_modif_id')->unsigned()->reference('id')->on('users');
-            $table->char('active', 1);
+            $table->string('teaching_taught');
+            $table->datetime('start_time');
+            $table->longtext('observation');
+            $table->integer('teacher_id')->reference('id')->on('persons');
+            $table->integer('group_id')->reference('id')->on('nhkid_academy_groups');
+            $table->integer('report_id')->reference('id')->on('nhkid_reports');     
+            $table->boolean('active', true);
             $table->timestamps();
         });
     }
