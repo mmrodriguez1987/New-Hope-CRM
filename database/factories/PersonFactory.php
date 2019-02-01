@@ -4,9 +4,9 @@ use Faker\Generator as Faker;
 
 $factory->define(newhopecrm\Person::class, function (Faker $faker) {
     return [
-        'firstname' => $faker->name,
-        'lastname' => $faker->name,
-        'maritalstatus' => $faker->name,
+        'first_name' => $faker->name,
+        'last_me' => $faker->name,
+        'marital_status' => $faker->name,
         'birthday' => $faker->dateTime($max = 'now', $timezone = null),
         'sex' => $faker->relaText($maxNbChars =2, $indexSize = 2),
         'address'=> $faker->address,

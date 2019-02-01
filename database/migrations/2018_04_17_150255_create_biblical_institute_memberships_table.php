@@ -17,7 +17,7 @@ class CreateBiblicalInstituteMembershipsTable extends Migration
             $table->increments('id');
             $table->date('admission_date');
             $table->mediumtext('note');
-            $table->integer('student_id')->unsigned()->reference('id')->on('persons');
+            $table->unsignedInteger('student_id')->reference('id')->on('persons');
             $table->boolean('active', true);
             $table->timestamps();
         });

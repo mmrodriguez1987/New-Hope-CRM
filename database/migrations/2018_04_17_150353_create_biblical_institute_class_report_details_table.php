@@ -15,10 +15,10 @@ class CreateBiblicalInstituteClassReportDetailsTable extends Migration
     {
         Schema::create('biblical_institute_class_report_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('membership_assistence_id')->reference('id')->on('biblical_institute_memberships');
+            $table->unsignedInteger('membership_assistence_id')->reference('id')->on('biblical_institute_memberships');
             $table->longtext('observation');
             $table->datetime('hour_init');
-            $table->integer('rpt_class_id')->reference('id')->on('biblical_institute_class_reports');
+            $table->unsignedInteger('rpt_class_id')->reference('id')->on('biblical_institute_class_reports');
             $table->boolean('active', true);
             $table->timestamps();
         });

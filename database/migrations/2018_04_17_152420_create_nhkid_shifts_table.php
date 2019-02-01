@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEscuelatipoTable extends Migration
+class CreateNhkidShiftsTable extends Migration
 {
     /**
      * Run the migrations.

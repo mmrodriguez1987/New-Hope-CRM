@@ -21,14 +21,18 @@ class Person extends Model
     {
          if ($target != '') {
             return $query->
-                    where('firstname', 'like', "%$target%")
-                ->orWhere('lastname', 'like', "%$target%")
+                    where('first_name', 'like', "%$target%")
+                ->orWhere('last_name', 'like', "%$target%")
+                ->orWhere('marital_status', 'like', "%$target%")
+                ->orWhere('birthdate', 'like', "%$target%")
+                ->orWhere('sex', 'like', "%$target%")
                 ->orWhere('address', 'like', "%$target%")
                 ->orWhere('email', 'like', "%$target%")
                 ->orWhere('cnt_emerg_name', 'like', "%$target%")
+                ->orWhere('cnt_emerg_phone', 'like', "%$target%")
                 ->orWhere('cnt_emerg_address', 'like', "%$target%")
-                ->orWhere('crt_employer_address', 'like', "%$target%")
                 ->orWhere('crt_employer_name', 'like', "%$target%")
+                ->orWhere('crt_employer_address', 'like', "%$target%")
                 ->orWhere('id', $target);
         }
     }

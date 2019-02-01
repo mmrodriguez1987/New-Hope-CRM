@@ -27,17 +27,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-    *
-    * Scopes
-    */
-    public function scopeSearch($query, $target)
-    {
-        if ($target != '') {
-            return $query->
-              where('name', 'like', "%$target%")
-              ->orWhere('email', 'like', "%$target%")
-              ->orWhere('id', $target);
-        }
+    
+    public static function findByPhone($phone){
+        return User::where(compact('phone'))->first();
+    }
+
+    public static function findByEmail($phone){
+        return User::where(compact('email'))->first();
     }
 }

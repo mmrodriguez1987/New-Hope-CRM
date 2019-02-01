@@ -20,7 +20,7 @@ class CreateHopeHouseReportsTable extends Migration
             $table->string('teaching_taught_lnk');
             $table->double('offering', 8, 2);
             $table->string('note');
-            $table->integer('hope_house_id')->reference('id')->on('hope_houses');
+            $table->unsignedInteger('hope_house_id')->reference('id')->on('hope_houses');
             $table->boolean('active', true);
             $table->timestamps();
         });

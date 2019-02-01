@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersonTypesTable extends Migration
+class CreateUjierReportServantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreatePersonTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('person_types', function (Blueprint $table) {
+        Schema::create('ujier_report_servants', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();      
+            $table->unsignedInteger('ujier_id')->refrence('id')->on('persons');
+            $table->date('start_time');
+            $table->longtext('observation');
+            $table->unsignedInteger('reporte_id')->reference('id')->on('ujier_reports');
             $table->boolean('active', true);
             $table->timestamps();
         });
@@ -28,6 +31,6 @@ class CreatePersonTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('person_types');
+        Schema::dropIfExists('ujier_report_servants');
     }
 }

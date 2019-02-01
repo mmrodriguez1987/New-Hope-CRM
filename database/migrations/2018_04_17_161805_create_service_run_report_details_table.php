@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersonTypesTable extends Migration
+class CreateServiceRunReportDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreatePersonTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('person_types', function (Blueprint $table) {
+        Schema::create('service_run_report_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();      
+            $table->unsignedInteger('report_id')->reference('id')->on('service_run_reports');
+            $table->unsignedInteger('requeriment_id')->reference('id')->on('service_run_requirements');
+            $table->boolean('completed');
+            $table->longtext('observation');
             $table->boolean('active', true);
             $table->timestamps();
         });
@@ -28,6 +31,6 @@ class CreatePersonTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('person_types');
+        Schema::dropIfExists('service_run_report_details');
     }
 }

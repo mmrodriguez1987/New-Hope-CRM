@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNhkidAcademyGroupsTable extends Migration
+class CreateServiceRunRequirementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateNhkidAcademyGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('nhkid_academy_groups', function (Blueprint $table) {
+        Schema::create('service_run_requirements', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->string('description');            
+            $table->boolean('active', true);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateNhkidAcademyGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nhkid_academy_groups');
+        Schema::dropIfExists('service_run_requirements');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBiblicalInstituteHistyPaymentsTable extends Migration
+class CreateBiblicalInstituteHistoryPaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,8 @@ class CreateBiblicalInstituteHistyPaymentsTable extends Migration
     {
         Schema::create('biblical_institute_history_payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('membership_id')->reference('id')->on('biblical_institute_memberships');
-            $table->integer('payment_type_id')->reference('id')->on('payment_types');
+            $table->unsignedInteger('membership_id')->reference('id')->on('biblical_institute_memberships');
+            $table->unsignedInteger('payment_type_id')->reference('id')->on('payment_types');
             $table->double('amount', 8, 2);
             $table->mediumtext('observation');
             $table->string('description');

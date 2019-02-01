@@ -17,9 +17,9 @@ class CreatePersonHistoriesTable extends Migration
             $table->increments('id');
             $table->string('description');
             $table->date('event_date');
-            $table->integer('resp_leader_id')->reference('id')->on('persons');
-            $table->integer('invl_person_id')->reference('id')->on('persons');
-            $table->integer('event_id')->reference('id')->on('events');
+            $table->unsignedInteger('resp_leader_id')->reference('id')->on('persons');
+            $table->unsignedInteger('invl_person_id')->reference('id')->on('persons');
+            $table->unsignedInteger('event_id')->reference('id')->on('events');
             $table->boolean('active', true);
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreatePersonHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personhistory');
+        Schema::dropIfExists('person_histories');
     }
 }

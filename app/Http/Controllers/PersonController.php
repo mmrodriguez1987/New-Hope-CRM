@@ -31,15 +31,15 @@ class PersonController extends Controller
     public function store(Request $request)
     {
         $person = new Person;
-        $person->firstname = $request->firstname;
-        $person->lastname = $request->lastname;
-        $person->maritalstatus = $request->maritalstatus;
+        $person->first_name = $request->first_name;
+        $person->last_name = $request->last_name;
+        $person->marital_status = $request->marital_status;
         $person->birthday = $request->birthday;
         $person->sex = $request->sex;
         $person->address = $request->address;
         $person->street = $request->street;
         $person->city = $request->city;
-        $person->zipcode = $request->zipcode;
+        $person->postal_code = $request->postal_code;
         $person->email = $request->email;
         $person->cnt_emerg_name = $request->cnt_emerg_name;
         $person->cnt_emerg_phone = $request->cnt_emerg_phone;
@@ -48,8 +48,6 @@ class PersonController extends Controller
         $person->crt_employer_address = $request->crt_employer_address;
         $person->persontype_id = $request->persontype;
         $person->position_id = $request->position;
-        $person->user_creac_id = Auth::id();
-        $person->user_modif_id = Auth::id();
         $person->active = $request->active;
         $person->save();
 
