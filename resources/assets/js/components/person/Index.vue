@@ -1,106 +1,138 @@
 <template>
-<div class="box box-solid box-primary" :class="loading ? 'box-loading' : ''">
+  <div class="box box-solid box-primary" :class="loading ? 'box-loading' : ''">
+    <div class="box-header with-border">
+      <h3 class="box-title">{{ trans('app.make.title') }}</h3>
+    </div>
 
-  <div class="box-header with-border">
-    <h3 class="box-title">{{ trans('app.make.title') }}</h3>
-  </div>
+    <div class="box-body">
+      <button type="button" class="btn btn-success mb-2" @click="create">
+        <i class="fa fa-plus"></i>
+        {{trans('bck.general.add')}}
+      </button>
+      <spinner v-if="loading" :size="200"/>
 
-  <div class="box-body">
+      <form class="form-inline pull-right">
+        <div class="form-group mx-sm-6 mb-2">
+          <label class="sr-only">{{trans('bck.general.search')}}</label>
+          <input v-model="target" class="form-control" :placeholder="trans('bck.general.search')">
+        </div>
+      </form>
 
-    <button type="button" class="btn btn-success mb-2" @click="create">
-      <i class="fa fa-plus"></i>
-      {{trans('bck.general.add')}}
-    </button>
-    <spinner v-if="loading" :size="200" />
+      <div class="clearfix"></div>
 
-    <form class="form-inline pull-right">
-      <div class="form-group mx-sm-6 mb-2">
-        <label class="sr-only">{{trans('bck.general.search')}}</label>
-        <input v-model="target" class="form-control" :placeholder="trans('bck.general.search')" />
-      </div>
-    </form>
-
-    <div class="clearfix"></div>
-
-    <hr>
-    <b-table striped hover :items="persons" :fields="fields" :no-local-sorting="true" @sort-changed="sortingChanged">
-      <template slot="fullname" slot-scope="row">
-        {{row.item.firstname}} {{row.item.lastname}}
-      </template>
-      <template slot="fulladdress" slot-scope="row">
-        {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.zipcode}}
-      </template>
-      <!-- <template slot="persontype" slot-scope="row">
+      <hr>
+      <b-table
+        ref="table"
+        striped
+        hover
+        :items="persons"
+        :fields="fields"
+        :no-local-sorting="true"
+        :sort-by.sync="sortBy"
+        :sort-desc.sync="sortDesc"
+        @sort-changed="sortingChanged"
+        empty-text="Loading..."
+        stacked="md"
+      >
+        <template slot="fullname" slot-scope="row">{{row.item.first_name}} {{row.item.last_name}}</template>
+        <template
+          slot="fulladdress"
+          slot-scope="row"
+        >{{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}</template>
+        <!-- <template slot="persontype" slot-scope="row">
         {{personTypeName(row.item)}}
       </template>
       <template slot="position" slot-scope="row">
          {{positionName(row.item)}}
-      </template> -->
-      <template slot="actions" slot-scope="row">
-        <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
-          <i class="fa fa-pencil"></i>
-        </button>
-        <button class="btn btn-danger btn-sm" @click="remove(row.item, row.index)">
-          <i class="fa fa-trash"></i>
-        </button>
-      </template>
-    </b-table>
-    <!-- <personEdit :show="showEdit" :draft="draft" @close="close"></personEdit> -->
+        </template>-->
+        <template slot="actions" slot-scope="row">
+          <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
+            <i class="fa fa-pencil"></i>
+          </button>
+          <button class="btn btn-danger btn-sm" @click="remove(row.item, row.index)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </template>
+      </b-table>
+      <!-- <personEdit :show="showEdit" :draft="draft" @close="close"></personEdit> -->
+    </div>
+    <div class="box-footer text-center">
+      <b-pagination
+        :total-rows="totalRows"
+        :per-page="perPage"
+        align="center"
+        v-model="currentPage"
+        class="my-0"
+        @input="getPersons"
+      />
+    </div>
   </div>
-  <div class="box-footer text-center">
-    <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons" />
-  </div>
-</div>
 </template>
 
 <script>
 export default {
   watch: {
     target() {
-      this.getPersons()
+      this.getPersons();
     }
   },
   data() {
     return {
       fields: [
-        { key: 'id', label: 'Id', sortable: true },
-        { key: 'fullname', label: trans('bck.person.lbl_fullname'), sortable: true },
-        { key: 'email', label: trans('bck.person.lbl_email'), sortable: true },
-        { key: 'birthdate', label: trans('bck.person.lbl_birthday'), sortable: true },
-        { key: 'sex', label: trans('bck.person.lbl_sex'), sortable: true },
-        { key: 'maritalstatus', label: trans('bck.person.lbl_maritalstatus'), sortable: true },
-        { key: 'fulladdress', label: trans('bck.person.lbl_fulladdress'), sortable: true },
+        { key: "id", label: "Id", sortable: true },
+        {
+          key: "fullname",
+          label: trans("bck.person.lbl_fullname"),
+          sortable: true
+        },
+        { key: "email", label: trans("bck.person.lbl_email"), sortable: true },
+        {
+          key: "birthdate",
+          label: trans("bck.person.lbl_birthday"),
+          sortable: true
+        },
+        { key: "sex", label: trans("bck.person.lbl_sex"), sortable: true },
+        {
+          key: "maritalstatus",
+          label: trans("bck.person.lbl_maritalstatus"),
+          sortable: true
+        },
+        {
+          key: "fulladdress",
+          label: trans("bck.person.lbl_fulladdress"),
+          sortable: true
+        },
         // { key: 'persontype', label: trans('bck.person.lbl_persontype'), sortable: true },
         // { key: 'position', label: trans('bck.person.lbl_position'), sortable: true },
-        { key: 'actions',label: trans('bck.general.actions'), sortable: true },
+        { key: "actions", label: trans("bck.general.actions"), sortable: true }
       ],
       currentPage: null,
       draft: {},
-      target: '',
+      target: "",
       currentIndex: null,
-      sortBy: 'id',
-      sortDesc: true,
-    }
+      sortBy: "id",
+      sortDesc: true
+    };
   },
   created() {
-    this.getPersons()
+    this.getPersons();
   },
   methods: {
     edit(item) {
-      this.draft = clone(item)
+      this.draft = clone(item);
     },
     create() {
       this.draft = {
         id: null,
-        firstname: '',
-        lastname: '',
+        firstname: "",
+        lastname: "",
         maritalstatus: null,
         birthday: null,
         sex: null,
-        address: '',
-        street: '',
+        address: "",
+        street: "",
         zipcode: null,
-        email: '',
+        email: "",
         cnt_emerg_name: null,
         cnt_emerg_phone: null,
         cnt_emerg_address: null,
@@ -110,9 +142,9 @@ export default {
         persontype_id: null,
         user_creac_id: null,
         user_modif_id: null,
-        active: null,
-      }
-      this.showEdit = true
+        active: null
+      };
+      this.showEdit = true;
     },
     getPersons() {
       let params = {
@@ -120,25 +152,25 @@ export default {
         target: this.target,
         orderBy: this.sortBy,
         desc: this.sortDesc
-      }
-      this.$store.dispatch('getPersons', params)
+      };
+      this.$store.dispatch("getPersons", params);
     },
     close() {
-      this.showEdit = false
+      this.showEdit = false;
     },
     remove(item) {
-      if (confirm(trans('bck.person.delete_confirm') + item.name + '?')) {
-        this.$store.dispatch('removePerson', item.id)
+      if (confirm(trans("bck.person.delete_confirm") + item.name + "?")) {
+        this.$store.dispatch("removePerson", item.id);
       }
     },
     sortingChanged(ctx) {
       if (ctx.sortBy) {
-        this.sortBy = ctx.sortBy
-        this.sortDesc = ctx.sortDesc
-        this.currentPage = null
-        this.getPersons()
+        this.sortBy = ctx.sortBy;
+        this.sortDesc = ctx.sortDesc;
+        this.currentPage = null;
+        this.getPersons();
       }
-    },
+    }
     // positionName(item) {
     //   var id = item.position_id
     //   let position = this.positions.find(position => position.id == id)
@@ -152,26 +184,26 @@ export default {
   },
   computed: {
     persons() {
-      return this.$store.state.Person.data
+      return this.$store.state.Person.data;
     },
     current_page() {
-      return this.$store.state.Person.currentPage
+      return this.$store.state.Person.currentPage;
     },
     totalRows() {
-      return this.$store.state.Person.totalRows
+      return this.$store.state.Person.totalRows;
     },
     perPage() {
-      return this.$store.state.Person.perPage
+      return this.$store.state.Person.perPage;
     },
     loading() {
-      return this.$store.state.Person.loading
+      return this.$store.state.Person.loading;
     },
     personTypes() {
-      return this.$store.state.PersonType.list
+      return this.$store.state.PersonType.list;
     },
     position() {
-      return this.$store.state.Position.list
+      return this.$store.state.Position.list;
     }
   }
-}
+};
 </script>
