@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Persontype extends Model
 {
+    protected $table ='person_types';
+    
     public function persons()
     {
         return $this->hasMany(Persons::class);

@@ -1,7 +1,10 @@
 {
   "name": "laravel/laravel",
   "description": "The Laravel Framework.",
-  "keywords": ["framework", "laravel"],
+  "keywords": [
+    "framework",
+    "laravel"
+  ],
   "license": "MIT",
   "type": "project",
   "require": {
@@ -29,7 +32,11 @@
   "autoload": {
     "classmap": [
       "database/seeds",
-      "database/factories"
+      "database/factories",
+      "database/seeds/UsersTableSeeder.php",
+      "database/seeds/PositionsTableSeeder.php",
+      "database/seeds/PersontypesTableSeeder.php",
+      "database/seeds/PersonsTableSeeder.php"
     ],
     "psr-4": {
       "newhopecrm\\": "app/"

@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use newhopecrm\Position;
 
-class PositionTableSeeder extends Seeder
+class PositionsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

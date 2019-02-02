@@ -4,13 +4,13 @@ namespace newhopecrm;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Position extends Model
-{    
-    protected $table ='positions';
+class Profession extends Model
+{
+    protected $table = 'professions';
 
-    public function persons() 
-    {
-      return $this->hasMany(Person::class);
+    public function persons() {
+
+        return $this->hasMany(Person::class);
     }
 
     //Scopes

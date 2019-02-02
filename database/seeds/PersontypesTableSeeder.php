@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use newhopecrm\Person;
+use newhopecrm\Persontype;
 
-class PersonsTableSeeder extends Seeder
+class PersontypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class PersonsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Person::class,1500)->create();      
+        factory(Persontype::class,50)->create();
     }
 }
