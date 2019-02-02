@@ -12,7 +12,7 @@ $factory->define(newhopecrm\Person::class, function (Faker $faker) {
         'address'=> $faker->address,
         'street'=> $faker->sentence,
         'state'=>$faker->state,
-        'zipcode'=>$faker->postalcode,
+        'postal_code'=>$faker->postalcode,
         'city'=>$faker->city,
         'email' => $faker->unique()->safeEmail,
         'cnt_emerg_name' => $faker->name,
@@ -21,17 +21,11 @@ $factory->define(newhopecrm\Person::class, function (Faker $faker) {
         'crt_employer_name' => $faker->name,
         'crt_employer_address' => $faker->address,
         'position_id' => function() {
-            return firstOrFactory(\App\Position::class);
+            return firstOrFactory(\newhopecrm\Position::class);
         }, 
         'persontype_id' => function() {
-            return firstOrFactory(\App\Persontype::class);
-        }, 
-        'user_creac_id' => function() {
-            return firstOrFactory(\App\User::class);
-        }, 
-        'user_modif_id' => function() {
-            return firstOrFactory(\App\User::class);
-        },       
+            return firstOrFactory(\newhopecrm\Persontype::class);
+        },        
         'active' => $faker->boolean
     ];
 });

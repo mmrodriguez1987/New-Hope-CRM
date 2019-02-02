@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Carbon\Carbon;
-use nhcrm\Person;
+use newhopecrm\Person;
 
 class PersonsTableSeeder extends Seeder
 {
@@ -13,6 +12,7 @@ class PersonsTableSeeder extends Seeder
      */
     public function run()
     {
+        factory(Person::class,50)->create();
         // $persons = [
         //   [
         //     'firstname' => 'Michael',

@@ -10,6 +10,7 @@ use newhopecrm\Person;
 
 class PersonController extends Controller
 {
+    
     public function index()
     {
         return Person::search(request()->search)
@@ -53,7 +54,7 @@ class PersonController extends Controller
 
         return [
           'message' => trans('bck.person.store_message'),
-          'id' => $persona->id,
+          'id' => $person->id,
         ];
     }
 
