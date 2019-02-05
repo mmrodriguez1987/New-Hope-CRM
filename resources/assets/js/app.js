@@ -1,5 +1,6 @@
-import store from './store'
 import router from './router';
+import store from './store'
+
 
 require('./bootstrap');
 window.Vue = require('vue');
@@ -10,10 +11,10 @@ require('./vendor_components')
 //Own App components
 require('./vue_components')
 
+
 //Functions Utilities & Filters
 require('./utilities.js')
 
-window.moment = require('moment');
 
 const app = new Vue({
   el: '#app',

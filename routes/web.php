@@ -3,7 +3,7 @@
 
 Auth::routes();
 
-Route::get('/', 'DashboardController@index');
+Route::get('/', 'DashboardController@index')->name('home');
 
 Route::prefix('admin')->group(function () {
     

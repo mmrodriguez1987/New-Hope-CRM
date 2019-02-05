@@ -21,24 +21,11 @@
       <div class="clearfix"></div>
 
       <hr>
-      <b-table
-        ref="table"
-        striped
-        hover
-        :items="persons"
-        :fields="fields"
-        :no-local-sorting="true"
-        :sort-by.sync="sortBy"
-        :sort-desc.sync="sortDesc"
-        @sort-changed="sortingChanged"
-        empty-text="Loading..."
-        stacked="md"
-      >
+      <b-table ref="table" striped hover :items="persons" :fields="fields" :no-local-sorting="true"
+       :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" @sort-changed="sortingChanged" empty-text="Loading..." stacked="md" >
+
         <template slot="fullname" slot-scope="row">{{row.item.first_name}} {{row.item.last_name}}</template>
-        <template
-          slot="fulladdress"
-          slot-scope="row"
-        >{{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}</template>
+        <template slot="fulladdress" slot-scope="row">{{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}</template>
         <!-- <template slot="persontype" slot-scope="row"> {{personTypeName(row.item)}} </template>
         <template slot="position" slot-scope="row"> {{positionName(row.item)}} </template>-->
         <template slot="actions" slot-scope="row">
@@ -53,14 +40,7 @@
       <!-- <personEdit :show="showEdit" :draft="draft" @close="close"></personEdit> -->
     </div>
     <div class="box-footer text-center">
-      <b-pagination
-        :total-rows="totalRows"
-        :per-page="perPage"
-        align="center"
-        v-model="currentPage"
-        class="my-0"
-        @input="getPersons"
-      />
+      <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons"/>
     </div>
   </div>
 </template>
@@ -76,28 +56,12 @@ export default {
     return {
       fields: [
         { key: "id", label: "Id", sortable: true },
-        {
-          key: "fullname",
-          label: trans("bck.person.lbl_fullname"),
-          sortable: true
-        },
+        { key: "fullname", label: trans("bck.person.lbl_fullname"), sortable: true },
         { key: "email", label: trans("bck.person.lbl_email"), sortable: true },
-        {
-          key: "birthdate",
-          label: trans("bck.person.lbl_birthday"),
-          sortable: true
-        },
+        { key: "birthdate", label: trans("bck.person.lbl_birthday"), sortable: true },
         { key: "sex", label: trans("bck.person.lbl_sex"), sortable: true },
-        {
-          key: "maritalstatus",
-          label: trans("bck.person.lbl_maritalstatus"),
-          sortable: true
-        },
-        {
-          key: "fulladdress",
-          label: trans("bck.person.lbl_fulladdress"),
-          sortable: true
-        },
+        { key: "maritalstatus", label: trans("bck.person.lbl_maritalstatus"), sortable: true},
+        { key: "fulladdress", label: trans("bck.person.lbl_fulladdress"), sortable: true },
         // { key: 'persontype', label: trans('bck.person.lbl_persontype'), sortable: true },
         // { key: 'position', label: trans('bck.person.lbl_position'), sortable: true },
         { key: "actions", label: trans("bck.general.actions"), sortable: true }
@@ -176,28 +140,28 @@ export default {
     //   return persontype.name;
     // },
   },
-  computed: {
-    persons() {
-      return this.$store.state.Person.data;
-    },
-    current_page() {
-      return this.$store.state.Person.currentPage;
-    },
-    totalRows() {
-      return this.$store.state.Person.totalRows;
-    },
-    perPage() {
-      return this.$store.state.Person.perPage;
-    },
-    loading() {
-      return this.$store.state.Person.loading;
-    },
-    personTypes() {
-      return this.$store.state.PersonType.list;
-    },
-    position() {
-      return this.$store.state.Position.list;
-    }
-  }
+  // computed: {
+  //   persons() {
+  //     return this.$store.state.Person.data;
+  //   },
+  //   current_page() {
+  //     return this.$store.state.Person.currentPage;
+  //   },
+  //   totalRows() {
+  //     return this.$store.state.Person.totalRows;
+  //   },
+  //   perPage() {
+  //     return this.$store.state.Person.perPage;
+  //   },
+  //   loading() {
+  //     return this.$store.state.Person.loading;
+  //   },
+  //   personTypes() {
+  //     return this.$store.state.PersonType.list;
+  //   },
+  //   position() {
+  //     return this.$store.state.Position.list;
+  //   }
+  // }
 };
 </script>
