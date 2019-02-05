@@ -39,12 +39,8 @@
           slot="fulladdress"
           slot-scope="row"
         >{{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}</template>
-        <!-- <template slot="persontype" slot-scope="row">
-        {{personTypeName(row.item)}}
-      </template>
-      <template slot="position" slot-scope="row">
-         {{positionName(row.item)}}
-        </template>-->
+        <!-- <template slot="persontype" slot-scope="row"> {{personTypeName(row.item)}} </template>
+        <template slot="position" slot-scope="row"> {{positionName(row.item)}} </template>-->
         <template slot="actions" slot-scope="row">
           <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
             <i class="fa fa-pencil"></i>
@@ -124,14 +120,14 @@ export default {
     create() {
       this.draft = {
         id: null,
-        firstname: "",
-        lastname: "",
+        first_name: "",
+        last_name: "",
         maritalstatus: null,
         birthday: null,
         sex: null,
         address: "",
         street: "",
-        zipcode: null,
+        postal_code: null,
         email: "",
         cnt_emerg_name: null,
         cnt_emerg_phone: null,
@@ -140,8 +136,6 @@ export default {
         crt_employer_address: null,
         position_id: null,
         persontype_id: null,
-        user_creac_id: null,
-        user_modif_id: null,
         active: null
       };
       this.showEdit = true;

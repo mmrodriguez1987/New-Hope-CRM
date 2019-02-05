@@ -1,11 +1,9 @@
 <?php
 
 
-//Auth::routes();
+Auth::routes();
 
-Route::get('/', 'PersonController@index');
-
-
+Route::get('/', 'DashboardController@index');
 
 Route::prefix('admin')->group(function () {
     

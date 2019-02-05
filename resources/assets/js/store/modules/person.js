@@ -31,7 +31,7 @@ let actions = {
           "&orderBy=" +
           params.orderBy +
           "&desc=" +
-          params.sortDesc
+          params.desc
       )
       .then(response => {
         context.commit("getPersons", { data: reponse.data });

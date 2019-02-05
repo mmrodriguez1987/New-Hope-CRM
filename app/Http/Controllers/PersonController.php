@@ -14,8 +14,8 @@ class PersonController extends Controller
     public function index()
     {
         return Person::search(request()->search)
-             ->orderBy(
-               request()->orderBy,
+            ->orderBy(
+                request()->orderBy,
                request()->desc == 'true' ? 'DESC' : 'ASC'
                )->paginate(10);
         
@@ -25,8 +25,8 @@ class PersonController extends Controller
     public function getAllPersons()
     {
         return Person::search(request()->search)
-          ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
-          ->paginate();
+            ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
+            ->paginate();
     }
 
 
