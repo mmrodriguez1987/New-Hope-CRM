@@ -15,8 +15,6 @@ Vue.use(Toasted,  {duration: 10000, iconPack : 'fontawesome', theme: 'outline'})
 Vue.use(wysiwyg, {  maxHeight: "500px" })
 
 
-Vue.component('datepicker', DatePicker)
-
 Vue.component('v-select', vSelect)
 
 //*Moment

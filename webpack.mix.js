@@ -24,5 +24,7 @@ mix.js('resources/assets/js/app.js', 'public/js/')
     './node_modules/ionicons/dist/fonts/*.*',
     './node_modules/bootstrap-sass/assets/fonts/bootstrap/*.*'
   ], 'public/fonts/')
-  .copy('./node_modules/admin-lte/dist/js/adminlte.min.js','public/js/')
+  .copy([
+    './node_modules/admin-lte/dist/js/adminlte.min.js'    
+  ],'public/js/')
   .sourceMaps();

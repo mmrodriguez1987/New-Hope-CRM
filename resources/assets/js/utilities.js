@@ -3,9 +3,10 @@ Vue.filter('dateFormat', function(value) {
 });
 
 //Localization
-Vue.prototype.trans = string => _.get(window.i18n, string);
-window.trans = string => _.get(window.i18n, string);
+Vue.prototype.trans = string => _.get(window.i18n, string)
+window.trans = string => _.get(window.i18n, string)
 
-window.clone = function(obj) {
+// clone
+window.clone = function (obj) {
   return JSON.parse(JSON.stringify(obj))
 }

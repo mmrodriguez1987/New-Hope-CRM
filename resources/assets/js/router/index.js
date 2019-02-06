@@ -3,8 +3,8 @@ import Router from 'vue-router'
 import Dashboard from '../components/dashboard.vue'
 import AdminPages from '../components/admin_pages.vue'
 import Person from '../components/person/Index.vue'
-import Position from '../components/position/Index.vue'
-import PersonType from '../components/person_type/Index.vue'
+// import Position from '../components/position/Index.vue'
+// import PersonType from '../components/person_type/Index.vue'
 
 Vue.use(Router)
 
@@ -12,7 +12,7 @@ let router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/admin',
+      path: '/admin/',
       component: AdminPages,
       children: [
         {
@@ -21,13 +21,14 @@ let router = new Router({
         },{
           path: 'persons',
           component: Person
-        },{
-          path: 'PersonTypes',
-          component: PersonType
-        },{
-          path: 'Position',
-          component: Position
         }
+        // ,{
+        //   path: 'PersonTypes',
+        //   component: PersonType
+        // },{
+        //   path: 'Position',
+        //   component: Position
+        // }
       ]
     },
     {

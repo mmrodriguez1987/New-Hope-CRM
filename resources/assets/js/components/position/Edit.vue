@@ -34,44 +34,44 @@
 </template>
 
 <script>
-export default {
-  props: ['show', 'draft'],
-  data(){
-    return{ }
-  },
-  created(){
+// export default {
+//   props: ['show', 'draft'],
+//   data(){
+//     return{ }
+//   },
+//   created(){
 
-  },
-  methods:{
-    listPositions(){
-      this.$store.dispatch('listPositions')
-    },
-    close(){
-      this.$emit('close')
-      this.images = []
-    },
-    save(){
-      if (this.draft.id) {
-        this.update()
-      } else{
-        this.store()
-      }
-      this.close()
-    },
-    update(){
-      this.$store.dispatch('updatePosition', { id:this.draft.id, draft:this.draft })
-    },
-    store(){
-      this.$store.dispatch('storePosition', {draft:this.draft})
-    },
-  },
-  computed:{
-    validForm(){
-      return this.validName
-    },
-    validName(){
-      return this.draft.name ? this.draft.name.length > 3 : false
-    },
-  }
-}
-</script>
+//   },
+//   methods:{
+//     listPositions(){
+//       this.$store.dispatch('listPositions')
+//     },
+//     close(){
+//       this.$emit('close')
+//       this.images = []
+//     },
+//     save(){
+//       if (this.draft.id) {
+//         this.update()
+//       } else{
+//         this.store()
+//       }
+//       this.close()
+//     },
+//     update(){
+//       this.$store.dispatch('updatePosition', { id:this.draft.id, draft:this.draft })
+//     },
+//     store(){
+//       this.$store.dispatch('storePosition', {draft:this.draft})
+//     },
+//   },
+//   computed:{
+//     validForm(){
+//       return this.validName
+//     },
+//     validName(){
+//       return this.draft.name ? this.draft.name.length > 3 : false
+//     },
+//   }
+// }
+//</script>
