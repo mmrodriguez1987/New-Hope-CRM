@@ -9,7 +9,7 @@
         <i class="fa fa-plus"></i>
         {{trans('bck.general.add')}}
       </button>
-      <spinner v-if="loading" :size="200"/>
+      <!-- <spinner v-if="loading" :size="200"/> -->
 
       <form class="form-inline pull-right">
         <div class="form-group mx-sm-6 mb-2">

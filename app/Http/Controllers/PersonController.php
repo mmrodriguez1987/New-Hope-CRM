@@ -13,11 +13,7 @@ class PersonController extends Controller
     
     public function index()
     {
-        return Person::search(request()->search)
-            ->orderBy(
-                request()->orderBy,
-               request()->desc == 'true' ? 'DESC' : 'ASC'
-               )->paginate(10);
+        return Person::orderBy('id', 'DESC')->paginate();
         
         
     }

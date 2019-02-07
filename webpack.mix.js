@@ -27,4 +27,26 @@ mix.js('resources/assets/js/app.js', 'public/js/')
   .copy([
     './node_modules/admin-lte/dist/js/adminlte.min.js'    
   ],'public/js/')
-  .sourceMaps();
+  .webpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules(?!\/foundation-sites)|bower_components/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: Config.babel()
+            }
+          ]
+        }
+      ]
+    },
+    resolve: {
+      alias: {
+        'vue$': 'vue/dist/vue.common.js'
+      }
+    }
+  });
+
+
