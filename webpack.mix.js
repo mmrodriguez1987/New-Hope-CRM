@@ -47,6 +47,7 @@ mix.js('resources/assets/js/app.js', 'public/js/')
         'vue$': 'vue/dist/vue.common.js'
       }
     }
-  });
+  })
+  .sourceMaps();
 
 

@@ -5,7 +5,7 @@ Auth::routes();
 
 Route::get('/', 'DashboardController@index')->name('home');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth'])->group(function () {
     
     
     //Persons

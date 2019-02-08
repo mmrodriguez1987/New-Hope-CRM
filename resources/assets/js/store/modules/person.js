@@ -7,7 +7,7 @@ let state = {
   totalRows: null,
   //currentPersonTypeId: null,
   //currentPositionTypeId: null,
-  //list: []
+
 };
 
 let getters = {
@@ -24,68 +24,66 @@ let actions = {
     context.state.loading = true;
     axios.get("/admin/person?page=" + params.page + "&search=" + params.target + "&orderBy=" + params.orderBy + "&desc=" + params.desc)
     .then(response => {
-      context.commit("getPersons", { data: reponse.data });
+      context.commit("getPersons", { data: response.data }); //tener cuidado cuando se escribe "response  "
       console.log("datos: "+ response);
       context.state.loading = false;
     })
    .catch(error => {
       Vue.toasted.show("Error in store.module.Person.getPersons: " + error.message,  { icon: "exclamation-triangle", type: "error"});
       console.log("Error in store.module.Person.getPersons: " + error.data);
-      console.log(response);
-      console.log(error.response);
       context.state.loading = false;
     });
   },
-  // createPerson({ commit, state }, payload) {
-  //   state.loading = true;
-  //   axios
-  //   .post("/admin/person/", payload)
-  //   .then(response => {
-  //     Vue.toasted.show(response.data.message, {icon: "plus", type: "success"});
-  //     commit("createPerson", response.data.data);
-  //     state.loading = false;
-  //   })
-  //   .catch(error => {
-  //     Vue.toasted.show(error.message, {icon: "exclamation-triangle", type: "error"});
-  //     state.loading = false;
-  //   });
-  // },
-  // updatePerson({ commit, state }, payload) {
-  //   state.loading = true;
-  //   axios.put("/admin/person/" + payload.id, payload)
-  //   .then(response => {
-  //     Vue.toasted.show(response.data.message, {icon: "pencil", type: "info"});
-  //     commit("updatePerson", response.data.data);
-  //     state.loading = false;
-  //   })
-  //   .catch(error => {
-  //     Vue.toasted.show(error.message, {icon: "exclamation-triangle", type: "error" });
-  //     state.loading = false;
-  //   });
-  // },
-  // removePerson(context, id) {
-  //   context.state.loading = true;
-  //   axios.delete("/admin/person/" + id)
-  //   .then(response => {
-  //     context.commit("removePerson", id);
-  //     Vue.toasted.show(response.data.message, {icon: "trash-o", type: "error"});
-  //     context.state.loading = false;
-  //   })
-  //   .catch(error => {
-  //     Vue.toasted.show(error.message, {icon: "exclamation-triangle",type: "error"});
-  //     context.state.loading = false;
-  //   });
-  // },
+  createPerson({ commit, state }, payload) {
+    state.loading = true;
+    axios
+    .post("/admin/person/", payload)
+    .then(response => {
+      Vue.toasted.show(response.data.message, {icon: "plus", type: "success"});
+      commit("createPerson", response.data.data);
+      state.loading = false;
+    })
+    .catch(error => {
+      Vue.toasted.show(error.message, {icon: "exclamation-triangle", type: "error"});
+      state.loading = false;
+    });
+  },
+  updatePerson({ commit, state }, payload) {
+    state.loading = true;
+    axios.put("/admin/person/" + payload.id, payload)
+    .then(response => {
+      Vue.toasted.show(response.data.message, {icon: "pencil", type: "info"});
+      commit("updatePerson", response.data.data);
+      state.loading = false;
+    })
+    .catch(error => {
+      Vue.toasted.show(error.message, {icon: "exclamation-triangle", type: "error" });
+      state.loading = false;
+    });
+  },
+  removePerson(context, id) {
+    context.state.loading = true;
+    axios.delete("/admin/person/" + id)
+    .then(response => {
+      context.commit("removePerson", id);
+      Vue.toasted.show(response.data.message, {icon: "trash-o", type: "error"});
+      context.state.loading = false;
+    })
+    .catch(error => {
+      Vue.toasted.show(error.message, {icon: "exclamation-triangle",type: "error"});
+      context.state.loading = false;
+    });
+  },
 
-  // listPerson(context) {
-  //   axio.get("/admin/personList")
-  //   .then(response => {
-  //     context.commit("listPerson", { data: response.data });
-  //   })
-  //   .catch(error => {
-  //     Vue.toasted.show(error.message, {icon: "exclamation-triangle", type: "error"});
-  //   });
-  // }
+  listPerson(context) {
+    axio.get("/admin/personList")
+    .then(response => {
+      context.commit("listPerson", { data: response.data });
+    })
+    .catch(error => {
+      Vue.toasted.show(error.message, {icon: "exclamation-triangle", type: "error"});
+    });
+  }
 };
 
 let mutations = {
