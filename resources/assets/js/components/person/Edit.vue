@@ -34,6 +34,18 @@
           <datepicker v-model="draft.birthday" input-class="form-control" />
         </b-col>      
       </b-row>
+
+       <!-- Last Name -->
+      <b-row class="mb-1">
+        <b-col cols="2"> </b-col>      
+        <b-col>
+            <label :class="validCode ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cid')}}</label>
+        </b-col>
+        <b-col>
+            <input type="text" v-model="draft.last_name" class="form-control">
+        </b-col>
+      </b-row>
+
         
       <!-- Marital Status -->
       <b-row class="mb-1">
@@ -101,8 +113,8 @@
         </b-row>
 
 
-      <b-row class="mb-1">
-        <b-col cols="2"> </b-col>
+        <b-row class="mb-1">
+          <b-col cols="2"> </b-col>
         <b-col><label :class="validZIPCode ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_zipcode')}}</label></b-col>
         <b-col><input type="number" v-model="draft.zipcode" class="form-control"></b-col>
       </b-row>
@@ -166,7 +178,7 @@
 
 <script>
 export default {
-  props: ['show', 'draft', 'positions', 'persontypes'],
+  props: ['show', 'draft', 'positions', 'persontypes', 'professions'],
   data() {
     return {
       sex: [ // ordenar este codigo
@@ -236,15 +248,34 @@ export default {
   },
   computed: {
     validForm() {
-      return this.validFirstName && this.validLastName && this.validEmail && this.validBirthday && this.validCntcEmrgName && this.validCntcEmrgAddress &&
-        this.validAddress && this.validPhone && this.validMaritalStaus && this.validStreet && this.validCity && this.validCntcEmrgPhone &&
-        this.validSex && this.validZIPCode && this.validState && this.validPhone && this.validPosition && this.validPersonType
+      return this.validFirstName && 
+        this.validLastName && 
+        this.validEmail && 
+        this.validBirthday && 
+        this.validCntcEmrgName && 
+        this.validCntcEmrgAddress &&
+        this.validAddress &&
+        this.validPhone && 
+        this.validMaritalStaus &&
+        this.validStreet && 
+        this.validCity && 
+        this.validCntcEmrgPhone &&
+        this.validSex && 
+        this.validZIPCode && 
+        this.validState && 
+        this.validPhone && 
+        this.validPosition && 
+        this.validPersonType &&
+        this.validProfession
+    },
+    validProfession() {
+      return this.draft.profession_id != null
     },
     validFirstName() {
-      return this.draft.firstname ? this.draft.firstname.length > 3 : false
+      return this.draft.first_name ? this.draft.first_name.length > 3 : false
     },
     validLastName() {
-      return this.draft.lastname ? this.draft.lastname.length > 3 : false
+      return this.draft.last_name ? this.draft.last_name.length > 3 : false
     },
     validBirthday() {
       var moment = require('moment')
@@ -253,7 +284,7 @@ export default {
       return this.draft.birthday ? today.diff(birthday, 'day') > 0 : false
     },
     validMaritalStaus() {
-      return this.draft.maritalstatus != null
+      return this.draft.marital_status != null
     },
     validEmail() {
       var re = /\S+@\S+\.\S+/
@@ -309,7 +340,15 @@ export default {
         result.push({value: this.persontypes[i].id,text: this.persontypes[i].name})
       }
       return result
-    }
+    }, 
+    options_professions() {
+      var result = [{value: null, text: trans('bck.person.lbl_profession')}]
+      for (var i = 0; i < this.professions.length; i++) {
+        result.push({value: this.professions[i].id,text: this.professions[i].name
+        })
+      }
+    },
+
   }
 }
 </script>

@@ -24,19 +24,18 @@ class PersonStoreRequest extends FormRequest
     public function rules()
     {
         return [
-          'firstname' => 'required',
-          'lastname' => 'required',
-          'estadocivil' => 'required',
+          'first_name' => 'required',
+          'last_name' => 'required',
+          'marital_status' => 'required',
           'birthdate' => 'required|date_format',
           'sex' => 'required',
           'address' => 'required',
-          'zipcode' => 'required|integer',
+          'postal_code' => 'required|integer',
           'city' => 'required',
+          'cid' => 'required',
           'email' => 'required|email',
           'position_id' => 'required',
-          'persontype_id' => 'required',
-          'user_creac_id' => 'required',
-          'user_modif_id' => 'required',
+          'persontype_id' => 'required',         
           'active' => 'required',
         ];
     }

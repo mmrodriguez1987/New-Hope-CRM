@@ -108,6 +108,7 @@ export default {
         sex: null,
         address: "",
         street: "",
+        city = "",
         postal_code: null,
         email: "",
         cnt_emerg_name: null,
