@@ -1,66 +1,66 @@
 <template>
-<div>
-  <b-modal v-model="show" :title="draft.id ? trans('bck.person.edit') : trans('bck.person.add')" @hide="close">
-    <b-container fluid>
-      <!-- First Name -->
-      <b-row class="mb-1">          
-        <b-col cols="2"> </b-col>           
-        <b-col>
-          <label :class="validFirstName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_firstname')}}</label>
-        </b-col>
-        <b-col>
-          <input type="text" v-model="draft.first_name" class="form-control">    
-        </b-col>
-      </b-row>
+  <div>
+    <b-modal v-model="show" :title="draft.id ? trans('bck.person.edit') : trans('bck.person.add')" @hide="close">
+      <b-container fluid>
+        <!-- First Name -->
+        <b-row class="mb-1">          
+          <b-col cols="2"> </b-col>           
+          <b-col>
+            <label :class="validFirstName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_firstname')}}</label>
+          </b-col>
+          <b-col>
+            <input type="text" v-model="draft.first_name" class="form-control">    
+          </b-col>
+        </b-row>
 
-      <!-- Last Name -->
-      <b-row class="mb-1">
-        <b-col cols="2"> </b-col>      
-        <b-col>
-            <label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_lastname')}}</label>
-        </b-col>
-        <b-col>
-            <input type="text" v-model="draft.last_name" class="form-control">
-        </b-col>
-      </b-row>
+        <!-- Last Name -->
+        <b-row class="mb-1">
+          <b-col cols="2"> </b-col>      
+          <b-col>
+              <label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_lastname')}}</label>
+          </b-col>
+          <b-col>
+              <input type="text" v-model="draft.last_name" class="form-control">
+          </b-col>
+        </b-row>
 
-      <!-- Birthday -->
-      <b-row class="mb-1">
-        <b-col cols="2"> </b-col>
-        <b-col>
-          <label :class="validBirthday ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_birthday')}}</label>
-        </b-col>
-        <b-col>
-          <datepicker v-model="draft.birthday" input-class="form-control" />
-        </b-col>      
-      </b-row>
+        <!-- Birthday -->
+        <b-row class="mb-1">
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label :class="validBirthday ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_birthday')}}</label>
+          </b-col>
+          <b-col>
+            <datepicker v-model="draft.birthday" input-class="form-control" />
+          </b-col>      
+        </b-row>
 
-       <!-- Last Name -->
-      <b-row class="mb-1">
-        <b-col cols="2"> </b-col>      
-        <b-col>
-            <label :class="validCode ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cid')}}</label>
-        </b-col>
-        <b-col>
-            <input type="text" v-model="draft.last_name" class="form-control">
-        </b-col>
-      </b-row>
+        <!-- CID -->
+        <b-row class="mb-1">
+          <b-col cols="2"> </b-col>      
+          <b-col>
+              <label :class="validCID ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cid')}}</label>
+          </b-col>
+          <b-col>
+              <input type="text" v-model="draft.cid" class="form-control">
+          </b-col>
+        </b-row>
 
-        
-      <!-- Marital Status -->
-      <b-row class="mb-1">
-        <b-col cols="2"> </b-col>
-        <b-col>
-          <label :class="validMaritalStaus ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_maritalstatus')}}</label>
-        </b-col>
-        <b-col>
-          <b-form-select v-model="draft.marital_status" :options="maritalstatus" class="mb-3" />
-        </b-col>
-      </b-row>
+          
+        <!-- Marital Status -->
+        <b-row class="mb-1">
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label :class="validMaritalStaus ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_maritalstatus')}}</label>
+          </b-col>
+          <b-col>
+            <b-form-select v-model="draft.marital_status" :options="maritalstatus" class="mb-3" />
+          </b-col>
+        </b-row>
 
-      <!-- Email -->
-      <b-row class="mb-1">
-        <b-col cols="2"> </b-col>
+        <!-- Email -->
+        <b-row class="mb-1">
+          <b-col cols="2"> </b-col>
           <b-col>
             <label :class="validEmail ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_email')}}</label>
           </b-col>
@@ -69,18 +69,18 @@
           </b-col>
         </b-row>
 
-        <!-- Sex -->
+          <!-- Sex -->
         <b-row>
           <b-col cols="2"> </b-col>
           <b-col>
             <label :class="validSex ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_sex')}}</label>
           </b-col>
-          <b-col>
-            <b-form-select v-model="draft.sex" :options="sex" class="mb-3" />
+          <b-col>            
+            <input type="text" v-model="draft.sex" class="form-control">
           </b-col>
         </b-row>
 
-        <!-- Adress -->
+          <!-- Adress -->
         <b-row class="mb-1">
           <b-col cols="2"> </b-col>
           <b-col>
@@ -112,70 +112,120 @@
           </b-col>
         </b-row>
 
-
+        <!-- Zip Code -->
         <b-row class="mb-1">
           <b-col cols="2"> </b-col>
-        <b-col><label :class="validZIPCode ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_zipcode')}}</label></b-col>
-        <b-col><input type="number" v-model="draft.zipcode" class="form-control"></b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="2"> </b-col>
-        <b-col><label :class="validState ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_state')}}</label></b-col>
-        <b-col>
-          <b-form-select v-model="draft.state" :options="states" class="mb-3" /></b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="2"> </b-col>
-        <b-col><label :class="validCntcEmrgName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_name')}}</label></b-col>
-        <b-col><input type="text" v-model="draft.cnt_emerg_name" class="form-control"></b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="2"> </b-col>
-        <b-col><label :class="validCntcEmrgPhone ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_phone')}}</label></b-col>
-        <b-col><input type="text" v-model="draft.cnt_emerg_phone" class="form-control"></b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="2"> </b-col>
-        <b-col><label :class="validCntcEmrgAddress ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_address')}}</label></b-col>
-        <b-col><input type="text" v-model="draft.cnt_emerg_address" class="form-control"></b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="2"> </b-col>
-        <b-col><label class="label-valid">{{trans('bck.person.lbl_crt_employer_name')}}</label></b-col>
-        <b-col><input type="text" v-model="draft.crt_employer_name" class="form-control"></b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="2"> </b-col>
-        <b-col><label class="label-valid">{{trans('bck.person.lbl_crt_employer_address')}}</label></b-col>
-        <b-col><input type="text" v-model="draft.crt_employer_address" class="form-control"></b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="2"> </b-col>
-        <b-col><label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_position')}}</label></b-col>
-        <b-col>
-          <b-form-select v-model="draft.position_id" :options="options_positions" class="mb-1" /></b-col>
-      </b-row>  
-      <b-row>
-        <b-col cols="2"> </b-col>
-        <b-col><label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label></b-col>
-        <b-col>
-          <b-form-select v-model="draft.persontype_id" :options="options_persontypes" class="mb-1" /></b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="2"> </b-col>
-        <b-col><label class="label-valid">{{trans('bck.general.active')}}</label></b-col>
-        <b-col>
-          <b-form-checkbox v-model="draft.active" value="true" unchecked-value="false" class="mb-1" /></b-col>
-      </b-row>
-    </b-container>
-    <div slot="modal-footer">
-      <b-btn variant="success" @click="save" :disabled="!validForm"> {{trans('bck.general.save')}}</b-btn>
-      <b-btn variant="danger" @click="close"> {{trans('bck.general.close')}}</b-btn>
-    </div>
-  </b-modal>
-</div>
-</template>
+          <b-col>
+            <label :class="validZIPCode ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_zipcode')}}</label>
+          </b-col>
+          <b-col>
+            <input type="number" v-model="draft.zipcode" class="form-control">
+          </b-col>
+        </b-row>
 
+        <!-- State -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label :class="validState ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_state')}}</label>
+          </b-col>
+          <b-col>
+            <b-form-select v-model="draft.state" :options="states" class="mb-3" />
+          </b-col>
+        </b-row>
+
+        <!-- Contact Emergency Name -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label :class="validCntcEmrgName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_name')}}</label>
+          </b-col>
+          <b-col>
+            <input type="text" v-model="draft.cnt_emerg_name" class="form-control">
+          </b-col>
+        </b-row>
+
+        <!-- Contact Emergency Phone -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label :class="validCntcEmrgPhone ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_phone')}}</label>
+          </b-col>
+          <b-col>
+            <input type="text" v-model="draft.cnt_emerg_phone" class="form-control">
+          </b-col>
+        </b-row>
+
+        <!-- Contact Emergency Address -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label :class="validCntcEmrgAddress ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_cnt_emerg_address')}}</label>
+          </b-col>
+          <b-col>
+            <input type="text" v-model="draft.cnt_emerg_address" class="form-control">
+          </b-col>
+        </b-row>
+
+        <!-- Employer Name -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label class="label-valid">{{trans('bck.person.lbl_crt_employer_name')}}</label>
+          </b-col>
+          <b-col>
+            <input type="text" v-model="draft.crt_employer_name" class="form-control">
+          </b-col>
+        </b-row>
+
+        <!-- Employer Address -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label class="label-valid">{{trans('bck.person.lbl_crt_employer_address')}}</label>
+          </b-col>
+          <b-col>
+            <input type="text" v-model="draft.crt_employer_address" class="form-control">
+          </b-col>
+        </b-row>
+
+        <!-- Position -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_position')}}</label>
+          </b-col>
+          <b-col>
+            <b-form-select v-model="draft.position_id" :options="options_positions" class="mb-1" />
+          </b-col>
+        </b-row>  
+
+        <!-- Person Type -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label>
+          </b-col>
+          <b-col>
+            <b-form-select v-model="draft.persontype_id" :options="options_persontypes" class="mb-1" />
+          </b-col>
+        </b-row>
+
+        <!-- Active -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col><label class="label-valid">{{trans('bck.general.active')}}</label></b-col>
+          <b-col>
+            <b-form-checkbox v-model="draft.active" value="true" unchecked-value="false" class="mb-1" /></b-col>
+        </b-row>        
+      </b-container>
+      <div slot="modal-footer">
+        <b-btn variant="success" @click="save" :disabled="!validForm"> {{trans('bck.general.save')}}</b-btn>
+        <b-btn variant="danger" @click="close"> {{trans('bck.general.close')}}</b-btn>
+      </div>
+    </b-modal>
+  </div>
+</template>
 <script>
 export default {
   props: ['show', 'draft', 'positions', 'persontypes', 'professions'],
@@ -262,6 +312,7 @@ export default {
         this.validCntcEmrgPhone &&
         this.validSex && 
         this.validZIPCode && 
+        this.validCID &&
         this.validState && 
         this.validPhone && 
         this.validPosition && 
@@ -289,6 +340,9 @@ export default {
     validEmail() {
       var re = /\S+@\S+\.\S+/
       return re.test(this.draft.email)
+    },
+    validCID() {
+      return this.draft.cid ? this.draft.cid.length > 3 : false
     },
     validCntcEmrgPhone() {
       return this.draft.cnt_emerg_phone != null
