@@ -44,7 +44,7 @@
                 </button>
             </template>
 			</b-table>
-      <position-edit :show="showEdit" :draft="draft" @close="close"></position-edit>
+      <!-- <position-edit :show="showEdit" :draft="draft" @close="close"></position-edit> -->
 
       </div>
       <div class="box-footer text-center">
@@ -58,10 +58,10 @@
             />
       </div>
 		</div>
-	</div>
+
 </template>
  <script>
- 	export default{
+// 	export default{
 // 		watch:{
 // 			target(){
 //         this.getPositions()

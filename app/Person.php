@@ -33,6 +33,18 @@ class Person extends Model
         'active'
     ];
 
+    public function persontype() {
+        return $this->Belongsto('nhcrm\Persontype');
+    }
+
+    public function profession() {
+        return $this->BelongTo('nhcrm\Profession');
+    }
+
+    public function position() {
+        return $this->BelongTo('nhcrm\Position');
+    }
+
     public function scopeSearch($query, $target) {
         if ($target != '') {
             $query->where('first_name', 'like', "%$target%")
