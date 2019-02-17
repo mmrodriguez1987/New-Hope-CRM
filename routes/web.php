@@ -1,5 +1,5 @@
 <?php
-
+use newhopecrm\Person;
 
 Auth::routes();
 
@@ -7,13 +7,19 @@ Route::get('/', 'DashboardController@index')->name('home');
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     
-    
+     // Route::get('person-test', function(){
+    //     //$pasteles = Pastel::where('sabor','vainilla')->get();
+    //     $persons = Person::with(['persontype','profession','position'])->get();
+    //     dd($persons);
+    // });
+
+
     //Persons
-    Route::get('person', 'PersonController@index');
-    Route::post('person', ['as' => 'person.store','uses' => 'PersonController@store']);
-    Route::put('person/{id}', ['as' => 'person.update', 'uses' => 'PersonController@update']);
-    Route::delete('person/{id}', ['as' => 'person.destroy','uses' => 'PersonController@destroy']);
-    Route::get('personList', ['as' => 'person.list','uses' => 'PersonController@list']);
+    Route::get('person', 'PersonController@index')->name('api.person.index');   
+    Route::post('person', 'PersonController@store')->name('api.person.store');
+    Route::put('person/{id}', 'PersonController@update')->name('api.person.update');
+    Route::delete('person/{id}', 'PersonController@destroy')->name('api.person.destroy');
+    Route::get('personList', 'PersonController@list')->name('api.person.list');
 
     //Postions
     Route::get('position', ['as' => 'position.index', 'uses' => 'PositionController@index']);

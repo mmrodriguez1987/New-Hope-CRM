@@ -42,14 +42,12 @@ class Person extends Model
     }
 
     public function profession() {
-        return $this->BelongTo(Profession::class);
+        return $this->BelongsTo(Profession::class);
     }
 
     public function position() {
-        return $this->BelongTo(Position::class);
+        return $this->BelongsTo(Position::class);
     }
-
-
 
     public function scopeSearch($query, $target) {
         if ($target != '') {
@@ -79,8 +77,6 @@ class Person extends Model
         }
         return $query;
     }
-
-
 
   
     public function scopeProfession($query, $profession_id) {
