@@ -9,7 +9,7 @@
         <i class="fa fa-plus"></i>
         {{trans('bck.general.add')}}
       </button>
-      <!-- <spinner v-if="loading" :size="200"/> -->
+      <spinner v-if="loading" :size="200"/> 
 
       <form class="form-inline pull-right">
         <div class="form-group mx-sm-6 mb-2">
@@ -26,8 +26,7 @@
         :fields="fields" 
         :no-local-sorting="true" 
         :sort-by.sync="sortBy" 
-        :sort-desc.sync="sortDesc"
-        
+        :sort-desc.sync="sortDesc"        
         @sort-changed="sortingChanged"  
         empty-text="Loading..." 
         stacked="md">
@@ -45,12 +44,20 @@
         </template>
 
         <template slot="persontype" slot-scope="row">
-          {{getPersonTypeName(row.item.person_type_id)}}
+          <!-- {{getPersonTypeName(row.item.person_type_id)}} -->
+          {{row.item.person_type_name_name}}
         </template>
 
         <template slot="position" slot-scope="row">
-          {{getPositionName(row.item.position_id)}}
+          <!-- {{getPositionName(row.item.position_id)}} -->
+          {{row.item.position_name}}
         </template> 
+
+        <template slot="profession" slot-scope="row">
+          <!-- {{getPositionName(row.item.position_id)}} -->
+          {{row.item.profession_name}}
+        </template> 
+
 
         <template slot="actions" slot-scope="row">            
           <button class="btn btn-info btn-sm" ><!-- @click="edit(row.item, row.index)"-->
@@ -85,22 +92,24 @@ export default {
   data() {
     return {
       fields: [
-        { key: "id", label: "Id", sortable: true },
-        { key: "fullname", label: trans("bck.person.lbl_fullname"), sortable: true },
-        { key: "email", label: trans("bck.person.lbl_email"), sortable: true },
-        { key: "birthdate", label: trans("bck.person.lbl_birthday"), sortable: true },
-        { key: "sex", label: trans("bck.person.lbl_sex"), sortable: true },
-        { key: "marital_status", label: trans("bck.person.lbl_maritalstatus"), sortable: true },
-        { key: "fulladdress", label: trans("bck.person.lbl_fulladdress"), sortable: true },
+        { key: 'id', label: 'ID', sortable: true },
+        { key: 'fullname', label: trans('bck.person.lbl_fullname'), sortable: true },
+        { key: 'email', label: trans('bck.person.lbl_email'), sortable: true },
+        { key: 'phone', label: trans('bck.person.lbl_phone'), sortable: true },
+        { key: 'birthdate', label: trans('bck.person.lbl_birthday'), sortable: true },
+        { key: 'sex', label: trans('bck.person.lbl_sex'), sortable: true },
+        { key: 'marital_status', label: trans('bck.person.lbl_maritalstatus'), sortable: true },
+        { key: 'fulladdress', label: trans('bck.person.lbl_fulladdress'), sortable: true },
         { key: 'person_type_id', label: trans('bck.person.lbl_persontype'), sortable: true },
         { key: 'position_id', label: trans('bck.person.lbl_position'), sortable: true },
-        { key: "actions", label: trans("bck.general.actions"), sortable: true }
+        { key: 'profession_id', label: trans('bck.person.lbl_profession'), sortable: true },
+        { key: 'actions', label: trans('bck.general.actions'),'class': 'pull-right', 'class': 'col-7' }
       ],
       currentPage: null,
       draft: {},
       target: '',
       currentIndex: null,
-      sortBy: "id",
+      sortBy: 'id',
       sortDesc: true
     };
   },
@@ -108,41 +117,41 @@ export default {
     this.getPersons();
   },
   methods: {
-    edit(item) {
-      this.draft = clone(item);
+    edit(item, index){
+      this.draft = clone(post)
+      this.currentIndex = index
+      this.showEdit = true 
     },
     create() {
       this.draft = {
         id: null,
-        first_name: "",
-        last_name: "",
+        first_name: null,
+        last_name: null,
         marital_status: null,
         birthday: null,
         sex: null,
-        address: "",
-        street: "",
-        cid: "",
-        city: "",
+        address: null,
+        street: null,
+        cid: null,
+        city: null,
         postal_code: null,
-        email: "",
+        email: null,
+        phone: null,
         cnt_emerg_name: null,
         cnt_emerg_phone: null,
         cnt_emerg_address: null,
         crt_employer_name: null,
+        crt_employer_phone: null,
         crt_employer_address: null,
         position_id: null,
         persontype_id: null,
+        profession_id: null,
         active: null
       };
       this.showEdit = true;
     },
     getPersons() {
-      let params = {
-        page: this.currentPage,
-        target: this.target,
-        orderBy: this.sortBy,
-        desc: this.sortDesc
-      };
+      let params = { page: this.currentPage, target: this.target, orderBy: this.sortBy, desc: this.sortDesc };
       this.$store.dispatch('getPersons', params)
     },
     close() {
@@ -150,7 +159,7 @@ export default {
     },
     remove(item) {
       if (confirm(trans("bck.person.delete_confirm") + item.name + "?")) {
-        this.$store.dispatch("removePerson", item.id)
+        this.$store.dispatch('removePerson', item.id)
       }
     },
     sortingChanged(ctx) {

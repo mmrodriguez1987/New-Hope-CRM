@@ -13,6 +13,13 @@ class PersonController extends Controller
     
     public function index()
     {
+        // return Person::all()
+        //     ->persontype(request()->person_type_id)
+        //     ->profession(request()->profession_id)
+        //     ->position(request()->position_id)
+        //     ->search(request()->search)
+        //     ->orderBy(request()->orderBy, request()->desc == true ? 'DESC' : 'ASC');
+
         return Person::orderBy('id', 'DESC')->paginate();
         
         

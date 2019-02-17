@@ -12,6 +12,6 @@ class PersonsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Person::class,1500)->create();      
+        factory(Person::class,50)->create();      
     }
 }

@@ -8,10 +8,10 @@ class Persontype extends Model
 {
     protected $table ='person_types';
     
-    public function persons()
-    {
-        return $this->hasMany(Persons::class);
-    }
+    // public function persons()
+    // {
+    //     return $this->hasMany(Persons::class);
+    // }
 
     //Scopes
     public function scopeSearch($query, $target)

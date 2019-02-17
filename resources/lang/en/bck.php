@@ -82,6 +82,7 @@ return [
     'lbl_firstname' => 'First Name',
     'lbl_lastname' => 'Last Name',
     'lbl_email' => 'Email',
+    'lbl_phone' => 'Phone',
     'lbl_maritalstatus' => 'Marital Status',
     'lbl_birthday' => 'Birthday',
     'lbl_sex' => 'Sex',
@@ -96,6 +97,7 @@ return [
     'lbl_cnt_emerg_phone' => 'Emergency Contact Phone',
     'lbl_cnt_emerg_address' => 'Emergency Contact Address',
     'lbl_crt_employer_name' => 'Current Employer Name',
+    'lbl_crt_employer_phone' => 'Current Employer Phone',
     'lbl_crt_employer_address' => 'Current Employer Address',
     'lbl_persontype' => 'Person Type',
     'lbl_position' => 'Position',
@@ -108,6 +110,7 @@ return [
     'Edit' => 'Edit Person',
     'select_position' => 'Select Position',
     'select_persontype' => 'Select Person Type',
+    'select_profession' => 'Select Profession',
   ],
   'user' => [
     'delete_confirm' => 'Do you want remove ',

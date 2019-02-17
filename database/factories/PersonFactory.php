@@ -17,11 +17,13 @@ $factory->define(newhopecrm\Person::class, function (Faker $faker) {
         'postal_code'=>33018,
         'city'=>$faker->city,
         'email' => $faker->unique()->safeEmail,
+        'phone' => $faker->unique()->PhoneNumber,
         'cnt_emerg_name' => $faker->name,
         'cnt_emerg_phone' => $faker->phoneNumber,
         'cnt_emerg_address' => $faker->address, 
         'crt_employer_name' => $faker->name,
         'crt_employer_address' => $faker->address,
+        'crt_employer_phone' => $faker->phoneNumber,
         'position_id' => rand(1,10), 
         'person_type_id' => rand(1,10), 
         'active' => $faker->boolean

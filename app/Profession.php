@@ -8,10 +8,10 @@ class Profession extends Model
 {
     protected $table = 'professions';
 
-    public function persons() {
+    // public function persons() {
 
-        return $this->hasMany(Person::class);
-    }
+    //     return $this->hasMany(Person::class);
+    // }
 
     //Scopes
     public function scopeSearch($query, $target)
