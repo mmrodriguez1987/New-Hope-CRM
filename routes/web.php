@@ -21,6 +21,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::delete('person/{id}', 'PersonController@destroy')->name('api.person.destroy');
     Route::get('personList', 'PersonController@list')->name('api.person.list');
 
+    //Professions
+    Route::get('profession', 'ProfessionController@index')->name('api.profession.index');   
+    Route::post('profession', 'ProfessionController@store')->name('api.profession.store');
+    Route::put('profession/{id}', 'ProfessionController@update')->name('api.profession.update');
+    Route::delete('profession/{id}', 'ProfessionController@destroy')->name('api.profession.destroy');
+    Route::get('professionList', 'ProfessionController@list')->name('api.profession.list');
+
     //Postions
     Route::get('position', ['as' => 'position.index', 'uses' => 'PositionController@index']);
     Route::post('position', ['as' => 'position.store', 'uses' => 'PositionController@store']);

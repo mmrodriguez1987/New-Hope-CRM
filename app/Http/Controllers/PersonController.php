@@ -39,6 +39,7 @@ class PersonController extends Controller
         $person->address = $request->address;
         $person->street = $request->street;
         $person->city = $request->city;
+        $person->cid = $request->cid;
         $person->phone = $request->phone;
         $person->postal_code = $request->postal_code;
         $person->email = $request->email;
@@ -48,8 +49,9 @@ class PersonController extends Controller
         $person->crt_employer_name = $request->crt_employer_name;
         $person->crt_employer_phone = $request->crt_employer_phone;
         $person->crt_employer_address = $request->crt_employer_address;
-        $person->persontype_id = $request->persontype;
-        $person->position_id = $request->position;
+        $person->person_type_id = $request->person_type_id;
+        $person->position_id = $request->position_id;
+        $person->profession_id = $request->profession_id;
         $person->active = $request->active;
         $person->save();
 

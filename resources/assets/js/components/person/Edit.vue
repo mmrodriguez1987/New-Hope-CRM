@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-modal v-model="show" :title="draft.id ? trans('bck.person.edit') : trans('bck.person.add')" @hide="close">
+    <b-modal v-model="show" size="lg" :title="draft.id ? trans('bck.person.edit') : trans('bck.person.add')" @hide="close">
       <b-container fluid>
         <!-- First Name -->
         <b-row class="mb-1">          
@@ -69,7 +69,7 @@
           </b-col>
         </b-row>
 
-          <!-- Sex -->
+        <!-- Sex -->
         <b-row>
           <b-col cols="2"> </b-col>
           <b-col>
@@ -80,7 +80,7 @@
           </b-col>
         </b-row>
 
-          <!-- Adress -->
+        <!-- Adress -->
         <b-row class="mb-1">
           <b-col cols="2"> </b-col>
           <b-col>
@@ -119,7 +119,7 @@
             <label :class="validZIPCode ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_zipcode')}}</label>
           </b-col>
           <b-col>
-            <input type="number" v-model="draft.zipcode" class="form-control">
+            <input type="number" v-model="draft.postal_code" class="form-control">
           </b-col>
         </b-row>
 
@@ -178,6 +178,17 @@
           </b-col>
         </b-row>
 
+        <!-- Employer Phone -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label class="label-valid">{{trans('bck.person.lbl_crt_employer_phone')}}</label>
+          </b-col>
+          <b-col>
+            <input type="text" v-model="draft.crt_employer_phone" class="form-control">
+          </b-col>
+        </b-row>
+
         <!-- Employer Address -->
         <b-row>
           <b-col cols="2"> </b-col>
@@ -211,6 +222,17 @@
           </b-col>
         </b-row>
 
+        <!-- Profession ID -->
+        <b-row>
+          <b-col cols="2"> </b-col>
+          <b-col>
+            <label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label>
+          </b-col>
+          <b-col>
+            <b-form-select v-model="draft.profession_id" :options="options_professions" class="mb-1" />
+          </b-col>
+        </b-row>
+
         <!-- Active -->
         <b-row>
           <b-col cols="2"> </b-col>
@@ -227,182 +249,182 @@
   </div>
 </template>
 <script>
-// export default {
-//   props: ['show', 'draft', 'positions', 'persontypes', 'professions'],
-//   data() {
-//     return {
-//       sex: [ // ordenar este codigo
-//         { value: null, text: trans('bck.general.select')},
-//         { value: 'M',  text: trans('bck.general.male')},
-//         { value: 'F',  text: trans('bck.general.female')}
-//       ],
-//       maritalstatus: [
-//         { value: null, text: trans('bck.general.select')},
-//         { value: 'married', text: trans('bck.ms.married')},
-//         { value: 'single', text: trans('bck.ms.single')},
-//         { value: 'widower', text: trans('bck.ms.widower')},
-//         { value: 'divorced', text: trans('bck.ms.divorced')},
-//         { value: 'cohabitant', text: trans('bck.ms.cohabitant')},
-//       ],
-//       //Estados de USA
-//       states: [
-//         { value: null, text: trans('bck.general.select')},
-//         { value: 'FL', text: trans('bck.states.FL')},
-//         { value: 'AL', text: trans('bck.states.AL')},
-//         { value: 'AK', text: trans('bck.states.AK')},
-//         { value: 'AZ', text: trans('bck.states.AZ')},
-//         { value: 'AR', text: trans('bck.states.AR')},
-//         { value: 'CA', text: trans('bck.states.CA')},
-//         { value: 'NC', text: trans('bck.states.NC')},
-//         { value: 'SC', text: trans('bck.states.SC')},
-//         { value: 'CO', text: trans('bck.states.CO')},
-//         { value: 'CT', text: trans('bck.states.CT')},
-//         { value: 'ND', text: trans('bck.states.ND')},
-//         { value: 'SD', text: trans('bck.states.SD')},
-//         { value: 'DE', text: trans('bck.states.DE')},
-//         { value: 'DC', text: trans('bck.states.DC')},
-//         { value: 'GA', text: trans('bck.states.GA')},
-//         { value: 'HI', text: trans('bck.states.HI')},
-//         { value: 'ID', text: trans('bck.states.ID')},
-//         { value: 'IL', text: trans('bck.states.IL')},
-//         { value: 'IN', text: trans('bck.states.IN')},
-//         { value: 'IA', text: trans('bck.states.IA')},
-//         { value: 'KS', text: trans('bck.states.KS')},
-//         { value: 'KY', text: trans('bck.states.KY')}
-//       ],
-//     }
-//   },
-//   methods: {
-//     close() {
-//       this.$emit('close')
-//     },
-//     save() {
-//       if (this.draft.id) {
-//         this.update()
-//       } else {
-//         this.store()
-//       }
-//       this.close()
-//     },
-//     update() {
-//       var draft = this.draft
-//       var id = this.draft.id
-//       this.$store.dispatch('updatePerson', {
-//         id: id,
-//         draft
-//       })
-//     },
-//     store() {
-//       this.$store.dispatch('storePerson', this.draft)
-//     },
-//   },
-//   computed: {
-//     validForm() {
-//       return this.validFirstName && 
-//         this.validLastName && 
-//         this.validEmail && 
-//         this.validBirthday && 
-//         this.validCntcEmrgName && 
-//         this.validCntcEmrgAddress &&
-//         this.validAddress &&
-//         this.validPhone && 
-//         this.validMaritalStaus &&
-//         this.validStreet && 
-//         this.validCity && 
-//         this.validCntcEmrgPhone &&
-//         this.validSex && 
-//         this.validZIPCode && 
-//         this.validCID &&
-//         this.validState && 
-//         this.validPhone && 
-//         this.validPosition && 
-//         this.validPersonType &&
-//         this.validProfession
-//     },
-//     validProfession() {
-//       return this.draft.profession_id != null
-//     },
-//     validFirstName() {
-//       return this.draft.first_name ? this.draft.first_name.length > 3 : false
-//     },
-//     validLastName() {
-//       return this.draft.last_name ? this.draft.last_name.length > 3 : false
-//     },
-//     validBirthday() {
-//       var moment = require('moment')
-//       var today = moment.now
-//       var birthday = moment(this.draft.birthday)
-//       return this.draft.birthday ? today.diff(birthday, 'day') > 0 : false
-//     },
-//     validMaritalStaus() {
-//       return this.draft.marital_status != null
-//     },
-//     validEmail() {
-//       var re = /\S+@\S+\.\S+/
-//       return re.test(this.draft.email)
-//     },
-//     validCID() {
-//       return this.draft.cid ? this.draft.cid.length > 3 : false
-//     },
-//     validCntcEmrgPhone() {
-//       return this.draft.cnt_emerg_phone != null
-//     },
-//     validAddress() {
-//       return this.draft.address != null
-//     },
-//     validStreet() {
-//       return this.draft.street != null
-//     },
-//     validCntcEmrgName() {
-//       return this.draft.cnt_emerg_name != null
-//     },
-//     validCity() {
-//       return this.draft.city != null
-//     },
-//     validCntcEmrgAddress() {
-//       return this.draft.cnt_emerg_address != null
-//     },
-//     validSex() {
-//       return this.draft.sex != null
-//     },
-//     validZIPCode() {
-//       return this.draft.zipcode ? this.draft.zipcode > 30000 : false
-//     },
-//     validState() {
-//       return this.draft.state != null
-//     },
-//     validPhone() {
-//       return this.draft.phone != null
-//     },
-//     validPosition() {
-//       return this.draft.position_id != null
-//     },
-//     validPersonType() {
-//       return this.draft.persontype_id != null
-//     },
-//     options_positions() {
-//       var result = [{value: null, text: trans('bck.person.select_position')}]
-//       for (var i = 0; i < this.positions.length; i++) {
-//         result.push({value: this.positions[i].id,text: this.positions[i].name
-//         })
-//       }
-//       return result
-//     },
-//     options_persontypes() {
-//       var result = [{value: null,text: trans('bck.person.select_persontype')}]
-//       for (var i = 0; i < this.persontypes.length; i++) {
-//         result.push({value: this.persontypes[i].id,text: this.persontypes[i].name})
-//       }
-//       return result
-//     }, 
-//     options_professions() {
-//       var result = [{value: null, text: trans('bck.person.lbl_profession')}]
-//       for (var i = 0; i < this.professions.length; i++) {
-//         result.push({value: this.professions[i].id,text: this.professions[i].name
-//         })
-//       }
-//     },
+export default {
+  props: ['show', 'draft', 'positions', 'persontypes', 'professions'],
+  data() {
+    return {
+      sex: [ // ordenar este codigo
+        { value: null, text: trans('bck.general.select')},
+        { value: 'M',  text: trans('bck.general.male')},
+        { value: 'F',  text: trans('bck.general.female')}
+      ],
+      maritalstatus: [
+        { value: null, text: trans('bck.general.select')},
+        { value: 'married', text: trans('bck.ms.married')},
+        { value: 'single', text: trans('bck.ms.single')},
+        { value: 'widower', text: trans('bck.ms.widower')},
+        { value: 'divorced', text: trans('bck.ms.divorced')},
+        { value: 'cohabitant', text: trans('bck.ms.cohabitant')},
+      ],
+      //Estados de USA
+      states: [
+        { value: null, text: trans('bck.general.select')},
+        { value: 'FL', text: trans('bck.states.FL')},
+        { value: 'AL', text: trans('bck.states.AL')},
+        { value: 'AK', text: trans('bck.states.AK')},
+        { value: 'AZ', text: trans('bck.states.AZ')},
+        { value: 'AR', text: trans('bck.states.AR')},
+        { value: 'CA', text: trans('bck.states.CA')},
+        { value: 'NC', text: trans('bck.states.NC')},
+        { value: 'SC', text: trans('bck.states.SC')},
+        { value: 'CO', text: trans('bck.states.CO')},
+        { value: 'CT', text: trans('bck.states.CT')},
+        { value: 'ND', text: trans('bck.states.ND')},
+        { value: 'SD', text: trans('bck.states.SD')},
+        { value: 'DE', text: trans('bck.states.DE')},
+        { value: 'DC', text: trans('bck.states.DC')},
+        { value: 'GA', text: trans('bck.states.GA')},
+        { value: 'HI', text: trans('bck.states.HI')},
+        { value: 'ID', text: trans('bck.states.ID')},
+        { value: 'IL', text: trans('bck.states.IL')},
+        { value: 'IN', text: trans('bck.states.IN')},
+        { value: 'IA', text: trans('bck.states.IA')},
+        { value: 'KS', text: trans('bck.states.KS')},
+        { value: 'KY', text: trans('bck.states.KY')}
+      ],
+    }
+  },
+  methods: {
+    close() {
+      this.$emit('close')
+    },
+    save() {
+      if (this.draft.id) {
+        this.update()
+      } else {
+        this.store()
+      }
+      this.close()
+    },
+    update() {
+      var draft = this.draft
+      var id = this.draft.id
+      this.$store.dispatch('updatePerson', {
+        id: id,
+        draft
+      })
+    },
+    store() {
+      this.$store.dispatch('storePerson', this.draft)
+    },
+  },
+  computed: {
+    validForm() {
+      return this.validFirstName && 
+        this.validLastName && 
+        this.validEmail && 
+        this.validBirthday && 
+        this.validCntcEmrgName && 
+        this.validCntcEmrgAddress &&
+        this.validAddress &&
+        this.validPhone && 
+        this.validMaritalStaus &&
+        this.validStreet && 
+        this.validCity && 
+        this.validCntcEmrgPhone &&
+        this.validSex && 
+        this.validZIPCode && 
+        this.validCID &&
+        this.validState && 
+        this.validPhone && 
+        this.validPosition && 
+        this.validPersonType &&
+        this.validProfession
+    },
+    validProfession() {
+      return this.draft.profession_id != null
+    },
+    validFirstName() {
+      return this.draft.first_name ? this.draft.first_name.length > 3 : false
+    },
+    validLastName() {
+      return this.draft.last_name ? this.draft.last_name.length > 3 : false
+    },
+    validBirthday() {
+      var moment = require('moment')
+      var today = moment.now
+      var birthday = moment(this.draft.birthday)
+      return this.draft.birthday ? today.diff(birthday, 'day') > 0 : false
+    },
+    validMaritalStaus() {
+      return this.draft.marital_status != null
+    },
+    validEmail() {
+      var re = /\S+@\S+\.\S+/
+      return re.test(this.draft.email)
+    },
+    validCID() {
+      return this.draft.cid ? this.draft.cid.length > 3 : false
+    },
+    validCntcEmrgPhone() {
+      return this.draft.cnt_emerg_phone != null
+    },
+    validAddress() {
+      return this.draft.address != null
+    },
+    validStreet() {
+      return this.draft.street != null
+    },
+    validCntcEmrgName() {
+      return this.draft.cnt_emerg_name != null
+    },
+    validCity() {
+      return this.draft.city != null
+    },
+    validCntcEmrgAddress() {
+      return this.draft.cnt_emerg_address != null
+    },
+    validSex() {
+      return this.draft.sex != null
+    },
+    validZIPCode() {
+      return this.draft.zipcode ? this.draft.zipcode > 30000 : false
+    },
+    validState() {
+      return this.draft.state != null
+    },
+    validPhone() {
+      return this.draft.phone != null
+    },
+    validPosition() {
+      return this.draft.position_id != null
+    },
+    validPersonType() {
+      return this.draft.persontype_id != null
+    },
+    options_positions() {
+      var result = [{value: null, text: trans('bck.person.select_position')}]
+      for (var i = 0; i < this.positions.length; i++) {
+        result.push({value: this.positions[i].id,text: this.positions[i].name
+        })
+      }
+      return result
+    },
+    options_persontypes() {
+      var result = [{value: null,text: trans('bck.person.select_persontype')}]
+      for (var i = 0; i < this.persontypes.length; i++) {
+        result.push({value: this.persontypes[i].id,text: this.persontypes[i].name})
+      }
+      return result
+    }, 
+    options_professions() {
+      var result = [{value: null, text: trans('bck.person.lbl_profession')}]
+      for (var i = 0; i < this.professions.length; i++) {
+        result.push({value: this.professions[i].id,text: this.professions[i].name
+        })
+      }
+    },
 
-//   }
-// }
+  }
+}
 </script>

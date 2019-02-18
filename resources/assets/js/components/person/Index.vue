@@ -32,7 +32,7 @@
         </template>
 
         <template slot="actions" slot-scope="row">            
-          <button class="btn btn-info btn-sm" ><!-- @click="edit(row.item, row.index)"-->
+          <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
             <i class="fa fa-pencil"></i>
           </button>
           <button class="btn btn-danger btn-sm" @click="remove(row.item, row.index)">
@@ -40,7 +40,8 @@
           </button>
         </template>
       </b-table>
-      <!-- <personEdit :show="showEdit" :draft="draft" @close="close"></personEdit> -->
+      
+      <person-edit :show="showEdit" :draft="draft" @close="close"></person-edit> 
     </div>
     <div class="box-footer text-center">
       <b-pagination 
@@ -100,15 +101,16 @@ export default {
         first_name: null,
         last_name: null,
         marital_status: null,
-        birthday: null,
+        birthday: null, 
+        cid: null,
         sex: null,
         address: null,
-        street: null,
-        cid: null,
+        street: null,       
         city: null,
         postal_code: null,
         email: null,
         phone: null,
+        state: null,
         cnt_emerg_name: null,
         cnt_emerg_phone: null,
         cnt_emerg_address: null,
@@ -176,8 +178,11 @@ export default {
     personTypes() {
       return this.$store.state.PersonType.list
     },
-    position() {
+    positions() {
       return this.$store.state.Position.list
+    },
+    professions() {
+      return this.$store.state.Profession.list
     }
   }
 }
