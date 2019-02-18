@@ -38,15 +38,15 @@ class Person extends Model
     protected $appends = ['position_name','profession_name','person_type_name'];
 
     public function persontype() {
-        return $this->Belongsto(Persontype::class);
+        return $this->BelongsTo(Persontype::class, 'person_type_id');
     }
 
     public function profession() {
-        return $this->BelongsTo(Profession::class);
+        return $this->BelongsTo(Profession::class, 'profession_id');
     }
 
     public function position() {
-        return $this->BelongsTo(Position::class);
+        return $this->BelongsTo(Position::class, 'position_id');
     }
 
     public function scopeSearch($query, $target) {

@@ -6,20 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use newhopecrm\Http\Requests\PersonStoreRequest;
+use Illuminate\Support\Str;
 use newhopecrm\Person;
 
 class PersonController extends Controller
 {
     
     public function index()
-    {
-        return Person::all()
+    {        
+        return Person::with('persontype','profession','position')
             ->search(request()->search)
-            ->orderBy(request()->orderBy, request()->desc == true ? 'DESC' : 'ASC');
-
-        //return Person::orderBy('id', 'DESC')->paginate();
-        
-        
+            ->orderBy('id','DESC')
+            ->paginate(10);   
     }
 
     public function getAllPersons()

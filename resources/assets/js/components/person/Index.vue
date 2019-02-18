@@ -21,16 +21,8 @@
       <div class="clearfix"></div>
 
       <hr>
-      <b-table ref="table" striped hover 
-        :items="persons" 
-        :fields="fields" 
-        :no-local-sorting="true" 
-        :sort-by.sync="sortBy" 
-        :sort-desc.sync="sortDesc"        
-        @sort-changed="sortingChanged"  
-        empty-text="Loading..." 
-        stacked="md">
-        
+      <b-table striped hover :items="persons" :fields="fields" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"  @sort-changed="sortingChanged" >
+       
         <template slot="fullname" slot-scope="row">
           {{row.item.first_name}} {{row.item.last_name}}
         </template>
@@ -38,26 +30,6 @@
         <template slot="fulladdress" slot-scope="row">
           {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}
         </template>
-
-        <template slot="marital_status" slot-scope="row">
-          {{row.item.marital_status}}
-        </template>
-
-        <template slot="persontype" slot-scope="row">
-          <!-- {{getPersonTypeName(row.item.person_type_id)}} -->
-          {{row.item.person_type_name_name}}
-        </template>
-
-        <template slot="position" slot-scope="row">
-          <!-- {{getPositionName(row.item.position_id)}} -->
-          {{row.item.position_name}}
-        </template> 
-
-        <template slot="profession" slot-scope="row">
-          <!-- {{getPositionName(row.item.position_id)}} -->
-          {{row.item.profession_name}}
-        </template> 
-
 
         <template slot="actions" slot-scope="row">            
           <button class="btn btn-info btn-sm" ><!-- @click="edit(row.item, row.index)"-->
@@ -86,7 +58,7 @@
 export default {
   watch: {
     target() {
-      this.getPersons();
+      this.getPersons()
     }
   },
   data() {
@@ -100,10 +72,10 @@ export default {
         { key: 'sex', label: trans('bck.person.lbl_sex'), sortable: true },
         { key: 'marital_status', label: trans('bck.person.lbl_maritalstatus'), sortable: true },
         { key: 'fulladdress', label: trans('bck.person.lbl_fulladdress'), sortable: true },
-        { key: 'person_type_id', label: trans('bck.person.lbl_persontype'), sortable: true },
-        { key: 'position_id', label: trans('bck.person.lbl_position'), sortable: true },
-        { key: 'profession_id', label: trans('bck.person.lbl_profession'), sortable: true },
-        { key: 'actions', label: trans('bck.general.actions'),'class': 'pull-right', 'class': 'col-7' }
+        { key: 'person_type_name', label: trans('bck.person.lbl_persontype'), sortable: true },
+        { key: 'position_name', label: trans('bck.person.lbl_position'), sortable: true },
+        { key: 'profession_name', label: trans('bck.person.lbl_profession'), sortable: true },
+        { key: 'actions', label: trans('bck.general.actions') }
       ],
       currentPage: null,
       draft: {},
@@ -111,10 +83,10 @@ export default {
       currentIndex: null,
       sortBy: 'id',
       sortDesc: true
-    };
+    }
   },
   created() {
-    this.getPersons();
+    this.getPersons()
   },
   methods: {
     edit(item, index){
@@ -147,15 +119,18 @@ export default {
         persontype_id: null,
         profession_id: null,
         active: null
-      };
-      this.showEdit = true;
+      }
+      this.showEdit = true
     },
     getPersons() {
-      let params = { page: this.currentPage, target: this.target, orderBy: this.sortBy, desc: this.sortDesc };
+      let params = { 
+        page: this.currentPage, 
+        target: this.target      
+      }
       this.$store.dispatch('getPersons', params)
     },
     close() {
-      this.showEdit = false;
+      this.showEdit = false
     },
     remove(item) {
       if (confirm(trans("bck.person.delete_confirm") + item.name + "?")) {
@@ -173,36 +148,36 @@ export default {
     getPositionName(index) {   
       //var id = item.position_id
       let position = this.positions.find(position => position.id == index)
-      return position.name;
+      return position.name
     },
     getPersonTypeName(index) {
       //var id = item.persontype_id
       let persontype = this.persontypes.find(persontype => persontype.id == index)
       console.log('The name is: ' + persontype.name )
-      return persontype.name;
+      return persontype.name
     },
   },
   computed: {
     persons() {
-      return this.$store.state.Person.persons;
+      return this.$store.state.Person.persons
     },
     current_page() {
-      return this.$store.state.Person.currentPage;
+      return this.$store.state.Person.currentPage
     },
     totalRows() {
-      return this.$store.state.Person.totalRows;
+      return this.$store.state.Person.totalRows
     },
     perPage() {
-      return this.$store.state.Person.perPage;
+      return this.$store.state.Person.perPage
     },
     loading() {
-      return this.$store.state.Person.loading;
+      return this.$store.state.Person.loading
     },
     personTypes() {
-      return this.$store.state.PersonType.list;
+      return this.$store.state.PersonType.list
     },
     position() {
-      return this.$store.state.Position.list;
+      return this.$store.state.Position.list
     }
   }
 }
