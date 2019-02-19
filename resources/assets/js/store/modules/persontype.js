@@ -1,129 +1,145 @@
 let state = {
-  personTypes: [],
+  persontypes: [],
+  list: [],
   perPage: null,
   currentPage: 1,
   lastPage: null,
   totalRows: null,
-  list: [],
-  loading: false,
-  data: [],
+  loading: false
 }
 
 let getters = {
-  findPersonType(state){
+  findPersontypes(state){
     return function(id){
-      console.log(id)
-      let personType = state.personTypes.find(personType => personType.id == id)
-      return personType;
+      let persontype = state.persontypes.find(persontype => persontype.id == id)
+      return persontype;
     }
   },
 }
 
 let actions = {
-  getPersonTypes(context, params) {
-    axios.get('api/admin/persontype?page=' + params.page + '&search=' + params.target + '&orderBy=' + params.orderBy + '&desc=' + params.desc)
+  getPersontypes(context, params) {
+    context.state.loading = true
+    axios.get('/admin/persontype?page=' + params.page + '&search=' + params.target)
+    .then(response => {
+      context.commit('getPersontype', { data: response.data })
+      context.state.loading = false
+    })
+    .catch(error => {
+      context.state.loading = false
+      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error' })
+      if (error.response) {                    
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+      } else if (error.request) {                    
+          console.log(error.request);
+      } else {                   
+          console.log('Error', error.message);
+      }
+      console.log(error.config);
+      context.state.loading = false
+    })
+  },
+
+  createPersontype({ commit, state }, payload) {
+    state.loading = true
+    axios.post('/admin/persontype/', payload)
+        .then(response => {
+            Vue.toasted.show(response.data.message, { icon: 'plus', type: 'success' })
+            commit('createPersontype', response.data.data)
+            state.loading = false
+        })
+        .catch(error => {
+            Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })                
+            if (error.response) {
+                console.log(error.response.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+            } else if (error.request) {
+                console.log(error.request)
+            } else {
+                console.log('Error', error.message)
+            }
+            console.log(error.config);
+            state.loading = false
+        })
+  },
+
+  updatePersontype({ commit, state }, payload) {
+    state.loading = true
+    axios.put('/admin/persontype/' + payload.id, payload)
+        .then(response => {
+            Vue.toasted.show(response.data.message, { icon: 'pencil', type: 'info' })
+            commit('updatePersontype', response.data.data)
+            state.loading = false
+        })
+        .catch(error => { 
+            Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
+            if (error.response) {
+                console.log(error.response.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+            } else if (error.request) {
+                console.log(error.request)
+            } else {
+                console.log('Error', error.message)
+            }
+            console.log(error.config);
+            state.loading = false
+        })
+  },
+  removePersontype(context, id) {
+    context.state.loading = true
+    axios.delete('/admin/persontype/' + id)
+        .then(response => {
+            context.commit('removePersontype', id)
+            Vue.toasted.show(response.data.message, { icon: 'trash-o', type: 'error' })
+            context.state.loading = false
+        })
+        .catch(error => {
+            Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
+            if (error.response) {
+                console.log(error.response.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+            } else if (error.request) {
+                console.log(error.request)
+            } else {
+                console.log('Error', error.message)
+            }
+            console.log(error.config);
+            context.state.loading = false
+        })
+  },
+
+  listPersontype(context) {
+    context.state.loading = true
+    axios.get('/admin/persontypeList')
       .then(response => {
-        context.commit('getPersonYypes', {
-        data: response.data
+        context.commit('listPersontype', {data: response.data})
+        context.state.loading = false
       })
-    })
-    .catch(error => {
-      console.log('Error on getPersonTypes' + error.message)
-      Vue.toasted.show(error.message, {
-        icon: 'exclamation-triangle',
-        type: 'error'
+      .catch(error => {
+        console.log(error)
+        context.state.loading = false
+        Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
       })
-    })
-  },
-
-  storePersonType(context, payload) {
-    context.state.loading = true
-    axios.post('api/admin/persontype', payload.draft)
-    .then(response => {
-      if (response.data.status == 0) {
-        for (var i = response.data.message.length - 1; i >= 0; i--) {
-          Vue.toasted.show(response.data.message[i], {icon: 'exclamation-triangle', type: 'error'})
-        }
-      } else {
-        let newPersontype = {
-          id: response.data.id,
-          name: payload.name,
-          user_creac_id: payload.user_creac_id,
-          user_modif_id: payload.user_modif_id,
-          active: payload.active,
-        }
-        context.commit('storePersonType', newPersontype)
-        Vue.toasted.show(response.data.message, {icon: 'plus', type: 'success'})
-      }
-      context.state.loading = false
-    })
-    .catch(error => {
-      console.log('Error on storePersonType' + error.message)
-      Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error'})
-      context.state.loading = false
-    })
-  },
-
-  updatePersonType(context, payload) {
-    context.state.loading = true
-    axios.put('api/admin/persontype/' + payload.id, payload.draft)
-    .then(response => {
-
-      if (response.data.status == 0) {
-        for (var i = response.data.message.length - 1; i >= 0; i--) {
-          Vue.toasted.show(response.data.message[i], {icon: 'exclamation-triangle', type: 'error'})
-        }
-      }else{
-        Vue.toasted.show(response.data.message, {icon: 'pencil', type: 'info'})
-        context.commit('updatePersonType', payload)
-      }
-      context.state.loading = false
-    })
-    .catch(error => {
-      console.log('Error on updatePersonType' + error.message)
-      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
-      context.state.loading = false
-    })
-  },
-
-  removePersonType(context, id) {
-    context.state.loading = true
-    axios.delete('api/admin/persontype/' + id)
-    .then(response => {
-      context.commit('removePersonType', id)
-      Vue.toasted.show(response.data.message, { icon: 'trash', type: 'error'})
-      context.state.loading = false
-    })
-    .catch(error => {
-      console.log('Error on removePersonType' + error.message)
-      Vue.toasted.show(error.message, {icon: 'exclamation-triangle',type: 'error'})
-      context.state.loading = false
-    })
-  },
-
-  listPersontypes(context){
-    axios.get('api/admin/personTypeList')
-    .then(response => {
-      context.commit('listPersontypes', {data: response.data})
-    })
-    .catch(error => {
-      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
-    })
   },
 }
 
 let mutations = {
-  getPersontypes(state, {data }) {
+  getPersontypes(state, {data}) {
     state.currentPage = data.current_page
     state.lastPage = data.last_page
     state.totalRows = data.total
     state.perPage = data.per_page
     state.persontypes = data.data;
   },
-  storePersontype(state, newPersontype) {
-    state.persontypes.unshift(newPersontype);
-  },
-  updatePersontype(state, {id, draft}) {
+  createPersontype(state, draft) {
+    state.persontypes.unshift(draft)
+},
+  updatePersontype(state, {id, draft} ) {
     let index = state.persontypes.findIndex(persontype => persontype.id == id);
     state.persontypes.splice(index, 1, draft);
   },
@@ -131,9 +147,9 @@ let mutations = {
     let index = state.persontypes.findIndex(persontype => persontype.id == id);
     state.persontypes.splice(index, 1);
   },
-  listPersontypes(state, data){
-        state.list = data.data;
+  listPersontype(state, data) {
+    state.list = data.data;
   },
 }
 
-export default { state, getters, actions, mutations}
+export default { state, getters, actions, mutations }

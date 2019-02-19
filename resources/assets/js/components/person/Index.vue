@@ -39,9 +39,7 @@
             <i class="fa fa-trash"></i>
           </button>
         </template>
-      </b-table>
-      
-      <person-edit :show="showEdit" :draft="draft" @close="close"></person-edit> 
+      </b-table>  
     </div>
     <div class="box-footer text-center">
       <b-pagination 
@@ -52,6 +50,14 @@
         class="my-0"
         @input="getPersons" />
     </div>
+    <person-edit 
+        :show="showEdit" 
+        :draft="draft" 
+        @close="close" 
+        :personTypes="personTypes" 
+        :positions="positions" 
+        :professions="professions" >
+      </person-edit>
   </div>
 </template>
 
@@ -83,11 +89,13 @@ export default {
       target: '',
       currentIndex: null,
       sortBy: 'id',
-      sortDesc: true
+      sortDesc: true,
+      showEdit: false
     }
   },
   created() {
     this.getPersons()
+    this.$store.dispatch('listPosition')
   },
   methods: {
     edit(item, index){

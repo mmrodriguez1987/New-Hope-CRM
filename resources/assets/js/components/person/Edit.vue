@@ -250,7 +250,7 @@
 </template>
 <script>
 export default {
-  props: ['show', 'draft', 'positions', 'persontypes', 'professions'],
+  props: ['show', 'draft', 'positions', 'personTypes', 'professions'],
   data() {
     return {
       sex: [ // ordenar este codigo
@@ -309,10 +309,7 @@ export default {
     update() {
       var draft = this.draft
       var id = this.draft.id
-      this.$store.dispatch('updatePerson', {
-        id: id,
-        draft
-      })
+      this.$store.dispatch('updatePerson', {id:this.draft.id, draft: this.draft})
     },
     store() {
       this.$store.dispatch('storePerson', this.draft)
@@ -402,27 +399,15 @@ export default {
     validPersonType() {
       return this.draft.persontype_id != null
     },
-    options_positions() {
-      var result = [{value: null, text: trans('bck.person.select_position')}]
-      for (var i = 0; i < this.positions.length; i++) {
-        result.push({value: this.positions[i].id,text: this.positions[i].name
-        })
-      }
-      return result
+    options_positions() {     
+      return this.positions
     },
     options_persontypes() {
-      var result = [{value: null,text: trans('bck.person.select_persontype')}]
-      for (var i = 0; i < this.persontypes.length; i++) {
-        result.push({value: this.persontypes[i].id,text: this.persontypes[i].name})
-      }
-      return result
+      return this.personTypes      
     }, 
     options_professions() {
-      var result = [{value: null, text: trans('bck.person.lbl_profession')}]
-      for (var i = 0; i < this.professions.length; i++) {
-        result.push({value: this.professions[i].id,text: this.professions[i].name
-        })
-      }
+      return this.professions
+     
     },
 
   }

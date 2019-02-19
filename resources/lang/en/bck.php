@@ -138,6 +138,17 @@ return [
     'edit' => 'Edit Position',
     'name' => 'Position Name: ',
   ],
+  'profession' => [
+    'title' => 'Professions',
+    'delete_confirm' => 'Do you want remove ',
+    'delete_message' => 'Profession deleted successfully',
+    'update_message' => 'Profession updated successfully',
+    'store_message' => 'Profession registered successfully',
+    'add' => 'Add Profession',
+    'edit' => 'Edit Profession',
+    'name' => 'Profession Name: ',
+  ],
+
   'persontype' => [
     'title' => 'Persons Types',
     'delete_confirm' => 'Do you want remove ',

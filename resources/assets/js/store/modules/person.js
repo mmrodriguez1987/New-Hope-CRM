@@ -1,13 +1,11 @@
 let state = {
   persons: [], 
+  list: [],
   perPage: null,
   loading: false,
   currentPage: 1,
   lastPage: null,
-  totalRows: null,
-  //currentPersonTypeId: null,
-  //currentPositionTypeId: null,
-
+  totalRows: null
 }
 
 let getters = {
@@ -111,23 +109,23 @@ let mutations = {
     state.persons = data.data
   },
 
-  // createPerson(state, draft) {
-  //   state.persons.unshift(draft)
-  // },
+  createPerson(state, draft) {
+    state.persons.unshift(draft)
+  },
 
-  // updatePerson(state, { id, draft }) {
-  //   let index = state.persons.findIndex(person => person.id == id)
-  //   state.persons.splice(index, 1, draft)
-  // },
+  updatePerson(state, { id, draft }) {
+    let index = state.persons.findIndex(person => person.id == id)
+    state.persons.splice(index, 1, draft)
+  },
 
-  // removePerson(state, id) {
-  //   let index = state.persons.findIndex(person => person.id == id)
-  //   state.persons.splice(index, 1)
-  // },
+  removePerson(state, id) {
+    let index = state.persons.findIndex(person => person.id == id)
+    state.persons.splice(index, 1)
+  },
 
-  // listPerson(state, data) {
-  //   state.list = data.data
-  // }
+  listPerson(state, data) {
+    state.list = data.data
+  }
 }
 
 export default { state, getters, actions, mutations }

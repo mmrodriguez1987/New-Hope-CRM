@@ -24,7 +24,7 @@ let actions = {
                 context.state.loading = false
             })
             .catch(error => {
-                Vue.toasted.show('Error getting Professions: ' + error.message, { icon: 'exclamation-triangle', type: 'error' })
+                Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
                 if (error.response) {                    
                     console.log(error.response.data);
                     console.log(error.response.status);

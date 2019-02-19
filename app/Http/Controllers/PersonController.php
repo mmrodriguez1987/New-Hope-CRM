@@ -3,10 +3,6 @@
 namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use newhopecrm\Http\Requests\PersonStoreRequest;
-use Illuminate\Support\Str;
 use newhopecrm\Person;
 
 class PersonController extends Controller
