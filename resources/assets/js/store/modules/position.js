@@ -117,7 +117,7 @@ let actions = {
     context.state.loading = true
     axios.get('/admin/positionList')
       .then(response => {
-        context.commit('listPositions', {data: response.data})
+        context.commit('listPosition', {data: response.data})
         context.state.loading = false
       })
       .catch(error => {

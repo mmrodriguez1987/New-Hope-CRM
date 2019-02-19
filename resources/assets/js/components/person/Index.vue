@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     edit(item, index){
-      this.draft = clone(post)
+      this.draft = clone(item)
       this.currentIndex = index
       this.showEdit = true 
     },
