@@ -5,6 +5,8 @@ import Profession from './modules/profession.js'
 import PersonType from './modules/persontype.js'
 import Position from './modules/position.js'
 
+import createPersistedState from 'vuex-persistedstate'
+
 Vue.use(Vuex)
 
 let store = new Vuex.Store({
@@ -13,7 +15,8 @@ let store = new Vuex.Store({
     PersonType,
     Position,
     Profession
-  }
+  },
+  plugins: [createPersistedState()],  
 })
 
 export default store

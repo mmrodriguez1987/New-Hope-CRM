@@ -7,3 +7,4 @@ Vue.component('person-edit', require('./components/person/Edit.vue').default);
 Vue.component('spinner', require('./components/helpers/Spinner.vue'));
 Vue.component('admin-pages', require('./components/admin_pages.vue'));
 Vue.component('dashboard', require('./components/dashboard.vue'));
+Vue.component('input-date', require('./components/helpers/InputDate.vue').default);

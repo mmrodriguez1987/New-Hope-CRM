@@ -96,6 +96,8 @@ export default {
   created() {
     this.getPersons()
     this.$store.dispatch('listPosition')
+    this.$store.dispatch('listProfession')
+    this.$store.dispatch('listPersontype')
   },
   methods: {
     edit(item, index){

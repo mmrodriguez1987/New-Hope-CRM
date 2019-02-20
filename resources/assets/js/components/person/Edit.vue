@@ -30,8 +30,8 @@
           <b-col>
             <label :class="validBirthday ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_birthday')}}</label>
           </b-col>
-          <b-col>
-            <datepicker v-model="draft.birthday" input-class="form-control" />
+          <b-col>            
+            <input-date v-model="draft.birthday"></input-date>
           </b-col>      
         </b-row>
 
