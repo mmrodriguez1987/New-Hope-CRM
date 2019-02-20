@@ -18,14 +18,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('person', 'PersonController@index')->name('api.person.index');   
     Route::post('person', 'PersonController@store')->name('api.person.store');
     Route::put('person/{id}', 'PersonController@update')->name('api.person.update');
-    Route::delete('person/{id}', 'PersonController@destroy')->name('api.person.destroy');
+    Route::delete('person/{id}', 'PersonController@delete')->name('api.person.destroy');
     Route::get('personList', 'PersonController@list')->name('api.person.list');
 
     //Professions
     Route::get('profession', 'ProfessionController@index')->name('api.profession.index');   
     Route::post('profession', 'ProfessionController@store')->name('api.profession.store');
     Route::put('profession/{id}', 'ProfessionController@update')->name('api.profession.update');
-    Route::delete('profession/{id}', 'ProfessionController@destroy')->name('api.profession.destroy');
+    Route::delete('profession/{id}', 'ProfessionController@delete')->name('api.profession.destroy');
     Route::get('professionList', 'ProfessionController@list')->name('api.profession.list');
 
     //Postions
@@ -33,16 +33,16 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('position', ['as' => 'position.store', 'uses' => 'PositionController@store']);
     Route::put('position/{id}', ['as' => 'position.update', 'uses' => 'PositionController@update']);
     Route::delete('position/{id}', ['as' => 'position.delete', 'uses' => 'PositionController@delete']);
+    Route::get('positionList', ['as' => 'position.list', 'uses' => 'PositionController@positionList']);
 
     //Person types
-    Route::get('persontype', ['as' => 'persontype.index', 'uses' => 'PersontypeController@index']);
-    Route::post('persontype', ['as' => 'persontype.store', 'uses' => 'PersontypeController@store']);
-    Route::put('persontype/{id}', ['as' => 'persontype.update', 'uses' => 'PersontypeController@update']);
-    Route::delete('persontype/{id}', ['as' => 'persontype.delete', 'uses' => 'PersontypeController@delete']);
+    Route::get('persontype', 'PersontypeController@index')->name('api.persontype.index');
+    Route::post('persontype', 'PersontypeController@store')->name('api.persontype.store');
+    Route::put('persontype/{id}', 'PersontypeController@update')->name('api.persontype.update');
+    Route::delete('persontype/{id}', 'PersontypeController@delete')->name('api.persontype.delete');
+    Route::get('persontypeList','PersontypeController@list')->name('api.persontype.list');
 
-    //DropDowns
-    Route::get('positionList', ['as' => 'position.list', 'uses' => 'PositionController@positionList']);
-    Route::get('personTypeList', ['as' => 'persontype.list', 'uses' => 'PersontypeController@personTypelist']);
+    
 });
 
 

@@ -48,4 +48,9 @@ class PositionController extends Controller
         $position = Position::destroy($id);
         return ['message' => trans('bck.position.delete_message')];
     }
+
+    public function list() 
+    {
+        return Position::all();
+    }
 }

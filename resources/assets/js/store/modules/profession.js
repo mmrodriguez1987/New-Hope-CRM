@@ -111,8 +111,8 @@ let actions = {
             })
     },
 
-    listprofession(context) {
-        axio.get('/admin/professionList')
+    listProfession(context) {
+        axios.get('/admin/professionList')
             .then(response => {
                 context.commit('listProfession', { data: response.data })
             })

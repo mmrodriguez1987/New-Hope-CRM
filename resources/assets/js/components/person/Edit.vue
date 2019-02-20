@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-modal v-model="show" size="lg" :title="draft.id ? trans('bck.person.edit') : trans('bck.person.add')" @hide="close">
+    <b-modal v-model="show" size="lg" :title="draft.id ? trans('bck.person.edit') : trans('bck.person.add')" @hide="close" centered   class="modal-lg">
       <b-container fluid>
         <!-- First Name -->
         <b-row class="mb-1">          

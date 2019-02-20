@@ -989,16 +989,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.85",
+            "version": "v0.86",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "66bf538d26b40fec0ae3cda79eea64fe2b0cc6de"
+                "reference": "84496e256a7cac3a7817db7ba534829a370a3201"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/66bf538d26b40fec0ae3cda79eea64fe2b0cc6de",
-                "reference": "66bf538d26b40fec0ae3cda79eea64fe2b0cc6de",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/84496e256a7cac3a7817db7ba534829a370a3201",
+                "reference": "84496e256a7cac3a7817db7ba534829a370a3201",
                 "shasum": ""
             },
             "require": {
@@ -1022,7 +1022,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2019-02-07T00:23:12+00:00"
+            "time": "2019-02-20T02:10:11+00:00"
         },
         {
             "name": "google/auth",
@@ -5410,16 +5410,16 @@
         },
         {
             "name": "phpunit/php-timer",
-            "version": "2.0.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-timer.git",
-                "reference": "8b8454ea6958c3dee38453d3bd571e023108c91f"
+                "reference": "8b389aebe1b8b0578430bda0c7c95a829608e059"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/8b8454ea6958c3dee38453d3bd571e023108c91f",
-                "reference": "8b8454ea6958c3dee38453d3bd571e023108c91f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/8b389aebe1b8b0578430bda0c7c95a829608e059",
+                "reference": "8b389aebe1b8b0578430bda0c7c95a829608e059",
                 "shasum": ""
             },
             "require": {
@@ -5431,7 +5431,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -5455,7 +5455,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2018-02-01T13:07:23+00:00"
+            "time": "2019-02-20T10:12:59+00:00"
         },
         {
             "name": "phpunit/php-token-stream",

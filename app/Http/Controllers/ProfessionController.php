@@ -42,4 +42,9 @@ class ProfessionController extends Controller
         $profession = Profession::destroy($id);
         return ['message' => trans('bck.profession.delete_message')];
     }
+
+     public function list() 
+    {
+        return Profession::all();
+    }
 }

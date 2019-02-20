@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       fields: [
-        { key: 'id', label: 'ID', sortable: true },
+        { key: 'id', label: trans('bck.person.lbl_fullname'), sortable: true },
         { key: 'fullname', label: trans('bck.person.lbl_fullname'), sortable: true },
         { key: 'email', label: trans('bck.person.lbl_email'), sortable: true },
         { key: 'phone', label: trans('bck.person.lbl_phone'), sortable: true },
@@ -100,8 +100,8 @@ export default {
     this.$store.dispatch('listPersontype')
   },
   methods: {
-    edit(item, index){
-      this.draft = clone(item)
+    edit(person, index){
+      this.draft = clone(person)
       this.currentIndex = index
       this.showEdit = true 
     },

@@ -99,7 +99,7 @@ return [
     'lbl_crt_employer_name' => 'Current Employer Name',
     'lbl_crt_employer_phone' => 'Current Employer Phone',
     'lbl_crt_employer_address' => 'Current Employer Address',
-    'lbl_persontype' => 'Person Type',
+    'lbl_persontype' => 'Type',
     'lbl_position' => 'Position',
     'lbl_active' => 'Active',
     'delete_confirm' => 'Do you want remove ',
