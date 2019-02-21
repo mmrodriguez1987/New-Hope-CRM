@@ -24,6 +24,7 @@
     "vue-template-compiler": "^2.6.6"
   },
   "dependencies": {
+    "@coreui/vue": "^2.1.2",
     "admin-lte": "^2.4.9",
     "bootstrap-sass": "^3.4.1",
     "bootstrap-vue": "^2.0.0-rc.13",
