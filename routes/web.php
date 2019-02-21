@@ -6,34 +6,27 @@ Auth::routes();
 Route::get('/', 'DashboardController@index')->name('home');
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
-    
-     // Route::get('person-test', function(){
-    //     //$pasteles = Pastel::where('sabor','vainilla')->get();
-    //     $persons = Person::with(['persontype','profession','position'])->get();
-    //     dd($persons);
-    // });
-
 
     //Persons
     Route::get('person', 'PersonController@index')->name('api.person.index');   
     Route::post('person', 'PersonController@store')->name('api.person.store');
     Route::put('person/{id}', 'PersonController@update')->name('api.person.update');
-    Route::delete('person/{id}', 'PersonController@delete')->name('api.person.destroy');
+    Route::delete('person/{id}', 'PersonController@delete')->name('api.person.delete');
     Route::get('personList', 'PersonController@list')->name('api.person.list');
 
     //Professions
     Route::get('profession', 'ProfessionController@index')->name('api.profession.index');   
     Route::post('profession', 'ProfessionController@store')->name('api.profession.store');
     Route::put('profession/{id}', 'ProfessionController@update')->name('api.profession.update');
-    Route::delete('profession/{id}', 'ProfessionController@delete')->name('api.profession.destroy');
+    Route::delete('profession/{id}', 'ProfessionController@delete')->name('api.profession.delete');
     Route::get('professionList', 'ProfessionController@list')->name('api.profession.list');
 
     //Postions
-    Route::get('position', ['as' => 'position.index', 'uses' => 'PositionController@index']);
-    Route::post('position', ['as' => 'position.store', 'uses' => 'PositionController@store']);
-    Route::put('position/{id}', ['as' => 'position.update', 'uses' => 'PositionController@update']);
-    Route::delete('position/{id}', ['as' => 'position.delete', 'uses' => 'PositionController@delete']);
-    Route::get('positionList', ['as' => 'position.list', 'uses' => 'PositionController@positionList']);
+    Route::get('position', 'PositionController@index')->name('api.position.index');
+    Route::post('position', 'PositionController@store')->name('api.position.store');
+    Route::put('position/{id}', 'PositionController@update')->name('api.position.update');
+    Route::delete('position/{id}','PositionController@delete')->name('api.position.delete');
+    Route::get('positionList', 'PositionController@positionList')->name('api.position.list');
 
     //Person types
     Route::get('persontype', 'PersontypeController@index')->name('api.persontype.index');

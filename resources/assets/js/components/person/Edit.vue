@@ -291,7 +291,7 @@ export default {
         { value: 'IA', text: trans('bck.states.IA')},
         { value: 'KS', text: trans('bck.states.KS')},
         { value: 'KY', text: trans('bck.states.KY')}
-      ],
+      ]     
     }
   },
   methods: {

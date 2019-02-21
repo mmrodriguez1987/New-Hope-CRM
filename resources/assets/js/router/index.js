@@ -15,32 +15,14 @@ let router = new Router({
       path: '/admin/',
       component: AdminPages,
       children: [
-        {
-          path: '',
-          component: Dashboard
-        },{
-          path: 'persons',
-          component: Person
-        }
-        // ,{
-        //   path: 'PersonTypes',
-        //   component: PersonType
-        // },{
-        //   path: 'Position',
-        //   component: Position
-        // }
+        { path: '', component: Dashboard },
+        { path: 'persons', component: Person }  
       ]
     },
     {
 			path: '*',
-			component: {
-				template : '<h1>Error 404</h1>'
-			}
+			component: Dashboard
 		},
-    {
-      path: '/:key',
-      component: Person,
-    },
   ]
 })
 
