@@ -10,7 +10,9 @@
 
 
 
-//3rd
+// Import styles with default layout.
+// If you are going to use dark layout please comment next line
+@import "~@coreui/coreui-pro/scss/coreui";
 
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 
