@@ -14,7 +14,7 @@
     "bootstrap": "^4.3.1",
     "cross-env": "^5.2.0",
     "jquery": "^3.2",
-    "laravel-mix": "^4.0.14",
+    "laravel-mix": "^4.0.15",
     "lodash": "^4.17.11",
     "popper.js": "^1.14.7",
     "resolve-url-loader": "^2.3.2",
@@ -24,8 +24,9 @@
     "vue-template-compiler": "^2.6.6"
   },
   "dependencies": {
+    "@coreui/coreui": "^2.1.9",
     "@coreui/vue": "^2.1.2",
-    "admin-lte": "^2.4.9",
+    "admin-lte": "^2.4.10",
     "bootstrap-sass": "^3.4.1",
     "bootstrap-vue": "^2.0.0-rc.13",
     "chart.js": "^2.7.3",
@@ -39,6 +40,7 @@
     "moment": "^2.24.0",
     "morris.js": "github:morrisjs/morris.js",
     "npm": "^6.8.0",
+    "perfect-scrollbar": "^1.4.0",
     "sparkline": "^0.2.0",
     "toastr": "^2.1.4",
     "vue-animate": "0.0.4",

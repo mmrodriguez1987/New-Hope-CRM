@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Michael Rodriguez',
             'email' => 'mrodriguez@nissienterprise.com',
             'password' => bcrypt('Pa$$w0rd'), 
+            'role_id' => 1,
             'phone' => '7863550502',
         ]);
 
@@ -23,6 +24,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Vianne Rodriguez',
             'email' => 'vrodriguez@nissienterprise.com',
             'password' => bcrypt('Pa$$w0rd'), 
+            'role_id' => 1,
             'phone' => '7863509949',
         ]);
 
@@ -30,6 +32,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Edgar Ordonez',
             'email' => 'pastoredgar@newhopeinchrist.church',
             'password' => bcrypt('Pa$$w0rd'), 
+            'role_id' => 1,
             'phone' => '3053640200',
         ]);
     }

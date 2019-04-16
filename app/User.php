@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','phone',
+        'name', 'email', 'password','phone', 'role_id'
     ];
 
     /**
@@ -26,6 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function rol()
+    {
+        return $this->belongsTo('App\Rol','role_id','id');
+    }
 
     
     public static function findByPhone($phone){

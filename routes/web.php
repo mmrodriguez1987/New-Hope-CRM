@@ -1,5 +1,5 @@
 <?php
-use newhopecrm\Person;
+
 
 Auth::routes();
 
