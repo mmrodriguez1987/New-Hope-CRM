@@ -1,7 +1,10 @@
 <template>
   <AppHeaderDropdown right no-caret>
     <template slot="header">
-      <i class="icon-location-pin"></i>
+      <img
+        src="img/avatars/6.jpg"
+        class="img-avatar"
+        alt="admin@bootstrapmaster.com" />
     </template>
     <template slot="dropdown">
       <div>

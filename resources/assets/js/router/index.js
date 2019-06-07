@@ -1,28 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Dashboard from '../components/dashboard.vue'
-import AdminPages from '../components/admin_pages.vue'
-import Person from '../components/person/Index.vue'
+import DefaultContainer from '../components/containers/DefaultContainer.vue'
+import Dashboard from '../components/Dashboard.vue'
+//import AdminPages from '../components/admin_pages.vue'
+//import Person from '../components/person/Index.vue'
 //import Position from '../components/position/Index.vue'
 //import PersonType from '../components/person_type/Index.vue'
+
 
 Vue.use(Router)
 
 let router = new Router({
   mode: 'history',
+  linkActiveClass: 'open active',
+  scrollBehavior: () => ({ y: 0 }),
   routes: [
     {
-      path: '/admin/',
-      component: AdminPages,
+      path: '/',
+      redirect: '/dashboard',
+      name: 'Home',
+      component: DefaultContainer,
       children: [
-        { path: '', component: Dashboard },
-        { path: 'persons', component: Person }  
+        {
+          path: 'dashboard',
+          name: 'Dashboard',
+          component: Dashboard
+        }
       ]
-    },
-    {
-			path: '*',
-			component: Dashboard
-		},
+    }
   ]
 })
 

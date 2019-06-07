@@ -1,6 +1,6 @@
 
 import './polyfill'
-import router from './router';
+import router from './router'
 import store from './store'
 import App from './components/App'
 
@@ -16,9 +16,10 @@ require('./vue_components')
 //Functions Utilities & Filters
 require('./utilities.js')
 
-const app = new Vue({
+new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App),
+  template: '<App/>',  
+  components: { App }
 })
