@@ -24,9 +24,10 @@
     "vue-template-compiler": "^2.6.6"
   },
   "dependencies": {
-    "@coreui/coreui": "^2.1.9",
+    "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
+    "@coreui/coreui-pro": "^2.1.6",
+    "@coreui/icons": "0.3.0",
     "@coreui/vue": "^2.1.2",
-    "admin-lte": "^2.4.10",
     "bootstrap-sass": "^3.4.1",
     "bootstrap-vue": "^2.0.0-rc.13",
     "chart.js": "^2.7.3",
