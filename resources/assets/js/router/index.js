@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import DefaultContainer from '../components/containers/DefaultContainer.vue'
+import DefaultContainer from '../container/DefaultContainer.vue'
 import Dashboard from '../components/Dashboard.vue'
 //import AdminPages from '../components/admin_pages.vue'
 //import Person from '../components/person/Index.vue'
