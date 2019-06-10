@@ -7,7 +7,7 @@
         {!! Html::style('css/app.css') !!}
     <body>
         <div id="app">  
-            <router-view></router-view>        
+            <router-view></router-view>
             {!! Html::script('js/app.js') !!}
             {!! Html::script('js/lang.js') !!}
         </div>

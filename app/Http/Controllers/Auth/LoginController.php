@@ -36,31 +36,31 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        //$this->middleware('guest')->except('logout');
     }
     
-    public function doLogin() {
+    // public function doLogin() {
 
-        if (request()->ajax()) {
+    //     if (request()->ajax()) {
        
-            if(Auth::attempt(['email' => request()->email, 'password' => request()->password])){
+    //         if(Auth::attempt(['email' => request()->email, 'password' => request()->password])){
                 
-                \Log::info('Login Successful');
-                $response = ['success' => true, 'user_name' => Auth::user()->name];
+    //             \Log::info('Login Successful');
+    //             $response = ['success' => true, 'user_name' => Auth::user()->name];
 
-               //return a JSON response
-               return response()->json($response);
+    //            //return a JSON response
+    //            return response()->json($response);
 
-            } else {
+    //         } else {
 
-               return response(['messaje' => 'Please, Make sure your email or password are correct'], 401)
-                      ->header('Content-Type' ,'application/json');
-           }
-        } else {
-            if (Auth::attempt(['email' => request()->email, 'password' => request()->password])) {
+    //            return response(['messaje' => 'Please, Make sure your email or password are correct'], 401)
+    //                   ->header('Content-Type' ,'application/json');
+    //        }
+    //     } else {
+    //         if (Auth::attempt(['email' => request()->email, 'password' => request()->password])) {
 
-                return redirect()->intended('/');
-            }
-        }
-    }
+    //             return redirect()->intended('/');
+    //         }
+    //     }
+    // }
 }

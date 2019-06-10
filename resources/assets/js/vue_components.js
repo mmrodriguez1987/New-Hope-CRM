@@ -1,4 +1,3 @@
-Vue.component('App',require('./App.vue'))
 //Vue.component('person', require('./components/person/Index.vue'));
 //Vue.component('person-edit', require('./components/person/Edit.vue').default);
 //Vue.component('position', require('./components/position/Index.vue'));

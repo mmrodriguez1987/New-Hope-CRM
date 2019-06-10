@@ -1,8 +1,8 @@
 
-import './polyfill'
+//import './polyfill'
 import router from './router'
 import store from './store'
-import App from './App'
+
 
 require('./bootstrap');
 window.Vue = require('vue');
@@ -19,7 +19,5 @@ require('./utilities.js')
 new Vue({
   el: '#app',
   router,
-  store,
-  template: '<App/>',  
-  components: { App }
+  store
 })
