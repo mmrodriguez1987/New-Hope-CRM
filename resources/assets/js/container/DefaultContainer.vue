@@ -7,34 +7,18 @@
         <img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
-      <b-navbar-nav class="d-md-down-none">
-        <b-nav-item class="px-3" to="/dashboard">Dashboard</b-nav-item>
-        <b-nav-item class="px-3" to="/users" exact>Users</b-nav-item>
-        <b-nav-item class="px-3">Settings</b-nav-item>
-      </b-navbar-nav>
-      <b-navbar-nav class="ml-auto">
-        <b-nav-item class="d-md-down-none">
-          <DefaultHeaderDropdownNotif/>
-        </b-nav-item>
-        <b-nav-item class="d-md-down-none">
-          <DefaultHeaderDropdownTasks/>
-        </b-nav-item>
-        <b-nav-item class="d-md-down-none">
-          <DefaultHeaderDropdownMssgs/>
-        </b-nav-item>
+      <b-navbar-nav class="d-md-down-none ml-auto">
         <b-nav-item class="d-md-down-none">
           <DefaultHeaderDropdown/>
         </b-nav-item>
-        <DefaultHeaderDropdownAccnt/>
       </b-navbar-nav>
       <AsideToggler class="d-none d-lg-block" />
-      <!--<AsideToggler class="d-lg-none" mobile />-->
     </AppHeader>
     <div class="app-body">
       <AppSidebar fixed>
         <SidebarHeader/>
         <SidebarForm/>
-        <SidebarNav :navItems="nav"></SidebarNav>
+        <SidebarNav :navItems="navItems"></SidebarNav>
         <SidebarFooter/>
         <SidebarMinimizer/>
       </AppSidebar>
@@ -52,8 +36,8 @@
     <TheFooter>
       <!--footer-->
       <div>
-        <a href="https://coreui.io">CoreUI</a>
-        <span class="ml-1">&copy; 2018 creativeLabs.</span>
+        <a href="https://coreui.io">NH S</a>
+        <span class="ml-1">&copy; 2019 creativeLabs.</span>
       </div>
       <div class="ml-auto">
         <span class="mr-1">Powered by</span>
