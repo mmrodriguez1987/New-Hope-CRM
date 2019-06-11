@@ -1,34 +1,14 @@
 let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js/')
-   .sass('resources/assets/sass/app.scss', 'public/css/')
+  .sass('resources/assets/sass/app.scss', 'public/css/')
 
   .copy([
     './node_modules/@coreui/coreui-pro/js/dist/ajax-load.js',
-    './node_modules/@coreui/coreui-pro/js/dist/sidebar.js'
+    './node_modules/@coreui/coreui-pro/js/dist/sidebar.js'   
   ],'public/js/')
+  .copy('resources/assets/img/','public/images/')
 
-  // .webpackConfig({
-  //   module: {
-  //     rules: [
-  //       {
-  //         test: /\.jsx?$/,
-  //         exclude: /node_modules(?!\/foundation-sites)|bower_components/,
-  //         use: [
-  //           {
-  //             loader: 'babel-loader',
-  //             options: Config.babel()
-  //           }
-  //         ]
-  //       }
-  //     ]
-  //   },
-  //   resolve: {
-  //     alias: {
-  //       'vue$': 'vue/dist/vue.common.js'
-  //     }
-  //   }
-  // })
   .sourceMaps();
 
 
