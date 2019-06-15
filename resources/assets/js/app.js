@@ -4,6 +4,8 @@ import store from './store'
 
 
 require('./bootstrap');
+
+// Set Vue globally
 window.Vue = require('vue');
 
 //3rd vue components

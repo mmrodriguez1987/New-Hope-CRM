@@ -8,5 +8,3 @@ mix.js('resources/assets/js/app.js', 'public/js/')
   ],'public/js/')
   .copy('resources/assets/img/','public/images/')
   .sourceMaps();
-
-

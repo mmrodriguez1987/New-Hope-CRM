@@ -36,13 +36,13 @@
                 </template>
 
                 <template slot="Actions" slot-scope="row">
-                <button class="btn btn-success" @click="edit(row.item, row.index)" :title="trans('app.common.edit')">
-                    <i class="fa fa-edit"></i>
-                </button>
-                <button class="btn btn-warning" @click="remove(row.item, row.index)" :title="trans('app.common.delete')">
-                    <i class="fa fa-trash-o"></i>
-                </button>
-            </template>
+                    <button class="btn btn-success" @click="edit(row.item, row.index)" :title="trans('app.common.edit')">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="btn btn-warning" @click="remove(row.item, row.index)" :title="trans('app.common.delete')">
+                        <i class="fa fa-trash-o"></i>
+                    </button>
+                </template>
 			</b-table>
       <!-- <position-edit :show="showEdit" :draft="draft" @close="close"></position-edit> -->
 
@@ -61,95 +61,95 @@
 
 </template>
  <script>
-// 	export default{
-// 		watch:{
-// 			target(){
-//         this.getPositions()
-//       }
-// 		},
-// 		data(){
-// 			return{
-//         currentPage: null,
-//         target: '',
-//         draft: {},
-//         currentIndex: null,
-//         showEdit: false,
-//         sortBy: 'id',
-//         sortDesc: true,
-//         currentId: null,
-// 			  pageOptions: [ 5, 10, 15 ],
-//         draft:{},
-//         filter: null,
-//         fields: [
-//           {	key: 'name', label: 'Name', sortable: true,	},
-//           {	key: 'Actions', label: trans('app.common.actions'), 'class': 'pull-right'	}
-//       	],
-// 			}
-// 		},
-// 		created(){
-//       this.getPositions()
-//     },
-// 		methods:{
-//       getPositions(){
-//         let params = {
-//           page: this.currentPage,
-//           target: this.target,
-//           orderBy: this.sortBy,
-//           desc: this.sortDesc
-//         }
-//         this.$store.dispatch('getPositions', params)
-//       },
-// 		  onFiltered (filteredItems) {
-//         // Trigger pagination to update the number of buttons/pages due to filtering
-// 		    this.totalRows = filteredItems.length
-// 		    this.currentPage = 1
-// 		  },
-//       edit(Person, index){
-//         this.draft = clone(Person)
-//         this.currentIndex = index
-//         this.showEdit = true
-//       },
-//       create(){
-//         this.draft = {
-//           id: null,
-//           name: '',
-//         }
-//         this.showEdit = true
-//       },
-//       remove(item, index){
-//         this.$swal({
-//           title: trans('app.common.delete_title'),
-//           text: trans('app.common.delete_text') + item.name +'?',
-//           type: 'warning',
-//           showCancelButton: true,
-//           confirmButtonColor: '#3085d6',
-//           cancelButtonColor: '#d33',
-//           confirmButtonText: trans('app.common.delete_confirm'),
-//           cancelButtonText: trans('app.common.0')
-//         }).then((result) => {
-//           if (result.value) {
-//             this.$store.dispatch('removePosition', item.id)
-//           }
-//         })
-//       },
-//       close(){
-//         this.showEdit = false
-//       },
-//       sortingChanged (ctx) {
-//         if (ctx.sortBy) {
-//           this.sortBy = ctx.sortBy
-//           this.sortDesc = ctx.sortDesc
-//           this.currentPage = 1
-//           this.getPositions()
-//         }
-//       },
-// 		},
-//     computed:{
-//       positions(){ return this.$store.state.Position.positions },
-//       current_page(){return this.$store.state.Position.currentPage },
-//       totalRows(){ return this.$store.state.Position.totalRows },
-//       perPage(){ return this.$store.state.Position.perPage },
-//       loading(){ return this.$store.state.Position.loading }
-//     }
+ 	export default{
+ 		watch:{
+ 			target(){
+         this.getPositions()
+       }
+ 		},
+ 		data(){
+ 			return{
+         currentPage: null,
+         target: '',
+         draft: {},
+         currentIndex: null,
+         showEdit: false,
+         sortBy: 'id',
+         sortDesc: true,
+         currentId: null,
+ 			  pageOptions: [ 5, 10, 15 ],
+         draft:{},
+         filter: null,
+         fields: [
+           {	key: 'name', label: 'Name', sortable: true,	},
+           {	key: 'Actions', label: trans('app.common.actions'), 'class': 'pull-right'	}
+       	],
+ 			}
+ 		},
+ 		created(){
+       this.getPositions()
+     },
+ 		methods:{
+       getPositions(){
+         let params = {
+           page: this.currentPage,
+           target: this.target,
+           orderBy: this.sortBy,
+           desc: this.sortDesc
+         }
+         this.$store.dispatch('getPositions', params)
+       },
+ 		  onFiltered (filteredItems) {
+          //Trigger pagination to update the number of buttons/pages due to filtering
+ 		    this.totalRows = filteredItems.length
+ 		    this.currentPage = 1
+ 		  },
+       edit(Person, index){
+         this.draft = clone(Person)
+         this.currentIndex = index
+         this.showEdit = true
+       },
+       create(){
+         this.draft = {
+           id: null,
+           name: '',
+        }
+        this.showEdit = true
+       },
+       remove(item, index){
+         this.$swal({
+           title: trans('app.common.delete_title'),
+           text: trans('app.common.delete_text') + item.name +'?',
+           type: 'warning',
+           showCancelButton: true,
+           confirmButtonColor: '#3085d6',
+           cancelButtonColor: '#d33',
+           confirmButtonText: trans('app.common.delete_confirm'),
+           cancelButtonText: trans('app.common.0')
+         }).then((result) => {
+           if (result.value) {
+             this.$store.dispatch('removePosition', item.id)
+           }
+         })
+       },
+       close(){
+         this.showEdit = false
+       },
+       sortingChanged (ctx) {
+         if (ctx.sortBy) {
+           this.sortBy = ctx.sortBy
+           this.sortDesc = ctx.sortDesc
+           this.currentPage = 1
+           this.getPositions()
+         }
+       },
+ 		},
+     computed:{
+       positions(){ return this.$store.state.Position.positions },
+       current_page(){return this.$store.state.Position.currentPage },
+       totalRows(){ return this.$store.state.Position.totalRows },
+       perPage(){ return this.$store.state.Position.perPage },
+       loading(){ return this.$store.state.Position.loading }
+     }
  	}
 </script>

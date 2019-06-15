@@ -43,11 +43,13 @@ let router = new Router({
     },
     {
       path: '/login',
+      redirect: '/login',
       name: 'login',
       component: Login
     },
     {
       path: '/register',
+      redirect: '/register',
       name: 'register',
       component: Register
     } 
