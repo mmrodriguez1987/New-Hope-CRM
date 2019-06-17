@@ -1,4 +1,6 @@
 import BootstrapVue from 'bootstrap-vue';
+import VueAxios from 'vue-axios'
+import VueAuth from '@websanova/vue-auth'
 //import wysiwyg from "vue-wysiwyg"
 //import Toasted from 'vue-toasted'
 
@@ -7,6 +9,10 @@ import _ from 'lodash'
 
 //*Bootstrap Vue
 Vue.use(BootstrapVue)
+
+Vue.use(VueAxios, axios)
+axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`
+Vue.use(VueAuth, auth)
 
 //Vue.use(Toasted,  {duration: 10000, iconPack : 'fontawesome', theme: 'outline'})
 
