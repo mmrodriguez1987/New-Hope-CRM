@@ -4,6 +4,8 @@ namespace newhopecrm\Http\Controllers\Auth;
 
 use newhopecrm\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,5 +37,24 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    
+    public function doLogin() {
+        if (request()->ajax()) {
+            if(Auth::attempt(['email' => request()->email, 'password' => request()->password])){
+                \Log::info('Login Successful');
+                $response = ['success' => true, 'user_name' => Auth::user()->name];
+                
+                //return a JSON response
+                return response()->json($response);
+            } else {
+                return response(['messaje' => 'Please, Make sure your email or password are correct'], 401)
+                       ->header('Content-Type' ,'application/json');            
+            }
+        } else {
+            if (Auth::attempt(['email' => request()->email, 'password' => request()->password])) {
+                return redirect()->intended('/');
+            }
+        }
     }
 }

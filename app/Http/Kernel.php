@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \newhopecrm\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \newhopecrm\Http\Middleware\TrustProxies::class,
+        
     ];
 
     /**
@@ -59,5 +60,7 @@ class Kernel extends HttpKernel
         'guest' => \newhopecrm\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'isAdmin' => \App\Http\Middleware\CheckIsAdmin::class,
+        'isAdminOrSelf' => \App\Http\Middleware\CheckIsAdminOrSelf::class,
     ];
 }

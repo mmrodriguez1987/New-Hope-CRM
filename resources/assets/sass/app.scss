@@ -1,16 +1,28 @@
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600"); // Variables
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic");
-@import "variables"; // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
-@import "custom";
 
-@import "~vue-wysiwyg/dist/vueWysiwyg.css";
+@import "~@coreui/coreui-pro/scss/coreui";
+
+/* Import Font Awesome Icons Set */
+$fa-font-path: '~font-awesome/fonts/';
+@import '~font-awesome/scss/font-awesome.scss';
 
 
+/* Import Simple Line Icons Set */
+$simple-line-font-path: '~simple-line-icons/fonts/';
+@import '~simple-line-icons/scss/simple-line-icons.scss';
 
 
-//3rd
+/* Import Flag Icons Set */
+@import '~flag-icon-css/css/flag-icon.min.css';
 
+
+/* Import Bootstrap Vue Styles */
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 
+
+// If you want to add something do it here
+@import "custom";
+
+// ie fixes
+@import "ie-fix";
+
+//@import "toastr";

@@ -36,7 +36,8 @@
                  <template slot="Actions" slot-scope="row">
                    <button class="btn btn-success" @click="edit(row.item, row.index)" :title="trans('app.common.edit')">
                      <i class="fa fa-edit"></i>
-                   </button>
+                   </button
+                   >
                    <button class="btn btn-warning" @click="remove(row.item, row.index)" :title="trans('app.common.delete')">
                      <i class="fa fa-trash-o"></i>
                    </button>
@@ -108,7 +109,7 @@
   //            this.$store.dispatch('getBlogCategories', params)
   //        },
  	// 	    onFiltered (filteredItems) {
- 	// 	       //Trigger pagination to update the number of buttons/pages due to filtering
+
  	// 	      this.totalRows = filteredItems.length
  	// 	      this.currentPage = 1
  	// 	    },

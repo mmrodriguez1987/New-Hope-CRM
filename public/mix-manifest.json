@@ -1,24 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/css/nhcrm.css": "/css/nhcrm.css",
-    "/css/blue.png": "/css/blue.png",
-    "/css/blue@2x.png": "/css/blue@2x.png",
-    "/fonts/fontawesome-webfont.eot": "/fonts/fontawesome-webfont.eot",
-    "/fonts/fontawesome-webfont.svg": "/fonts/fontawesome-webfont.svg",
-    "/fonts/fontawesome-webfont.ttf": "/fonts/fontawesome-webfont.ttf",
-    "/fonts/fontawesome-webfont.woff": "/fonts/fontawesome-webfont.woff",
-    "/fonts/fontawesome-webfont.woff2": "/fonts/fontawesome-webfont.woff2",
-    "/fonts/FontAwesome.otf": "/fonts/FontAwesome.otf",
-    "/fonts/ionicons.eot": "/fonts/ionicons.eot",
-    "/fonts/ionicons.svg": "/fonts/ionicons.svg",
-    "/fonts/ionicons.ttf": "/fonts/ionicons.ttf",
-    "/fonts/ionicons.woff": "/fonts/ionicons.woff",
-    "/fonts/ionicons.woff2": "/fonts/ionicons.woff2",
-    "/fonts/glyphicons-halflings-regular.eot": "/fonts/glyphicons-halflings-regular.eot",
-    "/fonts/glyphicons-halflings-regular.svg": "/fonts/glyphicons-halflings-regular.svg",
-    "/fonts/glyphicons-halflings-regular.ttf": "/fonts/glyphicons-halflings-regular.ttf",
-    "/fonts/glyphicons-halflings-regular.woff": "/fonts/glyphicons-halflings-regular.woff",
-    "/fonts/glyphicons-halflings-regular.woff2": "/fonts/glyphicons-halflings-regular.woff2",
-    "/js/adminlte.min.js": "/js/adminlte.min.js"
+    "/js/ajax-load.js": "/js/ajax-load.js",
+    "/js/sidebar.js": "/js/sidebar.js"
 }
