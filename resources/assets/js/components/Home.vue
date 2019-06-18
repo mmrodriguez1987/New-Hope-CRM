@@ -1,13 +1,29 @@
 <template>
-    <div class="container">
-        <div class="card card-default">
-            <div class="card-header">Welcome</div>
-
-            <div class="card-body">
-                <p>
-                    Welcom to New Hope CRM
-                </p>                
-            </div>
+    <div id="main">
+        <header id="header">
+            <h1>
+                <router-link :to="{name: 'home'}">
+                    Laravel Vue SPA
+                </router-link>
+            </h1>
+            <navigationMenu></navigationMenu>
+        </header>
+        <div id="content">
+            <router-view></router-view>
         </div>
     </div>
 </template>
+
+<script>
+  import navigationMenu from './components/home/Menu.vue'
+  export default {
+    data() {
+      return {
+        //
+      }
+    },
+    components: {
+      navigationMenu
+    }
+  }
+</script>

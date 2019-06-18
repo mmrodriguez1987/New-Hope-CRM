@@ -9,7 +9,7 @@ const config = {
     auth: bearer,
     http: axios,
     router: router,
-    tokenDefaultName: 'laravel-vue-spa',
+    tokenDefaultName: 'nhcrm',
     tokenStore: ['localStorage'],
     rolesVar: 'role',
     registerData: {
