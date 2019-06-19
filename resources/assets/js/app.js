@@ -1,13 +1,11 @@
-//import './polyfill'
-
 import router from './router'
-import store from './store'
 
+import store from './store'
 
 require('./bootstrap');
 
-// Set Vue globally
-window.Vue = require('vue');
+Vue.router = router
+//window.Vue = require('vue')
 
 //3rd vue components
 require('./vendor_components')
@@ -16,9 +14,9 @@ require('./vendor_components')
 require('./vue_components')
 
 //Functions Utilities & Filters
-require('./utilities.js')
+require('./utilities')
 
-new Vue({
+const app = new Vue({
   el: '#app',
   router,
   store

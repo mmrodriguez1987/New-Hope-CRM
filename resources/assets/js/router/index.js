@@ -11,11 +11,12 @@ import Login from '../components/auth/Login.vue'
 import Register from '../components/auth/Register.vue'
 
 
-
 Vue.use(Router)
+window.Router = Router
 
 let router = new Router({
   mode: 'history',
+  history: true,
   linkActiveClass: 'open active',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
@@ -73,5 +74,7 @@ let router = new Router({
     } 
   ]
 })
+
+
 
 export default router

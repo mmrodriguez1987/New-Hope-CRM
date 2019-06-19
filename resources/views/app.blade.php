@@ -7,7 +7,7 @@
         {!! Html::style('css/app.css') !!}
     <body>
         <div id="app">
-            <index></index>          
+            <home></home>          
         </div>
         {!! Html::script('js/app.js') !!}            
         {{-- {!! Html::script('js/lang.js') !!} --}}

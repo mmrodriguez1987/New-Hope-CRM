@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import navigationMenu from './components/home/Menu.vue'
+  import navigationMenu from './home/Menu.vue'
   export default {
     data() {
       return {
