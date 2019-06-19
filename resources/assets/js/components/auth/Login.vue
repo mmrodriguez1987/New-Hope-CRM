@@ -6,16 +6,16 @@
           <b-card-group>
             <b-card no-body class="p-4">
               <b-card-body>
-                <b-form @submit.prevent="login()">
+                <b-form @submit.prevent="login()" method="post">
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
                   <b-input-group class="mb-3">
                     <b-input-group-prepend><b-input-group-text><i class="icon-user"></i></b-input-group-text></b-input-group-prepend>
-                    <b-form-input type="text" class="form-control" placeholder="Username" autocomplete="username email" v-model="loginUser.email"  />
+                    <b-form-input type="text" class="form-control" placeholder="Username" autocomplete="username email" v-model="email"  />
                   </b-input-group>
                   <b-input-group class="mb-4">
                     <b-input-group-prepend><b-input-group-text><i class="icon-lock"></i></b-input-group-text></b-input-group-prepend>
-                    <b-form-input type="password" class="form-control" placeholder="Password" autocomplete="current-password"  v-model="loginUser.password" />
+                    <b-form-input type="password" class="form-control" placeholder="Password" autocomplete="current-password"  v-model="password" />
                   </b-input-group>
                   <b-row>
                     <b-col cols="6">
@@ -45,36 +45,42 @@
 </template>
 
 <script>
-import {AtomSpinner} from 'epic-spinners'
-export default {
-  components: {
-    AtomSpinner,
-  },
-  data() {
-    return{
-				loginUser:{
-					email:'',
-					password:''
-				},
-				route: this.$router.history.current.path
-			}
-  },
-  computed:{
-			validForm(){
-				return !this.loginUser.email ||  !this.loginUser.password
-			},
-			loading(){
-				return this.$store.state.Auth.loading
-			},
-		},
-		methods:{
-			login(){
-				this.$store.dispatch('login', this.loginUser)
-				.then(response => {
-					this.$router.push(this.route)
-					location.reload()
-				})
-			}
-		}
+  export default {
+    data() {
+      return {
+        email: null,
+        password: null,
+        has_error: false
+      }
+    },
+
+    mounted() {
+      //
+    },
+
+    methods: {
+      login() {
+        // get the redirect object
+        var redirect = this.$auth.redirect()
+        var app = this
+        this.$auth.login({
+          params: {
+            email: app.email,
+            password: app.password
+          },
+          success: function() {
+            // handle redirection
+            const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'admin.dashboard' : 'dashboard'
+
+            this.$router.push({name: redirectTo})
+          },
+          error: function() {
+            app.has_error = true
+          },
+          rememberMe: true,
+          fetchUser: true
+        })
+      }
+    }
   }
 </script>
