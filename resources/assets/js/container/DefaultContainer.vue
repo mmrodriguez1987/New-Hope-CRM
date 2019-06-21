@@ -56,7 +56,7 @@
       </div>
       <div class="ml-auto">
         <span class="mr-1">Powered by</span>
-        <a href="https://coreui.io">New Hope In Christ Ministry</a>
+        <a href="https://coreui.io">Nissi Technology Enterprises Inc</a>
       </div>
     </TheFooter>
   </div>

@@ -22,7 +22,8 @@ let router = new Router({
   routes: [
     {
       path: '/',      
-      name: 'HomeAdmin',
+      name: 'Home',
+      redirect: '/dashboard',
       component: DefaultContainer,
       children: [
         { 

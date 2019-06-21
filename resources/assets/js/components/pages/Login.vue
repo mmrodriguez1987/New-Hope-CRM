@@ -11,7 +11,7 @@
                   <p class="text-muted">Sign In to your account</p>
                   <b-input-group class="mb-3">
                     <b-input-group-prepend><b-input-group-text><i class="icon-user"></i></b-input-group-text></b-input-group-prepend>
-                    <b-form-input type="text" class="form-control" placeholder="Username" autocomplete="username email" v-model="email"  />
+                    <b-form-input type="text" class="form-control" placeholder="Username"  autocomplete="username email" v-model="username"  />
                   </b-input-group>
                   <b-input-group class="mb-4">
                     <b-input-group-prepend><b-input-group-text><i class="icon-lock"></i></b-input-group-text></b-input-group-prepend>
@@ -19,10 +19,10 @@
                   </b-input-group>
                   <b-row>
                     <b-col cols="6">
-                      <b-button variant="primary" class="px-4" :disabled="validForm" type="submit">Login</b-button>
+                      <b-button variant="primary" class="px-4" :disabled="validForm" type="submit" @click="login">Login</b-button>
                     </b-col>
                     <b-col cols="6" class="text-right">
-                      <b-button variant="link" class="px-0" href="/password/reset" >Forgot password?</b-button>
+                      <b-button variant="link" class="px-0" href="#" >Forgot password?</b-button>
                     </b-col>
                   </b-row>
                 </b-form>
@@ -33,7 +33,7 @@
                 <div>
                   <h2>Sign up</h2>
                   <p>For registre.</p>
-                  <b-button variant="primary" class="active mt-3" href="/register/">Register Now!</b-button>
+                  <b-button variant="primary" class="active mt-3" href="#">Register Now!</b-button>
                 </div>
               </b-card-body>
             </b-card>
@@ -48,39 +48,30 @@
   export default {
     data() {
       return {
-        email: null,
-        password: null,
-        has_error: false
+        username: '',
+        password: ''
       }
     },
 
-    mounted() {
-      //
-    },
-
     methods: {
-      // login() {
-      //   // get the redirect object
-      //   var redirect = this.$auth.redirect()
-      //   var app = this
-      //   this.$auth.login({
-      //     params: {
-      //       email: app.email,
-      //       password: app.password
-      //     },
-      //     success: function() {
-      //       // handle redirection
-      //       const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'admin.dashboard' : 'dashboard'
+      login() {
+        let data = {
+          username: this.username,
+          password: this.password
+        };
 
-      //       this.$router.push({name: redirectTo})
-      //     },
-      //     error: function() {
-      //       app.has_error = true
-      //     },
-      //     rememberMe: true,
-      //     fetchUser: true
-      //   })
-      // }
+        axios.post('/api/login', data)
+             .then(({data}) => {
+                    // TODO: store data
+                    // data.token
+                    // data.user
+            })
+            .catch(({response}) => {                    
+              alert(response.data.message);
+            });
+        }
     }
+   
   }
+
 </script>

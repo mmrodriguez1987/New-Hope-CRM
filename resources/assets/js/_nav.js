@@ -29,10 +29,15 @@ export default {
           icon: 'icon-puzzle'
         },
         {
-          name: 'services',
-          url: '/services',
+          name: 'positions',
+          url: '/positions',
           icon: 'icon-puzzle'
-        }        
+        },
+        {
+          name: 'persontypes',
+          url: '/persontypes',
+          icon: 'icon-puzzle'
+        }
       ]
     }
     
