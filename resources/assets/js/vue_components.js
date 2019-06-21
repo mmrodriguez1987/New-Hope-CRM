@@ -8,4 +8,4 @@
 //Vue.component('admin-pages', require('./components/admin_pages.vue'));
 //Vue.component('dashboard', require('./components/dashboard.vue'));
 //Vue.component('input-date', require('./helpers/InputDate.vue').default);
-Vue.component('index', require('./Index.vue').default)
+Vue.component('default-view', require('./components/DefaultView.vue').default)

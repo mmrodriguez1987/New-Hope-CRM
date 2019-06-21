@@ -1,5 +1,5 @@
 import BootstrapVue from 'bootstrap-vue'
-import VueAxios from 'vue-axios'
+//import VueAxios from 'vue-axios'
 import VueAuth from '@websanova/vue-auth'
 import auth from './auth'
 //import wysiwyg from "vue-wysiwyg"

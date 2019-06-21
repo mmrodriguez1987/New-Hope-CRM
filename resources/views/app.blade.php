@@ -7,7 +7,7 @@
         {!! Html::style('css/app.css') !!}
     <body>
         <div id="app">
-            <login></login>          
+            <default-view></default-view>          
         </div>
         {!! Html::script('js/app.js') !!}            
         {{-- {!! Html::script('js/lang.js') !!} --}}

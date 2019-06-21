@@ -13,31 +13,38 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::prefix('auth')->group(function () {
-    Route::post('register', 'AuthController@register');
-    Route::post('login', 'AuthController@login');
-    Route::get('refresh', 'AuthController@refresh');
+Route::post('/register', 'API\AuthController@register');
+Route::post('/login', 'API\AuthController@login');
 
-    Route::group(['middleware' => 'auth:api'], function(){
-        Route::get('user', 'AuthController@user');
-        Route::post('logout', 'AuthController@logout');
-    });
+Route::middleware('auth:api')->group(function () {
+    Route::post('/logout', 'API\AuthController@logout');
 });
 
-Route::group(['middleware' => 'auth:api'], function(){
-    // Users
-    Route::get('users', 'UserController@index')->middleware('isAdmin');
-    Route::get('users/{id}', 'UserController@show')->middleware('isAdminOrSelf');
-});
+// Route::prefix('auth')->group(function () {
+//     Route::post('register', 'AuthController@register');
+//     Route::post('login', 'AuthController@login');
+//     Route::get('refresh', 'AuthController@refresh');
 
-Route::prefix('admin')->group(function () {   
+//     Route::group(['middleware' => 'auth:api'], function(){
+//         Route::get('user', 'AuthController@user');
+//         Route::post('logout', 'AuthController@logout');
+//     });
+// });
+
+// Route::group(['middleware' => 'auth:api'], function(){
+//     // Users
+//     Route::get('users', 'UserController@index')->middleware('isAdmin');
+//     Route::get('users/{id}', 'UserController@show')->middleware('isAdminOrSelf');
+// });
+
+// Route::prefix('admin')->group(function () {   
     
-    //Persons
-    Route::get('person', 'PersonController@index');
-    Route::post('person', ['as' => 'person.store','uses' => 'PersonController@store']);
-    Route::put('person/{id}', ['as' => 'person.update', 'uses' => 'PersonController@update']);
-    Route::delete('person/{id}', ['as' => 'person.destroy','uses' => 'PersonController@destroy']);
-    Route::get('personList', ['as' => 'person.list','uses' => 'PersonController@list']);
+//     //Persons
+//     Route::get('person', 'PersonController@index');
+//     Route::post('person', ['as' => 'person.store','uses' => 'PersonController@store']);
+//     Route::put('person/{id}', ['as' => 'person.update', 'uses' => 'PersonController@update']);
+//     Route::delete('person/{id}', ['as' => 'person.destroy','uses' => 'PersonController@destroy']);
+//     Route::get('personList', ['as' => 'person.list','uses' => 'PersonController@list']);
 
  
-});
+// });
