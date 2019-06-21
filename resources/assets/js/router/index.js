@@ -7,8 +7,8 @@ import Dashboard from '../components/Dashboard.vue'
 import Person from '../components/person/Index.vue'
 import Position from '../components/position/Index.vue'
 import PersonType from '../components/person_type/Index.vue'
-import Login from '../components/auth/Login.vue'
-import Register from '../components/auth/Register.vue'
+//import Login from '../components/auth/Login.vue'
+//import Register from '../components/auth/Register.vue'
 
 
 Vue.use(Router)
