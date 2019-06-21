@@ -96,7 +96,9 @@ export default {
   },
   data () {
     return {
-      navItems: nav.items
+      navItems: nav.items,
+      authenticated: auth.check(),
+      user: auth.user
     }
   },
   computed: {
@@ -106,6 +108,13 @@ export default {
     list () {
       return this.$route.matched.filter((route) => route.name || route.meta.label )
     }
-  }
+  },
+  
+  mounted() {
+    Event.$on('userLoggedIn', () => {
+            this.authenticated = true;
+            this.user = auth.user;
+        });
+    },
 }
 </script>

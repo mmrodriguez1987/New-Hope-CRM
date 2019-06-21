@@ -10,10 +10,18 @@ class PersonController extends Controller
     
     public function index()
     {        
-        return Person::with('persontype','profession','position')
+        return 
+        
+        $persons = Person::with('persontype','profession','position')
             ->search(request()->search)
             ->orderBy('id','DESC')
             ->paginate(10);   
+
+        return response()->json(
+            [
+                'status' => 'success', 
+                'users' => $persons->toArray()
+            ], 200);
     }
 
     public function getAllPersons()

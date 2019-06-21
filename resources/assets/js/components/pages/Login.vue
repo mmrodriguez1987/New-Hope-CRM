@@ -19,7 +19,7 @@
                   </b-input-group>
                   <b-row>
                     <b-col cols="6">
-                      <b-button variant="primary" class="px-4" :disabled="validForm" type="submit" @click="login">Login</b-button>
+                      <b-button variant="primary" class="px-4" type="submit" @click="login">Login</b-button>
                     </b-col>
                     <b-col cols="6" class="text-right">
                       <b-button variant="link" class="px-0" href="#" >Forgot password?</b-button>
@@ -62,9 +62,8 @@
 
         axios.post('/api/login', data)
              .then(({data}) => {
-                    // TODO: store data
-                    // data.token
-                    // data.user
+               auth.login(data.token, data.user);
+               this.$router.push('/dashboard');
             })
             .catch(({response}) => {                    
               alert(response.data.message);

@@ -1,16 +1,15 @@
+require('./bootstrap')
+
 import router from './router'
 import store from './store'
-import auth from './auth.js';
 
-require('./bootstrap');
+import Api from './api.js'
+window.api = new Api()
 
-window.auth = auth;
-window.Vue = require('vue');
+import Auth from './auth.js'
+window.auth = new Auth()
 
-Vue.use(require('vue-resource'));
-Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf_token').value;
-
-Vue.router = router
+window.Event = new Vue
 
 //3rd vue components
 require('./vendor_components')
@@ -24,5 +23,5 @@ require('./utilities')
 const app = new Vue({
   el: '#app',
   router,
- store
+  store
 })

@@ -1,26 +1,9 @@
-import BootstrapVue from 'bootstrap-vue'
-//import VueAxios from 'vue-axios'
-import VueAuth from '@websanova/vue-auth'
-import auth from './auth'
+Vue.use(require('bootstrap-vue'))
+Vue.use(require('vue-moment'))
 //import wysiwyg from "vue-wysiwyg"
 //import Toasted from 'vue-toasted'
-
-//import _ from 'lodash'
 //import vSelect from 'vue-select'
-
-//Bootstrap Vue
-Vue.use(BootstrapVue)
-
-//Define the Auth with Vue
-Vue.use(VueAxios, axios)
-axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`
-Vue.use(VueAuth, auth)
-
 //Vue.use(Toasted,  {duration: 10000, iconPack : 'fontawesome', theme: 'outline'})
-
 //Vue.use(wysiwyg, {  maxHeight: "500px" })
-
 //Vue.component('v-select', vSelect)
-
 //*Moment
-Vue.use(require('vue-moment'))
