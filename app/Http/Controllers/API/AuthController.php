@@ -4,6 +4,9 @@ namespace newhopecrm\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use newhopecrm\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use newhopecrm\User;
+use DB;
 
 class AuthController extends Controller
 {
