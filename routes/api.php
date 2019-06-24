@@ -19,6 +19,14 @@ Route::post('/login', 'API\AuthController@login');
 Route::middleware('auth:api')->group(function () {
     Route::post('/logout', 'API\AuthController@logout');
     Route::get('/get-user', 'API\AuthController@getUser');
+
+    //Persons
+    Route::get('person', 'PersonController@index')->name('api.person.index');   
+    Route::post('person', 'PersonController@store')->name('api.person.store');
+    Route::put('person/{id}', 'PersonController@update')->name('api.person.update');
+    Route::delete('person/{id}', 'PersonController@delete')->name('api.person.delete');
+    Route::get('personList', 'PersonController@list')->name('api.person.list');
+
 });
 
 // Route::prefix('auth')->group(function () {

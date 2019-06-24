@@ -1,6 +1,6 @@
 <?php
 
-namespace newhopecrm\Http\Controllers\Admin;
+namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
 use newhopecrm\Person;
