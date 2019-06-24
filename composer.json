@@ -16,8 +16,7 @@
     "laravel/passport": "^7.3",
     "laravel/tinker": "^1.0",
     "laravelcollective/html": "^5.8",
-    "thomaswelton/laravel-gravatar": "~1.0",
-    "tymon/jwt-auth": "dev-develop"
+    "thomaswelton/laravel-gravatar": "~1.0"
   },
   "require-dev": {
     "filp/whoops": "^2.0",

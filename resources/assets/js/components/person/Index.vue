@@ -1,5 +1,36 @@
 <template>
-  <div class="box box-solid box-primary" :class="loading ? 'box-loading' : ''">
+  <div className="animated">
+    <b-card>
+      <b-card-header>
+        <i class="icon-menu mr-1"></i>Persons Database Management
+      </b-card-header>
+      <b-card-body>
+        <v-client-table :columns="columns" :data="data" :options="options" :theme="theme" id="dataTable">
+          <!-- <a slot="uri" slot-scope="props" target="_blank" :href="props.row.uri" class="icon-edit"></a>   -->
+          <template slot="fullname" slot-scope="row">
+            {{data.item.first_name}} {{row.item.last_name}}
+          </template>
+
+          <template slot="fulladdress" slot-scope="row">
+            {{data.item.address}}, {{data.item.street}}, {{data.item.city}}, {{data.item.state}} {{row.item.postal_code}}
+          </template>
+
+          <span slot="actions" slot-scope="data"> 
+            <button class="btn btn-info btn-sm" @click="edit(data.item, data.index)">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" @click="remove(data.item, data.index)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </span>    
+        </v-client-table>
+      </b-card-body>
+    </b-card>
+  </div>
+
+
+
+  <!-- <div class="box box-solid box-primary" :class="loading ? 'box-loading' : ''">
     <div class="box-header with-border">
       <h3 class="box-title">{{ trans('bck.person.title') }}</h3>
     </div>
@@ -58,39 +89,80 @@
         :positions="positions" 
         :professions="professions" >
       </person-edit>
-  </div>
+  </div> -->
 </template>
 
 <script>
+import {ClientTable, Event} from 'vue-table-2'
+
 export default {
+  components: {
+    ClientTable, Event
+  },
+  data: {
+    columns: ['id', 'fullname', 'email', 'phone', 'birthdate','sex','marital_status','fulladdress','person_type_name','position_name','profession_name','actions'],
+    data: getPersons(),
+    options: {
+      headings: {
+        id: 'ID',
+        fullname: 'Full Name',
+        email: 'E-mail',
+        phone: 'Phone',
+        birthdate: 'birthdate',
+        sex: 'Sex',
+        marital_status: 'Marital Status',
+        fulladdress: 'Full Address',
+        person_type_name: 'Person Type',
+        position_name: 'Position',
+        profession_name: 'Profession',
+        actions: 'Actions'
+      },
+      sortable: ['id', 'fullname', 'email', 'phone', 'birthdate','sex','marital_status','fulladdress','person_type_name','position_name','profession_name'],
+      filterable: ['id', 'fullname', 'email', 'phone', 'birthdate','sex','marital_status','fulladdress','person_type_name','position_name','profession_name'],
+      dateColumns:['birthdate'],
+      dateFormat: 'MM-DD-YYYY',
+      datepickerOptions: {
+        showDropdowns: true,
+        autoUpdateInput: true,
+      },
+      sortIcon: { base:'fa', up:'fa-sort-asc', down:'fa-sort-desc', is:'fa-sort' },
+      pagination: {
+        chunk: 15,
+        edge: false,
+        nav: 'scroll'
+      },
+      template: 'default',
+      theme: 'bootstrap4'
+    }
+  },
+  
   watch: {
     target() {
       this.getPersons()
     }
   },
-  data() {
-    return {
-      fields: [
-        { key: 'id', label: trans('bck.person.lbl_fullname'), sortable: true },
-        { key: 'fullname', label: trans('bck.person.lbl_fullname'), sortable: true },
-        { key: 'email', label: trans('bck.person.lbl_email'), sortable: true },
-        { key: 'phone', label: trans('bck.person.lbl_phone'), sortable: true },
-        { key: 'birthdate', label: trans('bck.person.lbl_birthday'), sortable: true },
-        { key: 'sex', label: trans('bck.person.lbl_sex'), sortable: true },
-        { key: 'marital_status', label: trans('bck.person.lbl_maritalstatus'), sortable: true },
-        { key: 'fulladdress', label: trans('bck.person.lbl_fulladdress'), sortable: true },
-        { key: 'person_type_name', label: trans('bck.person.lbl_persontype'), sortable: true },
-        { key: 'position_name', label: trans('bck.person.lbl_position'), sortable: true },
-        { key: 'profession_name', label: trans('bck.person.lbl_profession'), sortable: true },
-        { key: 'actions', label: trans('bck.general.actions') }
-      ],
-      currentPage: null,
-      draft: {},
-      target: '',
-      currentIndex: null,
-      sortBy: 'id',
-      sortDesc: true,
-      showEdit: false
+  components: {
+    ClientTable, Event
+  },
+  data: {
+    columns: ['id', 'fullname', 'email', 'phone', 'birthdate','sex','marital_status','fulladdress','person_type_name','position_name','profession_name'],
+    data: getPersons(),
+    options: {
+      headings: {
+        id: 'ID',
+        fullname: 'Full Name',
+        email: 'E-mail',
+        phone: 'Phone',
+        birthdate: 'birthdate',
+        sex: 'Sex',
+        marital_status: 'Marital Status',
+        fulladdress: 'Full Address',
+        person_type_name: 'Person Type',
+        position_name: 'Position',
+        profession_name: 'Profession'
+      },
+      sortable: ['id', 'fullname', 'email', 'phone', 'birthdate','sex','marital_status','fulladdress','person_type_name','position_name','profession_name'],
+      filterable: ['id', 'fullname', 'email', 'phone', 'birthdate','sex','marital_status','fulladdress','person_type_name','position_name','profession_name']
     }
   },
   created() {
@@ -197,3 +269,57 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  #dataTable {
+    width: 95%;
+    margin: 0 auto;
+
+    .VuePagination {
+      text-align: center;
+      justify-content: center;
+    }
+
+    .vue-title {
+      text-align: center ;
+      margin-bottom: 10px;
+    }
+
+    .VueTables__search-field {
+      display: flex;
+    }
+    .VueTables__search-field input {
+      margin-left: 0.25rem;
+    }
+
+    .VueTables__limit-field {
+      display: flex;
+    }
+
+    .VueTables__limit-field select {
+      margin-left: 0.25rem !important;
+    }
+
+    .VueTables__table th {
+      text-align: center;
+    }
+
+    // .VueTables__child-row-toggler {
+    //   width: 16px;
+    //   height: 16px;
+    //   line-height: 16px;
+    //   display: block;
+    //   margin: auto;
+    //   text-align: center;
+    // }
+
+    // .VueTables__child-row-toggler--closed::before {
+    //   content: "+";
+    // }
+
+    // .VueTables__child-row-toggler--open::before {
+    //   content: "-";
+    // }
+  }
+
+</style>
