@@ -17,83 +17,23 @@
 
           <span slot="actions" slot-scope="data"> 
             <button class="btn btn-info btn-sm" @click="edit(data.item, data.index)">
-              <i class="fa fa-pencil"></i>
+              <i class="fa fa-edit"></i>
             </button>
             <button class="btn btn-danger btn-sm" @click="remove(data.item, data.index)">
-              <i class="fa fa-trash"></i>
+              <i class="fa fa-trash-o"></i>
             </button>
           </span>    
         </v-client-table>
+        <person-edit :show="showEdit" :draft="draft" @close="close"></person-edit>
       </b-card-body>
     </b-card>
   </div>
-
-
-
-  <!-- <div class="box box-solid box-primary" :class="loading ? 'box-loading' : ''">
-    <div class="box-header with-border">
-      <h3 class="box-title">{{ trans('bck.person.title') }}</h3>
-    </div>
-
-    <div class="box-body">
-      <button type="button" class="btn btn-success mb-2" @click="create">
-        <i class="fa fa-plus"></i>
-        {{trans('bck.general.add')}}
-      </button>
-      <spinner v-if="loading" :size="200"/> 
-
-      <form class="form-inline pull-right">
-        <div class="form-group mx-sm-6 mb-2">
-          <label class="sr-only">{{trans('bck.general.search')}}</label>
-          <input v-model="target" class="form-control" :placeholder="trans('bck.general.search')">
-        </div>
-      </form>
-
-      <div class="clearfix"></div>
-
-      <hr>
-      <b-table striped hover :items="persons" :fields="fields" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"  @sort-changed="sortingChanged" >
-       
-        <template slot="fullname" slot-scope="row">
-          {{row.item.first_name}} {{row.item.last_name}}
-        </template>
-
-        <template slot="fulladdress" slot-scope="row">
-          {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}
-        </template>
-
-        <template slot="actions" slot-scope="row">            
-          <button class="btn btn-info btn-sm" @click="edit(row.item, row.index)">
-            <i class="fa fa-pencil"></i>
-          </button>
-          <button class="btn btn-danger btn-sm" @click="remove(row.item, row.index)">
-            <i class="fa fa-trash"></i>
-          </button>
-        </template>
-      </b-table>  
-    </div>
-    <div class="box-footer text-center">
-      <b-pagination 
-        :total-rows="totalRows" 
-        :per-page="perPage" 
-        align="center" 
-        v-model="currentPage" 
-        class="my-0"
-        @input="getPersons" />
-    </div>
-    <person-edit 
-        :show="showEdit" 
-        :draft="draft" 
-        @close="close" 
-        :personTypes="personTypes" 
-        :positions="positions" 
-        :professions="professions" >
-      </person-edit>
-  </div> -->
 </template>
 
 <script>
-import {ClientTable, Event} from 'vue-table-2'
+import {ClientTable, Event} from 'vue-tables-2'
+
+Vue.use(ClientTable)
 
 export default {
   components: {
@@ -221,14 +161,14 @@ export default {
         this.$store.dispatch('removePerson', item.id)
       }
     },
-    sortingChanged(ctx) {
-      if (ctx.sortBy) {
-        this.sortBy = ctx.sortBy
-        this.sortDesc = ctx.sortDesc
-        this.currentPage = null
-        this.getPersons()
-      }
-    },
+    // sortingChanged(ctx) {
+    //   if (ctx.sortBy) {
+    //     this.sortBy = ctx.sortBy
+    //     this.sortDesc = ctx.sortDesc
+    //     this.currentPage = null
+    //     this.getPersons()
+    //   }
+    // },
     getPositionName(index) {   
       //var id = item.position_id
       let position = this.positions.find(position => position.id == index)
