@@ -20,7 +20,7 @@ let getters = {
 let actions = {
 
   getPersons(context, params) {  
-    axios.get('/person?page=' + params.page + '&search=' + params.target)
+    axios.get('api/person?page=' + params.page + '&search=' + params.target)
     .then(response => {
       context.commit('getPersons', { data: response.data })       
       context.state.loading = false
