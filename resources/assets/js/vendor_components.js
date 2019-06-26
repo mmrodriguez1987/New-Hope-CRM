@@ -2,6 +2,7 @@ Vue.use(require('bootstrap-vue'))
 Vue.use(require('vue-moment'))
 //import wysiwyg from "vue-wysiwyg"
 
+import _ from 'lodash'
 import Toasted from 'vue-toasted'
 import vSelect from 'vue-select'
 

@@ -43,7 +43,7 @@ let actions = {
 
   createPerson({ commit, state }, payload) {
     state.loading = true
-    axios.post('/admin/person/', payload)
+    axios.post('/api/person/', payload)
     .then(response => {
       Vue.toasted.show(response.data.message, {icon: 'plus', type: 'success'})
       commit('createPerson', response.data.data)
@@ -57,7 +57,7 @@ let actions = {
 
   updatePerson({ commit, state }, payload) {
     state.loading = true
-    axios.put('/admin/person/' + payload.id, payload)
+    axios.put('/api/person/' + payload.id, payload)
     .then(response => {
       Vue.toasted.show(response.data.message, {icon: 'pencil', type: 'info'})
       commit('updatePerson', response.data.data)
@@ -71,7 +71,7 @@ let actions = {
 
   removePerson(context, id) {
     context.state.loading = true
-    axios.delete('/admin/person/' + id)
+    axios.delete('/api/person/' + id)
     .then(response => {
       context.commit('removePerson', id)
       Vue.toasted.show(response.data.message, {icon: 'trash-o', type: 'error'})
@@ -94,7 +94,7 @@ let actions = {
   },
 
   listPerson(context) {
-    axios.get('/admin/personList')
+    axios.get('/api/personList')
     .then(response => {
       context.commit('listPerson', { data: response.data })
     })

@@ -2,18 +2,15 @@
   <b-card header="trans('bck.person.title')">
     <b-container fluid>
       <b-row>
-        <b-col md="6" class="my-1">
-          <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
+        <b-col md="4" class="my-1">
+          <b-form-group label-cols-sm="2" label="Filter" class="mb-0">
             <b-input-group>
-              <b-form-input v-model="target" placeholder="trans('bck.general.search')"></b-form-input>
-              <b-input-group-append>
-                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
-              </b-input-group-append>
+              <b-form-input v-model="target" placeholder="trans('bck.general.search')"></b-form-input>              
             </b-input-group>
           </b-form-group>
         </b-col>   
-        <b-col md="6" class="my-1">
-          <button type="button" class="btn btn-success mb-2" @click="create">
+        <b-col md="8" class="my-1">
+          <button type="button" class="btn btn-success mb-2 pull-right" @click="create">
             <i class="fa fa-plus"></i>
             {{trans('bck.general.add')}}
           </button>
