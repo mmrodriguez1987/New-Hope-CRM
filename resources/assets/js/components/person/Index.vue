@@ -17,13 +17,13 @@
       </b-row>
 
       <b-table bordered striped hover :items="persons" :fields="fields" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"  @sort-changed="sortingChanged" >       
-        <template slot="fullname" slot-scope="data">
+        <template slot="fullname" slot-scope="row">
           {{row.item.first_name}} {{row.item.last_name}}
         </template>
-        <template slot="fulladdress" slot-scope="data">
+        <template slot="fulladdress" slot-scope="row">
           {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}
         </template>
-        <template slot="actions" slot-scope="data">            
+        <template slot="actions" slot-scope="row">            
           <button class="btn btn-info btn-sm" ><!-- @click="edit(row.item, row.index)"-->
             <i class="fa fa-pencil"></i>
           </button>
@@ -32,7 +32,7 @@
           </button>
         </template>
       </b-table>
-
+      
       <b-row>
         <b-col md="6" class="my-1">
           <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons"></b-pagination>
