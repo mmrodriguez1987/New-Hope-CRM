@@ -1,30 +1,29 @@
 <template>
-  <b-card header="trans('bck.person.title')">
+  <b-card :header="trans('bck.person.title')">
     <b-container fluid>
       <b-row>
         <b-col md="4" class="my-1">
           <b-form-group label-cols-sm="2" label="Filter" class="mb-0">
             <b-input-group>
-              <b-form-input v-model="target" placeholder="trans('bck.general.search')"></b-form-input>              
+              <b-form-input v-model="target" :placeholder="trans('bck.general.search')"  @keyup.enter="getPersons"></b-form-input>              
             </b-input-group>
           </b-form-group>
         </b-col>   
         <b-col md="8" class="my-1">
           <button type="button" class="btn btn-success mb-2 pull-right" @click="create">
-            <i class="fa fa-plus"></i>
-            {{trans('bck.general.add')}}
+            <i class="fa fa-plus"></i>           
           </button>
         </b-col>
       </b-row>
 
       <b-table bordered striped hover :items="persons" :fields="fields" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"  @sort-changed="sortingChanged" >       
-        <template slot="fullname" slot-scope="row">
+        <template slot="fullname" slot-scope="data">
           {{row.item.first_name}} {{row.item.last_name}}
         </template>
-        <template slot="fulladdress" slot-scope="row">
+        <template slot="fulladdress" slot-scope="data">
           {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}
         </template>
-        <template slot="actions" slot-scope="row">            
+        <template slot="actions" slot-scope="data">            
           <button class="btn btn-info btn-sm" ><!-- @click="edit(row.item, row.index)"-->
             <i class="fa fa-pencil"></i>
           </button>
@@ -59,11 +58,11 @@ export default {
           label: 'ID',
           sortable: true 
         },
-        // { 
-        //   key: 'fullname', 
-        //   label: trans('bck.person.lbl_fullname'), 
-        //   sortable: true 
-        // },
+        { 
+          key: 'fullname', 
+          label: trans('bck.person.lbl_fullname'), 
+          sortable: true 
+        },
         { 
           key: 'email', 
           label: trans('bck.person.lbl_email'), 
@@ -89,11 +88,11 @@ export default {
           label: trans('bck.person.lbl_maritalstatus'), 
           sortable: true 
         },
-        // { 
-        //   key: 'fulladdress', 
-        //   label: trans('bck.person.lbl_fulladdress'), 
-        //   sortable: true 
-        // },
+        { 
+          key: 'fulladdress', 
+          label: trans('bck.person.lbl_fulladdress'), 
+          sortable: true 
+        },
         { 
           key: 'person_type_name', 
           label: trans('bck.person.lbl_persontype'), 
