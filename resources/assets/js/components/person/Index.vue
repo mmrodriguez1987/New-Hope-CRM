@@ -20,7 +20,8 @@
         <template slot="fullname" slot-scope="row">
           {{row.item.first_name}} {{row.item.last_name}}
         </template>
-        <template slot="fulladdress" slot-scope="row">
+        <template slot="fullad
+        dress" slot-scope="row">
           {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}
         </template>
         <template slot="actions" slot-scope="row">            
