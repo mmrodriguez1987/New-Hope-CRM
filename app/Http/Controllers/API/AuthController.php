@@ -15,6 +15,8 @@ class AuthController extends Controller
         User::create([
             'name' => request('name'),
             'email' => request('email'),
+            'phone' => request('phone'),
+            'rol_id' => request('rol_id'),
             'password' => bcrypt(request('password'))
         ]);
 
@@ -84,6 +86,11 @@ class AuthController extends Controller
             'user' => $user,
             'status' => 200
         ]);
+    }
+
+    public function getUser()
+    {
+        return auth()->user();
     }
 
     public function logout()

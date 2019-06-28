@@ -33,7 +33,7 @@
                 <div>
                   <h2>Sign up</h2>
                   <p>For registre.</p>
-                  <b-button variant="primary" class="active mt-3" href="#">Register Now!</b-button>
+                  <b-button variant="primary" class="active mt-3" href="/register">Register Now!</b-button>
                 </div>
               </b-card-body>
             </b-card>
