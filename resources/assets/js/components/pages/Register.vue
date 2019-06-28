@@ -5,21 +5,21 @@
         <b-col md="6" sm="8">
           <b-card no-body class="mx-4">
             <b-card-body class="p-4">
-              <b-form @submit.prevent="save" method="POST">
+              <b-form>
                 <h1>Register</h1>
                 <p class="text-muted">Create your account</p>
                 <b-input-group class="mb-3">
                   <b-input-group-prepend>
                     <b-input-group-text><i class="icon-user"></i></b-input-group-text>
                   </b-input-group-prepend>
-                  <b-form-input type="text" class="form-control" placeholder="Name" autocomplete="username" v-model="user.name" />
+                  <b-form-input type="text" v-validate="'required|max:255'" :error-messages="errors.collect('name')" class="form-control" placeholder="Name" autocomplete="username" v-model="user.name" />
                 </b-input-group>
 
                 <b-input-group class="mb-3">
                   <b-input-group-prepend>
                     <b-input-group-text>@</b-input-group-text>
                   </b-input-group-prepend>
-                  <b-form-input type="text" class="form-control" placeholder="Email" autocomplete="email" v-model="user.email" />
+                  <b-form-input type="text" v-validate="'required|email|max:255'" :error-messages="errors.collect('email')" class="form-control" placeholder="Email" autocomplete="email" v-model="user.email" />
                 </b-input-group>
 
                 <b-input-group class="mb-3">
@@ -34,14 +34,14 @@
                   <b-input-group-prepend>
                     <b-input-group-text><i class="icon-lock"></i></b-input-group-text>
                   </b-input-group-prepend>
-                  <b-form-input type="password" class="form-control" placeholder="Password" autocomplete="new-password" v-model="user.password" />
+                  <b-form-input type="password" class="form-control" v-validate="'required|min:6'" :error-messages="errors.collect('password')" placeholder="Password" autocomplete="new-password" v-model="user.password" />
                 </b-input-group>
 
                 <b-input-group class="mb-4">
                   <b-input-group-prepend>
                     <b-input-group-text><i class="icon-lock"></i></b-input-group-text>
                   </b-input-group-prepend>
-                  <b-form-input type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password" v-model="user.repeat_password"/>
+                  <b-form-input type="password" class="form-control" v-validate="'required|confirmed:password'" :error-messages="errors.collect('password_confirmation')" placeholder="Repeat password" autocomplete="new-password" v-model="user.repeat_password"/>
                 </b-input-group>
 
                 <b-button variant="success" @click="registeruser" block>Create Account</b-button>
@@ -79,8 +79,21 @@ export default {
     }
   },
   methods: {
-    registeruser() {
-      this.$store.dispatch('register', this.user)
+    submit() {   
+      let data = {
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+        rol_id: this.rol_id,
+        password: this.password,
+      };
+
+      axios.post('/register', data).then(({data}) => {
+        auth.login(data.token, data.email)
+       
+      }).catch(({response}) => {                    
+        alert(response.data.message);
+      })   
     }
   }
 }

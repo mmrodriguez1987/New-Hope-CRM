@@ -12,6 +12,7 @@ return [
     'female' => 'Female',
   ],
   'general' => [
+    'app_name' => 'New Hope ERP',
     'add' => 'Add',
     'search' => 'Search',
     'actions' => 'Actions',

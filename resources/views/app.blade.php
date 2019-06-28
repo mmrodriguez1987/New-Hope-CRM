@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
-    <head>
-        <meta charset="UTF-8">
-        <title>New Hope Dasboard</title>        
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        {!! Html::style('css/app.css') !!}
+    <head>        
+        <title>{{ trans('bck.general.app_name') }}</title>
+        <meta charset="UTF-8">        
+        <meta name="csrf-token" content="{{ csrf_token() }}">       
+        <link rel="stylesheet" href="{{url('css/app.css')}}" >
+    </head>
     <body>
         <div id="app">
             <router-view></router-view>          
-        </div>
-        {!! Html::script('js/app.js') !!}            
-        {!! Html::script('js/lang.js') !!} 
+        </div>        
+        <script src="{{url('js/app.js')}}"></script>
+        <script src="{{url('js/lan.js')}}"></script>
     </body>
 </html>
 
