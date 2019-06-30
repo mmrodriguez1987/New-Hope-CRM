@@ -18,16 +18,16 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('Pa$$w0rd'), 
             'role_id' => 1,
             'phone' => '7863550502',
-            'remember_token' => str_random(10),
+            'remember_token' => str_random(50),
         ]);
 
         User::create([
-            'name' => 'Vianne Rodriguez',
+            'name' => 'Vianney Rodriguez',
             'email' => 'vrodriguez@nissienterprise.com',
             'password' => bcrypt('Pa$$w0rd'), 
             'role_id' => 1,
             'phone' => '7863509949',
-            'remember_token' => str_random(10),
+            'remember_token' => str_random(50),
         ]);
 
         User::create([
@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('Pa$$w0rd'), 
             'role_id' => 1,
             'phone' => '3053640200',
-            'remember_token' => str_random(10),
+            'remember_token' => str_random(50),
         ]);
     }
 }
