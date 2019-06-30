@@ -20,17 +20,54 @@
         <template slot="fullname" slot-scope="row">
           {{row.item.first_name}} {{row.item.last_name}}
         </template>
-        <template slot="fullad
-        dress" slot-scope="row">
-          {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}
-        </template>
+        
         <template slot="actions" slot-scope="row">            
-          <button class="btn btn-info btn-sm" ><!-- @click="edit(row.item, row.index)"-->
+          <button class="btn btn-info btn-sm" title="Edit Person Details"><!-- @click="edit(row.item, row.index)"-->
             <i class="fa fa-pencil"></i>
           </button>
-          <button class="btn btn-danger btn-sm" @click="remove(row.item, row.index)">
+          <button class="btn btn-danger btn-sm" title="Remove" @click="remove(row.item, row.index)">
             <i class="fa fa-trash"></i>
           </button>
+          <button class="btn btn-success btn-sm" title="Show Details" @click="row.toggleDetails">
+            <i class="fa fa-plus-square"></i>
+          </button>
+        </template>
+
+        <template slot="row-details" slot-scope="row">       
+          <b-card>
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Address:</b></b-col>
+              <b-col> {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}</b-col>
+            </b-row>
+
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Person Type:</b></b-col>
+              <b-col>{{ row.item.person_type_name }}</b-col>
+            </b-row>
+
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Position:</b></b-col>
+              <b-col>{{ row.item.position_name }}</b-col>
+            </b-row>
+            
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Profession:</b></b-col>
+              <b-col>{{ row.item.profession_name }}</b-col>
+            </b-row>
+
+            <b-button size="sm" @click="row.toggleDetails" Title="Hide">
+              <i class="fa fa-minus"></i>
+            </b-button>
+            <b-button class="btn btn-success btn-sm" size="sm" title="Send Text Message">
+               <i class="fa fa-paper-plane"></i>
+            </b-button>
+            <b-button class="btn btn-success btn-sm" size="sm" title="Send Email">
+               <i class="fa fa-envelope-o"></i>
+            </b-button>
+            <b-button class="btn btn-success btn-sm" size="sm" title="Related Familty">
+               <i class="fa fa-users"></i>
+            </b-button>
+          </b-card>
         </template>
       </b-table>
       
@@ -88,27 +125,7 @@ export default {
           key: 'marital_status', 
           label: trans('bck.person.lbl_maritalstatus'), 
           sortable: true 
-        },
-        { 
-          key: 'fulladdress', 
-          label: trans('bck.person.lbl_fulladdress'), 
-          sortable: true 
-        },
-        { 
-          key: 'person_type_name', 
-          label: trans('bck.person.lbl_persontype'), 
-          sortable: true 
-        },
-        { 
-          key: 'position_name', 
-          label: trans('bck.person.lbl_position'),
-          sortable: true 
-        },
-        { 
-          key: 'profession_name', 
-          label: trans('bck.person.lbl_profession'), 
-          sortable: true 
-        },
+        },       
         { 
           key: 'actions', 
           label: trans('bck.general.actions') 
