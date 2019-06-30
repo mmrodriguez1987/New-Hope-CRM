@@ -1,21 +1,5 @@
 <?php
-
-    // Auth::routes();
-    // Route::post('/login', 'Auth\LoginController@doLogin');
-    // Route::post('/register', 'Auth\RegisterController@register');
-    // Route::get('/logout', 'Auth\LoginController@logout');
-    
-
     // Route::prefix('admin')->middleware(['auth'])->group(function () {
-
-    //     Route::get('/', 'DashController@index')->name('HomeAdmin');
-    //     //Persons
-    //     Route::get('person', 'PersonController@index')->name('api.person.index');   
-    //     Route::post('person', 'PersonController@store')->name('api.person.store');
-    //     Route::put('person/{id}', 'PersonController@update')->name('api.person.update');
-    //     Route::delete('person/{id}', 'PersonController@delete')->name('api.person.delete');
-    //     Route::get('personList', 'PersonController@list')->name('api.person.list');
-
     //     //Professions
     //     Route::get('profession', 'ProfessionController@index')->name('api.profession.index');   
     //     Route::post('profession', 'ProfessionController@store')->name('api.profession.store');
@@ -38,33 +22,6 @@
     //     Route::get('persontypeList','PersontypeController@list')->name('api.persontype.list');
     // });
 
-
-    // // Localization
-    // Route::get('/js/lang.js', function () {
-    //     $strings = Cache::rememberForever('lang.js', function () {
-    //         $lang = config('app.locale');
-    //         $files = glob(resource_path('lang/' . $lang . '/*.php'));
-    //         $strings = [];
-    //         foreach ($files as $file) {
-    //             $name = basename($file, '.php');
-    //             $strings[$name] = require $file;
-    //         }
-    //         return $strings;
-    //     });
-
-    //     header('Content-Type: text/javascript');
-    //     echo('window.i18n = ' . json_encode($strings) . ';');
-    //     exit();
-    // })->name('assets.lang');
-
-    // Route to handle page reload in Vue except for api routes
-
-
 Route::get('/', function () {
     return view('app');
 });
-
-// Route to handle page reload in Vue except for api routes
-//Route::get('/{any?}', function (){
-//    return view('app');
-//})->where('any', '^(?!api\/)[\/\w\.-]*');
