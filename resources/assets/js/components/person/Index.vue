@@ -1,16 +1,16 @@
 <template>
-  <b-card :header="trans('bck.person.title')">
+  <b-card header="Persons Database Management">
     <b-container fluid>
       <b-row>
         <b-col md="4" class="my-1">
           <b-form-group label-cols-sm="2" label="Filter" class="mb-0">
             <b-input-group>
-              <b-form-input v-model="target" :placeholder="trans('bck.general.search')"  @keyup.enter="getPersons"></b-form-input>              
+              <b-form-input v-model="target" :placeholder="Search"  @keyup.enter="getPersons"></b-form-input>              
             </b-input-group>
           </b-form-group>
         </b-col>   
         <b-col md="8" class="my-1">
-          <button type="button" class="btn btn-success mb-2 pull-right" @click="create">
+          <button type="button" class="btn btn-success mb-2 pull-right" title="Add" @click="create">
             <i class="fa fa-plus"></i>           
           </button>
         </b-col>
@@ -22,7 +22,7 @@
         </template>
         
         <template slot="actions" slot-scope="row">            
-          <button class="btn btn-info btn-sm" title="Edit Person Details"><!-- @click="edit(row.item, row.index)"-->
+          <button class="btn btn-info btn-sm" title="Edit Person Details" @click="edit(row.item, row.index)" >
             <i class="fa fa-pencil"></i>
           </button>
           <button class="btn btn-danger btn-sm" title="Remove" @click="remove(row.item, row.index)">
@@ -36,7 +36,7 @@
         <template slot="row-details" slot-scope="row">       
           <b-card>
             <b-row class="mb-2">
-              <b-col sm="3" class="text-sm-right"><b>Address:</b></b-col>
+              <b-col sm="3" class="text-sm-left"><b>Address:</b></b-col>
               <b-col> {{row.item.address}}, {{row.item.street}}, {{row.item.city}}, {{row.item.state}} {{row.item.postal_code}}</b-col>
             </b-row>
 
@@ -76,7 +76,7 @@
           <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons"></b-pagination>
         </b-col>
       </b-row>
-      <!-- <personEdit :show="showEdit" :draft="draft" @close="close"></personEdit> -->
+      <personEdit :show="showEdit" :draft="draft" @close="close"></personEdit>
     </b-container>
   </b-card>
 </template>
@@ -98,37 +98,37 @@ export default {
         },
         { 
           key: 'fullname', 
-          label: trans('bck.person.lbl_fullname'), 
+          label: 'Full Name', 
           sortable: true 
         },
         { 
           key: 'email', 
-          label: trans('bck.person.lbl_email'), 
+          label: 'E-mail', 
           sortable: true 
         },
         {
           key: 'phone', 
-          label: trans('bck.person.lbl_phone'), 
+          label: 'Phone', 
           sortable: true 
         },
         { 
           key: 'birthdate', 
-          label: trans('bck.person.lbl_birthday'), 
+          label: 'Birthday', 
           sortable: true 
         },
         { 
           key: 'sex', 
-          label: trans('bck.person.lbl_sex'), 
+          label: 'Sex', 
           sortable: true 
         },
         { 
           key: 'marital_status', 
-          label: trans('bck.person.lbl_maritalstatus'), 
+          label: 'Marital Status', 
           sortable: true 
         },       
         { 
           key: 'actions', 
-          label: trans('bck.general.actions') 
+          label: 'Actions' 
         }
       ],
       currentPage: null,
@@ -186,10 +186,22 @@ export default {
     close() {
       this.showEdit = false
     },
-    remove(item) {
-      if (confirm(trans("bck.person.delete_confirm") + item.name + "?")) {
-        this.$store.dispatch('removePerson', item.id)
-      }
+    remove(item) {  
+      var self = this;
+      this.$swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert data of '" + item.name + '"',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+          self.$store.dispatch('removePerson', item.id)
+          self.$swal.fire('Deleted!','Person Deleted.','success')
+        }
+      })
     },
     sortingChanged(ctx) {
       if (ctx.sortBy) {
