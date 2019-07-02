@@ -187,20 +187,13 @@ export default {
       this.showEdit = false
     },
     remove(item) {  
-      var self = this;
-      this.$swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert data of '" + item.name + '"',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.value) {
-          self.$store.dispatch('removePerson', item.id)
-          self.$swal.fire('Deleted!','Person Deleted.','success')
-        }
+      
+
+      Swal.fire({
+        title: 'Error!',
+        text: 'Do you want to continue',
+        type: 'error',
+        confirmButtonText: 'Cool'
       })
     },
     sortingChanged(ctx) {
