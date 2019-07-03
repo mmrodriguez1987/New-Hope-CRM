@@ -186,31 +186,15 @@ export default {
     close() {
       this.showEdit = false
     },
-    remove(item) {  
-      
-    console.log('Click Remove')
-     this.$snotify.confirm('Example body content', 'Example title', {
+    remove(item) {     
+      this.$snotify.confirm('Do you want to remove this Person? You will lost access to all related person data', 'Remove Person', {
         timeout: 5000,
         showProgressBar: true,
         closeOnClick: false,
         pauseOnHover: true,
         buttons: [
-          {
-            text: 'Yes', action: () => console.log('Clicked: Yes'), bold: false
-          },
-          {
-            text: 'No', action: () => console.log('Clicked: No')},
-          {
-            text: 'Later', action: (toast) => {
-              console.log('Clicked: Later'); 
-              this.$snotify.remove(toast.id); } 
-          },
-          {
-            text: 'Close', action: (toast) => {
-              console.log('Clicked: No'); 
-              this.$snotify.remove(toast.id); 
-            }, bold: true
-          },
+          {text: 'Yes', action: () => this.$store.dispatch('removePerson', item.id) },
+          {text: 'Cancel', action: (toast) => { this.$snotify.remove(toast.id); }, bold: true},
         ]
       });
     },

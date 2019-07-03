@@ -18,7 +18,6 @@ let getters = {
 }
 
 let actions = {
-
   getPersons(context, params) {  
     axios.get('api/person?page=' + params.page + '&search=' + params.target)
     .then(response => {
@@ -26,8 +25,8 @@ let actions = {
       context.state.loading = false
     })
    .catch(error => {
-      Vue.toasted.show('Error in store.module.Person.getPersons: ' + error.message,  { icon: 'exclamation-triangle', type: 'error'})
-      if (error.response) {       
+      Vue.$snotify.error('Error in store.module.Person.getPersons: ' + error.message, 'Error getting Persons Data')    
+      if (error.response) {
         console.log(error.response.data)
         console.log(error.response.status)
         console.log(error.response.headers)

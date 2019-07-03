@@ -41,13 +41,14 @@
         <Breadcrumb :list="list"/>
         <div class="container-fluid">
           <router-view></router-view>
+          <vue-snotify></vue-snotify>
         </div>
       </main>
       <AppAside fixed>
         <!--aside-->
         <DefaultAside/>
       </AppAside>
-      <vue-snotify></vue-snotify>
+      
     </div>
     <TheFooter>
       <!--footer-->
@@ -72,6 +73,7 @@ import DefaultHeaderDropdownNotif from './DefaultHeaderDropdownNotif'
 import DefaultHeaderDropdownAccnt from './DefaultHeaderDropdownAccnt'
 import DefaultHeaderDropdownMssgs from './DefaultHeaderDropdownMssgs'
 import DefaultHeaderDropdownTasks from './DefaultHeaderDropdownTasks'
+import "vue-snotify/styles/material.css"
 
 export default {
   name: 'DefaultContainer',
