@@ -5,7 +5,7 @@
         <b-col md="4" class="my-1">
           <b-form-group label-cols-sm="2" label="Filter" class="mb-0">
             <b-input-group>
-              <b-form-input v-model="target" :placeholder="Search"  @keyup.enter="getPersons"></b-form-input>              
+              <b-form-input v-model="target" placeholder="Search"  @keyup.enter="getPersons"></b-form-input>              
             </b-input-group>
           </b-form-group>
         </b-col>   
@@ -76,7 +76,7 @@
           <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons"></b-pagination>
         </b-col>
       </b-row>
-      <personEdit :show="showEdit" :draft="draft" @close="close"></personEdit>
+      <!-- <personEdit :show="showEdit" :draft="draft" @close="close"></personEdit> -->
     </b-container>
   </b-card>
 </template>
@@ -188,13 +188,31 @@ export default {
     },
     remove(item) {  
       
-
-      Swal.fire({
-        title: 'Error!',
-        text: 'Do you want to continue',
-        type: 'error',
-        confirmButtonText: 'Cool'
-      })
+    console.log('Click Remove')
+     this.$snotify.confirm('Example body content', 'Example title', {
+        timeout: 5000,
+        showProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        buttons: [
+          {
+            text: 'Yes', action: () => console.log('Clicked: Yes'), bold: false
+          },
+          {
+            text: 'No', action: () => console.log('Clicked: No')},
+          {
+            text: 'Later', action: (toast) => {
+              console.log('Clicked: Later'); 
+              this.$snotify.remove(toast.id); } 
+          },
+          {
+            text: 'Close', action: (toast) => {
+              console.log('Clicked: No'); 
+              this.$snotify.remove(toast.id); 
+            }, bold: true
+          },
+        ]
+      });
     },
     sortingChanged(ctx) {
       if (ctx.sortBy) {

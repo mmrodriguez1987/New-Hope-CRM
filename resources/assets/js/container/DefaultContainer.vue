@@ -47,6 +47,7 @@
         <!--aside-->
         <DefaultAside/>
       </AppAside>
+      <vue-snotify></vue-snotify>
     </div>
     <TheFooter>
       <!--footer-->

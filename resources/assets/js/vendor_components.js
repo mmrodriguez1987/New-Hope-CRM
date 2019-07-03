@@ -5,11 +5,16 @@ Vue.use(require('vue-moment'))
 import _ from 'lodash'
 import Toasted from 'vue-toasted'
 import vSelect from 'vue-select'
-import Snotify from 'vue-snotify'
+import Snotify, { SnotifyPosition } from 'vue-snotify'
 
+const options = {
+    toast: {
+        position: SnotifyPosition.rightTop
+    }
+}
 
 Vue.use(Toasted,  {duration: 10000, iconPack : 'fontawesome', theme: 'outline'})
-Vue.use(Snotify)
+Vue.use(Snotify, options)
 //Vue.use(wysiwyg, {  maxHeight: "500px" })
 Vue.component('v-select', vSelect)
 
