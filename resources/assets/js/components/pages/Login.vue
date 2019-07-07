@@ -6,7 +6,7 @@
           <b-card-group>
             <b-card no-body class="p-4">
               <b-card-body>
-                <b-form @submit.prevent="login()" method="post">
+                <b-form @submit.prevent="sendToken()" method="POST">
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
                   <b-input-group class="mb-3">
@@ -19,12 +19,13 @@
                   </b-input-group>
                   <b-row>
                     <b-col cols="6">
-                      <b-button variant="primary" class="px-4" type="submit" @click="login">Login</b-button>
+                      <b-button variant="primary" class="px-4" type="submit" >Login</b-button>
                     </b-col>
                     <b-col cols="6" class="text-right">
                       <b-button variant="link" class="px-0" href="#" >Forgot password?</b-button>
                     </b-col>
                   </b-row>
+                  <vue-recaptcha  ref="invisibleRecaptcha"  @verify="onVerify"  @expired="onExpired" size="invisible" :badge="badge" :sitekey="sitekey"></vue-recaptcha>
                 </b-form>
               </b-card-body>
             </b-card>
@@ -45,17 +46,22 @@
 </template>
 
 <script>
+  import VueRecaptcha from 'vue-recaptcha'
+
   export default {
+    components: { VueRecaptcha },
     data() {
       return {
         username: '',
-        password: ''
+        password: '',
+        sitekey: process.env.MIX_INVISIBLE_RECAPTCHA_SITEKEY,
+        badge: process.env.MIX_INVISIBLE_RECAPTCHA_BADGE,       
       }
     },
 
     methods: {
-      login() {
-        let data = {
+      onVerify: function (response) {
+				let data = {
           username: this.username,
           password: this.password
         };
@@ -68,7 +74,19 @@
             .catch(({response}) => {                    
               alert(response.data.message);
             });
-        }
+    	}, 
+
+      sendToken: function () {
+		    this.$refs.invisibleRecaptcha.execute()
+      },
+      
+      onExpired: function () {
+		    console.log('Expired')
+		  },
+		  resetRecaptcha () {
+      	this.$refs.invisibleRecaptcha.reset()
+			},
+      
     }
    
   }
