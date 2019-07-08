@@ -85,10 +85,7 @@
 		  },
 		  resetRecaptcha () {
       	this.$refs.invisibleRecaptcha.reset()
-			},
-      
-    }
-   
+			},      
+    }   
   }
-
 </script>
