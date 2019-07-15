@@ -1,28 +1,31 @@
 <template>
   <div>
-    <b-modal v-model="show" size="lg" :title="draft.id ? 'Edit Person' : 'Add Person'" @hide="close" centered   class="modal-lg">
+    <b-modal v-model="show" size="lg" :title="draft.id ? 'Edit Person' : 'Add Person'" @hide="close" centered  class="modal fade">
       <b-container fluid>
-        <!-- First Name -->
-        <b-row class="mb-1">          
-          <b-col cols="2"> </b-col>           
-          <b-col>
-            <label :class="validFirstName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_firstname')}}</label>
-          </b-col>
-          <b-col>
-            <input type="text" v-model="draft.first_name" class="form-control">    
-          </b-col>
-        </b-row>
+        <!-- First Name  -->
+        <b-form-group 
+            :description="trans('bck.person.lbl_desc_firstname')" 
+            :label="trans('bck.person.lbl_firstname')" 
+            label-for="firstName" 
+            :label-cols="3">
+          <b-form-input id="firstName" type="text" v-model="draft.first_name" />  
+          <b-form-invalid-feedback >
+            {{trans('bck.general.required')}}
+          </b-form-invalid-feedback>
+        </b-form-group>
 
-        <!-- Last Name -->
-        <b-row class="mb-1">
-          <b-col cols="2"> </b-col>      
-          <b-col>
-              <label :class="validLastName ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_lastname')}}</label>
-          </b-col>
-          <b-col>
-              <input type="text" v-model="draft.last_name" class="form-control">
-          </b-col>
-        </b-row>
+        <!-- Last Name  -->
+        <b-form-group 
+            :description="trans('bck.person.lbl_desc_lastname')" 
+            :label="trans('bck.person.lbl_lastname')" 
+            label-for="lastname" 
+            :label-cols="3">
+          <b-form-input id="lastname" type="text" v-model="draft.last_name" /> 
+          <b-form-invalid-feedback >
+            {{trans('bck.general.required')}}
+          </b-form-invalid-feedback>             
+        </b-form-group>
+
 
         <!-- Birthday -->
         <b-row class="mb-1">
@@ -291,6 +294,32 @@ export default {
         { value: 'IA', text: trans('bck.states.IA')},
         { value: 'KS', text: trans('bck.states.KS')},
         { value: 'KY', text: trans('bck.states.KY')}
+      ],
+      labels: [
+        { value: 'first_name', text: trans('bck.person.lbl_firstname')},
+        { value: 'desc_first_name', text: trans('bck.person.lbl_desc_firstname')},
+        { value: 'last_name', text: trans('bck.person.lbl_lastname')},
+        { value: 'birtday', text: trans('bck.person.lbl_birthday')},
+        { value: 'cid', text: trans('bck.person.lbl_cid')},
+        { value: 'maritalstatus', text: trans('bck.person.lbl_maritalstatus')},
+        { value: 'email', text: trans('bck.person.lbl_email')},
+        { value: 'sex', text: trans('bck.person.lbl_sex')},
+        { value: 'address', text: trans('bck.person.lbl_address')},
+        { value: 'street', text: trans('bck.person.lbl_street')},
+        { value: 'city', text: trans('bck.person.lbl_city')},
+        { value: 'zipcode', text: trans('bck.person.lbl_zipcode')},
+        { value: 'state', text: trans('bck.person.lbl_state')},
+        { value: 'name', text: trans('bck.person.lbl_state')},
+        { value: 'cnt_emerg_name', text: trans('bck.person.lbl_cnt_emerg_name')},
+        { value: 'cnt_emerg_phone', text: trans('bck.person.lbl_cnt_emerg_phone')},
+        { value: 'cnt_emerg_address', text: trans('bck.person.lbl_cnt_emerg_address')},
+        { value: 'crt_employer_name', text: trans('bck.person.lbl_crt_employer_name')},
+        { value: 'crt_employer_phone', text: trans('bck.person.lbl_crt_employer_phone')},
+        { value: 'crt_employer_address', text: trans('bck.person.lbl_crt_employer_address')},
+        { value: 'person_type', text: trans('bck.person.lbl_persontype')},
+        { value: 'position', text: trans('bck.person.lbl_position')},
+        { value: 'profession', text: trans('bck.person.lbl_profession')}
+
       ]     
     }
   },
@@ -409,7 +438,6 @@ export default {
       return this.professions
      
     },
-
   }
 }
 </script>

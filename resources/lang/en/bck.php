@@ -22,6 +22,8 @@ return [
     'active' => 'Active',
     'create' => 'Create',
     'status' => 'Status',
+    'id' => 'ID',
+    'required' => 'This is a required field.',
   ],
   'states' => [
     'FL' => 'FL - Florida',
@@ -81,7 +83,9 @@ return [
     'lbl_fullname' => 'Full Name',
     'lbl_fulladdress' => 'Full Address',
     'lbl_firstname' => 'First Name',
+    'lbl_desc_firstname' => 'Here your First Name',
     'lbl_lastname' => 'Last Name',
+    'lbl_desc_lastname' => 'Here your Last Name',
     'lbl_email' => 'Email',
     'lbl_phone' => 'Phone',
     'lbl_maritalstatus' => 'Marital Status',

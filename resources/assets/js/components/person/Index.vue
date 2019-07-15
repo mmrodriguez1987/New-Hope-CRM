@@ -76,7 +76,7 @@
           <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons"></b-pagination>
         </b-col>
       </b-row>
-      <!-- <personEdit :show="showEdit" :draft="draft" @close="close"></personEdit> -->
+      <person-edit :show="showEdit" :draft="draft" @close="close"></person-edit>
     </b-container>
   </b-card>
 </template>
@@ -93,42 +93,42 @@ export default {
       fields: [
         { 
           key: 'id', 
-          label: 'ID',
+          label: trans('bck.general.id'),
           sortable: true 
         },
         { 
           key: 'fullname', 
-          label: 'Full Name', 
+          label: trans('bck.person.lbl_fullname'), 
           sortable: true 
         },
         { 
           key: 'email', 
-          label: 'E-mail', 
+          label:  trans('bck.person.lbl_email'), 
           sortable: true 
         },
         {
           key: 'phone', 
-          label: 'Phone', 
+          label:  trans('bck.person.lbl_phone'), 
           sortable: true 
         },
         { 
           key: 'birthdate', 
-          label: 'Birthday', 
+          label:  trans('bck.person.lbl_birthday'), 
           sortable: true 
         },
         { 
           key: 'sex', 
-          label: 'Sex', 
+          label:  trans('bck.person.lbl_sex'), 
           sortable: true 
         },
         { 
           key: 'marital_status', 
-          label: 'Marital Status', 
+          label:  trans('bck.person.lbl_maritalstatus'), 
           sortable: true 
         },       
         { 
           key: 'actions', 
-          label: 'Actions' 
+          label:  trans('bck.person.actions') 
         }
       ],
       currentPage: null,
@@ -136,7 +136,8 @@ export default {
       target: '',
       currentIndex: null,
       sortBy: 'id',
-      sortDesc: true
+      sortDesc: true,
+      showEdit: false
     }
   },
   created() {
@@ -144,7 +145,7 @@ export default {
   },
   methods: {
     edit(item, index){
-      this.draft = clone(post)
+      this.draft = clone(item)
       this.currentIndex = index
       this.showEdit = true 
     },

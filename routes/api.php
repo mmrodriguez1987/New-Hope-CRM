@@ -30,32 +30,25 @@ Route::middleware('auth:api')->group(function () {
 
 });
 
+// Localization
+Route::get('/js/lan.js', function () {
+    $strings = Cache::remember('lan.js', 0, function () {
+        $lang = config('app.locale');
 
-// Route::prefix('auth')->group(function () {
-//     Route::post('register', 'AuthController@register');
-//     Route::post('login', 'AuthController@login');
-//     Route::get('refresh', 'AuthController@refresh');
+        $files   = glob(resource_path('lang/' . $lang . '/*.php'));
+        $strings = [];
 
-//     Route::group(['middleware' => 'auth:api'], function(){
-//         Route::get('user', 'AuthController@user');
-//         Route::post('logout', 'AuthController@logout');
-//     });
-// });
+        foreach ($files as $file) {
+            $name           = basename($file, '.php');
+            $strings[$name] = require $file;
+        }
 
-// Route::group(['middleware' => 'auth:api'], function(){
-//     // Users
-//     Route::get('users', 'UserController@index')->middleware('isAdmin');
-//     Route::get('users/{id}', 'UserController@show')->middleware('isAdminOrSelf');
-// });
+        return $strings;
+    });
 
-// Route::prefix('admin')->group(function () {   
-    
-//     //Persons
-//     Route::get('person', 'PersonController@index');
-//     Route::post('person', ['as' => 'person.store','uses' => 'PersonController@store']);
-//     Route::put('person/{id}', ['as' => 'person.update', 'uses' => 'PersonController@update']);
-//     Route::delete('person/{id}', ['as' => 'person.destroy','uses' => 'PersonController@destroy']);
-//     Route::get('personList', ['as' => 'person.list','uses' => 'PersonController@list']);
+    header('Content-Type: text/javascript');
+    echo('window.i18n = ' . json_encode($strings) . ';');
+    exit();
+})->name('assets.lang');
 
- 
-// });
+

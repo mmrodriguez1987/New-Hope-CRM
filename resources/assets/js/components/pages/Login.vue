@@ -6,7 +6,7 @@
           <b-card-group>
             <b-card no-body class="p-4">
               <b-card-body>
-                <b-form @submit.prevent="sendToken()" method="POST">
+                <b-form @submit.prevent="sendToken" method="POST">
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
                   <b-input-group class="mb-3">
@@ -25,7 +25,7 @@
                       <b-button variant="link" class="px-0" href="#" >Forgot password?</b-button>
                     </b-col>
                   </b-row>
-                  <vue-recaptcha  ref="invisibleRecaptcha"  @verify="onVerify"  @expired="onExpired" size="invisible" :badge="badge" :sitekey="sitekey"></vue-recaptcha>
+                  <vue-recaptcha  ref="invisibleRecaptcha"  @verify="onVerify"  @expired="onExpired" size="invisible" :badge="badge" :sitekey="sitekey" :loadRecaptchaScript="true"></vue-recaptcha>
                 </b-form>
               </b-card-body>
             </b-card>
@@ -77,7 +77,7 @@
     	}, 
 
       sendToken: function () {
-		    this.$refs.invisibleRecaptcha.execute()
+        this.$refs.invisibleRecaptcha.execute()
       },
       
       onExpired: function () {
