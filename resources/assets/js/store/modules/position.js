@@ -115,7 +115,7 @@ let actions = {
 
   listPosition(context) {
     context.state.loading = true
-    axios.get('/admin/positionList')
+    axios.get('/api/positionList')
       .then(response => {
         context.commit('listPosition', {data: response.data})
         context.state.loading = false

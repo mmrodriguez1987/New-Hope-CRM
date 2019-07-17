@@ -76,7 +76,7 @@
           <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons"></b-pagination>
         </b-col>
       </b-row>
-      <person-edit :show="showEdit" :draft="draft" @close="close"></person-edit>
+      <person-edit :show="showEdit" :draft="draft" @close="close" :professions="professions" :persontypes="personTypes" :positions="positions"/>
     </b-container>
   </b-card>
 </template>
@@ -141,7 +141,10 @@ export default {
     }
   },
   created() {
-    this.getPersons()
+    this.getPersons(),
+    this.$store.dispatch('listPosition')
+    this.$store.dispatch('listPersontype')
+    this.$store.dispatch('listProfession')
   },
   methods: {
     edit(item, index){
@@ -238,8 +241,11 @@ export default {
     personTypes() {
       return this.$store.state.PersonType.list
     },
-    position() {
+    positions() {
       return this.$store.state.Position.list
+    },
+    professions() {
+      return this.$store.state.Profession.list
     }
   }
 }

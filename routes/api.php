@@ -28,6 +28,9 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('person/{id}', 'PersonController@delete')->name('api.person.delete');
     Route::get('personList', 'PersonController@list')->name('api.person.list');
 
+    Route::get('professionList', 'ProfessionController@list')->name('api.profession.list');
+    Route::get('persontypeList', 'PersontypeController@list')->name('api.persontypeList.list');
+    Route::get('positionList', 'PositionController@list')->name('api.position.list');
 });
 
 // Localization

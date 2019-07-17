@@ -115,7 +115,7 @@ let actions = {
 
   listPersontype(context) {
     context.state.loading = true
-    axios.get('/admin/persontypeList')
+    axios.get('/api/persontypeList')
       .then(response => {
         context.commit('listPersontype', {data: response.data})
         context.state.loading = false

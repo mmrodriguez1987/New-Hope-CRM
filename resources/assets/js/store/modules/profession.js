@@ -1,5 +1,6 @@
 let state = {
     professions: [],
+    list: [],
     perPage: null,
     loading: false,
     currentPage: 1,
@@ -112,7 +113,7 @@ let actions = {
     },
 
     listProfession(context) {
-        axios.get('/admin/professionList')
+        axios.get('/api/professionList')
             .then(response => {
                 context.commit('listProfession', { data: response.data })
             })

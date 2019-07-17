@@ -3,24 +3,22 @@
     <b-modal v-model="show" size="lg" :title="draft.id ? 'Edit Person' : 'Add Person'" @hide="close" centered  class="modal fade">
       <b-container fluid>
         <!-- First Name  -->
-        <b-form-group 
-            :description="trans('bck.person.lbl_desc_firstname')" 
+        <b-form-group            
             :label="trans('bck.person.lbl_firstname')" 
             label-for="firstName" 
             :label-cols="3">
-          <b-form-input id="firstName" type="text" v-model="draft.first_name" />  
+          <b-form-input id="firstName" type="text" v-model="draft.first_name" :class="validFirstName ? 'input-valid' : 'input-invalid'" />  
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>
         </b-form-group>
 
         <!-- Last Name  -->
-        <b-form-group 
-            :description="trans('bck.person.lbl_desc_lastname')" 
+        <b-form-group            
             :label="trans('bck.person.lbl_lastname')" 
             label-for="lastname" 
             :label-cols="3">
-          <b-form-input id="lastname" type="text" v-model="draft.last_name" /> 
+          <b-form-input id="lastname" type="text" v-model="draft.last_name" :class="validLastName ? 'input-valid' : 'input-invalid'" /> 
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -32,7 +30,7 @@
             :label="trans('bck.person.lbl_birthday')" 
             label-for="birthday" 
             :label-cols="3">
-          <b-form-input id="birthday" type="date" v-model="draft.birthday" /> 
+          <b-form-input id="birthday" type="date" v-model="draft.birthday" :class="validBirthday ? 'input-valid' : 'input-invalid'" /> 
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -44,7 +42,7 @@
             :label="trans('bck.person.lbl_cid')" 
             label-for="cid" 
             :label-cols="3">
-          <b-form-input id="cid" type="text" v-model="draft.cid" /> 
+          <b-form-input id="cid" type="text" v-model="draft.cid" :class="validCID ? 'input-valid' : 'input-invalid'" /> 
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -56,7 +54,7 @@
             :label="trans('bck.person.lbl_maritalstatus')" 
             label-for="maritalstatus" 
             :label-cols="3">
-          <b-form-input id="maritalstatus" type="text" v-model="draft.maritalstatus" /> 
+          <b-form-input id="maritalstatus" type="text" v-model="draft.maritalstatus" :class="validMaritalStaus ? 'input-valid' : 'input-invalid'" /> 
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -68,7 +66,7 @@
             :label="trans('bck.person.lbl_email')" 
             label-for="email" 
             :label-cols="3">
-          <b-form-input id="email" type="text" v-model="draft.email" /> 
+          <b-form-input id="email" type="text" v-model="draft.email" :class="validEmail ? 'input-valid' : 'input-invalid'"  /> 
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -79,7 +77,7 @@
             :label="trans('bck.person.lbl_sex')" 
             label-for="sex" 
             :label-cols="3">
-          <b-form-input id="sex" type="text" v-model="draft.sex" /> 
+          <b-form-input id="sex" type="text" v-model="draft.sex" :class="validSex ? 'input-valid' : 'input-invalid'" /> 
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -90,13 +88,12 @@
             :label="trans('bck.person.lbl_address')" 
             label-for="address" 
             :label-cols="3">
-          <b-form-input id="address" type="text" v-model="draft.address" /> 
+          <b-form-input id="address" type="text" v-model="draft.address" :class="validAddress ? 'input-valid' : 'input-invalid'"  /> 
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
         </b-form-group>
 
-       
         <!-- Street  -->
         <b-form-group            
             :label="trans('bck.person.lbl_street')" 
@@ -113,7 +110,7 @@
             :label="trans('bck.person.lbl_city')" 
             label-for="city" 
             :label-cols="3">
-          <b-form-input id="city" type="text" v-model="draft.city" /> 
+          <b-form-input id="city" type="text" v-model="draft.city" :class="validCity ? 'input-valid' : 'input-invalid'" /> 
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -124,7 +121,7 @@
             :label="trans('bck.person.lbl_zipcode')" 
             label-for="zipcode" 
             :label-cols="3">
-          <b-form-input id="zipcode" type="number" v-model="draft.postal_code" /> 
+          <b-form-input id="zipcode" type="number" v-model="draft.postal_code" :class="validZIPCode ? 'input-valid' : 'input-invalid'"  /> 
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -135,13 +132,12 @@
             :label="trans('bck.person.lbl_state')" 
             label-for="state" 
             :label-cols="3">
-          <b-form-select id="state" v-model="draft.state" :options="states"  />
+          <b-form-select id="state" v-model="draft.state" :options="states" :class="validState ? 'input-valid' : 'input-invalid'"   />
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
         </b-form-group>
        
-    
         <!-- Contact Emergency Name  -->
         <b-form-group            
             :label="trans('bck.person.lbl_cnt_emerg_name')" 
@@ -214,54 +210,45 @@
             :label="trans('bck.person.lbl_position')" 
             label-for="position" 
             :label-cols="3">
-          <b-form-select id="position" v-model="draft.position_id" :options="options_positions" class="mb-1" />
+          <b-form-select id="position" v-model="draft.position_id" :options="options_positions" :class="validPosition ? 'mb-1 input-valid' : 'mb-1 input-invalid'"  />
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
         </b-form-group>
 
+        <!-- person type -->
+        <b-form-group            
+            :label="trans('bck.person.lbl_persontype')" 
+            label-for="persontype" 
+            :label-cols="3">
+          <b-form-select id="persontype" v-model="draft.person_type_id" :options="options_persontypes" :class="validPersonType ? 'mb-1 input-valid' : 'mb-1 input-invalid'" />
+          <b-form-invalid-feedback >
+            {{trans('bck.general.required')}}
+          </b-form-invalid-feedback>             
+        </b-form-group>
 
-
-        <!-- Position -->
-        <b-row>
-          <b-col cols="2"> </b-col>
-          <b-col>
-            <label :class="validPosition ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_position')}}</label>
-          </b-col>
-          <b-col>
-            <b-form-select v-model="draft.position_id" :options="options_positions" class="mb-1" />
-          </b-col>
-        </b-row>  
-
-        <!-- Person Type -->
-        <b-row>
-          <b-col cols="2"> </b-col>
-          <b-col>
-            <label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label>
-          </b-col>
-          <b-col>
-            <b-form-select v-model="draft.persontype_id" :options="options_persontypes" class="mb-1" />
-          </b-col>
-        </b-row>
-
-        <!-- Profession ID -->
-        <b-row>
-          <b-col cols="2"> </b-col>
-          <b-col>
-            <label :class="validPersonType ? 'label-valid' : 'label-required'">{{trans('bck.person.lbl_persontype')}}</label>
-          </b-col>
-          <b-col>
-            <b-form-select v-model="draft.profession_id" :options="options_professions" class="mb-1" />
-          </b-col>
-        </b-row>
-
+        <!-- profesion -->
+        <b-form-group            
+            :label="trans('bck.person.lbl_profession')" 
+            label-for="profession" 
+            :label-cols="3">
+          <b-form-select id="personprofessiontype" v-model="draft.profession_id" :options="options_professions" :class="validProfession ? 'mb-1 input-valid' : 'mb-1 input-invalid'"  />
+          <b-form-invalid-feedback >
+            {{trans('bck.general.required')}}
+          </b-form-invalid-feedback>             
+        </b-form-group>
+     
         <!-- Active -->
-        <b-row>
-          <b-col cols="2"> </b-col>
-          <b-col><label class="label-valid">{{trans('bck.general.active')}}</label></b-col>
-          <b-col>
-            <b-form-checkbox v-model="draft.active" value="true" unchecked-value="false" class="mb-1" /></b-col>
-        </b-row>        
+        <b-form-group            
+            :label="trans('bck.person.lbl_active')" 
+            label-for="active" 
+            :label-cols="3">
+          <b-form-checkbox v-model="draft.active" value="true" unchecked-value="false" class="mb-1" />
+          <b-form-invalid-feedback >
+            {{trans('bck.general.required')}}
+          </b-form-invalid-feedback>             
+        </b-form-group>
+  
       </b-container>
       <div slot="modal-footer">
         <b-btn variant="success" @click="save" :disabled="!validForm"> {{trans('bck.general.save')}}</b-btn>
@@ -275,7 +262,7 @@ export default {
   props: ['show', 'draft', 'positions', 'personTypes', 'professions'],
   data() {
     return {
-      sex: [ // ordenar este codigo
+      sex: [
         { value: null, text: trans('bck.general.select')},
         { value: 'M',  text: trans('bck.general.male')},
         { value: 'F',  text: trans('bck.general.female')}
@@ -287,8 +274,7 @@ export default {
         { value: 'widower', text: trans('bck.ms.widower')},
         { value: 'divorced', text: trans('bck.ms.divorced')},
         { value: 'cohabitant', text: trans('bck.ms.cohabitant')},
-      ],
-      //Estados de USA
+      ],     
       states: [
         { value: null, text: trans('bck.general.select')},
         { value: 'FL', text: trans('bck.states.FL')},
@@ -313,33 +299,7 @@ export default {
         { value: 'IA', text: trans('bck.states.IA')},
         { value: 'KS', text: trans('bck.states.KS')},
         { value: 'KY', text: trans('bck.states.KY')}
-      ],
-      labels: [
-        { value: 'first_name', text: trans('bck.person.lbl_firstname')},
-        { value: 'desc_first_name', text: trans('bck.person.lbl_desc_firstname')},
-        { value: 'last_name', text: trans('bck.person.lbl_lastname')},
-        { value: 'birtday', text: trans('bck.person.lbl_birthday')},
-        { value: 'cid', text: trans('bck.person.lbl_cid')},
-        { value: 'maritalstatus', text: trans('bck.person.lbl_maritalstatus')},
-        { value: 'email', text: trans('bck.person.lbl_email')},
-        { value: 'sex', text: trans('bck.person.lbl_sex')},
-        { value: 'address', text: trans('bck.person.lbl_address')},
-        { value: 'street', text: trans('bck.person.lbl_street')},
-        { value: 'city', text: trans('bck.person.lbl_city')},
-        { value: 'zipcode', text: trans('bck.person.lbl_zipcode')},
-        { value: 'state', text: trans('bck.person.lbl_state')},
-        { value: 'name', text: trans('bck.person.lbl_state')},
-        { value: 'cnt_emerg_name', text: trans('bck.person.lbl_cnt_emerg_name')},
-        { value: 'cnt_emerg_phone', text: trans('bck.person.lbl_cnt_emerg_phone')},
-        { value: 'cnt_emerg_address', text: trans('bck.person.lbl_cnt_emerg_address')},
-        { value: 'crt_employer_name', text: trans('bck.person.lbl_crt_employer_name')},
-        { value: 'crt_employer_phone', text: trans('bck.person.lbl_crt_employer_phone')},
-        { value: 'crt_employer_address', text: trans('bck.person.lbl_crt_employer_address')},
-        { value: 'person_type', text: trans('bck.person.lbl_persontype')},
-        { value: 'position', text: trans('bck.person.lbl_position')},
-        { value: 'profession', text: trans('bck.person.lbl_profession')}
-
-      ]     
+      ]        
     }
   },
   methods: {
@@ -368,15 +328,11 @@ export default {
       return this.validFirstName && 
         this.validLastName && 
         this.validEmail && 
-        this.validBirthday && 
-        this.validCntcEmrgName && 
-        this.validCntcEmrgAddress &&
+        this.validBirthday &&       
         this.validAddress &&
         this.validPhone && 
-        this.validMaritalStaus &&
-        this.validStreet && 
-        this.validCity && 
-        this.validCntcEmrgPhone &&
+        this.validMaritalStaus &&       
+        this.validCity &&         
         this.validSex && 
         this.validZIPCode && 
         this.validCID &&
@@ -411,23 +367,11 @@ export default {
     validCID() {
       return this.draft.cid ? this.draft.cid.length > 3 : false
     },
-    validCntcEmrgPhone() {
-      return this.draft.cnt_emerg_phone != null
-    },
     validAddress() {
       return this.draft.address != null
     },
-    validStreet() {
-      return this.draft.street != null
-    },
-    validCntcEmrgName() {
-      return this.draft.cnt_emerg_name != null
-    },
     validCity() {
       return this.draft.city != null
-    },
-    validCntcEmrgAddress() {
-      return this.draft.cnt_emerg_address != null
     },
     validSex() {
       return this.draft.sex != null
@@ -455,7 +399,6 @@ export default {
     }, 
     options_professions() {
       return this.professions
-     
     },
   }
 }
