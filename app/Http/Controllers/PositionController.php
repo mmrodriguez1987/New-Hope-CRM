@@ -11,16 +11,16 @@ class PositionController extends Controller
 {
     public function index()
     {
-        return Position::search(request()->search)
+        $position = Position::search(request()->search)
           ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
-          ->paginate();
+          ->paginate(request()->page);
+
+        return response()->json([
+            'status' => 'success',
+            'users' => $position->toArray()
+        ], 200);
     }
 
-
-    public function positionList()
-    {
-        return Position::all();
-    }
     public function store()
     {
         $position = Position::create(request()->all());
@@ -51,6 +51,11 @@ class PositionController extends Controller
 
     public function list() 
     {
-        return Position::all();
+        $position = Position::all();
+
+        return response()->json([
+            'status' => 'success',
+            'users' => $position->toArray()
+        ], 200);
     }
 }

@@ -11,9 +11,15 @@ class PersontypeController extends Controller
 {
     public function index()
     {
-        return Persontype::search(request()->search)
+        $persontype = Persontype::search(request()->search)
           ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
           ->paginate();
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'users' => $persontype->toArray()
+            ], 200);
     }
 
     public function personTypelist()
@@ -55,6 +61,11 @@ class PersontypeController extends Controller
 
     public function list()
     {
-        return Persontype::all();
+        $persontype = Persontype::all();
+
+        return response()->json([
+                'status' => 'success',
+                'users' => $persontype->toArray()
+            ], 200);
     }
 }

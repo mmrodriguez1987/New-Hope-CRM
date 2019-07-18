@@ -76,7 +76,7 @@
           <b-pagination :total-rows="totalRows" :per-page="perPage" align="center" v-model="currentPage" class="my-0" @input="getPersons"></b-pagination>
         </b-col>
       </b-row>
-      <person-edit :show="showEdit" :draft="draft" @close="close" :professions="professions" :persontypes="personTypes" :positions="positions"/>
+      <person-edit :show="showEdit" :draft="draft" @close="close" :professions="professions" :personTypes="personTypes" :positions="positions"/>
     </b-container>
   </b-card>
 </template>

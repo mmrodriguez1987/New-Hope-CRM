@@ -10,9 +10,14 @@ class ProfessionController extends Controller
     
     public function index()
     {
-        return Profession::search(request()->search)
+        $profession = Profession::search(request()->search)
           ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
           ->paginate(10);
+        
+        return response()->json([
+            'status' => 'success',
+            'users' => $profession->toArray()
+        ], 200);
     }
 
     public function store(Request $request)
@@ -42,9 +47,15 @@ class ProfessionController extends Controller
         $profession = Profession::destroy($id);
         return ['message' => trans('bck.profession.delete_message')];
     }
+    
 
-     public function list() 
+    public function list() 
     {
-        return Profession::all();
+        $profession = Profession::all();
+
+        return response()->json([
+            'status' => 'success',
+            'users' => $profession->toArray()
+        ], 200);
     }
 }
