@@ -1,15 +1,15 @@
 let state = {
-    professions: [],
-    list: [],
-    perPage: null,
-    loading: false,
-    currentPage: 1,
-    lastPage: null,
-    totalRows: null
+  professions: [],
+  list: [],
+  perPage: null,
+  loading: false,
+  currentPage: 1,
+  lastPage: null,
+  totalRows: null
 }
 
 let getters = {
-    findProfession(state) {
+  findProfession(state) {
         return function (id) {
             let profession = state.professions.find(profession => profession.id == id)
             return profession;
@@ -19,95 +19,59 @@ let getters = {
 
 let actions = {
     getProfession(context, params) {
-        axios.get('/admin/profession?page=' + params.page + '&search=' + params.target)
+        axios.get('/api/profession?page=' + params.page + '&search=' + params.target)
             .then(response => {
                 context.commit('getProfession', { data: response.data })
                 context.state.loading = false
             })
             .catch(error => {
-                Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
-                if (error.response) {                    
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                } else if (error.request) {                    
-                    console.log(error.request);
-                } else {                   
-                    console.log('Error', error.message);
-                }
-                console.log(error.config);
+                Vue.$snotify.error('Error description:' + error.message, 'Error getting Profession Data')
+                console.log('Error', error.message)
                 context.state.loading = false
             })
     },
 
-    createProfession({ commit, state }, payload) {
+    createProfession({commit, state}, payload) {
         state.loading = true
-        axios.post('/admin/profession/', payload)
-            .then(response => {
-                Vue.toasted.show(response.data.message, { icon: 'plus', type: 'success' })
+        axios.post('/api/profession/', payload)
+            .then(response => {                
                 commit('createProfession', response.data.data)
+                Vue.$snotify.success(response.data.message);
                 state.loading = false
             })
             .catch(error => {
-                Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })                
-                if (error.response) {
-                    console.log(error.response.data)
-                    console.log(error.response.status)
-                    console.log(error.response.headers)
-                } else if (error.request) {
-                    console.log(error.request)
-                } else {
-                    console.log('Error', error.message)
-                }
-                console.log(error.config);
+                Vue.$snotify.error('Error description:' + error.message, 'Error creating Profession Data')
+                console.log('Error', error.message)
                 state.loading = false
             })
     },
 
-    updateProfession({ commit, state }, payload) {
+    updateProfession({ commit,state }, payload) {
         state.loading = true
-        axios.put('/admin/profession/' + payload.id, payload)
+        axios.put('/api/profession/' + payload.id, payload)
             .then(response => {
-                Vue.toasted.show(response.data.message, { icon: 'pencil', type: 'info' })
                 commit('updateProfession', response.data.data)
+                Vue.$snotify.success(response.data.message);
                 state.loading = false
             })
             .catch(error => {
-                Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
-                if (error.response) {
-                    console.log(error.response.data)
-                    console.log(error.response.status)
-                    console.log(error.response.headers)
-                } else if (error.request) {
-                    console.log(error.request)
-                } else {
-                    console.log('Error', error.message)
-                }
-                console.log(error.config);
+                Vue.$snotify.error('Error description:' + error.message, 'Error updating Profession Data')
+                console.log('Error', error.message)
                 state.loading = false
             })
     },
 
     removeProfession(context, id) {
         context.state.loading = true
-        axios.delete('/admin/profession/' + id)
+        axios.delete('/api/profession/' + id)
             .then(response => {
                 context.commit('removeProfession', id)
-                Vue.toasted.show(response.data.message, { icon: 'trash-o', type: 'error' })
+                Vue.$snotify.success(response.data.message);
                 context.state.loading = false
             })
             .catch(error => {
-                Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
-                if (error.response) {
-                    console.log(error.response.data)
-                    console.log(error.response.status)
-                    console.log(error.response.headers)
-                } else if (error.request) {
-                    console.log(error.request)
-                } else {
-                    console.log('Error', error.message)
-                }
-                console.log(error.config);
+                Vue.$snotify.error('Error description:' + error.message, 'Error Removing Profession Data')
+                console.log('Error', error.message)
                 context.state.loading = false
             })
     },
@@ -115,20 +79,13 @@ let actions = {
     listProfession(context) {
         axios.get('/api/professionList')
             .then(response => {
-                context.commit('listProfession', { data: response.data })
+                context.commit('listProfession', {
+                    data: response.data
+                })
             })
             .catch(error => {
-                Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
-                if (error.response) {
-                    console.log(error.response.data)
-                    console.log(error.response.status)
-                    console.log(error.response.headers)
-                } else if (error.request) {
-                    console.log(error.request)
-                } else {
-                    console.log('Error', error.message)
-                }
-                console.log(error.config);
+                Vue.$snotify.error('Error description:' + error.message, 'Error Listing Profession Data')
+                console.log('Error', error.message)
             })
     }
 }
@@ -146,18 +103,18 @@ let mutations = {
         state.professions.unshift(draft)
     },
 
-    updateProfession(state, { id, draft }) {
-      let index = state.professions.findIndex(profession => profession.id == id)
-      state.professions.splice(index, 1, draft)
+    updateProfession(state, {id, draft}) {
+        let index = state.professions.findIndex(profession => profession.id == id)
+        state.professions.splice(index, 1, draft)
     },
 
     removeProfession(state, id) {
-      let index = state.professions.findIndex(profession => profession.id == id)
-      state.professions.splice(index, 1)
+        let index = state.professions.findIndex(profession => profession.id == id)
+        state.professions.splice(index, 1)
     },
 
     listProfession(state, data) {
-      state.list = data.data
+        state.list = data.data
     }
 }
 

@@ -25,17 +25,8 @@ let actions = {
       context.state.loading = false
     })
    .catch(error => {
-      Vue.$snotify.error('Error in store.module.Person.getPersons: ' + error.message, 'Error getting Persons Data')    
-      if (error.response) {
-        console.log(error.response.data)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-      } else if (error.request) {        
-        console.log(error.request)
-      } else {       
-        console.log('Error', error.message)
-      }
-      console.log(error.config)
+      Vue.$snotify.error('Error description:' + error.message, 'Error getting Persons Data')    
+      console.log('Error', error.message)      
       context.state.loading = false
     })
   },
@@ -43,13 +34,14 @@ let actions = {
   createPerson({ commit, state }, payload) {
     state.loading = true
     axios.post('/api/person/', payload)
-    .then(response => {
-      Vue.toasted.show(response.data.message, {icon: 'plus', type: 'success'})
+    .then(response => {      
       commit('createPerson', response.data.data)
+      Vue.$snotify.success(response.data.message)
       state.loading = false
     })
-    .catch(error => {
-      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+    .catch(error => {     
+      Vue.$snotify.error('Error description: ' + error.message, 'Error Creating Persons Data')
+      console.log('Error', error.message)
       state.loading = false
     })
   },
@@ -58,12 +50,13 @@ let actions = {
     state.loading = true
     axios.put('/api/person/' + payload.id, payload)
     .then(response => {
-      Vue.toasted.show(response.data.message, {icon: 'pencil', type: 'info'})
       commit('updatePerson', response.data.data)
+      Vue.$snotify.success(response.data.message)
       state.loading = false
     })
     .catch(error => {
-      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+      Vue.$snotify.error('Error description: ' + error.message, 'Error Updating Persons Data') 
+      console.log('Error', error.message)
       state.loading = false
     })
   },
@@ -72,22 +65,13 @@ let actions = {
     context.state.loading = true
     axios.delete('/api/person/' + id)
     .then(response => {
-      context.commit('removePerson', id)
-      Vue.toasted.show(response.data.message, {icon: 'trash-o', type: 'error'})
+      context.commit('removePerson', id)      
+      Vue.$snotify.success(response.data.message)
       context.state.loading = false
     })
     .catch(error => {
-      Vue.toasted.show(error.message, {icon: 'exclamation-triangle',type: 'error'})
-      if (error.response) {
-        console.log(error.response.data)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-      } else if (error.request) {
-        console.log(error.request)
-      } else {
-        console.log('Error', error.message)
-      }
-      console.log(error.config)      
+      Vue.$snotify.error('Error description: ' + error.message, 'Error Removing Persons Data')
+      console.log('Error', error.message)
       context.state.loading = false
     })
   },
@@ -98,7 +82,9 @@ let actions = {
       context.commit('listPerson', { data: response.data })
     })
     .catch(error => {
-      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+      Vue.$snotify.error('Error description: ' + error.message, 'Error Removing Persons Data')
+      console.log('Error', error.message)
+      context.state.loading = false
     })
   }
 }

@@ -20,97 +20,60 @@ let getters = {
 let actions = {
   getPositions(context, params) {
     context.state.loading = true
-    axios.get('/admin/position?page=' + params.page + '&search=' + params.target)
+    axios.get('/api/position?page=' + params.page + '&search=' + params.target)
     .then(response => {
       context.commit('getPosition', { data: response.data })
       context.state.loading = false
     })
     .catch(error => {
-      context.state.loading = false
-      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error' })
-      if (error.response) {                    
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-      } else if (error.request) {                    
-          console.log(error.request);
-      } else {                   
-          console.log('Error', error.message);
-      }
-      console.log(error.config);
+      Vue.$snotify.error('Error description:' + error.message, 'Error getting Position Data')
+      console.log('Error', error.message)
       context.state.loading = false
     })
   },
 
   createPosition({ commit, state }, payload) {
     state.loading = true
-    axios.post('/admin/position/', payload)
-        .then(response => {
-            Vue.toasted.show(response.data.message, { icon: 'plus', type: 'success' })
-            commit('createPosition', response.data.data)
-            state.loading = false
-        })
-        .catch(error => {
-            Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })                
-            if (error.response) {
-                console.log(error.response.data)
-                console.log(error.response.status)
-                console.log(error.response.headers)
-            } else if (error.request) {
-                console.log(error.request)
-            } else {
-                console.log('Error', error.message)
-            }
-            console.log(error.config);
-            state.loading = false
-        })
+    axios.post('/api/position/', payload)
+    .then(response => {            
+      commit('createPosition', response.data.data)
+      Vue.$snotify.success(response.data.message);
+      state.loading = false
+    })
+    .catch(error => {
+      Vue.$snotify.error('Error description:' + error.message, 'Error creating Position Data')
+      console.log('Error', error.message)
+      state.loading = false
+    })
   },
 
   updatePosition({ commit, state }, payload) {
     state.loading = true
-    axios.put('/admin/position/' + payload.id, payload)
-        .then(response => {
-            Vue.toasted.show(response.data.message, { icon: 'pencil', type: 'info' })
-            commit('updatePosition', response.data.data)
-            state.loading = false
-        })
-        .catch(error => { 
-            Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
-            if (error.response) {
-                console.log(error.response.data)
-                console.log(error.response.status)
-                console.log(error.response.headers)
-            } else if (error.request) {
-                console.log(error.request)
-            } else {
-                console.log('Error', error.message)
-            }
-            console.log(error.config);
-            state.loading = false
-        })
+    axios.put('/api/position/' + payload.id, payload)
+    .then(response => {
+      commit('updatePosition', response.data.data)
+      Vue.$snotify.success(response.data.message);
+      state.loading = false
+    })
+    .catch(error => { 
+      Vue.$snotify.error('Error description:' + error.message, 'Error creating Position Data')
+      console.log('Error', error.message)
+      state.loading = false
+    })
   },
   removePosition(context, id) {
     context.state.loading = true
-    axios.delete('/admin/position/' + id)
-        .then(response => {
-            context.commit('removePosition', id)
-            Vue.toasted.show(response.data.message, { icon: 'trash-o', type: 'error' })
-            context.state.loading = false
-        })
-        .catch(error => {
-            Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
-            if (error.response) {
-                console.log(error.response.data)
-                console.log(error.response.status)
-                console.log(error.response.headers)
-            } else if (error.request) {
-                console.log(error.request)
-            } else {
-                console.log('Error', error.message)
-            }
-            console.log(error.config);
-            context.state.loading = false
-        })
+    axios.delete('/api/position/' + id)
+    .then(response => {
+      context.commit('removePosition', id)     
+      Vue.$snotify.success(response.data.message);
+      context.state.loading = false
+    })
+    .catch(error => {
+      Vue.$snotify.error('Error description:' + error.message, 'Error Removing Position Data')
+      console.log('Error', error.message)
+      context.state.loading = false
+    })
   },
 
   listPosition(context) {
@@ -121,9 +84,10 @@ let actions = {
         context.state.loading = false
       })
       .catch(error => {
-        console.log(error)
+        Vue.$snotify.error('Error description:' + error.message, 'Error listing Position Data')
+        console.log('Error', error.message)
         context.state.loading = false
-        Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+        
       })
   },
 }

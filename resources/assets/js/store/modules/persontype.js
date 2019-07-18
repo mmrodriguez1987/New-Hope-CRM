@@ -20,96 +20,59 @@ let getters = {
 let actions = {
   getPersontypes(context, params) {
     context.state.loading = true
-    axios.get('/admin/persontype?page=' + params.page + '&search=' + params.target)
+    axios.get('/api/persontype?page=' + params.page + '&search=' + params.target)
     .then(response => {
       context.commit('getPersontype', { data: response.data })
       context.state.loading = false
     })
-    .catch(error => {
-      context.state.loading = false
-      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error' })
-      if (error.response) {                    
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-      } else if (error.request) {                    
-          console.log(error.request);
-      } else {                   
-          console.log('Error', error.message);
-      }
-      console.log(error.config);
+    .catch(error => {    
+      Vue.$snotify.error('Error description:' + error.message, 'Error getting Person Types Data')
+      console.log('Error', error.message)
       context.state.loading = false
     })
   },
 
   createPersontype({ commit, state }, payload) {
     state.loading = true
-    axios.post('/admin/persontype/', payload)
+    axios.post('/api/persontype/', payload)
         .then(response => {
-            Vue.toasted.show(response.data.message, { icon: 'plus', type: 'success' })
-            commit('createPersontype', response.data.data)
-            state.loading = false
+          commit('createPersontype', response.data.data)
+          Vue.$snotify.success(response.data.message);
+          state.loading = false
         })
         .catch(error => {
-            Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })                
-            if (error.response) {
-                console.log(error.response.data)
-                console.log(error.response.status)
-                console.log(error.response.headers)
-            } else if (error.request) {
-                console.log(error.request)
-            } else {
-                console.log('Error', error.message)
-            }
-            console.log(error.config);
-            state.loading = false
+          Vue.$snotify.error('Error description:' + error.message, 'Error creating Person Type Data')
+          console.log('Error', error.message)
+          state.loading = false
         })
   },
 
   updatePersontype({ commit, state }, payload) {
     state.loading = true
-    axios.put('/admin/persontype/' + payload.id, payload)
-        .then(response => {
-            Vue.toasted.show(response.data.message, { icon: 'pencil', type: 'info' })
-            commit('updatePersontype', response.data.data)
-            state.loading = false
+    axios.put('/api/persontype/' + payload.id, payload)
+        .then(response => {            
+          commit('updatePersontype', response.data.data)
+          Vue.$snotify.success(response.data.message);
+          state.loading = false
         })
         .catch(error => { 
-            Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
-            if (error.response) {
-                console.log(error.response.data)
-                console.log(error.response.status)
-                console.log(error.response.headers)
-            } else if (error.request) {
-                console.log(error.request)
-            } else {
-                console.log('Error', error.message)
-            }
-            console.log(error.config);
-            state.loading = false
+          Vue.$snotify.error('Error description:' + error.message, 'Error creating person type data')
+          console.log('Error', error.message)
+          state.loading = false
         })
   },
   removePersontype(context, id) {
     context.state.loading = true
-    axios.delete('/admin/persontype/' + id)
+    axios.delete('/api/persontype/' + id)
         .then(response => {
-            context.commit('removePersontype', id)
-            Vue.toasted.show(response.data.message, { icon: 'trash-o', type: 'error' })
-            context.state.loading = false
+          context.commit('removePersontype', id)
+          Vue.$snotify.success(response.data.message);
+          context.state.loading = false
         })
         .catch(error => {
-            Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
-            if (error.response) {
-                console.log(error.response.data)
-                console.log(error.response.status)
-                console.log(error.response.headers)
-            } else if (error.request) {
-                console.log(error.request)
-            } else {
-                console.log('Error', error.message)
-            }
-            console.log(error.config);
-            context.state.loading = false
+          Vue.$snotify.error('Error description:' + error.message, 'Error deleting person type data')
+          console.log('Error', error.message)
+          state.loading = false
         })
   },
 
@@ -121,9 +84,9 @@ let actions = {
         context.state.loading = false
       })
       .catch(error => {
-        console.log(error)
-        context.state.loading = false
-        Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})
+        Vue.$snotify.error('Error description:' + error.message, 'Error Listing Person Type data')
+        console.log('Error', error.message)
+         context.state.loading = false
       })
   },
 }
