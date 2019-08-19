@@ -19,7 +19,7 @@
                   </b-input-group>
                   <b-row>
                     <b-col cols="6">
-                      <b-button variant="primary" class="px-4" type="submit" >Login</b-button>
+                      <b-button variant="newhope" class="px-4" type="submit" >Login</b-button>
                     </b-col>
                     <b-col cols="6" class="text-right">
                       <b-button variant="link" class="px-0" href="#" >Forgot password?</b-button>
@@ -29,12 +29,12 @@
                 </b-form>
               </b-card-body>
             </b-card>
-            <b-card no-body class="text-white bg-primary py-5 d-md-down-none" style="width:44%">
+            <b-card no-body class="text-white bg-newhope py-5 d-md-down-none" style="width:44%">
               <b-card-body class="text-center">
                 <div>
                   <h2>Sign up</h2>
                   <p>For registre.</p>
-                  <b-button variant="primary" class="active mt-3" href="/register">Register Now!</b-button>
+                  <b-button variant="nhrose" class="active mt-3" href="/register">Register Now!</b-button>
                 </div>
               </b-card-body>
             </b-card>
@@ -44,6 +44,11 @@
     </div>
   </div>
 </template>
+<style>
+body {
+  background-image: "URL('/images/newhope-back.jpg')" !important;
+}
+</style>
 
 <script>
   import VueRecaptcha from 'vue-recaptcha'

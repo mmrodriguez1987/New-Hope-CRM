@@ -17,5 +17,3 @@ Vue.use(Toasted,  {duration: 10000, iconPack : 'fontawesome', theme: 'outline'})
 Vue.use(Snotify, options)
 //Vue.use(wysiwyg, {  maxHeight: "500px" })
 Vue.component('v-select', vSelect)
-
-

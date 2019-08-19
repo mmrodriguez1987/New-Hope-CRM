@@ -23,5 +23,8 @@ require('./utilities')
 const app = new Vue({
   el: '#app',
   router,
-  store
+  store,
+  beforeCreate() {
+    Vue.$snotify = this.$snotify;
+  },
 })

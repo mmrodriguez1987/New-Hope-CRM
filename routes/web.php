@@ -19,13 +19,17 @@
     //     Route::post('persontype', 'PersontypeController@store')->name('api.persontype.store');
     //     Route::put('persontype/{id}', 'PersontypeController@update')->name('api.persontype.update');
     //     Route::delete('persontype/{id}', 'PersontypeController@delete')->name('api.persontype.delete');
-    //     Route::get('persontypeList','PersontypeController@list')->name('api.persontype.list');
+    //     Route::get('persontypeList','PersontypeController@list')->name('persontype.list');
     // });
 
 Route::get('/', function () {
     return view('app');
 });
 
+
+Route::get('test', function() {
+    phpinfo();
+});
 
 // Localization
 Route::get('/js/lan.js', function () {

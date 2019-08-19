@@ -20,7 +20,7 @@ let getters = {
 let actions = {
   getPersontypes(context, params) {
     context.state.loading = true
-    axios.get('/api/persontype?page=' + params.page + '&search=' + params.target)
+    axios.get('/api/persontype?page=' + params.page + '&search=' + params.target + '&rows' + params.rows)
     .then(response => {
       context.commit('getPersontype', { data: response.data })
       context.state.loading = false
@@ -84,7 +84,10 @@ let actions = {
         context.state.loading = false
       })
       .catch(error => {
-        Vue.$snotify.error('Error description:' + error.message, 'Error Listing Person Type data')
+        Vue.toasted.show(error.message, {
+          icon: 'exclamation-triangle',
+          type: 'error'
+        })
         console.log('Error', error.message)
          context.state.loading = false
       })
@@ -111,7 +114,7 @@ let mutations = {
     state.persontypes.splice(index, 1);
   },
   listPersontype(state, data) {
-    state.list = data.data;
+    state.list = data.data
   },
 }
 

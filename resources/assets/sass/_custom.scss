@@ -1,0 +1,83 @@
+.bg-newhope {
+  background-color: #202245 !important;
+}
+
+/* Dark Button Blue */ 
+.btn-newhope {
+  color: #fff;
+  background-color: #202245;
+  border-color: #202245;
+}
+
+.btn-newhope:hover {
+  color: #fff;
+  background-color: #ee3453;
+  border-color: #ee3453;
+}
+
+.btn-newhope:focus,
+.btn-newhope.focus {
+  box-shadow: 0 0 0 0.2rem rgba(32, 34, 69, 0.5);
+}
+
+.btn-newhope.disabled,
+.btn-newhope:disabled {
+  color: #fff;
+  background-color: #202245;
+  border-color: #202245;
+}
+
+.btn-newhope:not(:disabled):not(.disabled):active,
+.btn-newhope:not(:disabled):not(.disabled).active,
+.show>.btn-newhope.dropdown-toggle {
+  color: #fff;
+  background-color: #202245;
+  border-color: #202245;
+}
+
+.btn-newhope:not(:disabled):not(.disabled):active:focus,
+.btn-newhope:not(:disabled):not(.disabled).active:focus,
+.show>.btn-newhope.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(32, 34, 69, 0.5);
+}
+
+
+
+/* Rose Button Blue */
+.btn-nhrose {
+  color: #fff;
+  background-color: #ee3453;
+  border-color: #ee3453;
+}
+
+.btn-nhrose:hover {
+  color: #fff;
+  background-color: #202245;
+  border-color: #202245;
+}
+
+.btn-nhrose:focus,
+.btn-nhrose.focus {
+  box-shadow: 0 0 0 0.2rem rgba(238, 52, 83, 0.5);
+}
+
+.btn-nhrose.disabled,
+.btn-nhrose:disabled {
+  color: #fff;
+  background-color: #ee3453;
+  border-color: #ee3453;
+}
+
+.btn-nhrose:not(:disabled):not(.disabled):active,
+.btn-nhrose:not(:disabled):not(.disabled).active,
+.show>.btn-nhrose.dropdown-toggle {
+  color: #fff;
+  background-color: #ee3453;
+  border-color: #ee3453;
+}
+
+.btn-nhrose:not(:disabled):not(.disabled):active:focus,
+.btn-nhrose:not(:disabled):not(.disabled).active:focus,
+.show>.btn-nhrose.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(238, 52, 83, 0.5);
+}

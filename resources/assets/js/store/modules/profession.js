@@ -84,7 +84,10 @@ let actions = {
                 })
             })
             .catch(error => {
-                Vue.$snotify.error('Error description:' + error.message, 'Error Listing Profession Data')
+                Vue.toasted.show(error.message, {
+                    icon: 'exclamation-triangle',
+                    type: 'error'
+                })
                 console.log('Error', error.message)
             })
     }

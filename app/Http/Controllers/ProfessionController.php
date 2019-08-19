@@ -1,6 +1,6 @@
 <?php
 
-namespace newhopecrm\Http\Controllers\Admin;
+namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
 use newhopecrm\Profession;
@@ -10,14 +10,11 @@ class ProfessionController extends Controller
     
     public function index()
     {
-        $profession = Profession::search(request()->search)
+        return Profession::search(request()->search)
           ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
           ->paginate(10);
         
-        return response()->json([
-            'status' => 'success',
-            'users' => $profession->toArray()
-        ], 200);
+   
     }
 
     public function store(Request $request)
@@ -51,11 +48,6 @@ class ProfessionController extends Controller
 
     public function list() 
     {
-        $profession = Profession::all();
-
-        return response()->json([
-            'status' => 'success',
-            'users' => $profession->toArray()
-        ], 200);
+        return Profession::all();
     }
 }

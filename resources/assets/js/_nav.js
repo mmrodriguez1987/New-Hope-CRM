@@ -19,25 +19,42 @@ export default {
       }
     },
     {
-      name: 'Settings',
+      name: 'People',
       url: '/persons',
-      icon: 'icon-puzzle',
+      icon: 'icon-emotsmile',
       children: [
+        {
+          name: 'families',
+          url: '/families',
+          icon: 'icon-people'
+        },
         {
           name: 'persons',
           url: '/persons',
-          icon: 'icon-puzzle'
-        },
-        {
-          name: 'positions',
-          url: '/positions',
-          icon: 'icon-puzzle'
-        },
-        {
-          name: 'persontypes',
-          url: '/persontypes',
-          icon: 'icon-puzzle'
+          icon: 'icon-user'
         }
+      ]
+    }, 
+    {
+      name: 'Settings',
+      url: '/settings',
+      icon: 'icon-wrench',
+      children: [
+        {
+          name: 'Positions',
+          url: '/positions',
+          icon: 'icon-graduation'
+        },
+        {
+          name: 'Sex',
+          url: '/sex',
+          icon: 'icon-graduation'
+        },
+        {
+          name: 'Person Types',
+          url: '/persontypes',
+          icon: 'icon-badge'
+        },
       ]
     }
     

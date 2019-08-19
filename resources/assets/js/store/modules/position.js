@@ -20,7 +20,7 @@ let getters = {
 let actions = {
   getPositions(context, params) {
     context.state.loading = true
-    axios.get('/api/position?page=' + params.page + '&search=' + params.target)
+    axios.get('/api/position?page=' + params.page + '&search=' + params.target + '&rows' + params.rows)
     .then(response => {
       context.commit('getPosition', { data: response.data })
       context.state.loading = false
@@ -42,8 +42,9 @@ let actions = {
     })
     .catch(error => {
       Vue.$snotify.error('Error description:' + error.message, 'Error creating Position Data')
-      console.log('Error', error.message)
       state.loading = false
+      console.log('Error', error.message)
+     
     })
   },
 
@@ -84,7 +85,10 @@ let actions = {
         context.state.loading = false
       })
       .catch(error => {
-        Vue.$snotify.error('Error description:' + error.message, 'Error listing Position Data')
+        Vue.toasted.show(error.message, {
+          icon: 'exclamation-triangle',
+          type: 'error'
+        })
         console.log('Error', error.message)
         context.state.loading = false
         
@@ -112,7 +116,7 @@ let mutations = {
     state.positions.splice(index, 1);
   },
   listPosition(state, data) {
-    state.list = data.data;
+    state.list = data.data
   },
 }
 

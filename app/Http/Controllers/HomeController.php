@@ -1,6 +1,6 @@
 <?php
 
-namespace newhopecrm\Http\Controllers\Web;
+namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
 use newhopecrm\Http\Controllers\Controller;

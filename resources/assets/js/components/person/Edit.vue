@@ -210,7 +210,9 @@
             :label="trans('bck.person.lbl_position')" 
             label-for="position" 
             :label-cols="3">
-          <b-form-select id="position" v-model="draft.position_id" :options="options_positions" :class="validPosition ? 'mb-1 input-valid' : 'mb-1 input-invalid'"  />
+          <b-form-select id="position" 
+              v-model="draft.position_id" 
+              :options="options_positions" :class="validPosition ? 'mb-1 input-valid' : 'mb-1 input-invalid'" text-field="name" value-field="id" />
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -221,7 +223,12 @@
             :label="trans('bck.person.lbl_persontype')" 
             label-for="persontype" 
             :label-cols="3">
-          <b-form-select id="persontype" v-model="draft.person_type_id" :options="options_persontypes" :class="validPersonType ? 'mb-1 input-valid' : 'mb-1 input-invalid'" />
+          <b-form-select id="persontype" 
+            v-model="draft.person_type_id" 
+            :options="options_persontypes" 
+            :class="validPersonType ? 'mb-1 input-valid' : 'mb-1 input-invalid'" 
+            text-field="name" 
+            value-field="id"/>
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -232,7 +239,7 @@
             :label="trans('bck.person.lbl_profession')" 
             label-for="profession" 
             :label-cols="3">
-          <b-form-select id="personprofessiontype" v-model="draft.profession_id" :options="options_professions" :class="validProfession ? 'mb-1 input-valid' : 'mb-1 input-invalid'"  />
+          <b-form-select id="personprofessiontype" v-model="draft.profession_id" :options="options_professions" text-field="name" value-field="id" :class="validProfession ? 'mb-1 input-valid' : 'mb-1 input-invalid'"  />
           <b-form-invalid-feedback >
             {{trans('bck.general.required')}}
           </b-form-invalid-feedback>             
@@ -259,9 +266,9 @@
 </template>
 <script>
 export default {
-  props: ['show', 'draft', 'positions', 'personTypes', 'professions'],
+  props: [ 'show','draft', 'positions', 'personTypes', 'professions'],
   data() {
-    return {
+    return {      
       sex: [
         { value: null, text: trans('bck.general.select')},
         { value: 'M',  text: trans('bck.general.male')},
@@ -324,6 +331,9 @@ export default {
     },
   },
   computed: {
+    editStatus: function() {
+      return this.status
+    },
     validForm() {
       return this.validFirstName && 
         this.validLastName && 
@@ -399,7 +409,7 @@ export default {
     }, 
     options_professions() {
       return this.professions
-    },
+    }
   }
 }
 </script>

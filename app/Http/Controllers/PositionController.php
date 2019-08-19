@@ -1,6 +1,6 @@
 <?php
 
-namespace newhopecrm\Http\Controllers\Admin;
+namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,14 +11,11 @@ class PositionController extends Controller
 {
     public function index()
     {
-        $position = Position::search(request()->search)
+        return Position::search(request()->search)
           ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
           ->paginate(request()->page);
 
-        return response()->json([
-            'status' => 'success',
-            'users' => $position->toArray()
-        ], 200);
+
     }
 
     public function store()
@@ -51,11 +48,6 @@ class PositionController extends Controller
 
     public function list() 
     {
-        $position = Position::all();
-
-        return response()->json([
-            'status' => 'success',
-            'users' => $position->toArray()
-        ], 200);
+        return Position::all();
     }
 }

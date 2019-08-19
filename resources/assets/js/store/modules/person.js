@@ -19,13 +19,13 @@ let getters = {
 
 let actions = {
   getPersons(context, params) {  
-    axios.get('api/person?page=' + params.page + '&search=' + params.target)
+    axios.get('/api/person?page=' + params.page + '&search=' + params.target + '&rows' + params.rows)
     .then(response => {
       context.commit('getPersons', { data: response.data })       
       context.state.loading = false
     })
    .catch(error => {
-      Vue.$snotify.error('Error description:' + error.message, 'Error getting Persons Data')    
+      Vue.toasted.show(error.message, {icon: 'exclamation-triangle', type: 'error'})   
       console.log('Error', error.message)      
       context.state.loading = false
     })
@@ -36,11 +36,11 @@ let actions = {
     axios.post('/api/person/', payload)
     .then(response => {      
       commit('createPerson', response.data.data)
-      Vue.$snotify.success(response.data.message)
+      this.$snotify.success(response.data.message)
       state.loading = false
     })
     .catch(error => {     
-      Vue.$snotify.error('Error description: ' + error.message, 'Error Creating Persons Data')
+      Vue.toasted.show(error.message, { icon: 'exclamation-triangle', type: 'error' })
       console.log('Error', error.message)
       state.loading = false
     })
@@ -51,11 +51,14 @@ let actions = {
     axios.put('/api/person/' + payload.id, payload)
     .then(response => {
       commit('updatePerson', response.data.data)
-      Vue.$snotify.success(response.data.message)
+      this.$snotify.success(response.data.message)
       state.loading = false
     })
     .catch(error => {
-      Vue.$snotify.error('Error description: ' + error.message, 'Error Updating Persons Data') 
+      Vue.toasted.show(error.message, {
+        icon: 'exclamation-triangle',
+        type: 'error'
+      })
       console.log('Error', error.message)
       state.loading = false
     })
@@ -66,11 +69,11 @@ let actions = {
     axios.delete('/api/person/' + id)
     .then(response => {
       context.commit('removePerson', id)      
-      Vue.$snotify.success(response.data.message)
+      this.$snotify.success(response.data.message)
       context.state.loading = false
     })
     .catch(error => {
-      Vue.$snotify.error('Error description: ' + error.message, 'Error Removing Persons Data')
+      this.$snotify.error('Error description: ' + error.message, 'Error Removing Persons Data')
       console.log('Error', error.message)
       context.state.loading = false
     })
@@ -82,7 +85,7 @@ let actions = {
       context.commit('listPerson', { data: response.data })
     })
     .catch(error => {
-      Vue.$snotify.error('Error description: ' + error.message, 'Error Removing Persons Data')
+      this.$snotify.error('Error description: ' + error.message, 'Error Removing Persons Data')
       console.log('Error', error.message)
       context.state.loading = false
     })

@@ -1,6 +1,6 @@
 <?php
 
-namespace newhopecrm\Http\Controllers\Admin;
+namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,20 +11,11 @@ class PersontypeController extends Controller
 {
     public function index()
     {
-        $persontype = Persontype::search(request()->search)
+        return Persontype::search(request()->search)
           ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
           ->paginate();
 
-        return response()->json(
-            [
-                'status' => 'success',
-                'users' => $persontype->toArray()
-            ], 200);
-    }
 
-    public function personTypelist()
-    {
-        return Persontype::all();
     }
 
     public function store(Request $request)
@@ -61,11 +52,6 @@ class PersontypeController extends Controller
 
     public function list()
     {
-        $persontype = Persontype::all();
-
-        return response()->json([
-                'status' => 'success',
-                'users' => $persontype->toArray()
-            ], 200);
+        return Persontype::all();
     }
 }

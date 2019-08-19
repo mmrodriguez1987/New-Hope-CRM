@@ -191,14 +191,14 @@ export default {
       this.showEdit = false
     },
     remove(item) {     
-      this.$snotify.confirm('Do you want to remove this Person? You will lost access to all related person data', 'Remove Person', {
+      Vue.$snotify.confirm('Do you want to remove this Person? You will lost access to all related person data', 'Remove Person', {
         timeout: 5000,
         showProgressBar: true,
         closeOnClick: false,
         pauseOnHover: true,
         buttons: [
           {text: 'Yes', action: () => this.$store.dispatch('removePerson', item.id) },
-          {text: 'Cancel', action: (toast) => { this.$snotify.remove(toast.id); }, bold: true},
+          {text: 'Cancel', action: (toast) => { Vue.$snotify.remove(toast.id); }, bold: true},
         ]
       });
     },
@@ -210,13 +210,11 @@ export default {
         this.getPersons()
       }
     },
-    getPositionName(index) {   
-      //var id = item.position_id
+    getPositionName(index) {        
       let position = this.positions.find(position => position.id == index)
       return position.name
     },
-    getPersonTypeName(index) {
-      //var id = item.persontype_id
+    getPersonTypeName(index) {     
       let persontype = this.persontypes.find(persontype => persontype.id == index)
       console.log('The name is: ' + persontype.name )
       return persontype.name
