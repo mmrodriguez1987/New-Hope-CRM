@@ -1,10 +1,15 @@
 //import './polyfill'
 import router from './router'
 import store from './store'
+import CoreuiVue from '@coreui/vue'
+import {
+  iconsSet as icons
+} from './icons/icons.js'
 
 
 require('./bootstrap');
 
+Vue.use(CoreuiVue)
 // Set Vue globally
 window.Vue = require('vue');
 
@@ -19,6 +24,7 @@ require('./utilities.js')
 
 new Vue({
   el: '#app',
+  icons,
   router,
   store
 })

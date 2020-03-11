@@ -23,10 +23,11 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
-    "@coreui/coreui-pro": "^2.1.6",
-    "@coreui/icons": "0.3.0",
-    "@coreui/vue": "^2.1.2",
+    "@coreui/coreui-pro": "~3.0.0",
+    "@coreui/icons": "~1.0.1",
+    "@coreui/utils": "~1.2.2",
+    "@coreui/vue": "~3.0.0",
+    "@coreui/vue-chartjs": "~1.0.3",
     "bootstrap": "^4.2.1",
     "bootstrap-vue": "^2.0.0-rc.22",
     "braces": "^3.0.2",
