@@ -454,9 +454,9 @@
 </template>
 
 <script>
-import MainChartExample from './charts/MainChartExample'
-import WidgetsDropdown from './widgets/WidgetsDropdown'
-import WidgetsBrand from './widgets/WidgetsBrand'
+import MainChartExample from '../components/dashboard/charts/MainChartExample'
+import WidgetsDropdown from '../components/dashboard/widgets/WidgetsDropdown'
+import WidgetsBrand from '../components/dashboard/widgets/WidgetsBrand'
 
 export default {
   name: 'Dashboard',

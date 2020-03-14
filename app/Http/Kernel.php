@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \newhopecrm\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \newhopecrm\Http\Middleware\TrustProxies::class,
+        \Fruitcake\Cors\HandleCors::class
         
     ];
 

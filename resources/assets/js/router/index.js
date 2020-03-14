@@ -13,7 +13,7 @@ import Person from '../components/person/Index.vue'
 const TheContainer = () => import('../container/TheContainer.vue')
 
 // Views
-const Dashboard = () => import('../container/Dashboard.vue')
+const Dashboard = () => import('../components/Dashboard.vue')
 
 // Views - Pages
 const Login = () => import('../components/auth/Login.vue')

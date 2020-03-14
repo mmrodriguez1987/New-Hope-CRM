@@ -1,15 +1,7 @@
 <template>
   <CHeader with-subheader>
-    <CToggler
-      in-header
-      class="ml-3 d-lg-none"
-      @click="$store.commit('toggleSidebarMobile')"
-    />
-    <CToggler
-      in-header
-      class="ml-3 d-md-down-none"
-      @click="$store.commit('toggleSidebarDesktop')"
-    />
+    <CToggler in-header class="ml-3 d-lg-none" @click="$store.commit('toggleSidebarMobile')" />
+    <CToggler in-header class="ml-3 d-md-down-none" @click="$store.commit('toggleSidebarDesktop')" />
     <CHeaderBrand class="mx-auto d-lg-none" to="/">
       <CIcon name="logo" height="48" alt="Logo"/>
     </CHeaderBrand>
@@ -32,10 +24,7 @@
     </CHeaderNav>
     <CHeaderNav>
       <CHeaderNavItem class="px-3">
-        <button 
-          @click="() => $store.commit('toggle', 'darkMode')" 
-          class="c-header-nav-btn"
-        >
+        <button  @click="() => $store.commit('toggle', 'darkMode')" class="c-header-nav-btn" >
           <CIcon v-if="$store.state.darkMode" name="cil-sun"/>
           <CIcon v-else name="cil-moon"/>
         </button>
@@ -45,11 +34,7 @@
       <TheHeaderDropdownMssgs/>
       <TheHeaderDropdownAccnt/>
       <CHeaderNavItem class="px-3">
-        <button
-          in-header
-          class="c-header-nav-btn"
-          @click="$store.commit('toggle', 'asideShow')"
-        >
+        <button in-header class="c-header-nav-btn" @click="$store.commit('toggle', 'asideShow')" >
           <CIcon size="lg" name="cil-applications-settings" class="mr-2"/>
         </button>
       </CHeaderNavItem>

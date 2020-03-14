@@ -1,17 +1,9 @@
 <template>
-  <CDropdown
-    inNav
-    class="c-header-nav-items"
-    placement="bottom-end"
-    add-menu-classes="pt-0"
-  >
+  <CDropdown inNav class="c-header-nav-items" placement="bottom-end" add-menu-classes="pt-0" >
     <template #toggler>
       <CHeaderNavLink>
         <div class="c-avatar">
-          <img
-            src="img/avatars/6.jpg"
-            class="c-avatar-img "
-          />
+          <img src="img/avatars/6.jpg" class="c-avatar-img " />
         </div>
       </CHeaderNavLink>
     </template>
@@ -34,11 +26,7 @@
       <CIcon name="cil-comment-square" /> Comments
       <CBadge color="warning" class="ml-auto">{{ itemsCount }}</CBadge>
     </CDropdownItem>
-    <CDropdownHeader
-      tag="div"
-      class="text-center"
-      color="light"
-    >
+    <CDropdownHeader tag="div" class="text-center" color="light" >
       <strong>Settings</strong>
     </CDropdownHeader>
     <CDropdownItem>

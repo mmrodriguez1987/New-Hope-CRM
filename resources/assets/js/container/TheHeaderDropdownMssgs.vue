@@ -1,11 +1,5 @@
 <template>
-  <CDropdown 
-    :caret="false"
-    placement="bottom-end"
-    in-nav
-    class="c-header-nav-item mx-2 d-md-down-none"
-    add-menu-classes="pt-0"
-  >
+  <CDropdown :caret="false" placement="bottom-end" in-nav class="c-header-nav-item mx-2 d-md-down-none" add-menu-classes="pt-0" >
     <template #toggler>
       <CHeaderNavLink>
         <CIcon name="cil-envelope-closed"/>
@@ -82,10 +76,7 @@
         <div class="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</div>
       </div>
     </CDropdownItem>
-    <CDropdownItem 
-      href="#" 
-      class="border-top text-center"
-    >
+    <CDropdownItem href="#" class="border-top text-center" >
       <strong>View all messages</strong>
     </CDropdownItem>
   </CDropdown>

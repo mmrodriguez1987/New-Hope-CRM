@@ -1,21 +1,12 @@
 <template>
-  <CDropdown 
-    placement="bottom-end"
-    :caret="false"
-    in-nav
-    class="c-header-nav-item d-md-down-none mx-2"
-    add-menu-classes="pt-0"
-  >
+  <CDropdown placement="bottom-end" :caret="false" in-nav class="c-header-nav-item d-md-down-none mx-2" add-menu-classes="pt-0" >
     <template #toggler>
       <CHeaderNavLink>
         <CIcon name="cil-bell"/>
         <CBadge shape="pill" color="danger">{{itemsCount}}</CBadge>
       </CHeaderNavLink>
     </template>
-    <CDropdownHeader 
-      tag="div" 
-      class="text-center bg-light"
-    >
+    <CDropdownHeader tag="div" class="text-center bg-light"  >
       <strong>You have {{itemsCount}} notifications</strong>
     </CDropdownHeader>
     <CDropdownItem>
@@ -65,7 +56,7 @@ export default {
   data () {
     return { itemsCount: 5 }
   }
-}
+} 
 </script>
 
 <style scoped>

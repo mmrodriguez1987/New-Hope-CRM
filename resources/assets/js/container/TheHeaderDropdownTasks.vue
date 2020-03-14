@@ -1,21 +1,12 @@
 <template>
-  <CDropdown 
-    :caret="false"
-    placement="bottom-end"
-    in-nav
-    class="c-header-nav-item d-md-down-none mx-2"
-    add-menu-classes="pt-0"
-  >
+  <CDropdown :caret="false" placement="bottom-end" in-nav class="c-header-nav-item d-md-down-none mx-2" add-menu-classes="pt-0" >
     <template #toggler>
       <CHeaderNavLink>
         <CIcon name="cil-list-rich"/>
         <CBadge shape="pill" color="warning">{{itemsCount}}</CBadge>
       </CHeaderNavLink>
     </template>
-    <CDropdownHeader 
-      tag="div" 
-      class="text-center bg-light"
-    >
+    <CDropdownHeader tag="div" class="text-center bg-light" >
       <strong>You have {{itemsCount}} pending tasks</strong>
     </CDropdownHeader>
 
