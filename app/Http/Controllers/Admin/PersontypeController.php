@@ -3,6 +3,7 @@
 namespace newhopecrm\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use newhopecrm\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use newhopecrm\Http\Requests\PersontypeStoreRequest;
 use newhopecrm\Persontype;

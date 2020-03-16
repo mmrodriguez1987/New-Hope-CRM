@@ -5,6 +5,7 @@
         <title>New Hope Dasboard</title>        
         <meta name="csrf-token" content="{{ csrf_token() }}">
         {!! Html::style('css/app.css') !!}
+        {!! Robots::metaTag() !!}
     <body>
         <div id="app">
             <router-view> </router-view>            

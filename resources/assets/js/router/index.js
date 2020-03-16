@@ -1,24 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import DefaultContainer from '../container/DefaultContainer.vue'
-// import Dashboard from '../components/Dashboard.vue'
+import TheContainer from '../container/TheContainer.vue'
+import Dashboard from '../components/Dashboard.vue'
 import Person from '../components/person/Index.vue'
 // import Position from '../components/position/Index.vue'
 // import PersonType from '../components/person_type/Index.vue'
-// import Login from '../components/auth/Login.vue'
-// import Register from '../components/auth/Register.vue'
-
-
-// Containers
-const TheContainer = () => import('../container/TheContainer.vue')
-
-// Views
-const Dashboard = () => import('../components/Dashboard.vue')
-
-// Views - Pages
-const Login = () => import('../components/auth/Login.vue')
-const Register = () => import('../components/auth/Register.vue')
-
+ import Login from '../components/auth/Login.vue'
+ import Register from '../components/auth/Register.vue'
 
 Vue.use(Router)
 

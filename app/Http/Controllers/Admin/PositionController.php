@@ -4,6 +4,7 @@ namespace newhopecrm\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use newhopecrm\Http\Controllers\Controller;
 use newhopecrm\Http\Requests\PositionStoreRequest;
 use newhopecrm\Position;
 

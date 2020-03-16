@@ -14,8 +14,13 @@
     "guzzlehttp/guzzle": "^6.3",
     "laravel/framework": "^7.0",
     "laravel/helpers": "^1.2",
+    "laravel/passport": "^8.4",
     "laravel/tinker": "^2.0",
-    "laravel/ui": "^2.0"
+    "laravel/ui": "^2.0",
+    "mad-web/laravel-robots": "^2.0",
+    "symfony/http-foundation": "^5.0",
+    "symfony/mime": "^5.0",
+    "tymon/jwt-auth": "dev-develop"
   },
   "require-dev": {
     "facade/ignition": "^2.0",

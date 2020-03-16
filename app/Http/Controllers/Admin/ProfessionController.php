@@ -2,6 +2,7 @@
 
 namespace newhopecrm\Http\Controllers\Admin;
 
+use newhopecrm\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use newhopecrm\Profession;
 

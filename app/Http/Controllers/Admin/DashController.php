@@ -5,6 +5,7 @@ namespace newhopecrm\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use newhopecrm\Http\Controllers\Controller;
 
+
 class DashController extends Controller
 {
     // public function __construct()

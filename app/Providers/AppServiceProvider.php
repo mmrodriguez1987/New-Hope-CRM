@@ -5,6 +5,7 @@ namespace newhopecrm\Providers;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use MadWeb\Robots\RobotsFacade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +17,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        RobotsFacade::setShouldIndexCallback(function () {
+            return app()->environment('production');
+        });
     }
 
     /**

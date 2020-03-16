@@ -159,12 +159,14 @@ return [
         // newhopecrm\Providers\BroadcastServiceProvider::class,
         newhopecrm\Providers\EventServiceProvider::class,
         newhopecrm\Providers\RouteServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
         //Collective\Html\HtmlServiceProvider::class,
         //NotificationChannels\Twilio\TwilioProvider::class,
         /*Spatie\Analytics\AnalyticsServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,*/
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
      
 
     ],

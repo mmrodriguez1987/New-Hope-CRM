@@ -28,15 +28,13 @@ Route::prefix('auth')->group(function () {
     });
 });
 
-Route::prefix('admin')->group(function () {
-    
-    
-    //Persons
-    Route::get('person', 'PersonController@index');
-    Route::post('person', ['as' => 'person.store','uses' => 'PersonController@store']);
-    Route::put('person/{id}', ['as' => 'person.update', 'uses' => 'PersonController@update']);
-    Route::delete('person/{id}', ['as' => 'person.destroy','uses' => 'PersonController@destroy']);
-    Route::get('personList', ['as' => 'person.list','uses' => 'PersonController@list']);
 
- 
+Route::prefix('admin')->group(function () {   
+    //Persons
+    Route::get('person', 'Admin\PersonController@index');
+    Route::post('person', ['as' => 'person.store','uses' => 'Admin\PersonController@store']);
+    Route::put('person/{id}', ['as' => 'person.update', 'uses' => 'Admin\PersonController@update']);
+    Route::delete('person/{id}', ['as' => 'person.destroy','uses' => 'Admin\PersonController@destroy']);
+    Route::get('personList', ['as' => 'person.list','uses' => 'Admin\PersonController@list']);
+    
 });
