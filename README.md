@@ -14,6 +14,8 @@ NHCRM is an Open Source Web Application with many modules that help with the Adm
  - Blog Management
  - Settings
 
+ https://jwt-auth.readthedocs.io/en/develop/laravel-installation/
+
  
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Github All Releases](https://img.shields.io/github/downloads/nhcrm/total.svg)](https://github.com/ChurchCRM/CRM/releases)

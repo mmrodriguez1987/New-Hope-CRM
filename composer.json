@@ -20,7 +20,7 @@
     "mad-web/laravel-robots": "^2.0",
     "symfony/http-foundation": "^5.0",
     "symfony/mime": "^5.0",
-    "tymon/jwt-auth": "dev-develop"
+    "tymon/jwt-auth": "^1.0"
   },
   "require-dev": {
     "facade/ignition": "^2.0",
