@@ -166,7 +166,7 @@ return [
         Spatie\Sitemap\SitemapServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,*/
-        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
      
 
     ],

@@ -1,9 +1,8 @@
 <?php
 
-namespace newhopecrm\Http\Controllers\Admin;
+namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
-use newhopecrm\Http\Controllers\Controller;
 use newhopecrm\Person;
 
 class PersonController extends Controller
@@ -14,7 +13,7 @@ class PersonController extends Controller
         return Person::with('persontype','profession','position')
             ->search(request()->search)
             ->orderBy('id','DESC')
-            ->paginate(10);   
+            ->paginate(request()->rows);   
     }
 
     public function getAllPersons()
@@ -76,5 +75,7 @@ class PersonController extends Controller
     public function list()
     {
         return Person::all();
+        
+        
     }
 }

@@ -1,10 +1,9 @@
 <?php
 
-namespace newhopecrm\Http\Controllers\Admin;
+namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use newhopecrm\Http\Controllers\Controller;
 use newhopecrm\Http\Requests\PositionStoreRequest;
 use newhopecrm\Position;
 
@@ -14,14 +13,11 @@ class PositionController extends Controller
     {
         return Position::search(request()->search)
           ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
-          ->paginate();
-    }
+          ->paginate(request()->page);
 
 
-    public function positionList()
-    {
-        return Position::all();
     }
+
     public function store()
     {
         $position = Position::create(request()->all());

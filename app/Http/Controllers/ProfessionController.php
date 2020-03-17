@@ -1,8 +1,7 @@
 <?php
 
-namespace newhopecrm\Http\Controllers\Admin;
+namespace newhopecrm\Http\Controllers;
 
-use newhopecrm\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use newhopecrm\Profession;
 
@@ -14,6 +13,8 @@ class ProfessionController extends Controller
         return Profession::search(request()->search)
           ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
           ->paginate(10);
+        
+   
     }
 
     public function store(Request $request)
@@ -43,8 +44,9 @@ class ProfessionController extends Controller
         $profession = Profession::destroy($id);
         return ['message' => trans('bck.profession.delete_message')];
     }
+    
 
-     public function list() 
+    public function list() 
     {
         return Profession::all();
     }
