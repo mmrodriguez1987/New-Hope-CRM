@@ -17,6 +17,7 @@
     "laravel/passport": "^8.4",
     "laravel/tinker": "^2.0",
     "laravel/ui": "^2.0",
+    "laravelcollective/html": "^6.1",
     "mad-web/laravel-robots": "^2.0",
     "symfony/http-foundation": "^5.0",
     "symfony/mime": "^5.0"

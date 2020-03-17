@@ -160,7 +160,7 @@ return [
         newhopecrm\Providers\EventServiceProvider::class,
         newhopecrm\Providers\RouteServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
-        //Collective\Html\HtmlServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         //NotificationChannels\Twilio\TwilioProvider::class,
         /*Spatie\Analytics\AnalyticsServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,

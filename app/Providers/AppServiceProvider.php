@@ -7,6 +7,7 @@ use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use MadWeb\Robots\RobotsFacade;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**

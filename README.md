@@ -42,7 +42,9 @@ NHCRM is an Open Source Web Application with many modules that help with the Adm
 
 * [Checkout our online Docs](http://docs.churchcrm.io)
 
+- sudo npm install --global cross-env
 - sudo npm i --no-bin-links
+- sudo npm run dev
 
 ## Project Metrics 
 
