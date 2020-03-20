@@ -16,7 +16,7 @@
                 </CInput>
                 <CRow>
                   <CCol col="6" class="text-left">
-                    <CButton color="primary" class="px-4">Login</CButton>
+                    <CButton  type="submit" color="primary" class="px-4">Login</CButton>
                   </CCol>
                   <CCol col="6" class="text-right">
                     <CButton color="link" class="px-0">Forgot password?</CButton>
@@ -62,12 +62,12 @@ body {
 
         axios.post('/api/login', data)
              .then(({data}) => {
-               auth.login(data.token, data.user);
-               this.$router.push('/dashboard');
+              auth.login(data.token, data.user)
+              this.$router.push('/dashboard')
             })
             .catch(({response}) => {                    
-              alert(response.data.message);
-            });
+              alert(response.data.message)
+            })
     	}, 
 
       sendToken: function () {
@@ -78,7 +78,7 @@ body {
 		    console.log('Expired')
 		  },
 		  resetRecaptcha () {
-      	this.$refs.invisibleRecaptcha.reset()
+        this.$refs.invisibleRecaptcha.reset()
 			},      
     }   
   }
