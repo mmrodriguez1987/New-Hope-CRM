@@ -1,5 +1,4 @@
 require('./bootstrap')
-window.Vue = require('vue')
 
 import router from './router'
 import store from './store'
@@ -11,7 +10,7 @@ import {
 
 window.api = new Api()
 window.auth = new Auth()
-
+window.Event = new Vue
 
 //3rd vue components
 require('./vendor_components')

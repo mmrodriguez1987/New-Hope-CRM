@@ -15,6 +15,7 @@ Vue.use(Router)
 
 let router = new Router({
   mode: 'history',
+  history: true,
   scrollBehavior: () => ({
     y: 0
   }),
