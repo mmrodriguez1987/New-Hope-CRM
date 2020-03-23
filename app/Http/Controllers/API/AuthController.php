@@ -24,13 +24,14 @@ class AuthController extends Controller
     }
 
     public function login()
-    {
+    {   
         // Check if a user with the specified email exists
         $user = User::whereEmail(request('username'))->first();
+        var_dump($user);
 
         if (!$user) {
             return response()->json([
-                'message' => 'Wrong email or password',
+                'message' => 'Wrong  user or email',
                 'status' => 422
             ], 422);
         }
@@ -39,7 +40,7 @@ class AuthController extends Controller
         // belongs to this user
         if (!Hash::check(request('password'), $user->password)) {
             return response()->json([
-                'message' => 'Wrong email or password',
+                'message' => 'Wrong Password',
                 'status' => 422
             ], 422);
         }

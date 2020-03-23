@@ -37,11 +37,17 @@ let router = new Router({
     {
       path: '/404',
       name: 'Page404',
-      component: Page404
+      component: Page404,
+      meta: {
+        middlewareAuth: false
+      }
     }, {
       path: '/500',
       name: 'Page500',
-      component: Page500
+      component: Page500,
+      meta: {
+        middlewareAuth: false
+      }
     },
     {
       path: '/',

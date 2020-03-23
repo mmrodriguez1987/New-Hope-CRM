@@ -63,11 +63,11 @@ body {
         axios.post('/api/login', data)
              .then(({data}) => {
               auth.login(data.token, data.user)
-              this.$router.push('/dashboard')
+              this.$router.push('/api/dashboard')
             })
             .catch(({response}) => {                    
               alert(response.data.message)
-            })
+            });
     	}, 
 
       sendToken: function () {
