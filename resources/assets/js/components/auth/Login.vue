@@ -70,7 +70,7 @@ body {
             });
             
     	}, 
-
+ 
       sendToken: function () {
         this.$refs.invisibleRecaptcha.execute()
       },

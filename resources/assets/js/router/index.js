@@ -10,6 +10,7 @@ import Register from '../components/auth/Register.vue'
 import Page404 from '../components/pages/404.vue'
 import Page500 from '../components/pages/500.vue'
 
+window.Vue = Vue
 
 Vue.use(Router)
 
@@ -91,11 +92,7 @@ let router = new Router({
           }
         }
       ]
-    },
-    {
-      path: '*',
-      redirect: '/404'
-    },
+    }
   ]
 })
 

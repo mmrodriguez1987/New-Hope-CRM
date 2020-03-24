@@ -1,421 +1,385 @@
-export default {
-  items: [
+export default [{
+  _name: 'CSidebarNav',
+  _children: [
     {
+      _name: 'CSidebarNavItem',
       name: 'Dashboard',
-      url: '/dashboard',
-      icon: 'icon-speedometer',
+      to: '/dashboard',
+      icon: 'cil-speedometer',
       badge: {
-        variant: 'primary',
+        color: 'primary',
         text: 'NEW'
       }
     },
-
     {
-      title: true,
-      name: 'Components',
-      class: '',
-      wrapper: {
-        element: '',
-        attributes: {}
-      }
+      _name: 'CSidebarNavTitle',
+      _children: ['Theme']
     },
     {
+      _name: 'CSidebarNavItem',
+      name: 'Colors',
+      to: '/theme/colors',
+      icon: 'cil-drop'
+    },
+    {
+      _name: 'CSidebarNavItem',
+      name: 'Typography',
+      to: '/theme/typography',
+      icon: 'cil-pencil'
+    },
+    {
+      _name: 'CSidebarNavTitle',
+      _children: ['Components']
+    },
+    {
+      _name: 'CSidebarNavDropdown',
       name: 'Base',
-      url: '/base',
-      icon: 'icon-puzzle',
-      children: [
-        {
+      route: '/base',
+      icon: 'cil-puzzle',
+      items: [{
           name: 'Breadcrumbs',
-          url: '/base/breadcrumbs',
-          icon: 'icon-puzzle'
+          to: '/base/breadcrumbs'
         },
         {
           name: 'Cards',
-          url: '/base/cards',
-          icon: 'icon-puzzle'
+          to: '/base/cards'
         },
         {
           name: 'Carousels',
-          url: '/base/carousels',
-          icon: 'icon-puzzle'
+          to: '/base/carousels'
         },
         {
           name: 'Collapses',
-          url: '/base/collapses',
-          icon: 'icon-puzzle'
+          to: '/base/collapses'
         },
         {
           name: 'Jumbotrons',
-          url: '/base/jumbotrons',
-          icon: 'icon-puzzle'
+          to: '/base/jumbotrons'
         },
         {
           name: 'List Groups',
-          url: '/base/list-groups',
-          icon: 'icon-puzzle'
+          to: '/base/list-groups'
         },
         {
           name: 'Navs',
-          url: '/base/navs',
-          icon: 'icon-puzzle'
+          to: '/base/navs'
         },
         {
           name: 'Navbars',
-          url: '/base/navbars',
-          icon: 'icon-puzzle'
+          to: '/base/navbars'
         },
         {
           name: 'Paginations',
-          url: '/base/paginations',
-          icon: 'icon-puzzle'
+          to: '/base/paginations'
         },
         {
           name: 'Popovers',
-          url: '/base/popovers',
-          icon: 'icon-puzzle'
+          to: '/base/popovers'
         },
         {
           name: 'Progress Bars',
-          url: '/base/progress-bars',
-          icon: 'icon-puzzle'
+          to: '/base/progress-bars'
         },
         {
           name: 'Switches',
-          url: '/base/switches',
-          icon: 'icon-puzzle'
+          to: '/base/switches'
         },
         {
           name: 'Tabs',
-          url: '/base/tabs',
-          icon: 'icon-puzzle'
+          to: '/base/tabs'
         },
         {
           name: 'Tooltips',
-          url: '/base/tooltips',
-          icon: 'icon-puzzle'
+          to: '/base/tooltips'
         }
       ]
     },
     {
+      _name: 'CSidebarNavDropdown',
       name: 'Buttons',
-      url: '/buttons',
-      icon: 'icon-cursor',
-      children: [
-        {
+      route: '/buttons',
+      icon: 'cil-cursor',
+      items: [{
           name: 'Buttons',
-          url: '/buttons/standard-buttons',
-          icon: 'icon-cursor'
-        },
-        {
-          name: 'Brand Buttons',
-          url: '/buttons/brand-buttons',
-          icon: 'icon-cursor'
+          to: '/buttons/standard-buttons'
         },
         {
           name: 'Button Dropdowns',
-          url: '/buttons/dropdowns',
-          icon: 'icon-cursor'
+          to: '/buttons/dropdowns'
         },
         {
           name: 'Button Groups',
-          url: '/buttons/button-groups',
-          icon: 'icon-cursor'
+          to: '/buttons/button-groups'
+        },
+        {
+          name: 'Brand Buttons',
+          to: '/buttons/brand-buttons'
         }
       ]
     },
     {
+      _name: 'CSidebarNavItem',
       name: 'Charts',
-      url: '/charts',
-      icon: 'icon-pie-chart'
+      to: '/charts',
+      icon: 'cil-chart-pie'
     },
     {
+      _name: 'CSidebarNavDropdown',
       name: 'Editors',
-      url: '/editors',
-      icon: 'fa fa-code',
-      children: [
+      route: '/editors',
+      icon: 'cil-code',
+      items: [
         {
-          name: 'Code Editors',
-          url: '/editors/code-editors',
-          icon: 'fa fa-code',
+          name: 'Code editors',
+          to: '/editors/code-editors',
+          icon: 'cil-code',
           badge: {
-            variant: 'danger',
+            color: 'danger',
             text: 'PRO'
           }
         },
         {
-          name: 'Text Editors',
-          url: '/editors/text-editors',
-          icon: 'icon-note',
-          badge: {
-            variant: 'danger',
-            text: 'PRO'
-          }
+          name: 'Text editors',
+          to: '/editors/text-editors',
+          icon: 'cil-justify-left'
         }
       ]
     },
     {
+      _name: 'CSidebarNavDropdown',
       name: 'Forms',
-      url: '/forms',
-      icon: 'icon-note',
-      children: [
+      route: '/forms',
+      icon: 'cil-notes',
+      items: [
         {
-          name: 'Basic Forms',
-          url: '/forms/basic-forms',
-          icon: 'icon-note'
+          name: 'Basic forms',
+          to: '/forms/basic-forms'
         },
         {
-          name: 'Advanced Forms',
-          url: '/forms/advanced-forms',
-          icon: 'icon-note',
+          name: 'Advanced forms',
+          to: '/forms/advanced-forms',
           badge: {
-            variant: 'danger',
+            color: 'danger',
             text: 'PRO'
           }
         },
         {
-          name: 'Validation',
-          url: '/forms/validation-forms',
-          icon: 'icon-note',
+          name: 'Validation forms',
+          to: '/forms/validation-forms',
           badge: {
-            variant: 'danger',
+            color: 'danger',
             text: 'PRO'
           }
         }
       ]
     },
     {
+      _name: 'CSidebarNavItem',
       name: 'Google Maps',
-      url: '/google-maps',
-      icon: 'icon-map',
+      to: '/google-maps',
+      icon: 'cil-map',
       badge: {
-        variant: 'danger',
+        color: 'danger',
         text: 'PRO'
       }
     },
     {
+      _name: 'CSidebarNavDropdown',
       name: 'Icons',
-      url: '/icons',
-      icon: 'icon-star',
-      children: [
-        {
+      route: '/icons',
+      icon: 'cil-star',
+      items: [{
           name: 'CoreUI Icons',
-          url: '/icons/coreui-icons',
-          icon: 'icon-star',
+          to: '/icons/coreui-icons',
           badge: {
-            variant: 'info',
+            color: 'info',
             text: 'NEW'
           }
         },
         {
+          name: 'Brands',
+          to: '/icons/brands'
+        },
+        {
           name: 'Flags',
-          url: '/icons/flags',
-          icon: 'icon-star'
-        },
-        {
-          name: 'Font Awesome',
-          url: '/icons/font-awesome',
-          icon: 'icon-star',
-          badge: {
-            variant: 'secondary',
-            text: '4.7'
-          }
-        },
-        {
-          name: 'Simple Line Icons',
-          url: '/icons/simple-line-icons',
-          icon: 'icon-star'
+          to: '/icons/flags'
         }
       ]
     },
     {
+      _name: 'CSidebarNavDropdown',
       name: 'Notifications',
-      url: '/notifications',
-      icon: 'icon-bell',
-      children: [
-        {
+      route: '/notifications',
+      icon: 'cil-bell',
+      items: [{
           name: 'Alerts',
-          url: '/notifications/alerts',
-          icon: 'icon-bell'
+          to: '/notifications/alerts',
         },
         {
           name: 'Badges',
-          url: '/notifications/badges',
-          icon: 'icon-bell'
+          to: '/notifications/badges'
         },
         {
           name: 'Modals',
-          url: '/notifications/modals',
-          icon: 'icon-bell'
+          to: '/notifications/modals'
         },
         {
-          name: 'Toastr',
-          url: '/notifications/toastr',
-          icon: 'icon-bell',
+          name: 'Toaster',
+          to: '/notifications/toaster',
           badge: {
-            variant: 'danger',
+            color: 'danger',
             text: 'PRO'
           }
         }
       ]
     },
     {
+      _name: 'CSidebarNavDropdown',
       name: 'Plugins',
-      url: '/plugins',
-      icon: 'icon-energy',
-      children: [
+      route: '/plugins',
+      icon: 'cil-input-power',
+      items: [
         {
           name: 'Draggable',
-          url: '/plugins/draggable',
-          icon: 'icon-cursor-move',
+          to: '/plugins/draggable',
+          icon: 'cil-cursor-move',
           badge: {
-            variant: 'danger',
+            color: 'danger',
             text: 'PRO'
           }
         },
         {
           name: 'Calendar',
-          url: '/plugins/calendar',
-          icon: 'icon-calendar',
+          to: '/plugins/calendar',
+          icon: 'cil-calendar',
           badge: {
-            variant: 'danger',
+            color: 'danger',
             text: 'PRO'
           }
         },
         {
           name: 'Spinners',
-          url: '/plugins/spinners',
-          icon: 'fa fa-spinner',
+          to: '/plugins/spinners',
+          icon: 'cil-circle',
           badge: {
-            variant: 'danger',
+            color: 'danger',
             text: 'PRO'
           }
-        },
-      ]
-    },
-    {
-      name: 'Tables',
-      url: '/tables',
-      icon: 'icon-list',
-      children: [
-        {
-          name: 'Data Table',
-          url: '/tables/data-table',
-          icon: 'icon-list',
-          badge: {
-            variant: 'danger',
-            text: 'PRO'
-          }
-        },
-        {
-          name: 'Tables',
-          url: '/tables/tables',
-          icon: 'icon-list'
         }
       ]
     },
     {
+      _name: 'CSidebarNavDropdown',
+      name: 'Tables',
+      route: '/tables',
+      icon: 'cil-list',
+      items: [
+        {
+          name: 'Basic Tables',
+          to: '/tables/tables',
+          icon: 'cil-list',
+        },
+        {
+          name: 'Advanced tables',
+          to: '/tables/advanced-tables',
+          icon: 'cil-list-rich'
+        }  
+      ]
+    },
+    {
+      _name: 'CSidebarNavItem',
       name: 'Widgets',
-      url: '/widgets',
-      icon: 'icon-calculator',
+      to: '/widgets',
+      icon: 'cil-calculator',
       badge: {
-        variant: 'primary',
-        text: 'NEW'
+        color: 'primary',
+        text: 'NEW',
+        shape: 'pill'
       }
     },
     {
-      divider: true
+      _name: 'CSidebarNavDivider'
     },
     {
-      title: true,
-      name: 'Extras'
+      _name: 'CSidebarNavTitle',
+      _children: ['Extras']
     },
     {
+      _name: 'CSidebarNavDropdown',
       name: 'Pages',
-      url: '/pages',
-      icon: 'icon-star',
-      children: [
+      route: '/pages',
+      icon: 'cil-star',
+      items: [
         {
           name: 'Login',
-          url: '/pages/login',
-          icon: 'icon-star'
+          to: '/pages/login'
         },
         {
           name: 'Register',
-          url: '/pages/register',
-          icon: 'icon-star'
+          to: '/pages/register'
         },
         {
           name: 'Error 404',
-          url: '/pages/404',
-          icon: 'icon-star'
+          to: '/pages/404'
         },
         {
           name: 'Error 500',
-          url: '/pages/500',
-          icon: 'icon-star'
+          to: '/pages/500'
         }
       ]
     },
     {
-      name: 'Disabled',
-      url: '/dashboard',
-      icon: 'icon-ban',
-      badge: {
-        variant: 'secondary',
-        text: 'NEW'
-      },
-      attributes: { disabled: true },
-    },
-    {
+      _name: 'CSidebarNavDropdown',
       name: 'Apps',
-      url: '/apps',
-      icon: 'icon-layers',
-      children: [
+      route: '/apps',
+      icon: 'cil-layers',
+      _children: [
         {
+          _name: 'CSidebarNavDropdown',
           name: 'Invoicing',
-          url: '/apps/invoicing',
-          icon: 'icon-speech',
-          children: [
+          route: '/apps/invoicing',
+          icon: 'cil-spreadsheet',
+          items: [
             {
               name: 'Invoice',
-              url: '/apps/invoicing/invoice',
-              icon: 'icon-speech',
+              to: '/apps/invoicing/invoice',
               badge: {
-                variant: 'danger',
+                color: 'danger',
                 text: 'PRO'
               }
             }
           ]
         },
         {
+          _name: 'CSidebarNavDropdown',
           name: 'Email',
-          url: '/apps/email',
-          icon: 'icon-speech',
-          children: [
+          route: '/apps/email',
+          icon: 'cil-envelope-closed',
+          items: [
             {
               name: 'Inbox',
-              url: '/apps/email/inbox',
-              icon: 'icon-speech',
+              to: '/apps/email/inbox',
+              icon: 'cil-envelope-closed',
               badge: {
-                variant: 'danger',
+                color: 'danger',
                 text: 'PRO'
               }
             },
             {
               name: 'Message',
-              url: '/apps/email/message',
-              icon: 'icon-speech',
+              to: '/apps/email/message',
+              icon: 'cil-envelope-open',
               badge: {
-                variant: 'danger',
+                color: 'danger',
                 text: 'PRO'
               }
             },
             {
               name: 'Compose',
-              url: '/apps/email/compose',
-              icon: 'icon-speech',
+              to: '/apps/email/compose',
+              icon: 'cil-envelope-letter',
               badge: {
-                variant: 'danger',
+                color: 'danger',
                 text: 'PRO'
               }
             }
@@ -424,36 +388,39 @@ export default {
       ]
     },
     {
-      divider: true,
-      class: 'm-2'
+      _name: 'CSidebarNavDivider',
+      _class: 'm-2'
     },
     {
-      title: true,
-      name: 'Labels'
+      _name: 'CSidebarNavTitle',
+      _children: ['Labels']
     },
     {
+      _name: 'CSidebarNavItem',
       name: 'Label danger',
-      url: '',
-      icon: 'fa fa-circle',
-      label: {
-        variant: 'danger'
-      }
+      icon: {
+        name: 'cil-star',
+        class: 'text-danger'
+      },
+      label: true
     },
     {
+      _name: 'CSidebarNavItem',
       name: 'Label info',
-      url: '',
-      icon: 'fa fa-circle',
-      label: {
-        variant: 'info'
-      }
+      icon: {
+        name: 'cil-star',
+        class: 'text-info'
+      },
+      label: true
     },
     {
+      _name: 'CSidebarNavItem',
       name: 'Label warning',
-      url: '',
-      icon: 'fa fa-circle',
-      label: {
-        variant: 'warning'
-      }
+      icon: {
+        name: 'cil-star',
+        class: 'text-warning'
+      },
+      label: true
     }
   ]
-}
+}]

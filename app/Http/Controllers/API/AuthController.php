@@ -26,8 +26,7 @@ class AuthController extends Controller
     public function login()
     {   
         // Check if a user with the specified email exists
-        $user = User::whereEmail(request('username'))->first();
-        var_dump($user);
+        $user = User::whereEmail(request('username'))->first();       
 
         if (!$user) {
             return response()->json([
