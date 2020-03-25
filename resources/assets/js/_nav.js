@@ -10,30 +10,14 @@ export default [{
         color: 'primary',
         text: 'NEW'
       }
-    },
+    },    
     {
       _name: 'CSidebarNavTitle',
-      _children: ['Theme']
-    },
-    {
-      _name: 'CSidebarNavItem',
-      name: 'Colors',
-      to: '/theme/colors',
-      icon: 'cil-drop'
-    },
-    {
-      _name: 'CSidebarNavItem',
-      name: 'Typography',
-      to: '/theme/typography',
-      icon: 'cil-pencil'
-    },
-    {
-      _name: 'CSidebarNavTitle',
-      _children: ['Components']
+      _children: ['Church']
     },
     {
       _name: 'CSidebarNavDropdown',
-      name: 'Base',
+      name: 'Membership',
       route: '/base',
       icon: 'cil-puzzle',
       items: [{
