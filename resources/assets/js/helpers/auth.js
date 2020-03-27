@@ -1,9 +1,13 @@
 class Auth {
   constructor() {
-    this.token = window.localStorage.getItem('token');
-    let userData = window.localStorage.getItem('user');
-    this.user = userData ? JSON.parse(userData) : null;
+    this.token = window.localStorage.getItem('token');        
 
+    if (window.localStorage.getItem('user')) {
+      this.user = JSON.parse(window.localStorage.getItem('user'));
+    } else {
+      this.user = null;
+    }
+  
     if (this.token) {
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.token;
       this.getUser();
@@ -35,6 +39,24 @@ class Auth {
       });
 
   }
+
+  loadCart(data) {
+    //I check if there is a cart entry in localStorage
+    if (localStorage.getItem('cart')) {
+            // if there is - expand and write to the variable cart
+      cart = JSON.parse(localStorage.getItem('cart'));
+      if(isEmpty(cart)){
+          $('.main-cart').html('Cart is empty');
+      }
+      else 
+        init();
+    }
+    else {
+      $('.main-cart').html('Cart is empty');
+    }
+  }
+
+
 }
 
 export default Auth;

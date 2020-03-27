@@ -27545,6 +27545,15 @@ html:not([dir=rtl]) .c-email-app .c-message-headers-date {
   }
 }
 
+.card-header:not(.content-center) > .c-icon:first-child {
+  margin-right: 0.1rem;
+  margin-top: 0.1rem;
+  vertical-align: top;
+  width: 1.2rem;
+  height: 1.2rem;
+  font-size: 1.2rem;
+}
+
 /* Import Font Awesome Icons Set
 $fa-font-path: '../fonts/'; */
 

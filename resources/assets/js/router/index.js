@@ -4,6 +4,7 @@ import TheContainer from '../container/TheContainer.vue'
 import Dashboard from '../components/Dashboard.vue'
 import Person from '../components/person/Index.vue'
 import Position from '../components/position/Index.vue'
+import Profession from '../components/profession/Index.vue'
 import PersonType from '../components/person_type/Index.vue'
 import Login from '../components/auth/Login.vue'
 import Register from '../components/auth/Register.vue'
@@ -87,6 +88,14 @@ let router = new Router({
           path: 'persontypes',
           name: 'persontypes',
           component: PersonType,
+          meta: {
+            middlewareAuth: true
+          }
+        },
+        {
+          path: 'professions',
+          name: 'professions',
+          component: Profession,
           meta: {
             middlewareAuth: true
           }

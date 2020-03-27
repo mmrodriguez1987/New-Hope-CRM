@@ -6,7 +6,7 @@ import Api from './helpers/api.js'
 import Auth from './helpers/auth.js'
 import {
   iconsSet as icons
-} from './icons/icons.js'
+} from './icons/icons.js' 
 
 window.api = new Api()
 window.auth = new Auth()

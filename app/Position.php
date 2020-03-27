@@ -8,11 +8,6 @@ class Position extends Model
 {    
     protected $table ='positions';
 
-    // public function persons() 
-    // {
-    //   return $this->hasMany(Person::class);
-    // }
-
     //Scopes
     public function scopeSearch($query, $target)
     {
