@@ -24,8 +24,8 @@ $factory->define(newhopecrm\Person::class, function (Faker $faker) {
         'crt_employer_name' => $faker->name,
         'crt_employer_address' => $faker->address,
         'crt_employer_phone' => $faker->phoneNumber,
-        'position_id' => rand(1,10), 
-        'person_type_id' => rand(1,10), 
+        'position_id' =>  factory(newhopecrm\Position::class), 
+        'person_type_id' =>  factory(newhopecrm\Persontype::class), 
         'active' => $faker->boolean
     ];
 });

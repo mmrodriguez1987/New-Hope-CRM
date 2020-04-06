@@ -40,23 +40,6 @@ class Auth {
 
   }
 
-  loadCart(data) {
-    //I check if there is a cart entry in localStorage
-    if (localStorage.getItem('cart')) {
-            // if there is - expand and write to the variable cart
-      cart = JSON.parse(localStorage.getItem('cart'));
-      if(isEmpty(cart)){
-          $('.main-cart').html('Cart is empty');
-      }
-      else 
-        init();
-    }
-    else {
-      $('.main-cart').html('Cart is empty');
-    }
-  }
-
-
 }
 
 export default Auth;

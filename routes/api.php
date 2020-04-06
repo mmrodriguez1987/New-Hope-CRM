@@ -18,10 +18,10 @@ Route::post('/login', 'API\AuthController@login')->name('api.login');
 Route::post('/register', 'API\AuthController@register')->name('api.register');
 Route::get('/get-user', 'API\AuthController@getUser');
 
-Route::middleware('auth:api')->group(function () {
+ Route::middleware('auth:api')->group(function () {
     Route::post('/logout', 'API\AuthController@logout');   
 
-    //Route::get('/dashboard','DashboardController@index')->name('api.dasboard');
+    Route::get('/dashboard','DashboardController@index')->name('api.dasboard');
 
     //Persons
     Route::get('person', 'PersonController@index')->name('api.person.index');   

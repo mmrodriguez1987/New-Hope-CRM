@@ -11,8 +11,8 @@
             
             <template #status="{item}">
               <td>
-                <CBadge :color="getBadge(item.status)">
-                  {{item.status}}
+                <CBadge :color="getBadge(item.active)">
+                  {{item.active}}
                 </CBadge>
               </td>
             </template>
@@ -42,8 +42,7 @@
                     </CButton>
                     <CButton size="sm" color="danger" class="ml-1">
                       Related Family
-                    </CButton>
-                  </CMedia>
+                    </CButton>                 
                   </CMedia>
                 </CCardBody>
               </CCollapse>

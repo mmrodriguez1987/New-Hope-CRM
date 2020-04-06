@@ -12,7 +12,7 @@ class PersonController extends Controller
     {        
         return Person::with('persontype','profession','position')
             ->search(request()->search)
-            ->orderBy('id','DESC')
+            ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
             ->paginate(request()->rows);   
     }
 
