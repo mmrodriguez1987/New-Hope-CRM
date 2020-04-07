@@ -9,31 +9,31 @@
         <CCardBody>
           <CDataTable :items="persons" :fields="fields" column-filter table-filter  items-per-page-select :items-per-page="5"  hover sorter  pagination >
             
-            <template #status="{item}">
+            <template slot="status" slot-scope="row">
               <td>
-                <CBadge :color="getBadge(item.active)">
-                  {{item.active}}
+                <CBadge :color="getBadge( row.item.active)">
+                  {{row.item.active}}
                 </CBadge>
               </td>
             </template>
 
-            <template #show_details="{item, index}">
+            <template slot="show_details" slot-scope="row">
               <td class="py-2">
-                <CButton color="primary" variant="outline" square  size="sm" @click="toggleDetails(index)" >
-                  {{details.includes(index) ? 'Hide' : 'Show'}}
+                <CButton color="primary" variant="outline" square  size="sm" @click="row.toggleDetails" >
+                   <i class="fa fa-plus-square"></i>
                 </CButton>
               </td>
             </template>
 
-            <template #details="{item, index}">
-              <CCollapse :show="details.includes(index)">
+            <template slot="row-details" slot-scope="row">
+              <CCollapse>
                 <CCardBody>
                   <CMedia :aside-image-props="{ height: 102 }">
-                    <h4>{{item.profession_name }}</h4>
-                    <p class="text-muted">Person Type: {{item.person_type_name }}</p>
-                    <p class="text-muted">Church Position: {{item.position_name  }}</p>
-                    <p class="text-muted">Profession: {{item.profession_name }}</p>
-                    <p class="text-muted">Address: {{item.address}}, {{item.street}}, {{item.city}}, {{item.state}} {{item.postal_code}}</p>
+                    <h4>{{ row.item.profession_name }}</h4>
+                    <p class="text-muted">Person Type: {{ row.item.person_type_name }}</p>
+                    <p class="text-muted">Church Position: {{ row.item.position_name  }}</p>
+                    <p class="text-muted">Profession: {{ row.item.profession_name }}</p>
+                    <p class="text-muted">Address: {{ row.item.address}}, {{ row.item.street}}, {{ row.item.city}}, {{ row.item.state}} {{ row.item.postal_code}}</p>
                     <CButton size="sm" color="info" class="">
                      Send Text Message
                     </CButton>
@@ -56,41 +56,6 @@
   </CRow>
 </template>
 <script>
-// const usersData = [
-//   { username: 'Samppa Nori', registered: '2012/01/01', role: 'Member', status: 'Active'},
-//   { username: 'Estavan Lykos', registered: '2012/02/01', role: 'Staff', status: 'Banned'},
-//   { username: 'Chetan Mohamed', registered: '2012/02/01', role: 'Admin', status: 'Inactive'},
-//   { username: 'Derick Maximinus', registered: '2012/03/01', role: 'Member', status: 'Pending'},
-//   { username: 'Friderik Dávid', registered: '2012/01/21', role: 'Staff', status: 'Active'},
-//   { username: 'Yiorgos Avraamu', registered: '2012/01/01', role: 'Member', status: 'Active'},
-//   { username: 'Avram Tarasios', registered: '2012/02/01', role: 'Staff', status: 'Banned', _classes: 'table-success'},
-//   { username: 'Quintin Ed', registered: '2012/02/01', role: 'Admin', status: 'Inactive'},
-//   { username: 'Enéas Kwadwo', registered: '2012/03/01', role: 'Member', status: 'Pending'},
-//   { username: 'Agapetus Tadeáš', registered: '2012/01/21', role: 'Staff', status: 'Active'},
-//   { username: 'Carwyn Fachtna', registered: '2012/01/01', role: 'Member', status: 'Active', _classes: 'table-success'},
-//   { username: 'Nehemiah Tatius', registered: '2012/02/01', role: 'Staff', status: 'Banned'},
-//   { username: 'Ebbe Gemariah', registered: '2012/02/01', role: 'Admin', status: 'Inactive'},
-//   { username: 'Eustorgios Amulius', registered: '2012/03/01', role: 'Member', status: 'Pending'},
-//   { username: 'Leopold Gáspár', registered: '2012/01/21', role: 'Staff', status: 'Active'},
-//   { username: 'Pompeius René', registered: '2012/01/01', role: 'Member', status: 'Active'},
-//   { username: 'Paĉjo Jadon', registered: '2012/02/01', role: 'Staff', status: 'Banned'},
-//   { username: 'Micheal Mercurius', registered: '2012/02/01', role: 'Admin', status: 'Inactive'},
-//   { username: 'Ganesha Dubhghall', registered: '2012/03/01', role: 'Member', status: 'Pending'},
-//   { username: 'Hiroto Šimun', registered: '2012/01/21', role: 'Staff', status: 'Active'},
-//   { username: 'Vishnu Serghei', registered: '2012/01/01', role: 'Member', status: 'Active'},
-//   { username: 'Zbyněk Phoibos', registered: '2012/02/01', role: 'Staff', status: 'Banned'},
-//   { username: 'Einar Randall', registered: '2012/02/01', role: 'Admin', status: 'Inactive', _classes: 'table-danger'},
-//   { username: 'Félix Troels', registered: '2012/03/21', role: 'Staff', status: 'Active'},
-//   { username: 'Aulus Agmundr', registered: '2012/01/01', role: 'Member', status: 'Pending'}
-// ]
-
-
-// const fields = [
-//   { key: 'username', _style:'width:40%' }, 'registered',
-//   { key: 'role', _style:'width:20%;' },
-//   { key: 'status', _style:'width:20%;' },
-//   { key: 'show_details', label: '', _style: 'width:1%', sorter: false, filter: false }
-// ]
 
 export default { 
   watch: {
@@ -101,18 +66,17 @@ export default {
   data () {
     return {    
       fields: [
+        { key: 'status', _style:'width:20%;' },
         { key: 'id', label: trans('bck.person.lbl_fullname') },
         { key: 'fullname', label: trans('bck.person.lbl_fullname') },
         { key: 'email', label: trans('bck.person.lbl_email') },
         { key: 'phone', label: trans('bck.person.lbl_phone') },
         { key: 'birthdate', label: trans('bck.person.lbl_birthday') },
         { key: 'sex', label: trans('bck.person.lbl_sex'), },
-        { key: 'marital_status', label: trans('bck.person.lbl_maritalstatus') },
-        { key: 'fulladdress', label: trans('bck.person.lbl_fulladdress') },
-        { key: 'person_type_name', label: trans('bck.person.lbl_persontype') },
-        { key: 'position_name', label: trans('bck.person.lbl_position')},
-        { key: 'profession_name', label: trans('bck.person.lbl_profession') },
-        { key: 'actions', label: trans('bck.general.actions') }
+        { key: 'marital_status', label: trans('bck.person.lbl_maritalstatus') },     
+        { key: 'actions', label: trans('bck.general.actions') },
+        { key: 'show_details', label: '', _style: 'width:1%',  sorter: false,   filter: false }
+
       ],
       currentPage: null,
       draft: {},
@@ -120,7 +84,10 @@ export default {
       currentIndex: null,
       sortBy: 'id',
       sortDesc: true,
-      showEdit: false
+      showEdit: false,
+      rows: 10,
+      details: []
+
     }
   },
   created() {
@@ -178,7 +145,10 @@ export default {
     getPersons() {
       let params = { 
         page: this.currentPage, 
-        target: this.target      
+        target: this.target,
+        orderBy: this.sortBy,
+        desc: this.sortDesc,
+        rows: this.rows
       }
       this.$store.dispatch('getPersons', params)
     },
@@ -209,6 +179,10 @@ export default {
       console.log('The name is: ' + persontype.name )
       return persontype.name
     },
+    toggleDetails (index) {
+      const position = this.details.indexOf(index)
+      position !== -1 ? this.details.splice(position, 1) : this.details.push(index)
+    }
   },
   computed: {
     persons() {

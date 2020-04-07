@@ -9,9 +9,13 @@ class PersonController extends Controller
 {
     
     public function index()
-    {        
-        return Person::with('persontype','profession','position')
-            ->search(request()->search)
+    {      
+
+        return Person::with('persontype','profession','position')   
+            ->persontype(request()->person_type_id)
+            ->profession(request()->profession_id)
+            ->position(request()->position_id)
+            ->search(request()->search)         
             ->orderBy(request()->orderBy, request()->desc == 'true' ? 'DESC' : 'ASC')
             ->paginate(request()->rows);   
     }

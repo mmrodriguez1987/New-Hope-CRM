@@ -19,8 +19,22 @@ let getters = {
 
 let actions = {
 
-  getPersons(context, params) {  
-    axios.get('/admin/person?page=' + params.page + '&search=' + params.target)
+  getPersons(context, params) {
+
+    
+    let person_type_id = params.person_type_id ? params.person_type_id : ''
+    let profession_id = params.profession_id ? params.profession_id : ''
+    let position_id = params.position_id ? params.position_id : ''
+
+    axios.get('/api/person?page=' + params.page + 
+              '&search=' + params.target +              
+              '&orderBy=' + params.orderBy +
+              '&desc=' + params.desc +
+              '&rows=' + params.rows +
+              '&person_type_id=' + person_type_id +
+              '&profession_id=' + profession_id +
+              '&position_id=' + position_id)
+
     .then(response => {
       context.commit('getPersons', { data: response.data })       
       context.state.loading = false
