@@ -7,8 +7,17 @@
           <h3 class="box-title">{{ trans('bck.person.title') }}</h3>          
         </CCardHeader>
         <CCardBody>
-          <CDataTable :items="persons" :fields="fields" column-filter table-filter  items-per-page-select :items-per-page="5"  hover sorter  pagination >
+          <CDataTable :items="persons" :fields="fields"  :striped="striped" :dark="dark" pagination >
+             
+             
+             <template slot="fullname" slot-scope="row">
+                <td>
+              {{row.item.first_name}} {{row.item.last_name}}
+               </td>
+            </template>
+
             
+
             <template slot="status" slot-scope="row">
               <td>
                 <CBadge :color="getBadge( row.item.active)">
@@ -25,7 +34,7 @@
               </td>
             </template>
 
-            <template slot="row-details" slot-scope="row">
+          <template slot="row-details" slot-scope="row">
               <CCollapse>
                 <CCardBody>
                   <CMedia :aside-image-props="{ height: 102 }">
@@ -47,8 +56,6 @@
                 </CCardBody>
               </CCollapse>
             </template>
-
-
           </CDataTable> 
         </CCardBody>
       </CCard>
@@ -99,15 +106,12 @@ export default {
   methods: {
     getBadge (status) {
       switch (status) {
-        case true: return 'success'
-        case false: return 'danger'     
+        case 1: return 'success'
+        case 0: return 'danger'     
         default: 'primary'
       }
     },
-    toggleDetails (index) {
-      const position = this.details.indexOf(index)
-      position !== -1 ? this.details.splice(position, 1) : this.details.push(index)
-    }, 
+ 
     edit(person, index){
       this.draft = clone(person)
       this.currentIndex = index
