@@ -7,16 +7,14 @@
           <h3 class="box-title">{{ trans('bck.person.title') }}</h3>          
         </CCardHeader>
         <CCardBody>
-          <CDataTable :items="persons" :fields="fields"  :striped="striped" :dark="dark" pagination >
+          <CDataTable :items="persons" :fields="fields" pagination >
              
              
              <template slot="fullname" slot-scope="row">
                 <td>
-              {{row.item.first_name}} {{row.item.last_name}}
+                {{row.item.first_name}} {{row.item.last_name}}
                </td>
-            </template>
-
-            
+            </template>            
 
             <template slot="status" slot-scope="row">
               <td>
@@ -185,6 +183,7 @@ export default {
     },
     toggleDetails (index) {
       const position = this.details.indexOf(index)
+
       position !== -1 ? this.details.splice(position, 1) : this.details.push(index)
     }
   },
