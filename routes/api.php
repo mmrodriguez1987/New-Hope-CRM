@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,28 +16,4 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
-
-Route::prefix('auth')->group(function () {
-    Route::post('register', 'AuthController@register');
-    Route::post('login', 'AuthController@login');
-    Route::get('refresh', 'AuthController@refresh');
-
-    Route::group(['middleware' => 'auth:api'], function(){
-        Route::get('user', 'AuthController@user');
-        Route::post('logout', 'AuthController@logout');
-    });
-});
-
-Route::prefix('admin')->group(function () {
-    
-    
-    //Persons
-    Route::get('person', 'PersonController@index');
-    Route::post('person', ['as' => 'person.store','uses' => 'PersonController@store']);
-    Route::put('person/{id}', ['as' => 'person.update', 'uses' => 'PersonController@update']);
-    Route::delete('person/{id}', ['as' => 'person.destroy','uses' => 'PersonController@destroy']);
-    Route::get('personList', ['as' => 'person.list','uses' => 'PersonController@list']);
-
- 
 });

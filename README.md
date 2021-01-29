@@ -12,6 +12,7 @@ NHCRM is an Open Source Web Application with many modules that help with the Adm
  - Inventory 
  - Shop 
  - Blog Management
+ - Events
  - Settings
 
  
