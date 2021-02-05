@@ -1,10 +1,20 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(newhopecrm\Position::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-        'active' => $faker->boolean
-    ];
-});
+use Illuminate\Database\Eloquent\Factories\Factory;
+use newhopecrm\Models\Position;
+
+class PositionFactory extends Factory
+{
+   
+    protected $model = Position::class;
+ 
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->name,
+            'active' => $this->faker->boolean
+        ];
+    }
+}

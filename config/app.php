@@ -92,6 +92,18 @@ return [
     */
 
     'fallback_locale' => 'en',
+      /*
+    |--------------------------------------------------------------------------
+    | Faker Locale
+    |--------------------------------------------------------------------------
+    |
+    | This locale will be used by the Faker PHP library when generating fake
+    | data for your database seeds. For example, this will be used to get
+    | localized telephone numbers, street address information and more.
+    |
+    */
+
+    'faker_locale' => 'en_US',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,13 +171,9 @@ return [
         // newhopecrm\Providers\BroadcastServiceProvider::class,
         newhopecrm\Providers\EventServiceProvider::class,
         newhopecrm\Providers\RouteServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class,
+      
         Collective\Html\HtmlServiceProvider::class,
-        //NotificationChannels\Twilio\TwilioProvider::class,
-        /*Spatie\Analytics\AnalyticsServiceProvider::class,
-        Spatie\Sitemap\SitemapServiceProvider::class,
-        AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
-        Cornford\Googlmapper\MapperServiceProvider::class,*/
+       
 
      
 

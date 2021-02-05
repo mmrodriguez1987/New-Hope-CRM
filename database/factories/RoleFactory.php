@@ -1,12 +1,19 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use Faker\Generator as Faker;
-use newhopecrm\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use newhopecrm\Models\Role;
 
-$factory->define(newhopecrm\Role::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name
-    ];
-});
+class RoleFactory extends Factory
+{
+
+    protected $model = Role::class;
+
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->name,
+        ];
+    }
+}

@@ -25,7 +25,7 @@ class CreatePersonsTable extends Migration
             $table->string('street');
             $table->integer('postal_code');
             $table->string('city');
-            $table->char('state', 2);
+            $table->string('state');
             $table->unsignedInteger('profession_id')->reference('id')->on('professions');
             $table->string('email')->unique();
             $table->string('phone')->unique();

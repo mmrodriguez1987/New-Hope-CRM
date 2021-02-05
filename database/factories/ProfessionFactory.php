@@ -1,9 +1,28 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(newhopecrm\Profession::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name
-    ];
-});
+use Illuminate\Database\Eloquent\Factories\Factory;
+use newhopecrm\Models\Profession;
+
+class ProfessionFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Profession::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->name,
+        ];
+    }
+}

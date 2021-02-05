@@ -9,38 +9,31 @@
   "type": "project",
   "require": {
     "php": "^7.2.5",
+    "fakerphp/faker": "^1.13",
     "fideloper/proxy": "^4.2",
     "fruitcake/laravel-cors": "^1.0",
     "guzzlehttp/guzzle": "^6.3",
-    "laravel/framework": "^7.0",
+    "laravel/framework": "^8.0",
     "laravel/helpers": "^1.2",
-    "laravel/passport": "^8.4",
+    "laravel/passport": "^10.1",
     "laravel/tinker": "^2.0",
-    "laravel/ui": "^2.0",
+    "laravel/ui": "^3.0",
     "laravelcollective/html": "^6.1",
     "mad-web/laravel-robots": "^2.0",
     "symfony/http-foundation": "^5.0",
     "symfony/mime": "^5.0"
   },
   "require-dev": {
-    "facade/ignition": "^2.0",
-    "fzaninotto/faker": "^1.9.1",
+    "facade/ignition": "^2.3.6",
     "mockery/mockery": "^1.3.1",
     "nunomaduro/collision": "^4.1",
-    "phpunit/phpunit": "^8.5"
+    "phpunit/phpunit": "^9.3.3"
   },
-  "autoload": {
-    "classmap": [
-      "database/seeds",
-      "database/factories",
-      "database/seeds/UsersTableSeeder.php",
-      "database/seeds/RolesTableSeeder.php",
-      "database/seeds/PositionsTableSeeder.php",
-      "database/seeds/PersontypesTableSeeder.php",
-      "database/seeds/PersonsTableSeeder.php"
-    ],
+  "autoload": {    
     "psr-4": {
-      "newhopecrm\\": "app/"
+      "newhopecrm\\": "app/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\": "database/seeders/"
     }
   },
   "autoload-dev": {

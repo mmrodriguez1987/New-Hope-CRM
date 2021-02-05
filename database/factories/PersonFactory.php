@@ -1,31 +1,40 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(newhopecrm\Person::class, function (Faker $faker) {
-    return [
-        'first_name' => $faker->name,
-        'last_name' => $faker->name,
-        'marital_status' => $faker->name,
-        'birthdate' => $faker->dateTime($max = 'now', $timezone = null),
-        'sex' => 'M',
-        'cid' => $faker->ean13,
-        'address'=> $faker->address,
-        'street'=> $faker->sentence,
-        'state'=> 'FL',
-        'profession_id'=>rand(1,10),
-        'postal_code'=>33018,
-        'city'=>$faker->city,
-        'email' => $faker->unique()->safeEmail,
-        'phone' => $faker->unique()->PhoneNumber,
-        'cnt_emerg_name' => $faker->name,
-        'cnt_emerg_phone' => $faker->phoneNumber,
-        'cnt_emerg_address' => $faker->address, 
-        'crt_employer_name' => $faker->name,
-        'crt_employer_address' => $faker->address,
-        'crt_employer_phone' => $faker->phoneNumber,
-        'position_id' =>  rand(1,10), 
-        'person_type_id' =>  rand(1,10), 
-        'active' => $faker->boolean
-    ];
-});
+use Illuminate\Database\Eloquent\Factories\Factory;
+use newhopecrm\Models\Person;
+
+class PersonFactory extends Factory
+{    
+    protected $model = Person::class;
+    
+    public function definition()
+    {
+        return [
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'marital_status' => 'casado',
+            'birthdate' => $this->faker->dateTime,
+            'sex' => 'M',
+            'cid' => $this->faker->ssn,
+            'address'=> $this->faker->streetAddress,
+            'street'=> $this->faker->streetName,
+            'state'=> $this->faker->stateAbbr,
+            'profession_id'=> 1 ,
+            'postal_code'=> 33015,
+            'city'=> $this->faker->city,
+            'email' => $this->faker->unique->safeEmail,
+            'phone' => $this->faker->phoneNumber,
+            'cnt_emerg_name' => $this->faker->name,
+            'cnt_emerg_phone' => $this->faker->phoneNumber,
+            'cnt_emerg_address' => $this->faker->streetName, 
+            'crt_employer_name' => $this->faker->name,
+            'crt_employer_address' => $this->faker->streetAddress,
+            'crt_employer_phone' => $this->faker->phoneNumber,
+            'position_id' =>  $this->faker->randomDigit, 
+            'person_type_id' =>  $this->faker->randomDigit, 
+            'active' => $this->faker->boolean
+        ];
+    }
+}

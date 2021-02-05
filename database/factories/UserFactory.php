@@ -1,17 +1,24 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use Faker\Generator as Faker;
-use newhopecrm\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use newhopecrm\Models\User;
+use Illuminate\Support\Str;
 
-$factory->define(newhopecrm\User::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => bcrypt('secret'),
-        'role_id' => factory(newhopecrm\Role::class),
-        'phone' => $faker->unique()->PhoneNumber,
-        'remember_token' => str_random(10),
-    ];
-});
+class UserFactory extends Factory
+{  
+    protected $model = User::class;
+
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'phone' => $this->faker->phoneNumber,
+            'rol_id' =>  $this->faker->randomDigit, 
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ];
+    }
+}
