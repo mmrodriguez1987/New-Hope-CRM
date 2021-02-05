@@ -5,7 +5,7 @@ namespace newhopecrm\Http\Controllers\API;
 use Illuminate\Http\Request;
 use newhopecrm\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use newhopecrm\User;
+use newhopecrm\Models\User;
 use DB;
 
 class AuthController extends Controller
@@ -26,12 +26,12 @@ class AuthController extends Controller
     public function login()
     {   
         // Check if a user with the specified email exists
-        $user = User::whereEmail(request('username'))->first();       
+        $user = User::where('email',request('username'))->first();     
 
         if (!$user) {
             return response()->json([
-                'message' => 'Wrong  user or email',
-                'status' => 422
+                'message' => 'Wrong username, your username doesnt exist',
+                'status' => 422                
             ], 422);
         }
 
@@ -70,12 +70,12 @@ class AuthController extends Controller
         $response = app()->handle($request);
 
         // Check if the request was successful
-        if ($response->getStatusCode() != 200) {
-            return response()->json([
-                'message' => 'Wrong email or password',
-                'status' => 422
-            ], 422);
-        }
+        // if ($response->getStatusCode() != 200) {
+        //     return response()->json([
+        //         'message' => 'Wrong email or password',
+        //         'status' => 422
+        //     ], 422);
+        // }
 
         // Get the data from the response
         $data = json_decode($response->getContent());

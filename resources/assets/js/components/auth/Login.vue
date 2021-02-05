@@ -64,11 +64,11 @@ body {
              .then(({data}) => {
                 auth.login(data.token, data.user);
                 Vue.toasted.show('Welcome '+ data.user.name, {icon: 'pencil', type: 'info'})
-               this.$router.push('/dashboard');
+                this.$router.push('/dashboard');
             })
-            .catch(({response}) => {     
-              Vue.toasted.show(response.data.message, {icon: 'exclamation-triangle', type: 'error'})               
-              alert(response.data.message);
+            .catch(({response}) => {    
+              console.log(response.data); 
+              Vue.toasted.show(response.data.message, {icon: 'exclamation-triangle', type: 'error'})            
             });
             
     	}, 

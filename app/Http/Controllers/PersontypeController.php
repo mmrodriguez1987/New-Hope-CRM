@@ -5,7 +5,7 @@ namespace newhopecrm\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use newhopecrm\Http\Requests\PersontypeStoreRequest;
-use newhopecrm\Persontype;
+use newhopecrm\Models\Persontype;
 
 class PersontypeController extends Controller
 {

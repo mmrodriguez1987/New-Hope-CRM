@@ -3,7 +3,7 @@
 namespace newhopecrm\Http\Controllers;
 
 use Illuminate\Http\Request;
-use newhopecrm\Person;
+use newhopecrm\Models\Person;
 
 class PersonController extends Controller
 {

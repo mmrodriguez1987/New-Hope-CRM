@@ -5,7 +5,7 @@ namespace newhopecrm\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use newhopecrm\Http\Requests\PositionStoreRequest;
-use newhopecrm\Position;
+use newhopecrm\Models\Position;
 
 class PositionController extends Controller
 {

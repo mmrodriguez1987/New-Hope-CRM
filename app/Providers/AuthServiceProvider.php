@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'newhopecrm\Model' => 'newhopecrm\Policies\ModelPolicy',
+        'newhopecrm\Models\Model' => 'newhopecrm\Policies\ModelPolicy',
     ];
 
     /**
@@ -29,6 +29,6 @@ class AuthServiceProvider extends ServiceProvider
         // Passport::routes(function ($router) {
         //     $router->forAccessTokens();
         // });
-        //Passport::routes();
+        Passport::routes();
     }
 }
