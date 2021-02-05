@@ -171,12 +171,7 @@ return [
         // newhopecrm\Providers\BroadcastServiceProvider::class,
         newhopecrm\Providers\EventServiceProvider::class,
         newhopecrm\Providers\RouteServiceProvider::class,
-      
         Collective\Html\HtmlServiceProvider::class,
-       
-
-     
-
     ],
 
     /*
